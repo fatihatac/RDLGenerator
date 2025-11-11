@@ -1,11 +1,10 @@
-const generateRDL = (items) => {
+function generateRDL(items) {
   const itemsXml = items.map(item => {
-    // 1. TEXTBOX (RAPOR BAŞLIĞI)
     if (item.type === 'textbox') {
       return `
         <Textbox Name="Textbox_${item.id}">
-            <Left>149.25pt</Left>
-            <Top>4.5pt</Top>
+            <Left>0pt</Left>
+            <Top>0pt</Top>
             <Height>49.5pt</Height>
             <Width>168pt</Width>
             <Style>
@@ -41,16 +40,13 @@ const generateRDL = (items) => {
           </Textbox>`;
     }
     
-    // 2. TABLIX (TABLO)
     if (item.type === 'table') {
       const columnCount = item.columns.length;
-      // Sütun genişlikleri (basitlik için sabit)
       const columnsXml = item.columns.map(() => `
           <TablixColumn>
             <Width>1.1in</Width>
           </TablixColumn>`).join('');
 
-      // Tablo Header Hücreleri
       const headerCellsXml = item.columns.map((col, index) => `
           <TablixCell>
             <CellContents>
@@ -96,7 +92,6 @@ const generateRDL = (items) => {
             </CellContents>
           </TablixCell>`).join('');
 
-      // Tablo Data Hücreleri (Örnek veri bağlama placeholder'ı)
       const dataCellsXml = item.columns.map((col, index) => `
           <TablixCell>
             <CellContents>
@@ -176,7 +171,6 @@ const generateRDL = (items) => {
     return '';
   }).join('\n');
 
-  // Ana XML İskeleti
   return `<?xml version="1.0"?>
 <Report xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition">
   <ReportSections>
