@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { Plus, Trash2, Download, FileText, Table, LayoutTemplate, X } from 'lucide-react';
 
+// --- YARDIMCI FONKSİYONLAR (RDL OLUŞTURUCU) ---
+
+/**
+ * Bu fonksiyon React state'ini alıp geçerli bir RDL XML string'ine dönüştürür.
+ * Bold Reports ve SSRS standartlarına uygun namespace kullanır.
+ */
 const generateRDL = (items) => {
   const itemsXml = items.map(item => {
     // 1. TEXTBOX (RAPOR BAŞLIĞI)
@@ -47,7 +53,7 @@ const generateRDL = (items) => {
     // 2. TABLIX (TABLO)
     if (item.type === 'table') {
       const columnCount = item.columns.length;
-      // Sütun genişlikleri
+      // Sütun genişlikleri (basitlik için sabit)
       const columnsXml = item.columns.map(() => `
           <TablixColumn>
             <Width>1.1in</Width>
@@ -58,46 +64,48 @@ const generateRDL = (items) => {
           <TablixCell>
             <CellContents>
               <Textbox Name="Header_${item.id}_${index}">
-                <Left>0in</Left>
-                <Top>0in</Top>
-                <Height>18pt</Height>
-                <Width>33pt</Width>
-                <Style>
-                  <VerticalAlign>Middle</VerticalAlign>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                  <Border>
-                    <Color>LightGrey</Color>
-                    <Style>Solid</Style>
-                  </Border>
-                </Style>
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>${col.name}</Value>
-                        <Style>
-                          <FontFamily>Trebuchet MS</FontFamily>
-                          <FontSize>7.5pt</FontSize>
-                          <FontWeight>Bold</FontWeight>
-                          <Color>black</Color>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <TextAlign>Left</TextAlign>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
+                                        <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Height>18pt</Height>
+                          <Width>33pt</Width>
+                          <Style>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>s
+                        <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Tip</Value>
+                                  <Style>
+                                    <FontFamily>Trebuchet MS</FontFamily>
+                                    <FontSize>7.5pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>black</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                        </Paragraphs>
               </Textbox>
+                <ColSpan>1</ColSpan>
+                <RowSpan>1</RowSpan>
             </CellContents>
           </TablixCell>`).join('');
 
-      // Tablo Data Hücreleri
+      // Tablo Data Hücreleri (Örnek veri bağlama placeholder'ı)
       const dataCellsXml = item.columns.map((col, index) => `
           <TablixCell>
             <CellContents>
@@ -108,21 +116,16 @@ const generateRDL = (items) => {
                     <TextRuns>
                       <TextRun>
                         <Value>=Fields!${col.name}.Value</Value>
-                        <Style>
-                           <FontFamily>Trebuchet MS</FontFamily>
-                           <FontSize>6.75pt</FontSize>
-                           <Color>black</Color>
-                        </Style>
+                        <Style />
                       </TextRun>
                     </TextRuns>
                     <Style />
                   </Paragraph>
                 </Paragraphs>
                 <Style>
-                  <Border>
-                    <Color>LightGrey</Color>
-                    <Style>Solid</Style>
-                  </Border>
+                  <BorderStyle>
+                    <Default>Solid</Default>
+                  </BorderStyle>
                   <PaddingLeft>2pt</PaddingLeft>
                   <PaddingRight>2pt</PaddingRight>
                   <PaddingTop>2pt</PaddingTop>
@@ -171,7 +174,7 @@ const generateRDL = (items) => {
           <Top>1in</Top>
           <Left>0in</Left>
           <Height>0.5in</Height>
-          <Width>${columnCount * 1.1}in</Width>
+          <Width>${columnCount * 1.5}in</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -234,6 +237,7 @@ const generateRDL = (items) => {
   <df:DefaultFontFamily>Trebuchet MS</df:DefaultFontFamily>
 </Report>`;
 };
+
 
 // --- ALT BİLEŞENLER (COMPONENTS) ---
 
@@ -463,21 +467,3 @@ export default function App() {
     </div>
   );
 }
-
-
-
-
-// //import { useState } from 'react'
-// import './App.css'
-// import ReportGenerator from './components/ReportGenerator'
-
-// function App() {
-
-//   return (
-//     <div className='root'>
-//       <ReportGenerator/>
-//     </div>
-//   )
-// }
-
-// export default App
