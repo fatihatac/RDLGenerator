@@ -26,9 +26,7 @@ function generateRDL(items) {
   });
 
   const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 468;
-  const TOTAL_REPORT_HIGHT = items && items.length > 0 ?  PAGE_HEIGHT : 225;
-
-  
+  const TOTAL_REPORT_HIGHT = items && items.length > 0 ? PAGE_HEIGHT : 225;
 
   const itemsXml = items
     .map((item) => {
@@ -231,6 +229,9 @@ function generateRDL(items) {
             </TablixMembers>
           </TablixRowHierarchy>
         </Tablix>`;
+      }
+      if (item.type === "data") {
+        return ""
       }
       return "";
     })

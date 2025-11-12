@@ -1,7 +1,7 @@
-import {Trash2, FileText} from 'lucide-react';
+import { Trash2, FileText } from 'lucide-react';
 
 
-function TextboxEditor({ item, updateItem, deleteItem }){
+function TextboxEditor({ item, updateItem, deleteItem }) {
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
       <div className="flex justify-between items-center mb-2">
