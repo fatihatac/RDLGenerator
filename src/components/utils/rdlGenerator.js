@@ -1,14 +1,43 @@
 function generateRDL(items) {
-  const itemsXml = items.map(item => {
-    if (item.type === 'textbox') {
-      return `
+  const TITLE_HEIGHT = 49.5; //pt
+  const TITLE_FONT_SIZE = 10.5; //pt
+  const TITLE_FONT_WEIGHT = "Bold";
+  const COLUMN_WIDTH = 72; //pt
+  const COLUMN_HEIGHT = 18.6; //pt
+  const COLUMN_HEADER_FONT_SIZE = 10.00003; //pt
+  const COLUMN_DATA_FONT_SIZE = 7.50003; //pt
+  const COLUMN_TEXT_HORIZONTAL_ALIGN = "Left";
+  const COLUMN_TEXT_VERTICAL_ALIGN = "Middle";
+  const TITLE_TEXT_HORIZONTAL_ALIGN = "Center";
+  const TITLE_TEXT_VERTICAL_ALIGN = "Middle";
+  const TABLE_HEIGHT = 37.50011; //pt
+  const PAGE_HEIGHT = TITLE_HEIGHT + TABLE_HEIGHT; //pt
+
+  let maxColumns = 0;
+
+  items.forEach((item) => {
+    if (
+      item.type === "table" &&
+      item.columns &&
+      item.columns.length > maxColumns
+    ) {
+      maxColumns = item.columns.length;
+    }
+  });
+
+  const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 504;
+
+  const itemsXml = items
+    .map((item) => {
+      if (item.type === "textbox") {
+        return `
         <Textbox Name="Textbox_${item.id}">
             <Left>0pt</Left>
             <Top>0pt</Top>
-            <Height>49.5pt</Height>
-            <Width>168pt</Width>
+            <Height>${TITLE_HEIGHT}pt</Height>
+            <Width>${TOTAL_REPORT_WIDTH}pt</Width>
             <Style>
-              <VerticalAlign>Middle</VerticalAlign>
+              <VerticalAlign>${TITLE_TEXT_VERTICAL_ALIGN}</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -26,37 +55,44 @@ function generateRDL(items) {
                     <Value>${item.value}</Value>
                     <Style>
                       <FontFamily>Trebuchet MS</FontFamily>
-                      <FontSize>10.5pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
+                      <FontSize>${TITLE_FONT_SIZE}pt</FontSize>
+                      <FontWeight>${TITLE_FONT_WEIGHT}</FontWeight>
                       <Color>Black</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>Center</TextAlign>
+                  <TextAlign>${TITLE_TEXT_HORIZONTAL_ALIGN}</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
           </Textbox>`;
-    }
-    
-    if (item.type === 'table') {
-      const columnCount = item.columns.length;
-      const columnsXml = item.columns.map(() => `
-          <TablixColumn>
-            <Width>1.1in</Width>
-          </TablixColumn>`).join('');
+      }
 
-      const headerCellsXml = item.columns.map((col, index) => `
+      if (item.type === "table") {
+        //const columnCount = item.columns.length;
+        const columnsXml = item.columns
+          .map(
+            () => `
+          <TablixColumn>
+            <Width>${COLUMN_WIDTH}pt</Width>
+          </TablixColumn>`
+          )
+          .join("");
+
+        const headerCellsXml = item.columns
+          .map(
+            (col, index) => `
           <TablixCell>
             <CellContents>
               <Textbox Name="Header_${item.id}_${index}">
-                                        <Left>0in</Left>
-                          <Top>0in</Top>
-                          <Height>18pt</Height>
-                          <Width>33pt</Width>
+                          <Left>0pt</Left>
+                          <Top>0pt</Top>
+                          <Height>${COLUMN_HEIGHT}</Height>
+                          <Width>${COLUMN_WIDTH}pt</Width>
                           <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
+                            <FontSize>${COLUMN_HEADER_FONT_SIZE}pt</FontSize>
+                            <VerticalAlign>${COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -67,22 +103,23 @@ function generateRDL(items) {
                             </Border>
                           </Style>
                         <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>s
+                        <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Tip</Value>
+                                  <Value>${col.name}</Value>
                                   <Style>
                                     <FontFamily>Trebuchet MS</FontFamily>
-                                    <FontSize>7.5pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontSize>${COLUMN_DATA_FONT_SIZE}pt</FontSize>
+                                    <FontWeight>${TITLE_FONT_WEIGHT}</FontWeight>
                                     <Color>black</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Left</TextAlign>
+                                <FontSize>${COLUMN_HEADER_FONT_SIZE}pt</FontSize>
+                                <TextAlign>${COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
                               </Style>
                             </Paragraph>
                         </Paragraphs>
@@ -90,52 +127,85 @@ function generateRDL(items) {
                 <ColSpan>1</ColSpan>
                 <RowSpan>1</RowSpan>
             </CellContents>
-          </TablixCell>`).join('');
+          </TablixCell>`
+          )
+          .join("");
 
-      const dataCellsXml = item.columns.map((col, index) => `
+        const dataCellsXml = item.columns
+          .map(
+            (col, index) => `
           <TablixCell>
             <CellContents>
               <Textbox Name="Data_${item.id}_${index}">
+                  <Left>0in</Left>
+                  <Top>0in</Top>
+                  <Height>18.6pt</Height>
+                  <Width>72pt</Width>
+                  <Style>
+                    <FontSize>10.00003pt</FontSize>
+                    <VerticalAlign>${COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                    <Border>
+                      <Color>LightGrey</Color>
+                      <Style>Solid</Style>
+                    </Border>
+                </Style>
                 <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
                 <Paragraphs>
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
                         <Value>=Fields!${col.name}.Value</Value>
-                        <Style />
+                        <Style>
+                           <FontFamily>Trebuchet MS</FontFamily>
+                           <FontSize>6.75002pt</FontSize>
+                           <Color>black</Color>
+                        </Style>
                       </TextRun>
                     </TextRuns>
-                    <Style />
+                    <Style>
+                      <FontSize>10.00003pt</FontSize>
+                      <TextAlign>${COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
+                    </Style>
                   </Paragraph>
                 </Paragraphs>
-                <Style>
-                  <BorderStyle>
-                    <Default>Solid</Default>
-                  </BorderStyle>
-                  <PaddingLeft>2pt</PaddingLeft>
-                  <PaddingRight>2pt</PaddingRight>
-                  <PaddingTop>2pt</PaddingTop>
-                  <PaddingBottom>2pt</PaddingBottom>
-                </Style>
               </Textbox>
+              <ColSpan>1</ColSpan>
+              <RowSpan>1</RowSpan>
             </CellContents>
-          </TablixCell>`).join('');
+          </TablixCell>`
+          )
+          .join("");
 
-      return `
+        return `
         <Tablix Name="Tablix_${item.id}">
+            <Left>0pt</Left>
+            <Top>${TITLE_HEIGHT}pt</Top>
+            <Height>37.50011pt</Height>
+            <Width>504.0004pt</Width>
+            <Style>
+              <FontSize>10.00003pt</FontSize>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
           <TablixBody>
             <TablixColumns>
               ${columnsXml}
             </TablixColumns>
             <TablixRows>
               <TablixRow>
-                <Height>0.25in</Height>
+                <Height>18.6pt</Height>
                 <TablixCells>
                   ${headerCellsXml}
                 </TablixCells>
               </TablixRow>
               <TablixRow>
-                <Height>0.25in</Height>
+                <Height>18.6pt</Height>
                 <TablixCells>
                   ${dataCellsXml}
                 </TablixCells>
@@ -144,7 +214,7 @@ function generateRDL(items) {
           </TablixBody>
           <TablixColumnHierarchy>
             <TablixMembers>
-              ${item.columns.map(() => '<TablixMember />').join('')}
+              ${item.columns.map(() => "<TablixMember />").join("")}
             </TablixMembers>
           </TablixColumnHierarchy>
           <TablixRowHierarchy>
@@ -157,19 +227,11 @@ function generateRDL(items) {
               </TablixMember>
             </TablixMembers>
           </TablixRowHierarchy>
-          <Top>1in</Top>
-          <Left>0in</Left>
-          <Height>0.5in</Height>
-          <Width>${columnCount * 1.5}in</Width>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
         </Tablix>`;
-    }
-    return '';
-  }).join('\n');
+      }
+      return "";
+    })
+    .join("\n");
 
   return `<?xml version="1.0"?>
 <Report xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition">
@@ -177,6 +239,7 @@ function generateRDL(items) {
     <ReportSection>
       <Body>
         <Style>
+          <FontSize>${COLUMN_HEADER_FONT_SIZE}pt</FontSize>
           <Border>
             <Style>None</Style>
           </Border>
@@ -184,25 +247,19 @@ function generateRDL(items) {
         <ReportItems>
           ${itemsXml}
         </ReportItems>
-        <Height>3.125in</Height>
+        <Height>${PAGE_HEIGHT}pt</Height>
       </Body>
-      <Width>6.5in</Width>
+      <Width>${TOTAL_REPORT_WIDTH}pt</Width>
       <Page>
-        <PageFooter>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-          <Height>0.72917in</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
-        </PageFooter>
-        <LeftMargin>1in</LeftMargin>
-        <RightMargin>1in</RightMargin>
-        <TopMargin>1in</TopMargin>
-        <BottomMargin>1in</BottomMargin>
+        <PageHeight>792.0023pt</PageHeight>
+        <PageWidth>612.0018pt</PageWidth>
+        <LeftMargin>72.00021pt</LeftMargin>
+        <RightMargin>72.00021pt</RightMargin>
+        <TopMargin>72.00021pt</TopMargin>
+        <BottomMargin>72.00021pt</BottomMargin>
+        <ColumnSpacing>36.00011pt</ColumnSpacing>
         <Style>
+          <FontSize>${COLUMN_HEADER_FONT_SIZE}pt</FontSize>
           <Border>
             <Style>None</Style>
           </Border>
@@ -221,7 +278,6 @@ function generateRDL(items) {
   <rd:PageUnit>Px</rd:PageUnit>
   <df:DefaultFontFamily>Trebuchet MS</df:DefaultFontFamily>
 </Report>`;
-};
-
+}
 
 export { generateRDL };

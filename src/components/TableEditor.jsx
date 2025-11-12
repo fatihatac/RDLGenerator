@@ -1,7 +1,7 @@
 import { Plus, Trash2, Table, X } from 'lucide-react';
 
 
-function TableEditor({ item, updateItem, deleteItem }){
+function TableEditor({ item, updateItem, deleteItem }) {
   const addColumn = () => {
     const newCol = { id: Date.now(), name: `Sütun ${item.columns.length + 1}` };
     updateItem(item.id, { columns: [...item.columns, newCol] });
@@ -33,7 +33,7 @@ function TableEditor({ item, updateItem, deleteItem }){
         <label className="block text-sm font-medium text-gray-700 mb-2">Sütun Tanımları</label>
         <div className="bg-gray-50 p-3 rounded border border-gray-100 space-y-2">
           {item.columns.length === 0 && <p className="text-xs text-gray-400 italic">Henüz sütun eklenmedi.</p>}
-          
+
           {item.columns.map((col, idx) => (
             <div key={col.id} className="flex items-center gap-2">
               <span className="text-xs text-gray-400 w-6">{idx + 1}.</span>
