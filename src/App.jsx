@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Download, FileText, Table, LayoutTemplate, X } from 'lucide-react';
 import TableEditor from './components/TableEditor';
 import TextboxEditor from './components/TextboxEditor';
-import {generateRDL} from './components/utils/rdlGenerator';
+import {generateRDL} from './utils/rdlGenerator';
 
 function App() {
   const [reportItems, setReportItems] = useState([]);
@@ -11,7 +11,7 @@ function App() {
     const newItem = {
       id: Date.now(),
       type,
-      ...(type === 'textbox' && { value: 'Yeni Başlık' }),
+      ...(type === 'title' && { value: 'Yeni Başlık' }),
       ...(type === 'table' && { columns: [{ id: Date.now(), name: 'ID' }, { id: Date.now() + 1, name: 'İsim' }] }),
     };
     setReportItems([...reportItems, newItem]);
@@ -26,12 +26,14 @@ function App() {
   };
 
   const downloadReport = () => {
+    const titleItem = reportItems.find(item => item.type === 'title');
+    const reportTitle = titleItem ? titleItem.value : 'TaslakRapor';
     const rdlContent = generateRDL(reportItems);
     const blob = new Blob([rdlContent], { type: 'application/xml' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'TaslakRapor.rdl';
+    a.download = `${reportTitle.replace(/\s/g, "_")}_Raporu.rdl`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -61,7 +63,7 @@ function App() {
           <h2 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Bileşenler</h2>
           
           <button
-            onClick={() => addItem('textbox')}
+            onClick={() => addItem('title')}
             className="flex items-center p-3 bg-gray-50 hover:bg-blue-50 hover:border-blue-300 border border-gray-200 rounded-lg transition-all text-left group"
           >
             <div className="bg-blue-100 text-blue-600 p-2 rounded mr-3 group-hover:bg-blue-200">
@@ -105,7 +107,7 @@ function App() {
               <div className="space-y-6">
                 {reportItems.map((item) => (
                   <div key={item.id}>
-                    {item.type === 'textbox' && (
+                    {item.type === 'title' && (
                       <TextboxEditor 
                         item={item} 
                         updateItem={updateItem} 

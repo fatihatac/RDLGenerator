@@ -25,13 +25,16 @@ function generateRDL(items) {
     }
   });
 
-  const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 504;
+  const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 468;
+  const TOTAL_REPORT_HIGHT = items && items.length > 0 ?  PAGE_HEIGHT : 225;
+
+  
 
   const itemsXml = items
     .map((item) => {
-      if (item.type === "textbox") {
+      if (item.type === "title") {
         return `
-        <Textbox Name="Textbox_${item.id}">
+        <Textbox Name="Title_${item.id}">
             <Left>0pt</Left>
             <Top>0pt</Top>
             <Height>${TITLE_HEIGHT}pt</Height>
@@ -52,7 +55,7 @@ function generateRDL(items) {
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>${item.value}</Value>
+                    <Value>${item.value.toUpperCase()}</Value>
                     <Style>
                       <FontFamily>Trebuchet MS</FontFamily>
                       <FontSize>${TITLE_FONT_SIZE}pt</FontSize>
@@ -247,7 +250,7 @@ function generateRDL(items) {
         <ReportItems>
           ${itemsXml}
         </ReportItems>
-        <Height>${PAGE_HEIGHT}pt</Height>
+        <Height>${TOTAL_REPORT_HIGHT}pt</Height>
       </Body>
       <Width>${TOTAL_REPORT_WIDTH}pt</Width>
       <Page>
