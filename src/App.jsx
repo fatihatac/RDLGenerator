@@ -13,17 +13,6 @@ import SidePanel from './components/SidePanel';
 function App() {
   const [reportItems, setReportItems] = useState([]);
 
-  // const addItem = (type) => {
-  //   const newItem = {
-  //     id: Date.now(),
-  //     type,
-  //     ...(type === 'title' && { value: 'Yeni Başlık' }),
-  //     ...(type === 'table' && { columns: [{ id: Date.now(), name: 'ID' }, { id: Date.now() + 1, name: 'İsim' }] }),
-  //     ...(type === 'data' && { json: '{ "data": [] }' }),
-  //   };
-  //   setReportItems([...reportItems, newItem]);
-  // };
-
   const updateItem = (id, newData) => {
     setReportItems(reportItems.map(item => item.id === id ? { ...item, ...newData } : item));
   };
@@ -51,7 +40,6 @@ function App() {
     <div className="min-h-screen bg-gray-100 flex flex-col font-sans text-slate-800">
       {/* Üst Bar */}
       <Header downloadReport={downloadReport} />
-
       <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
         {/* Sol Panel: Araç Kutusu */}
          <SidePanel reportItems={reportItems} setReportItems={setReportItems}/>
@@ -62,7 +50,6 @@ function App() {
               <h2 className="text-2xl font-bold text-gray-800">Rapor Taslağı</h2>
               <span className="text-sm text-gray-500">{reportItems.length} bileşen eklendi</span>
             </div>
-
             {reportItems.length === 0 ? (
               <div className="border-2 border-dashed border-gray-300 rounded-xl p-12 text-center bg-gray-50/50">
                 <LayoutTemplate size={48} className="mx-auto text-gray-300 mb-4" />
