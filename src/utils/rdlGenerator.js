@@ -1,9 +1,29 @@
-function getRdlTypeName(value) {
-  if (typeof value === "number") return "System.Double";
-  if (typeof value === "boolean") return "System.Boolean";
-  // Diğer tüm türleri (tarih dahil) string olarak kabul et
-  return "System.String";
+// --- YENİ YARDIMCI FONKSİYON ---
+// XML için güvenli olmayan karakterleri "escape" eder (kaçış karakteri ekler)
+function escapeXml(unsafe) {
+  if (typeof unsafe !== 'string') return unsafe;
+  return unsafe.replace(/[<>&"']/g, function(c) {
+    switch (c) {
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '&': return '&amp;';
+      case '"': return '&quot;';
+      case "'": return '&apos;';
+      default: return c;
+    }
+  });
 }
+// --- YARDIMCI FONKSİYON SONU ---
+
+// --- YENİ YARDIMCI FONKSİYON ---
+// Veri tipini analiz ederek RDL Tipi Adını döndürür
+function getRdlTypeName(value) {
+  if (typeof value === 'number') return 'System.Double';
+  if (typeof value === 'boolean') return 'System.Boolean';
+  // Diğer tüm türleri (tarih dahil) string olarak kabul et
+  return 'System.String';
+}
+// --- YARDIMCI FONKSİYON SONU ---
 
 function generateRDL(items) {
   const TITLE_HEIGHT = 49.5; //pt
@@ -35,10 +55,10 @@ function generateRDL(items) {
   const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 468; //pt
   const TOTAL_REPORT_HIGHT = items && items.length > 0 ? PAGE_HEIGHT : 225; //pt
 
-  const dataItem = items.find((item) => item.type === "data");
-  const tableItem = items.find((item) => item.type === "table");
-  console.log(`{"Data":"${dataItem.value}","DataMode":"inline","URL":""}`);
-
+  // Rapor içindeki veri ve tablo öğelerini bul
+  const dataItem = items.find(item => item.type === 'data');
+  const tableItem = items.find(item => item.type === 'table');
+  
   const dataSetName = "DataSet1";
 
   const itemsXml = items
@@ -66,7 +86,8 @@ function generateRDL(items) {
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>${item.value.toUpperCase()}</Value>
+                    {/* --- GÜNCELLEME 1: Başlık escape edildi --- */}
+                    <Value>${escapeXml(item.value.toLocaleUpperCase("tr"))}</Value>
                     <Style>
                       <FontFamily>Trebuchet MS</FontFamily>
                       <FontSize>${TITLE_FONT_SIZE}pt</FontSize>
@@ -84,7 +105,6 @@ function generateRDL(items) {
       }
 
       if (item.type === "table") {
-        //const columnCount = item.columns.length;
         const columnsXml = item.columns
           .map(
             () => `
@@ -122,7 +142,7 @@ function generateRDL(items) {
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>${col.name}</Value>
+                                  <Value>${escapeXml(col.name)}</Value>
                                   <Style>
                                     <FontFamily>Trebuchet MS</FontFamily>
                                     <FontSize>${COLUMN_DATA_FONT_SIZE}pt</FontSize>
@@ -207,7 +227,9 @@ function generateRDL(items) {
                 <Style>None</Style>
               </Border>
             </Style>
+            
             <DataSetName>${dataSetName}</DataSetName> 
+            
           <TablixBody>
             <TablixColumns>
               ${columnsXml}
@@ -245,53 +267,43 @@ function generateRDL(items) {
         </Tablix>`;
       }
 
-      if (item.type === "data") {
-        return "";
+      if (item.type === 'data') {
+        return ""; // Rapor öğesi olarak çizmeyin
       }
 
       return "";
     })
     .join("\n");
 
-  let dataXml = "";
-  if (
-    dataItem &&
-    tableItem &&
-    dataItem.jsonKeys &&
-    dataItem.jsonKeys.length > 0
-  ) {
-    let firstRow = {};
-    try {
-      const parsedData = JSON.parse(dataItem.value);
-      if (Array.isArray(parsedData) && parsedData.length > 0) {
-        firstRow = parsedData[0];
-      }
-    } catch (e) {
-      // Hata olursa tüm tipler varsayılan olarak String kalacak
-      console.error("JSON parse error for type inference:", e);
-    }
 
-    const fieldsXml = dataItem.jsonKeys
-      .map(
-        (key) => `
-      <Field Name="${key}">
-        <DataField>${key}</DataField>
-        <rd:TypeName>${getRdlTypeName(firstRow[key])}</rd:TypeName>
-      </Field>`
-      )
-      .join("\n");
+  let dataXml = ""; 
+  
+  if (dataItem && tableItem && dataItem.jsonKeys && dataItem.jsonKeys.length > 0) {
+    
+    const fieldsXml = dataItem.jsonKeys.map(key => {
+      
+      const mappedColumn = tableItem.columns.find(col => col.mappedField === key);
+      const typeName = mappedColumn ? mappedColumn.dataType : 'System.String';
+
+      return `
+      <Field Name="${escapeXml(key)}">
+        <DataField>${escapeXml(key)}</DataField>
+        <rd:TypeName>${getRdlTypeName(typeName)}</rd:TypeName>
+      </Field>`;
+    }).join('\n');
 
     const connectStringData = {
-      Data: dataItem.value, // Zaten string olan JSON verisi
+      Data: dataItem.value, 
       DataMode: "inline",
-      URL: "",
+      URL: ""
     };
+    
 
-    const connectStringContent = JSON.stringify(connectStringData);
+    const connectStringContent = escapeXml(JSON.stringify(connectStringData));
 
     const dataSourceXml = `
     <DataSources>
-      <DataSource Name="EmbeddedJSONSource">
+      <DataSource Name="DataSource1">
         <ConnectionProperties>
           <DataProvider>JSON</DataProvider>
           <ConnectString>${connectStringContent}</ConnectString>
@@ -301,7 +313,7 @@ function generateRDL(items) {
     </DataSources>`;
 
     const queryDesignerColumnsXml = dataItem.jsonKeys.map(key => `
-                <Column Name="${key}" IsDuplicate="False" IsSelected="True" />`).join('\n');
+                <Column Name="${escapeXml(key)}" IsDuplicate="False" IsSelected="True" />`).join('\n');
 
     const dataSetXml = `
     <DataSets>
@@ -310,21 +322,21 @@ function generateRDL(items) {
           ${fieldsXml}
         </Fields>
         <Query>
-          <DataSourceName>EmbeddedJSONSource</DataSourceName>
+          <DataSourceName>DataSource1</DataSourceName>
           <CommandType>Text</CommandType>
           <CommandText>{"Name":"Result","Columns":[]}</CommandText>
           <QueryDesignerState xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
-          <Tables>
-            <Table Name="Result" Schema="">
-              <Columns>
-                ${queryDesignerColumnsXml}
-              </Columns>
-              <SchemaLevels>
-                <SchemaInfo Name="Result" SchemaType="Table" />
-              </SchemaLevels>
-            </Table>
-          </Tables>
-        </QueryDesignerState>
+            <Tables>
+              <Table Name="Result" Schema="">
+                <Columns>
+                  ${queryDesignerColumnsXml}
+                </Columns>
+                <SchemaLevels>
+                  <SchemaInfo Name="Result" SchemaType="Table" />
+                </SchemaLevels>
+              </Table>
+            </Tables>
+          </QueryDesignerState>
         </Query>
       </DataSet>
     </DataSets>`;
@@ -367,7 +379,9 @@ function generateRDL(items) {
     </ReportSection>
   </ReportSections>
   <AutoRefresh>0</AutoRefresh>
+
   ${dataXml}
+
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
