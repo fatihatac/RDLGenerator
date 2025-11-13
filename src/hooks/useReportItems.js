@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { generateRDL } from '../utils/rdlGenerator';
+import convertTitleCase from '../utils/convertTitleCase';
 
 function useReportItems() {
   const [reportItems, setReportItems] = useState([]);
@@ -31,7 +32,7 @@ function useReportItems() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${reportTitle.replace(/\s/g, "_")}_Raporu.rdl`;
+    a.download = `${convertTitleCase(reportTitle.trim()).replace(/\s/g, "_")}.rdl`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
