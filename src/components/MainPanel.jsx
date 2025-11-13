@@ -1,11 +1,22 @@
-
 import { LayoutTemplate } from 'lucide-react';
 import TextboxEditor from './TextboxEditor';
 import TableEditor from './TableEditor';
 import JSONEditor from './JSONEditor';
 
-
 function MainPanel({ reportItems, updateItem, deleteItem }) {
+
+    const tableItem = reportItems.find(item => item.type === 'table');
+
+
+    const handleTableColumnMappingUpdate = (columnId, newMappedField) => {
+        if (!tableItem) return;
+
+        const newCols = tableItem.columns.map(c =>
+            c.id === columnId ? { ...c, mappedField: newMappedField } : c
+        );
+
+        updateItem(tableItem.id, { columns: newCols });
+    };
 
     return (
         <main className="flex-1 p-8 overflow-y-auto">
@@ -43,6 +54,8 @@ function MainPanel({ reportItems, updateItem, deleteItem }) {
                                         item={item}
                                         updateItem={updateItem}
                                         deleteItem={deleteItem}
+                                        tableItem={tableItem}
+                                        onUpdateTableColumnMapping={handleTableColumnMappingUpdate}
                                     />
                                 )}
                             </div>
@@ -51,7 +64,7 @@ function MainPanel({ reportItems, updateItem, deleteItem }) {
                 )}
             </div>
         </main>
-    )
+    );
 }
 
 export default MainPanel;

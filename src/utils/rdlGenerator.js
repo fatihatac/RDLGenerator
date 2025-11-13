@@ -1,3 +1,10 @@
+function getRdlTypeName(value) {
+  if (typeof value === "number") return "System.Double";
+  if (typeof value === "boolean") return "System.Boolean";
+  // Diğer tüm türleri (tarih dahil) string olarak kabul et
+  return "System.String";
+}
+
 function generateRDL(items) {
   const TITLE_HEIGHT = 49.5; //pt
   const TITLE_FONT_SIZE = 10.5; //pt
@@ -25,8 +32,14 @@ function generateRDL(items) {
     }
   });
 
-  const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 468;
-  const TOTAL_REPORT_HIGHT = items && items.length > 0 ? PAGE_HEIGHT : 225;
+  const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 468; //pt
+  const TOTAL_REPORT_HIGHT = items && items.length > 0 ? PAGE_HEIGHT : 225; //pt
+
+  const dataItem = items.find((item) => item.type === "data");
+  const tableItem = items.find((item) => item.type === "table");
+  console.log(`{"Data":"${dataItem.value}","DataMode":"inline","URL":""}`);
+
+  const dataSetName = "DataSet1";
 
   const itemsXml = items
     .map((item) => {
@@ -160,7 +173,7 @@ function generateRDL(items) {
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=Fields!${col.name}.Value</Value>
+                        <Value>=Fields!${col.mappedField}.Value</Value>
                         <Style>
                            <FontFamily>Trebuchet MS</FontFamily>
                            <FontSize>6.75002pt</FontSize>
@@ -194,6 +207,7 @@ function generateRDL(items) {
                 <Style>None</Style>
               </Border>
             </Style>
+            <DataSetName>${dataSetName}</DataSetName> 
           <TablixBody>
             <TablixColumns>
               ${columnsXml}
@@ -230,12 +244,93 @@ function generateRDL(items) {
           </TablixRowHierarchy>
         </Tablix>`;
       }
+
       if (item.type === "data") {
-        return ""
+        return "";
       }
+
       return "";
     })
     .join("\n");
+
+  let dataXml = "";
+  if (
+    dataItem &&
+    tableItem &&
+    dataItem.jsonKeys &&
+    dataItem.jsonKeys.length > 0
+  ) {
+    let firstRow = {};
+    try {
+      const parsedData = JSON.parse(dataItem.value);
+      if (Array.isArray(parsedData) && parsedData.length > 0) {
+        firstRow = parsedData[0];
+      }
+    } catch (e) {
+      // Hata olursa tüm tipler varsayılan olarak String kalacak
+      console.error("JSON parse error for type inference:", e);
+    }
+
+    const fieldsXml = dataItem.jsonKeys
+      .map(
+        (key) => `
+      <Field Name="${key}">
+        <DataField>${key}</DataField>
+        <rd:TypeName>${getRdlTypeName(firstRow[key])}</rd:TypeName>
+      </Field>`
+      )
+      .join("\n");
+
+    const connectStringData = {
+      Data: dataItem.value, // Zaten string olan JSON verisi
+      DataMode: "inline",
+      URL: "",
+    };
+
+    const connectStringContent = JSON.stringify(connectStringData);
+
+    const dataSourceXml = `
+    <DataSources>
+      <DataSource Name="EmbeddedJSONSource">
+        <ConnectionProperties>
+          <DataProvider>JSON</DataProvider>
+          <ConnectString>${connectStringContent}</ConnectString>
+        </ConnectionProperties>
+        <rd:ImpersonateUser>false</rd:ImpersonateUser>
+      </DataSource>
+    </DataSources>`;
+
+    const queryDesignerColumnsXml = dataItem.jsonKeys.map(key => `
+                <Column Name="${key}" IsDuplicate="False" IsSelected="True" />`).join('\n');
+
+    const dataSetXml = `
+    <DataSets>
+      <DataSet Name="${dataSetName}">
+        <Fields>
+          ${fieldsXml}
+        </Fields>
+        <Query>
+          <DataSourceName>EmbeddedJSONSource</DataSourceName>
+          <CommandType>Text</CommandType>
+          <CommandText>{"Name":"Result","Columns":[]}</CommandText>
+          <QueryDesignerState xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+          <Tables>
+            <Table Name="Result" Schema="">
+              <Columns>
+                ${queryDesignerColumnsXml}
+              </Columns>
+              <SchemaLevels>
+                <SchemaInfo Name="Result" SchemaType="Table" />
+              </SchemaLevels>
+            </Table>
+          </Tables>
+        </QueryDesignerState>
+        </Query>
+      </DataSet>
+    </DataSets>`;
+
+    dataXml = `${dataSourceXml}\n${dataSetXml}`;
+  }
 
   return `<?xml version="1.0"?>
 <Report xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition">
@@ -272,6 +367,7 @@ function generateRDL(items) {
     </ReportSection>
   </ReportSections>
   <AutoRefresh>0</AutoRefresh>
+  ${dataXml}
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>

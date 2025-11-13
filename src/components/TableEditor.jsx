@@ -3,7 +3,7 @@ import { Plus, Trash2, Table, X } from 'lucide-react';
 
 function TableEditor({ item, updateItem, deleteItem }) {
   const addColumn = () => {
-    const newCol = { id: Date.now(), name: `Sütun ${item.columns.length + 1}` };
+    const newCol = { id: Date.now(), name: `Sütun ${item.columns.length + 1}`, mappedField: null };
     updateItem(item.id, { columns: [...item.columns, newCol] });
   };
 
