@@ -1,0 +1,57 @@
+
+import { LayoutTemplate } from 'lucide-react';
+import TextboxEditor from './TextboxEditor';
+import TableEditor from './TableEditor';
+import JSONEditor from './JSONEditor';
+
+
+function MainPanel({ reportItems, updateItem, deleteItem }) {
+
+    return (
+        <main className="flex-1 p-8 overflow-y-auto">
+            <div className="max-w-3xl mx-auto">
+                <div className="flex justify-between items-end mb-6">
+                    <h2 className="text-2xl font-bold text-gray-800">Rapor Taslağı</h2>
+                    <span className="text-sm text-gray-500">{reportItems.length} bileşen eklendi</span>
+                </div>
+                {reportItems.length === 0 ? (
+                    <div className="border-2 border-dashed border-gray-300 rounded-xl p-12 text-center bg-gray-50/50">
+                        <LayoutTemplate size={48} className="mx-auto text-gray-300 mb-4" />
+                        <p className="text-gray-500 font-medium">Raporunuz boş.</p>
+                        <p className="text-gray-400 text-sm mt-1">Soldaki menüden bileşen ekleyerek başlayın.</p>
+                    </div>
+                ) : (
+                    <div className="space-y-6">
+                        {reportItems.map((item) => (
+                            <div key={item.id}>
+                                {item.type === 'title' && (
+                                    <TextboxEditor
+                                        item={item}
+                                        updateItem={updateItem}
+                                        deleteItem={deleteItem}
+                                    />
+                                )}
+                                {item.type === 'table' && (
+                                    <TableEditor
+                                        item={item}
+                                        updateItem={updateItem}
+                                        deleteItem={deleteItem}
+                                    />
+                                )}
+                                {item.type === 'data' && (
+                                    <JSONEditor
+                                        item={item}
+                                        updateItem={updateItem}
+                                        deleteItem={deleteItem}
+                                    />
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+        </main>
+    )
+}
+
+export default MainPanel;
