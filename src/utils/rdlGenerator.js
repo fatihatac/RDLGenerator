@@ -1,29 +1,6 @@
-// --- YENİ YARDIMCI FONKSİYON ---
-// XML için güvenli olmayan karakterleri "escape" eder (kaçış karakteri ekler)
-function escapeXml(unsafe) {
-  if (typeof unsafe !== 'string') return unsafe;
-  return unsafe.replace(/[<>&"']/g, function(c) {
-    switch (c) {
-      case '<': return '&lt;';
-      case '>': return '&gt;';
-      case '&': return '&amp;';
-      case '"': return '&quot;';
-      case "'": return '&apos;';
-      default: return c;
-    }
-  });
-}
-// --- YARDIMCI FONKSİYON SONU ---
-
-// --- YENİ YARDIMCI FONKSİYON ---
-// Veri tipini analiz ederek RDL Tipi Adını döndürür
-function getRdlTypeName(value) {
-  if (typeof value === 'number') return 'System.Double';
-  if (typeof value === 'boolean') return 'System.Boolean';
-  // Diğer tüm türleri (tarih dahil) string olarak kabul et
-  return 'System.String';
-}
-// --- YARDIMCI FONKSİYON SONU ---
+import { escapeXml } from "./escapeXml.js";
+import { getRdlTypeName } from "./getDataType.js";
+import convertTitleCase from "./convertTitleCase.js";
 
 function generateRDL(items) {
   const TITLE_HEIGHT = 49.5; //pt
@@ -55,10 +32,9 @@ function generateRDL(items) {
   const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 468; //pt
   const TOTAL_REPORT_HIGHT = items && items.length > 0 ? PAGE_HEIGHT : 225; //pt
 
-  // Rapor içindeki veri ve tablo öğelerini bul
-  const dataItem = items.find(item => item.type === 'data');
-  const tableItem = items.find(item => item.type === 'table');
-  
+  const dataItem = items.find((item) => item.type === "data");
+  const tableItem = items.find((item) => item.type === "table");
+
   const dataSetName = "DataSet1";
 
   const itemsXml = items
@@ -86,8 +62,9 @@ function generateRDL(items) {
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    {/* --- GÜNCELLEME 1: Başlık escape edildi --- */}
-                    <Value>${escapeXml(item.value.toLocaleUpperCase("tr"))}</Value>
+                    <Value>${escapeXml(
+                      item.value.toLocaleUpperCase("tr")
+                    )}</Value>
                     <Style>
                       <FontFamily>Trebuchet MS</FontFamily>
                       <FontSize>${TITLE_FONT_SIZE}pt</FontSize>
@@ -142,7 +119,9 @@ function generateRDL(items) {
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>${escapeXml(col.name)}</Value>
+                                  <Value>${escapeXml(
+                                    convertTitleCase(col.name)
+                                  )}</Value>
                                   <Style>
                                     <FontFamily>Trebuchet MS</FontFamily>
                                     <FontSize>${COLUMN_DATA_FONT_SIZE}pt</FontSize>
@@ -267,37 +246,42 @@ function generateRDL(items) {
         </Tablix>`;
       }
 
-      if (item.type === 'data') {
-        return ""; // Rapor öğesi olarak çizmeyin
-      }
+      // if (item.type === 'data') {
+      //   return "";
+      // }
 
       return "";
     })
     .join("\n");
 
+  let dataXml = "";
 
-  let dataXml = ""; 
-  
-  if (dataItem && tableItem && dataItem.jsonKeys && dataItem.jsonKeys.length > 0) {
-    
-    const fieldsXml = dataItem.jsonKeys.map(key => {
-      
-      const mappedColumn = tableItem.columns.find(col => col.mappedField === key);
-      const typeName = mappedColumn ? mappedColumn.dataType : 'System.String';
+  if (
+    dataItem &&
+    tableItem &&
+    dataItem.jsonKeys &&
+    dataItem.jsonKeys.length > 0
+  ) {
+    const fieldsXml = dataItem.jsonKeys
+      .map((key) => {
+        const mappedColumn = tableItem.columns.find(
+          (col) => col.mappedField === key
+        );
+        const typeName = mappedColumn ? mappedColumn.dataType : "System.String";
 
-      return `
+        return `
       <Field Name="${escapeXml(key)}">
         <DataField>${escapeXml(key)}</DataField>
         <rd:TypeName>${getRdlTypeName(typeName)}</rd:TypeName>
       </Field>`;
-    }).join('\n');
+      })
+      .join("\n");
 
     const connectStringData = {
-      Data: dataItem.value, 
+      Data: dataItem.value,
       DataMode: "inline",
-      URL: ""
+      URL: "",
     };
-    
 
     const connectStringContent = escapeXml(JSON.stringify(connectStringData));
 
@@ -312,8 +296,14 @@ function generateRDL(items) {
       </DataSource>
     </DataSources>`;
 
-    const queryDesignerColumnsXml = dataItem.jsonKeys.map(key => `
-                <Column Name="${escapeXml(key)}" IsDuplicate="False" IsSelected="True" />`).join('\n');
+    const queryDesignerColumnsXml = dataItem.jsonKeys
+      .map(
+        (key) => `
+                <Column Name="${escapeXml(
+                  key
+                )}" IsDuplicate="False" IsSelected="True" />`
+      )
+      .join("\n");
 
     const dataSetXml = `
     <DataSets>
