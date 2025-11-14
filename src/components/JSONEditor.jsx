@@ -1,6 +1,6 @@
 import { Trash2, FileText, Link, CheckSquare } from 'lucide-react';
 
-function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColumnMapping }) {
+function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColumnMapping, onUpdateColumnName, onDeleteColumn }) {
 
   const handleJsonChange = (e) => {
     const jsonString = e.target.value; 
@@ -9,12 +9,11 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
 
     try {
       parsedValue = JSON.parse(jsonString);
-    } catch (error) {
-      console.log(error.message);
+    } catch (e1) {
+      console.log(e1.message);
       
       try {
         const cleanString = jsonString.replace(/[\n\r\t]/g, '');
-        
         parsedValue = JSON.parse(cleanString);
 
       } catch (e2) {
@@ -46,10 +45,6 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
     item.jsonKeys && 
     item.jsonKeys.length > 0;
 
-  const handleConfirmClick = () => {
-    console.log("Eşleştirmeler state'e kaydedildi:", tableItem.columns);
-    alert("Eşleştirmeler kaydedildi!");
-  };
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -63,7 +58,6 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
         </button>
       </div>
       
-      {/* 1. JSON Veri Giriş Alanı */}
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-700">JSON Verisi (Dizi formatında)</label>
         <textarea
@@ -80,7 +74,6 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
         )}
       </div>
 
-      {/* 2. Veri Eşleştirme Alanı */}
       {showMappingUI && (
         <div className="mt-6 border-t border-gray-200 pt-4">
           <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center">
@@ -92,28 +85,28 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
           </p>
           
           <div className="bg-gray-50 p-3 rounded border border-gray-100 space-y-3">
-            {/* Başlık Satırı */}
+
             <div className="grid grid-cols-12 items-center gap-2 mb-1 px-1">
               <label className="col-span-5 text-xs font-bold text-gray-500 uppercase">TABLO SÜTUNU</label>
-              <div className="col-span-2"></div>
+              <div className="col-span-1"></div> 
               <label className="col-span-5 text-xs font-bold text-gray-500 uppercase">JSON ALANI</label>
+              <div className="col-span-1"></div> 
             </div>
-
-            {/* Eşleştirme Satırları */}
-            {tableItem.columns.map((col) => (
+                          {tableItem.columns.map((col) => (
               <div key={col.id} className="grid grid-cols-12 items-center gap-2">
                 
-                {/* Rapor Sütun Adı (Değiştirilemez) */}
-                <div className="col-span-5 p-1.5 text-sm bg-gray-100 border border-gray-200 rounded text-gray-700 truncate" title={col.name}>
-                  {col.name}
-                </div>
+                <input
+                  type="text"
+                  value={col.name}
+                  onChange={(e) => onUpdateColumnName(col.id, e.target.value)}
+                  className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-green-500 outline-none"
+                  placeholder="Rapor Sütun Adı"
+                />
 
-                {/* Ayırıcı İkon */}
-                <div className="col-span-2 text-center text-gray-400">
+                <div className="col-span-1 text-center text-gray-400">
                   <Link size={14} />
                 </div>
 
-                {/* JSON Alanı Seçim Combobox'ı */}
                 <select 
                   value={col.mappedField || ''}
                   onChange={(e) => onUpdateTableColumnMapping(col.id, e.target.value)}
@@ -124,19 +117,16 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
                     <option key={key} value={key}>{key}</option>
                   ))}
                 </select>
+                <button 
+                  onClick={() => onDeleteColumn(col.id)} 
+                  className="col-span-1 text-gray-400 hover:text-red-500 justify-self-center"
+                  title="Sütunu Sil"
+                >
+                  <Trash2 size={16} />
+                </button>
+
               </div>
             ))}
-          </div>
-          
-          {/* Onay Butonu */}
-          <div className="flex justify-end mt-4">
-            <button 
-              onClick={handleConfirmClick} 
-              className="text-sm flex items-center bg-green-600 text-white font-medium px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
-            >
-              <CheckSquare size={16} className="mr-2" />
-              Eşleştirmeyi Onayla
-            </button>
           </div>
         </div>
       )}

@@ -18,6 +18,20 @@ function MainPanel({ reportItems, updateItem, deleteItem }) {
         updateItem(tableItem.id, { columns: newCols });
     };
 
+    const handleUpdateColumnName = (columnId, newName) => {
+        if (!tableItem) return;
+        const newCols = tableItem.columns.map(c =>
+            c.id === columnId ? { ...c, name: newName } : c
+        );
+        updateItem(tableItem.id, { columns: newCols });
+    };
+
+    const handleDeleteColumn = (columnId) => {
+        if (!tableItem) return;
+        const newCols = tableItem.columns.filter(c => c.id !== columnId);
+        updateItem(tableItem.id, { columns: newCols });
+    };
+
     return (
         <main className="flex-1 p-8 overflow-y-auto">
             <div className="max-w-3xl mx-auto">
@@ -56,6 +70,8 @@ function MainPanel({ reportItems, updateItem, deleteItem }) {
                                         deleteItem={deleteItem}
                                         tableItem={tableItem}
                                         onUpdateTableColumnMapping={handleTableColumnMappingUpdate}
+                                        onUpdateColumnName={handleUpdateColumnName}
+                                        onDeleteColumn={handleDeleteColumn}
                                     />
                                 )}
                             </div>

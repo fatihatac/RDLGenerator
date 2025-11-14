@@ -1,7 +1,7 @@
 import { escapeXml } from "./escapeXml.js";
 import { getRdlTypeName } from "./getDataType.js";
 import convertTitleCase from "./convertTitleCase.js";
-//test
+
 function generateRDL(items) {
   const TITLE_HEIGHT = 49.5; //pt
   const TITLE_FONT_SIZE = 10.5; //pt
@@ -40,8 +40,7 @@ function generateRDL(items) {
   const itemsXml = items
     .map((item) => {
       if (item.type === "title") {
-        return `
-        <Textbox Name="Title_${item.id}">
+        return `<Textbox Name="Title_${item.id}">
             <Left>0pt</Left>
             <Top>0pt</Top>
             <Height>${TITLE_HEIGHT}pt</Height>
@@ -84,8 +83,7 @@ function generateRDL(items) {
       if (item.type === "table") {
         const columnsXml = item.columns
           .map(
-            () => `
-          <TablixColumn>
+            () => `<TablixColumn>
             <Width>${COLUMN_WIDTH}pt</Width>
           </TablixColumn>`
           )
@@ -93,8 +91,7 @@ function generateRDL(items) {
 
         const headerCellsXml = item.columns
           .map(
-            (col, index) => `
-          <TablixCell>
+            (col, index) => `<TablixCell>
             <CellContents>
               <Textbox Name="Header_${item.id}_${index}">
                           <Left>0pt</Left>
@@ -146,8 +143,7 @@ function generateRDL(items) {
 
         const dataCellsXml = item.columns
           .map(
-            (col, index) => `
-          <TablixCell>
+            (col, index) => `<TablixCell>
             <CellContents>
               <Textbox Name="Data_${item.id}_${index}">
                   <Left>0in</Left>
@@ -194,8 +190,7 @@ function generateRDL(items) {
           )
           .join("");
 
-        return `
-        <Tablix Name="Tablix_${item.id}">
+        return `<Tablix Name="Tablix_${item.id}">
             <Left>0pt</Left>
             <Top>${TITLE_HEIGHT}pt</Top>
             <Height>37.50011pt</Height>
@@ -206,9 +201,7 @@ function generateRDL(items) {
                 <Style>None</Style>
               </Border>
             </Style>
-            
             <DataSetName>${dataSetName}</DataSetName> 
-            
           <TablixBody>
             <TablixColumns>
               ${columnsXml}
@@ -245,11 +238,6 @@ function generateRDL(items) {
           </TablixRowHierarchy>
         </Tablix>`;
       }
-
-      // if (item.type === 'data') {
-      //   return "";
-      // }
-
       return "";
     })
     .join("\n");
@@ -269,8 +257,7 @@ function generateRDL(items) {
         );
         const typeName = mappedColumn ? mappedColumn.dataType : "System.String";
 
-        return `
-      <Field Name="${key}">
+        return `<Field Name="${key}">
         <DataField>${key}</DataField>
         <rd:TypeName>${getRdlTypeName(typeName)}</rd:TypeName>
       </Field>`;
@@ -287,8 +274,7 @@ function generateRDL(items) {
     console.log(escapeXml(connectStringContent));
     
     
-    const dataSourceXml = `
-    <DataSources>
+    const dataSourceXml = `<DataSources>
       <DataSource Name="DataSource1">
         <ConnectionProperties>
           <DataProvider>JSON</DataProvider>
@@ -307,8 +293,7 @@ function generateRDL(items) {
       )
       .join("\n");
 
-    const dataSetXml = `
-    <DataSets>
+    const dataSetXml = `<DataSets>
       <DataSet Name="${dataSetName}">
         <Fields>
           ${fieldsXml}
@@ -371,9 +356,7 @@ function generateRDL(items) {
     </ReportSection>
   </ReportSections>
   <AutoRefresh>0</AutoRefresh>
-
   ${dataXml}
-
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>

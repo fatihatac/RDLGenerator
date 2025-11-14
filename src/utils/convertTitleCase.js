@@ -4,7 +4,6 @@ function convertTitleCase(str) {
   }
 
   const lowerStr = str.toLocaleLowerCase("tr");
-
   const words = lowerStr.split(" ");
 
   const titleCasedWords = words.map((word) => {
@@ -13,7 +12,6 @@ function convertTitleCase(str) {
     }
 
     const firstChar = word.charAt(0).toLocaleUpperCase("tr");
-
     const restOfWord = word.slice(1);
 
     return firstChar + restOfWord;

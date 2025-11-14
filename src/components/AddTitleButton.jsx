@@ -3,8 +3,6 @@ import {  FileText} from 'lucide-react';
 
 function AddTitleButton({ onClick }) {
 
-
-
     return (
         <button
             onClick={onClick}
