@@ -238,6 +238,45 @@ function generateRDL(items) {
           </TablixRowHierarchy>
         </Tablix>`;
       }
+      if (item.type === "dateRange") {
+        console.log(item);
+        
+        return `<Textbox Name="DateRange_${item.id}">
+            <Left>0pt</Left>
+            <Top>0pt</Top>
+            <Height>${TITLE_HEIGHT}pt</Height>
+            <Width>${TOTAL_REPORT_WIDTH}pt</Width>
+            <Style>
+              <VerticalAlign>Middle</VerticalAlign>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              </Style>
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>${item.mappedField}</Value>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>${TITLE_FONT_SIZE - 1}pt</FontSize>
+                        <Color>Black</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                  </Paragraph>
+                </Paragraphs>
+              </Textbox>`;
+      }
       return "";
     })
     .join("\n");
@@ -271,8 +310,6 @@ function generateRDL(items) {
     };
     
     const connectStringContent = JSON.stringify(connectStringData);
-    console.log(escapeXml(connectStringContent));
-    
     
     const dataSourceXml = `<DataSources>
       <DataSource Name="DataSource1">

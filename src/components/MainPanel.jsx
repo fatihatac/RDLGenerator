@@ -2,10 +2,12 @@ import { LayoutTemplate } from 'lucide-react';
 import TextboxEditor from './TextboxEditor';
 import TableEditor from './TableEditor';
 import JSONEditor from './JSONEditor';
+import DateRangeEditor from './DateRangeEditor';
 
 function MainPanel({ reportItems, updateItem, deleteItem }) {
 
     const tableItem = reportItems.find(item => item.type === 'table');
+    const dataItem = reportItems.find(item => item.type === 'data');
 
 
     const handleTableColumnMappingUpdate = (columnId, newMappedField) => {
@@ -72,6 +74,15 @@ function MainPanel({ reportItems, updateItem, deleteItem }) {
                                         onUpdateTableColumnMapping={handleTableColumnMappingUpdate}
                                         onUpdateColumnName={handleUpdateColumnName}
                                         onDeleteColumn={handleDeleteColumn}
+                                    />
+                                )}
+                                {item.type === 'dateRange' && (
+                                    <DateRangeEditor
+                                        item={item}
+                                        updateItem={updateItem}
+                                        deleteItem={deleteItem}
+                                        tableItem={tableItem}
+                                        dataItem={dataItem}
                                     />
                                 )}
                             </div>

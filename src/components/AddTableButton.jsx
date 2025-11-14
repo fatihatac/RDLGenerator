@@ -1,6 +1,5 @@
 import { Table} from 'lucide-react';
 
-
 function AddTableButton({ onClick }) {
 
 

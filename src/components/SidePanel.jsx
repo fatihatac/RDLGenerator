@@ -1,6 +1,7 @@
 import AddTitleButton from './AddTitleButton';
 import AddTableButton from './AddTableButton';
 import AddDataButton from './AddDataButton';
+import AddDateRangeButton from './AddDateRangeButton';
 
 
 function SidePanel({ addItem }) {
@@ -11,6 +12,7 @@ function SidePanel({ addItem }) {
             <AddTitleButton onClick={() => addItem('title')} />
             <AddTableButton onClick={() => addItem('table')} />
             <AddDataButton onClick={() => addItem('data')} />
+            <AddDateRangeButton onClick={() => addItem('dateRange')} />
         </aside>)
 }
 

@@ -16,6 +16,8 @@ function useReportItems() {
       newItem = { id: Date.now(), type: 'table', columns: [] };
     } else if (type === 'data') {
       newItem = { id: Date.now(), type: 'data', value: '', jsonKeys: [] };
+    }else if (type === 'dateRange') {
+      newItem = { id: Date.now(), type: 'dateRange', mappedField: null };
     }
     
     if (newItem) {

@@ -12,7 +12,6 @@ function App() {
       <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
         <SidePanel reportItems={reportItems} addItem={addItem} />
         <MainPanel reportItems={reportItems} updateItem={updateItem} deleteItem={deleteItem} />
-
       </div>
     </div>
   );
