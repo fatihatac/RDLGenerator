@@ -62,9 +62,9 @@ function generateRDL(items) {
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>${escapeXml(
+                    <Value>${
                       item.value.toLocaleUpperCase("tr")
-                    )}</Value>
+                    }</Value>
                     <Style>
                       <FontFamily>Trebuchet MS</FontFamily>
                       <FontSize>${TITLE_FONT_SIZE}pt</FontSize>
@@ -119,9 +119,9 @@ function generateRDL(items) {
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>${escapeXml(
+                                  <Value>${
                                     convertTitleCase(col.name)
-                                  )}</Value>
+                                  }</Value>
                                   <Style>
                                     <FontFamily>Trebuchet MS</FontFamily>
                                     <FontSize>${COLUMN_DATA_FONT_SIZE}pt</FontSize>
@@ -270,8 +270,8 @@ function generateRDL(items) {
         const typeName = mappedColumn ? mappedColumn.dataType : "System.String";
 
         return `
-      <Field Name="${escapeXml(key)}">
-        <DataField>${escapeXml(key)}</DataField>
+      <Field Name="${key}">
+        <DataField>${key}</DataField>
         <rd:TypeName>${getRdlTypeName(typeName)}</rd:TypeName>
       </Field>`;
       })
@@ -282,15 +282,17 @@ function generateRDL(items) {
       DataMode: "inline",
       URL: "",
     };
-
-    const connectStringContent = escapeXml(JSON.stringify(connectStringData));
-
+    
+    const connectStringContent = JSON.stringify(connectStringData);
+    console.log(escapeXml(connectStringContent));
+    
+    
     const dataSourceXml = `
     <DataSources>
       <DataSource Name="DataSource1">
         <ConnectionProperties>
           <DataProvider>JSON</DataProvider>
-          <ConnectString>${connectStringContent}</ConnectString>
+          <ConnectString>${escapeXml(connectStringContent)}</ConnectString>
         </ConnectionProperties>
         <rd:ImpersonateUser>false</rd:ImpersonateUser>
       </DataSource>
@@ -299,9 +301,9 @@ function generateRDL(items) {
     const queryDesignerColumnsXml = dataItem.jsonKeys
       .map(
         (key) => `
-                <Column Name="${escapeXml(
+                <Column Name="${
                   key
-                )}" IsDuplicate="False" IsSelected="True" />`
+                }" IsDuplicate="False" IsSelected="True" />`
       )
       .join("\n");
 

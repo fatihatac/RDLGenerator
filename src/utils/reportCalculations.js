@@ -13,7 +13,7 @@ export function calculateReportDimensions(items) {
     }
   });
 
-  const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 504;
+  const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 468;
   const TOTAL_REPORT_HIGHT = items && items.length > 0 ? PAGE_HEIGHT : 225;
 
   return { TOTAL_REPORT_WIDTH, TOTAL_REPORT_HIGHT };
