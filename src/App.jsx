@@ -8,12 +8,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col font-sans text-slate-800">
-      {/* Üst Bar */}
       <Header downloadReport={downloadReport} />
       <div className="flex flex-1 flex-col md:flex-row overflow-hidden">
-        {/* Sol Panel: Araç Kutusu */}
         <SidePanel reportItems={reportItems} addItem={addItem} />
-        {/* Orta Panel: Tasarım Alanı (Canvas) */}
         <MainPanel reportItems={reportItems} updateItem={updateItem} deleteItem={deleteItem} />
 
       </div>
