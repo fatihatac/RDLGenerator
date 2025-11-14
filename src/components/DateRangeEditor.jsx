@@ -26,9 +26,8 @@ function DateRangeEditor({
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Sol Taraf: Başlık Metni */}
-        <div>
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> */}
+        {/* <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Başlık</label>
           <input
             type="text"
@@ -37,9 +36,8 @@ function DateRangeEditor({
             className="w-full p-2 text-sm border border-gray-300 rounded focus:border-purple-500 outline-none"
             placeholder="Örn: Rapor Tarihleri"
           />
-        </div>
+        </div> */}
 
-        {/* Sağ Taraf: Eşleştirilecek Alan */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Veri Alanı</label>
           <select 
@@ -57,7 +55,7 @@ function DateRangeEditor({
           </select>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 

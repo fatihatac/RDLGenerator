@@ -239,8 +239,10 @@ function generateRDL(items) {
         </Tablix>`;
       }
       if (item.type === "dateRange") {
-        console.log(item);
+        console.log(item.mappedField);
         
+        const valueExpr = `=First(Fields!${escapeXml(item.mappedField)}.Value)`;
+
         return `<Textbox Name="DateRange_${item.id}">
             <Left>0pt</Left>
             <Top>0pt</Top>
@@ -262,7 +264,7 @@ function generateRDL(items) {
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>${item.mappedField}</Value>
+                      <Value>${valueExpr}</Value>
                       <Style>
                         <FontFamily>Trebuchet MS</FontFamily>
                         <FontSize>${TITLE_FONT_SIZE - 1}pt</FontSize>
