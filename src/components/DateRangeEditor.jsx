@@ -1,18 +1,14 @@
-// src/components/DateRangeEditor.js
-
 import { Trash2, Calendar } from 'lucide-react';
 
-// Bu editör, eşleştirme yapabilmek için JSON'dan gelen
-// anahtarların listesine ihtiyaç duyar.
 function DateRangeEditor({ 
   item, 
   updateItem, 
   deleteItem, 
-  dataItem // Ham JSON anahtarları için
+  dataItem 
 }) {
 
-  // Eşleştirme için JSON anahtarlarını (jsonKeys) kullan
   const availableFields = dataItem?.jsonKeys || [];
+  
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -25,19 +21,6 @@ function DateRangeEditor({
           <Trash2 size={18} />
         </button>
       </div>
-
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> */}
-        {/* <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Başlık</label>
-          <input
-            type="text"
-            value={item.label}
-            onChange={(e) => updateItem(item.id, { label: e.target.value })}
-            className="w-full p-2 text-sm border border-gray-300 rounded focus:border-purple-500 outline-none"
-            placeholder="Örn: Rapor Tarihleri"
-          />
-        </div> */}
-
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Veri Alanı</label>
           <select 
@@ -46,16 +29,12 @@ function DateRangeEditor({
             className="w-full p-2 text-sm border border-gray-300 rounded focus:border-purple-500 outline-none"
           >
             <option value="">-- Alan Seçin --</option>
-            {/* Kullanıcıdan 'tariharaligi' gibi bir alan seçmesini istiyoruz.
-              Bu liste tüm JSON anahtarlarını içerir.
-            */}
             {availableFields.map(key => (
               <option key={key} value={key}>{key}</option>
             ))}
           </select>
         </div>
       </div>
-    // </div>
   );
 };
 

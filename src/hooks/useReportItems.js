@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import convertTitleCase from '../utils/convertTitleCase';
+//import convertTitleCase from '../utils/convertTitleCase';
 import { generateRDL } from '../utils/rdlGenerator';
 import { getRdlTypeName } from '../utils/getDataType';
 import fixColumnNames from '../utils/fixColumnNames';
@@ -51,7 +51,7 @@ function useReportItems() {
         itemsToAdd.push({
           id: Date.now() + 1,
           type: 'title',
-          value: 'OTOMATİK BAŞLIK'
+          value: 'RAPOR BAŞLIĞI'
         });
       }
 
@@ -65,7 +65,8 @@ function useReportItems() {
         console.error("JSON parse hatası:", e.message);
       }
 
-      const newColumns = updates.jsonKeys.map((key, index) => ({
+      const columnsToMap = updates.filteredJsonKeys || updates.jsonKeys;
+      const newColumns = columnsToMap.map((key, index) => ({
         id: Date.now() + index + 2,
         name: fixColumnNames(key), 
         mappedField: key, 
@@ -99,20 +100,23 @@ function useReportItems() {
   };
 
 
-  const downloadReport = () => {
+const downloadReport = (fileName) => {
     const titleItem = reportItems.find(item => item.type === 'title');
     const reportTitle = titleItem ? titleItem.value : 'TaslakRapor';
+
+    let reportName = fileName && fileName.trim() !== '' ? fileName.trim() : reportTitle;
+    
     const rdlContent = generateRDL(reportItems);
+    
     const blob = new Blob([rdlContent], { type: 'application/xml' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
+    
     a.href = url;
-    a.download = `${convertTitleCase(reportTitle.trim()).replace(/\s/g, "_")}.rdl`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
+    a.download = `${reportName.toUpperCase()}.rdl`;
+    
+    a.click(); 
+    };
 
   return { reportItems, addItem, updateItem, deleteItem, downloadReport };
 }

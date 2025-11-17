@@ -5,7 +5,10 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
   const handleJsonChange = (e) => {
     const jsonString = e.target.value; 
     let keys = [];
+    let filteredKeys = [];
     let parsedValue = null;
+
+    const EXCLUDED_KEYS = ['TarihAralik'];
 
     try {
       parsedValue = JSON.parse(jsonString);
@@ -30,13 +33,18 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
         else if (typeof parsedValue === 'object' && parsedValue !== null && !Array.isArray(parsedValue)) {
           keys = Object.keys(parsedValue);
         }
+
+        filteredKeys = keys.filter(key => !EXCLUDED_KEYS.includes(key));
       } catch (keyError) {
         console.error("Anahtar çıkarma hatası:", keyError);
         keys = [];
       }
     }
-
-    updateItem(item.id, { value: jsonString, jsonKeys: keys });
+    console.log(keys);
+    console.log(filteredKeys);
+    
+    
+    updateItem(item.id, { value: jsonString, jsonKeys: keys, filteredJsonKeys: filteredKeys });
   };
 
   const showMappingUI = 

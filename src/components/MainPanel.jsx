@@ -3,11 +3,14 @@ import TextboxEditor from './TextboxEditor';
 import TableEditor from './TableEditor';
 import JSONEditor from './JSONEditor';
 import DateRangeEditor from './DateRangeEditor';
+//import Alert from './Alert';
 
 function MainPanel({ reportItems, updateItem, deleteItem }) {
 
     const tableItem = reportItems.find(item => item.type === 'table');
     const dataItem = reportItems.find(item => item.type === 'data');
+
+    //const allDataAvalible = tableItem !==undefined || dataItem !== undefined;
 
 
     const handleTableColumnMappingUpdate = (columnId, newMappedField) => {
