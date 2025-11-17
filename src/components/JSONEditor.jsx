@@ -4,7 +4,7 @@ import { EXCLUDED_KEYS } from '../constants/appConstants';
 function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColumnMapping, onUpdateColumnName, onDeleteColumn }) {
 
   const handleJsonChange = (e) => {
-    const jsonString = e.target.value; 
+    const jsonString = e.target.value;
     let keys = [];
     let filteredKeys = [];
     let parsedValue = null;
@@ -12,8 +12,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
     try {
       parsedValue = JSON.parse(jsonString);
     } catch (e1) {
-      console.log(e1.message);
-      
+      console.error(e1.message);
       try {
         const cleanString = jsonString.replace(/[\n\r\t]/g, '');
         parsedValue = JSON.parse(cleanString);
@@ -28,7 +27,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
       try {
         if (Array.isArray(parsedValue) && parsedValue.length > 0) {
           keys = Object.keys(parsedValue[0]);
-        } 
+        }
         else if (typeof parsedValue === 'object' && parsedValue !== null && !Array.isArray(parsedValue)) {
           keys = Object.keys(parsedValue);
         }
@@ -39,17 +38,15 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
         keys = [];
       }
     }
-    console.log(keys);
-    console.log(filteredKeys);
-    
-    
+
+
     updateItem(item.id, { value: jsonString, jsonKeys: keys, filteredJsonKeys: filteredKeys });
   };
 
-  const showMappingUI = 
-    tableItem && 
-    tableItem.columns.length > 0 && 
-    item.jsonKeys && 
+  const showMappingUI =
+    tableItem &&
+    tableItem.columns.length > 0 &&
+    item.jsonKeys &&
     item.jsonKeys.length > 0;
 
 
@@ -64,7 +61,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
           <Trash2 size={18} />
         </button>
       </div>
-      
+
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-700">JSON Verisi (Dizi formatında)</label>
         <textarea
@@ -90,18 +87,18 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
           <p className="text-sm text-gray-500 mb-4">
             Tablo sütunlarınız ile JSON veri alanlarınızı eşleştirin.
           </p>
-          
+
           <div className="bg-gray-50 p-3 rounded border border-gray-100 space-y-3">
 
             <div className="grid grid-cols-12 items-center gap-2 mb-1 px-1">
               <label className="col-span-5 text-xs font-bold text-gray-500 uppercase">TABLO SÜTUNU</label>
-              <div className="col-span-1"></div> 
+              <div className="col-span-1"></div>
               <label className="col-span-5 text-xs font-bold text-gray-500 uppercase">JSON ALANI</label>
-              <div className="col-span-1"></div> 
+              <div className="col-span-1"></div>
             </div>
-                          {tableItem.columns.map((col) => (
+            {tableItem.columns.map((col) => (
               <div key={col.id} className="grid grid-cols-12 items-center gap-2">
-                
+
                 <input
                   type="text"
                   value={col.name}
@@ -114,7 +111,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
                   <Link size={14} />
                 </div>
 
-                <select 
+                <select
                   value={col.mappedField || ''}
                   onChange={(e) => onUpdateTableColumnMapping(col.id, e.target.value)}
                   className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
@@ -124,8 +121,8 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
                     <option key={key} value={key}>{key}</option>
                   ))}
                 </select>
-                <button 
-                  onClick={() => onDeleteColumn(col.id)} 
+                <button
+                  onClick={() => onDeleteColumn(col.id)}
                   className="col-span-1 text-gray-400 hover:text-red-500 justify-self-center"
                   title="Sütunu Sil"
                 >

@@ -21,12 +21,10 @@ function generateRDL(items) {
   const TOTAL_REPORT_HIGHT = items && items.length > 0 ? Layout.PAGE_HEIGHT : 225; //pt
 
   const dataItem = items.find((item) => item.type === "data");
-  console.log(dataItem);
   
   const tableItem = items.find((item) => item.type === "table");
 
   const dataSetName = `DataSet_${dataItem ? dataItem.id : "1"}`;
-  console.log(dataSetName);
   
 
   const itemsXml = items
