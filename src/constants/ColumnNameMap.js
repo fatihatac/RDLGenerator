@@ -19,6 +19,7 @@ export const COLUMN_NAME_MAP = {
   'cikistarih': 'Çıkış Tarihi',
   'ceptelefon': 'Cep Telefonu',
   'okuyucuadi':"Okuyucu Adı",
+  'tkidem':"Toplam Kıdem",
   'email': 'E-Posta',
   'okod1': 'Özel Kod 1',
   'okod2': 'Özel Kod 2',

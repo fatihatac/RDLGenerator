@@ -4,6 +4,10 @@ import convertTitleCase from "./convertTitleCase.js";
 import * as Layout from "../constants/layoutConstants.js";
 
 function generateRDL(items) {
+  
+  const dataItem = items.find((item) => item.type === "data");
+  
+  const tableItem = items.find((item) => item.type === "table");
 
   let maxColumns = 0;
 
@@ -16,13 +20,19 @@ function generateRDL(items) {
       maxColumns = item.columns.length;
     }
   });
-  //test
-  const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * Layout.COLUMN_WIDTH : 468; //pt
+
+  // const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * Layout.COLUMN_WIDTH : 468; //pt
+   let totalTableWidth = 0;
+  if (tableItem && tableItem.columns.length > 0) {
+    totalTableWidth = tableItem.columns.reduce((sum, col) => sum + (Number(col.width) || 72), 0);
+  } else {
+    totalTableWidth = 468; // Hiç sütun yoksa varsayılan
+  }
+  
+  const TOTAL_REPORT_WIDTH = totalTableWidth; // Başlık vb. buna göre hizalanacak
+
   const TOTAL_REPORT_HIGHT = items && items.length > 0 ? Layout.PAGE_HEIGHT : 225; //pt
 
-  const dataItem = items.find((item) => item.type === "data");
-  
-  const tableItem = items.find((item) => item.type === "table");
 
   const dataSetName = `DataSet_${dataItem ? dataItem.id : "1"}`;
   
@@ -71,8 +81,8 @@ function generateRDL(items) {
       if (item.type === "table") {
         const columnsXml = item.columns
           .map(
-            () => `<TablixColumn>
-            <Width>${Layout.COLUMN_WIDTH}pt</Width>
+            (col) => `<TablixColumn>
+            <Width>${col.width || 72}pt</Width>
           </TablixColumn>`
           )
           .join("");
@@ -85,7 +95,7 @@ function generateRDL(items) {
                           <Left>0pt</Left>
                           <Top>0pt</Top>
                           <Height>${Layout.COLUMN_HEIGHT}</Height>
-                          <Width>${Layout.COLUMN_WIDTH}pt</Width>
+                          <Width>${col.width || 72}pt</Width>
                           <Style>
                             <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}pt</FontSize>
                             <VerticalAlign>${Layout.COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
@@ -135,7 +145,7 @@ function generateRDL(items) {
                   <Left>0in</Left>
                   <Top>0in</Top>
                   <Height>18.6pt</Height>
-                  <Width>72pt</Width>
+                  <Width>${col.width || 72}pt</Width>
                   <Style>
                     <FontSize>10.00003pt</FontSize>
                     <VerticalAlign>${Layout.COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
