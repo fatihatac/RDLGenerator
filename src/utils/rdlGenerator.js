@@ -1,21 +1,9 @@
 import { escapeXml } from "./escapeXml.js";
 import { getRdlTypeName } from "./getDataType.js";
 import convertTitleCase from "./convertTitleCase.js";
+import * as Layout from "../constants/layoutConstants.js";
 
 function generateRDL(items) {
-  const TITLE_HEIGHT = 49.5; //pt
-  const TITLE_FONT_SIZE = 10.5; //pt
-  const TITLE_FONT_WEIGHT = "Bold";
-  const COLUMN_WIDTH = 72; //pt
-  const COLUMN_HEIGHT = 18.6; //pt
-  const COLUMN_HEADER_FONT_SIZE = 10.00003; //pt
-  const COLUMN_DATA_FONT_SIZE = 7.50003; //pt
-  const COLUMN_TEXT_HORIZONTAL_ALIGN = "Left";
-  const COLUMN_TEXT_VERTICAL_ALIGN = "Middle";
-  const TITLE_TEXT_HORIZONTAL_ALIGN = "Center";
-  const TITLE_TEXT_VERTICAL_ALIGN = "Middle";
-  const TABLE_HEIGHT = 37.50011; //pt
-  const PAGE_HEIGHT = TITLE_HEIGHT + TABLE_HEIGHT; //pt
 
   let maxColumns = 0;
 
@@ -29,13 +17,17 @@ function generateRDL(items) {
     }
   });
 
-  const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * COLUMN_WIDTH : 468; //pt
-  const TOTAL_REPORT_HIGHT = items && items.length > 0 ? PAGE_HEIGHT : 225; //pt
+  const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * Layout.COLUMN_WIDTH : 468; //pt
+  const TOTAL_REPORT_HIGHT = items && items.length > 0 ? Layout.PAGE_HEIGHT : 225; //pt
 
   const dataItem = items.find((item) => item.type === "data");
+  console.log(dataItem);
+  
   const tableItem = items.find((item) => item.type === "table");
 
-  const dataSetName = "DataSet1";
+  const dataSetName = `DataSet_${dataItem ? dataItem.id : "1"}`;
+  console.log(dataSetName);
+  
 
   const itemsXml = items
     .map((item) => {
@@ -43,10 +35,10 @@ function generateRDL(items) {
         return `<Textbox Name="Title_${item.id}">
             <Left>0pt</Left>
             <Top>0pt</Top>
-            <Height>${TITLE_HEIGHT}pt</Height>
+            <Height>${Layout.TITLE_HEIGHT}pt</Height>
             <Width>${TOTAL_REPORT_WIDTH}pt</Width>
             <Style>
-              <VerticalAlign>${TITLE_TEXT_VERTICAL_ALIGN}</VerticalAlign>
+              <VerticalAlign>${Layout.TITLE_TEXT_VERTICAL_ALIGN}</VerticalAlign>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -61,19 +53,17 @@ function generateRDL(items) {
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>${
-                      item.value.toLocaleUpperCase("tr")
-                    }</Value>
+                    <Value>${item.value.toLocaleUpperCase("tr")}</Value>
                     <Style>
-                      <FontFamily>Trebuchet MS</FontFamily>
-                      <FontSize>${TITLE_FONT_SIZE}pt</FontSize>
-                      <FontWeight>${TITLE_FONT_WEIGHT}</FontWeight>
+                      <FontFamily>${Layout.FONT_FAMILY}</FontFamily>
+                      <FontSize>${Layout.TITLE_FONT_SIZE}pt</FontSize>
+                      <FontWeight>${Layout.TITLE_FONT_WEIGHT}</FontWeight>
                       <Color>Black</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
-                  <TextAlign>${TITLE_TEXT_HORIZONTAL_ALIGN}</TextAlign>
+                  <TextAlign>${Layout.TITLE_TEXT_HORIZONTAL_ALIGN}</TextAlign>
                 </Style>
               </Paragraph>
             </Paragraphs>
@@ -84,7 +74,7 @@ function generateRDL(items) {
         const columnsXml = item.columns
           .map(
             () => `<TablixColumn>
-            <Width>${COLUMN_WIDTH}pt</Width>
+            <Width>${Layout.COLUMN_WIDTH}pt</Width>
           </TablixColumn>`
           )
           .join("");
@@ -96,11 +86,11 @@ function generateRDL(items) {
               <Textbox Name="Header_${item.id}_${index}">
                           <Left>0pt</Left>
                           <Top>0pt</Top>
-                          <Height>${COLUMN_HEIGHT}</Height>
-                          <Width>${COLUMN_WIDTH}pt</Width>
+                          <Height>${Layout.COLUMN_HEIGHT}</Height>
+                          <Width>${Layout.COLUMN_WIDTH}pt</Width>
                           <Style>
-                            <FontSize>${COLUMN_HEADER_FONT_SIZE}pt</FontSize>
-                            <VerticalAlign>${COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
+                            <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}pt</FontSize>
+                            <VerticalAlign>${Layout.COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -116,20 +106,18 @@ function generateRDL(items) {
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>${
-                                    convertTitleCase(col.name)
-                                  }</Value>
+                                  <Value>${convertTitleCase(col.name)}</Value>
                                   <Style>
-                                    <FontFamily>Trebuchet MS</FontFamily>
-                                    <FontSize>${COLUMN_DATA_FONT_SIZE}pt</FontSize>
-                                    <FontWeight>${TITLE_FONT_WEIGHT}</FontWeight>
+                                    <FontFamily>${Layout.FONT_FAMILY}</FontFamily>
+                                    <FontSize>${Layout.COLUMN_DATA_FONT_SIZE}pt</FontSize>
+                                    <FontWeight>${Layout.TITLE_FONT_WEIGHT}</FontWeight>
                                     <Color>black</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <FontSize>${COLUMN_HEADER_FONT_SIZE}pt</FontSize>
-                                <TextAlign>${COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
+                                <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}pt</FontSize>
+                                <TextAlign>${Layout.COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
                               </Style>
                             </Paragraph>
                         </Paragraphs>
@@ -152,7 +140,7 @@ function generateRDL(items) {
                   <Width>72pt</Width>
                   <Style>
                     <FontSize>10.00003pt</FontSize>
-                    <VerticalAlign>${COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
+                    <VerticalAlign>${Layout.COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
                     <PaddingLeft>2pt</PaddingLeft>
                     <PaddingRight>2pt</PaddingRight>
                     <PaddingTop>2pt</PaddingTop>
@@ -170,7 +158,7 @@ function generateRDL(items) {
                       <TextRun>
                         <Value>=Fields!${col.mappedField}.Value</Value>
                         <Style>
-                           <FontFamily>Trebuchet MS</FontFamily>
+                           <FontFamily>${Layout.FONT_FAMILY}</FontFamily>
                            <FontSize>6.75002pt</FontSize>
                            <Color>black</Color>
                         </Style>
@@ -178,7 +166,7 @@ function generateRDL(items) {
                     </TextRuns>
                     <Style>
                       <FontSize>10.00003pt</FontSize>
-                      <TextAlign>${COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
+                      <TextAlign>${Layout.COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
                     </Style>
                   </Paragraph>
                 </Paragraphs>
@@ -192,7 +180,7 @@ function generateRDL(items) {
 
         return `<Tablix Name="Tablix_${item.id}">
             <Left>0pt</Left>
-            <Top>${TITLE_HEIGHT}pt</Top>
+            <Top>${Layout.TITLE_HEIGHT}pt</Top>
             <Height>37.50011pt</Height>
             <Width>504.0004pt</Width>
             <Style>
@@ -239,14 +227,13 @@ function generateRDL(items) {
         </Tablix>`;
       }
       if (item.type === "dateRange") {
-        console.log(item.mappedField);
-        
+
         const valueExpr = `=First(Fields!${escapeXml(item.mappedField)}.Value)`;
 
         return `<Textbox Name="DateRange_${item.id}">
             <Left>0pt</Left>
             <Top>0pt</Top>
-            <Height>${TITLE_HEIGHT}pt</Height>
+            <Height>${Layout.TITLE_HEIGHT}pt</Height>
             <Width>${TOTAL_REPORT_WIDTH}pt</Width>
             <Style>
               <VerticalAlign>Middle</VerticalAlign>
@@ -266,8 +253,8 @@ function generateRDL(items) {
                     <TextRun>
                       <Value>${valueExpr}</Value>
                       <Style>
-                        <FontFamily>Trebuchet MS</FontFamily>
-                        <FontSize>${TITLE_FONT_SIZE - 1}pt</FontSize>
+                        <FontFamily>${Layout.FONT_FAMILY}</FontFamily>
+                        <FontSize>${Layout.TITLE_FONT_SIZE - 1}pt</FontSize>
                         <Color>Black</Color>
                       </Style>
                     </TextRun>
@@ -310,9 +297,9 @@ function generateRDL(items) {
       DataMode: "inline",
       URL: "",
     };
-    
+
     const connectStringContent = JSON.stringify(connectStringData);
-    
+
     const dataSourceXml = `<DataSources>
       <DataSource Name="DataSource1">
         <ConnectionProperties>
@@ -326,9 +313,7 @@ function generateRDL(items) {
     const queryDesignerColumnsXml = dataItem.jsonKeys
       .map(
         (key) => `
-                <Column Name="${
-                  key
-                }" IsDuplicate="False" IsSelected="True" />`
+                <Column Name="${key}" IsDuplicate="False" IsSelected="True" />`
       )
       .join("\n");
 
@@ -366,7 +351,7 @@ function generateRDL(items) {
     <ReportSection>
       <Body>
         <Style>
-          <FontSize>${COLUMN_HEADER_FONT_SIZE}pt</FontSize>
+          <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}pt</FontSize>
           <Border>
             <Style>None</Style>
           </Border>
@@ -386,7 +371,7 @@ function generateRDL(items) {
         <BottomMargin>72.00021pt</BottomMargin>
         <ColumnSpacing>36.00011pt</ColumnSpacing>
         <Style>
-          <FontSize>${COLUMN_HEADER_FONT_SIZE}pt</FontSize>
+          <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}pt</FontSize>
           <Border>
             <Style>None</Style>
           </Border>
@@ -404,7 +389,7 @@ function generateRDL(items) {
   </ReportParametersLayout>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:PageUnit>Px</rd:PageUnit>
-  <df:DefaultFontFamily>Trebuchet MS</df:DefaultFontFamily>
+  <df:DefaultFontFamily>${Layout.FONT_FAMILY}</df:DefaultFontFamily>
 </Report>`;
 }
 
