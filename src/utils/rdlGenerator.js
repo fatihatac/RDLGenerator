@@ -16,7 +16,7 @@ function generateRDL(items) {
       maxColumns = item.columns.length;
     }
   });
-
+  //test
   const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * Layout.COLUMN_WIDTH : 468; //pt
   const TOTAL_REPORT_HIGHT = items && items.length > 0 ? Layout.PAGE_HEIGHT : 225; //pt
 
