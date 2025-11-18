@@ -3,7 +3,7 @@ import { useState } from "react";
 import { generateRDL } from "../utils/rdlGenerator";
 import { getRdlTypeName } from "../utils/getDataType";
 import fixColumnNames from "../utils/fixColumnNames";
-import getMaxCharLenght from "../utils/getMaxCharLenght";
+import getMaxCharWidth from "../utils/getMaxCharWidth";
 
 function useReportItems() {
   const [reportItems, setReportItems] = useState([]);
@@ -81,7 +81,7 @@ function useReportItems() {
           name: fixedName,
           mappedField: key,
           dataType: getRdlTypeName(firstRow[key]),
-          width: getMaxCharLenght(parsedData, key, fixedName),
+          width: getMaxCharWidth(parsedData, key, fixedName),
         };
       });
 

@@ -1,6 +1,6 @@
 import * as Layout from "../constants/layoutConstants"
 
-function getMaxCharLenght(data, key, headerText) {
+function getMaxCharWidth(data, key, headerText) {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
@@ -21,8 +21,9 @@ function getMaxCharLenght(data, key, headerText) {
   }
 
   let calculatedWidth = maxWidth * 0.75 
+  console.log("değişti");
   
   return Math.round(calculatedWidth + Layout.PADDING);
 }
 
-export default getMaxCharLenght;
+export default getMaxCharWidth;
