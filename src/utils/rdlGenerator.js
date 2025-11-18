@@ -4,9 +4,8 @@ import convertTitleCase from "./convertTitleCase.js";
 import * as Layout from "../constants/layoutConstants.js";
 
 function generateRDL(items) {
-  
   const dataItem = items.find((item) => item.type === "data");
-  
+
   const tableItem = items.find((item) => item.type === "table");
 
   let maxColumns = 0;
@@ -22,20 +21,25 @@ function generateRDL(items) {
   });
 
   // const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * Layout.COLUMN_WIDTH : 468; //pt
-   let totalTableWidth = 0;
+  let totalTableWidth = 0;
   if (tableItem && tableItem.columns.length > 0) {
-    totalTableWidth = tableItem.columns.reduce((sum, col) => sum + (Number(col.width) || 72), 0);
+    totalTableWidth = tableItem.columns.reduce(
+      (sum, col) => sum + (Number(col.width) || 72),
+      0
+    );
   } else {
-    totalTableWidth = 468; // Hiç sütun yoksa varsayılan
+    totalTableWidth = 468;
   }
+
+  tableItem.columns.map((col)=> console.log("gelen değerler: ",col.width));
   
-  const TOTAL_REPORT_WIDTH = totalTableWidth; // Başlık vb. buna göre hizalanacak
 
-  const TOTAL_REPORT_HIGHT = items && items.length > 0 ? Layout.PAGE_HEIGHT : 225; //pt
+  const TOTAL_REPORT_WIDTH = totalTableWidth;
 
+  const TOTAL_REPORT_HIGHT =
+    items && items.length > 0 ? Layout.PAGE_HEIGHT : 225; //pt
 
   const dataSetName = `DataSet_${dataItem ? dataItem.id : "1"}`;
-  
 
   const itemsXml = items
     .map((item) => {
@@ -81,8 +85,8 @@ function generateRDL(items) {
       if (item.type === "table") {
         const columnsXml = item.columns
           .map(
-            (col) => `<TablixColumn>
-            <Width>${col.width || 72}pt</Width>
+            (col) =>`<TablixColumn>
+            <Width>${col.width}pt</Width>
           </TablixColumn>`
           )
           .join("");
@@ -95,10 +99,14 @@ function generateRDL(items) {
                           <Left>0pt</Left>
                           <Top>0pt</Top>
                           <Height>${Layout.COLUMN_HEIGHT}</Height>
-                          <Width>${col.width || 72}pt</Width>
+                          <Width>${col.width}pt</Width>
                           <Style>
-                            <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}pt</FontSize>
-                            <VerticalAlign>${Layout.COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
+                            <FontSize>${
+                              Layout.COLUMN_HEADER_FONT_SIZE
+                            }pt</FontSize>
+                            <VerticalAlign>${
+                              Layout.COLUMN_TEXT_VERTICAL_ALIGN
+                            }</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -116,16 +124,26 @@ function generateRDL(items) {
                                 <TextRun>
                                   <Value>${convertTitleCase(col.name)}</Value>
                                   <Style>
-                                    <FontFamily>${Layout.FONT_FAMILY}</FontFamily>
-                                    <FontSize>${Layout.COLUMN_DATA_FONT_SIZE}pt</FontSize>
-                                    <FontWeight>${Layout.TITLE_FONT_WEIGHT}</FontWeight>
+                                    <FontFamily>${
+                                      Layout.FONT_FAMILY
+                                    }</FontFamily>
+                                    <FontSize>${
+                                      Layout.COLUMN_DATA_FONT_SIZE
+                                    }pt</FontSize>
+                                    <FontWeight>${
+                                      Layout.TITLE_FONT_WEIGHT
+                                    }</FontWeight>
                                     <Color>black</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}pt</FontSize>
-                                <TextAlign>${Layout.COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
+                                <FontSize>${
+                                  Layout.COLUMN_HEADER_FONT_SIZE
+                                }pt</FontSize>
+                                <TextAlign>${
+                                  Layout.COLUMN_TEXT_HORIZONTAL_ALIGN
+                                }</TextAlign>
                               </Style>
                             </Paragraph>
                         </Paragraphs>
@@ -145,10 +163,12 @@ function generateRDL(items) {
                   <Left>0in</Left>
                   <Top>0in</Top>
                   <Height>18.6pt</Height>
-                  <Width>${col.width || 72}pt</Width>
+                  <Width>${col.width}pt</Width>
                   <Style>
                     <FontSize>10.00003pt</FontSize>
-                    <VerticalAlign>${Layout.COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
+                    <VerticalAlign>${
+                      Layout.COLUMN_TEXT_VERTICAL_ALIGN
+                    }</VerticalAlign>
                     <PaddingLeft>2pt</PaddingLeft>
                     <PaddingRight>2pt</PaddingRight>
                     <PaddingTop>2pt</PaddingTop>
@@ -174,7 +194,9 @@ function generateRDL(items) {
                     </TextRuns>
                     <Style>
                       <FontSize>10.00003pt</FontSize>
-                      <TextAlign>${Layout.COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
+                      <TextAlign>${
+                        Layout.COLUMN_TEXT_HORIZONTAL_ALIGN
+                      }</TextAlign>
                     </Style>
                   </Paragraph>
                 </Paragraphs>
@@ -235,7 +257,6 @@ function generateRDL(items) {
         </Tablix>`;
       }
       if (item.type === "dateRange") {
-
         const valueExpr = `=First(Fields!${escapeXml(item.mappedField)}.Value)`;
 
         return `<Textbox Name="DateRange_${item.id}">

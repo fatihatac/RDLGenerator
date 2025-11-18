@@ -1,34 +1,28 @@
+import * as Layout from "../constants/layoutConstants"
+
 function getMaxCharLenght(data, key, headerText) {
-  const MIN_WIDTH = 0; // Minimum genişlik (pt)
-  const MAX_WIDTH = 150; // Maksimum genişlik (pt) - Çok uzun metinler sayfayı patlatmasın
-  const CHAR_WIDTH_FACTOR = 5; // Ortalama bir karakterin genişliği (pt) (Trebuchet MS 10pt için yaklaşık)
-  const PADDING = 0; // Hücre içi boşluklar için ekstra pay
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
 
-  let maxLen = headerText ? headerText.length : 0;
-  
+  ctx.font = "10px Trebuchet MS";
 
-  // Veri setindeki ilk 100 satırı kontrol et (Performans için hepsine bakmayabiliriz)
+  let maxWidth = headerText ? ctx.measureText(headerText).width : 0;
+
   const limit = Math.min(data.length, 100);
-  let val = "";
+  let val = ""
   for (let i = 0; i < limit; i++) {
     val = data[i][key];
-    console.log(data[i][key]);
-    
-    if (val !== null && val !== undefined) {
-      const strVal = String(val);
-      if (strVal.length > maxLen) {
-        maxLen = strVal.length;
+      if (val !== null && val !== undefined) {
+      const strVal = ctx.measureText(String(val));
+      if (strVal.width > maxWidth) {
+        maxWidth = strVal.width
       }
     }
   }
-  
-  let calculatedWidth = maxLen * CHAR_WIDTH_FACTOR + PADDING;
-  
 
-  if (calculatedWidth < MIN_WIDTH) calculatedWidth = MIN_WIDTH;
-  if (calculatedWidth > MAX_WIDTH) calculatedWidth = MAX_WIDTH;
-
-  return Math.floor(calculatedWidth);
+  let calculatedWidth = maxWidth * 0.75 
+  
+  return Math.round(calculatedWidth + Layout.PADDING);
 }
 
 export default getMaxCharLenght;

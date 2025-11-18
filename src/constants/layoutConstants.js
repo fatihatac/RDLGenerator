@@ -12,6 +12,7 @@
   const TABLE_HEIGHT = 37.50011; //pt
   const PAGE_HEIGHT = TITLE_HEIGHT + TABLE_HEIGHT; //pt
   const FONT_FAMILY = "Trebuchet MS"; 
+  const PADDING = 10
   
 
 export {
@@ -28,5 +29,6 @@ export {
   TITLE_HEIGHT,
   TITLE_TEXT_HORIZONTAL_ALIGN,
   TITLE_TEXT_VERTICAL_ALIGN,
-  FONT_FAMILY
+  FONT_FAMILY,
+  PADDING
 };

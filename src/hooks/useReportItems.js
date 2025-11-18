@@ -70,18 +70,18 @@ function useReportItems() {
       } catch (e) {
         console.error("JSON parse hatası:", e.message);
       }
+      
 
       const columnsToMap = updates.filteredJsonKeys || updates.jsonKeys;
       const newColumns = columnsToMap.map((key, index) => {
         const fixedName = fixColumnNames(key);
-        console.log(fixedName,getMaxCharLenght(parsedData, fixedName, key));
         
         return {
           id: Date.now() + index + 2,
           name: fixedName,
           mappedField: key,
           dataType: getRdlTypeName(firstRow[key]),
-          width: getMaxCharLenght(parsedData, fixedName, key),
+          width: getMaxCharLenght(parsedData, key, fixedName),
         };
       });
 
