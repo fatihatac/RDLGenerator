@@ -20,6 +20,8 @@ function generateRDL(items) {
     }
   });
 
+  tableItem.columns.map((col) => console.log(col));
+
   // const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * Layout.COLUMN_WIDTH : 468; //pt
   let totalTableWidth = 0;
   if (tableItem && tableItem.columns.length > 0) {
@@ -31,8 +33,7 @@ function generateRDL(items) {
     totalTableWidth = 468;
   }
 
-  tableItem.columns.map((col)=> console.log("gelen değerler: ",col.width));
-  
+  tableItem.columns.map((col) => console.log("gelen değerler: ", col.width));
 
   const TOTAL_REPORT_WIDTH = totalTableWidth;
 
@@ -85,7 +86,7 @@ function generateRDL(items) {
       if (item.type === "table") {
         const columnsXml = item.columns
           .map(
-            (col) =>`<TablixColumn>
+            (col) => `<TablixColumn>
             <Width>${col.width}pt</Width>
           </TablixColumn>`
           )
@@ -147,6 +148,10 @@ function generateRDL(items) {
                               </Style>
                             </Paragraph>
                         </Paragraphs>
+                        <UserSort>
+                          <SortExpression>=Fields!${col.mappedField}.Value</SortExpression>
+                          <SortExpressionScope>Details</SortExpressionScope>
+                        </UserSort> 
               </Textbox>
                 <ColSpan>1</ColSpan>
                 <RowSpan>1</RowSpan>
@@ -166,9 +171,7 @@ function generateRDL(items) {
                   <Width>${col.width}pt</Width>
                   <Style>
                     <FontSize>10.00003pt</FontSize>
-                    <VerticalAlign>${
-                      Layout.COLUMN_TEXT_VERTICAL_ALIGN
-                    }</VerticalAlign>
+                    <VerticalAlign>${Layout.COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
                     <PaddingLeft>2pt</PaddingLeft>
                     <PaddingRight>2pt</PaddingRight>
                     <PaddingTop>2pt</PaddingTop>
@@ -194,9 +197,7 @@ function generateRDL(items) {
                     </TextRuns>
                     <Style>
                       <FontSize>10.00003pt</FontSize>
-                      <TextAlign>${
-                        Layout.COLUMN_TEXT_HORIZONTAL_ALIGN
-                      }</TextAlign>
+                      <TextAlign>${Layout.COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
                     </Style>
                   </Paragraph>
                 </Paragraphs>

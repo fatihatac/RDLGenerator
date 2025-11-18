@@ -1,12 +1,17 @@
 import * as Layout from "../constants/layoutConstants"
 
+const ICON_WIDTH_PX = 50; 
+
 function getMaxCharWidth(data, key, headerText) {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
 
   ctx.font = "10px Trebuchet MS";
 
-  let maxWidth = headerText ? ctx.measureText(headerText).width : 0;
+  let maxWidth = 0;
+  if (headerText) {
+    maxWidth = ctx.measureText(headerText).width + ICON_WIDTH_PX;
+  }
 
   const limit = Math.min(data.length, 100);
   let val = ""
