@@ -27,11 +27,10 @@ function useReportItems() {
   const deleteItem = (id) => {
     const itemToDelete = reportItems.find(item => item.id === id);
 
-    // Eğer silinen öğe bir veri kaynağı ise, ona bağlı TÜM öğeleri (tablo, başlık vb.) sil
     if (itemToDelete && itemToDelete.type === 'data') {
       setReportItems(prev => prev.filter(item =>
-        item.id !== id && // Veri kaynağını kaldır
-        item.dataSourceId !== id // Bağlı olan her şeyi kaldır
+        item.id !== id && 
+        item.dataSourceId !== id 
       ));
     } else {
       setReportItems(prev => prev.filter(item => item.id !== id));
@@ -86,6 +85,15 @@ function useReportItems() {
 
       const existingTable = baseReportItems.find(item => item.type === "table");
       const firstRow = (Array.isArray(parsedData) && parsedData.length > 0) ? parsedData[0] : {};
+      console.log(typeof firstRow['sicilId']);
+      console.log(typeof firstRow['NormalMesai']);
+      console.log(typeof firstRow['mesaitarih'])
+
+      console.log(getDataType(firstRow['sicilId']));
+      console.log(getDataType(firstRow['NormalMesai']));
+      console.log(getDataType(firstRow['mesaitarih']));
+      
+      
       
       const jsonKeys = Object.keys(firstRow);
       const columnsToMap = jsonKeys.filter(key => !['TarihAralik'].includes(key));

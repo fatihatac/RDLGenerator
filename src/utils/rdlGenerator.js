@@ -1,5 +1,5 @@
 import { escapeXml } from "./escapeXml.js";
-import { getDataType } from "./getDataType.js";
+//import { getDataType } from "./getDataType.js";
 import convertTitleCase from "./convertTitleCase.js";
 import * as Layout from "../constants/layoutConstants.js";
 import getMaxCharWidth from "./getMaxCharWidth.js";
@@ -337,13 +337,13 @@ function generateRDL(items) {
         const mappedColumn = tableItem.columns.find(
           (col) => col.mappedField === key
         );
-        const typeName = mappedColumn ? mappedColumn.dataType : "System.String";
-        console.log(typeName);
-        
+        const typeName = mappedColumn ? mappedColumn.dataType : "System.String";   
+        console.log(mappedColumn);
+             
 
         return `<Field Name="${key}">
         <DataField>${key}</DataField>
-        <rd:TypeName>${getDataType(typeName)}</rd:TypeName>
+        <rd:TypeName>${typeName}</rd:TypeName>
       </Field>`;
       })
       .join("\n");
