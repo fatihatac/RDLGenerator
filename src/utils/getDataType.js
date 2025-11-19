@@ -1,4 +1,4 @@
-function getRdlTypeName(value) {
+function getDataType(value) {
   if (typeof value === "number") return "System.Double";
   if (typeof value === "boolean") return "System.Boolean";
   if (typeof value === "string" &&
@@ -9,4 +9,4 @@ function getRdlTypeName(value) {
   return "System.String";
 }
 
-export { getRdlTypeName };
+export { getDataType };

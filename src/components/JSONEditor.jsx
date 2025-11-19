@@ -14,7 +14,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
     } catch (e1) {
       console.error(e1.message);
       try {
-        const cleanString = jsonString.replace(/[\n\r\t]/g, '');
+        const cleanString = jsonString.replace(/[\n\r\t]/g, '');        
         parsedValue = JSON.parse(cleanString);
 
       } catch (e2) {

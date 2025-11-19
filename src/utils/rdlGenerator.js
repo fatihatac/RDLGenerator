@@ -1,7 +1,8 @@
 import { escapeXml } from "./escapeXml.js";
-import { getRdlTypeName } from "./getDataType.js";
+import { getDataType } from "./getDataType.js";
 import convertTitleCase from "./convertTitleCase.js";
 import * as Layout from "../constants/layoutConstants.js";
+import getMaxCharWidth from "./getMaxCharWidth.js";
 
 function generateRDL(items) {
   const dataItem = items.find((item) => item.type === "data");
@@ -9,6 +10,20 @@ function generateRDL(items) {
   const tableItem = items.find((item) => item.type === "table");
 
   let maxColumns = 0;
+
+  let rowCount = 0;
+  if (dataItem && dataItem.value) {
+    try {
+      const parsedData = JSON.parse(dataItem.value);
+      if (parsedData && parsedData.Result && Array.isArray(parsedData.Result)) {
+        rowCount = parsedData.Result.length;
+      }
+    } catch (e) {
+      console.error("Error parsing dataItem.value:", e);
+    }
+  }
+
+  const NUMBER_COLUMN_WIDTH = getMaxCharWidth(null, null, String(rowCount));
 
   items.forEach((item) => {
     if (
@@ -19,8 +34,6 @@ function generateRDL(items) {
       maxColumns = item.columns.length;
     }
   });
-
-  tableItem.columns.map((col) => console.log(col));
 
   // const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * Layout.COLUMN_WIDTH : 468; //pt
   let totalTableWidth = 0;
@@ -33,9 +46,7 @@ function generateRDL(items) {
     totalTableWidth = 468;
   }
 
-  tableItem.columns.map((col) => console.log("gelen değerler: ", col.width));
-
-  const TOTAL_REPORT_WIDTH = totalTableWidth;
+  const TOTAL_REPORT_WIDTH = totalTableWidth + NUMBER_COLUMN_WIDTH;
 
   const TOTAL_REPORT_HIGHT =
     items && items.length > 0 ? Layout.PAGE_HEIGHT : 225; //pt
@@ -84,15 +95,22 @@ function generateRDL(items) {
       }
 
       if (item.type === "table") {
-        const columnsXml = item.columns
+        const rowNumberColumn = {
+          name: "No",
+          mappedField: "RowNumber",
+          width: NUMBER_COLUMN_WIDTH,
+        };
+
+        const processedColumns = [rowNumberColumn, ...item.columns.filter(c => c.mappedField !== 'RowNumber')];
+        const columnsXml = processedColumns
           .map(
             (col) => `<TablixColumn>
-            <Width>${col.width}pt</Width>
-          </TablixColumn>`
+                  <Width>${col.width}pt</Width>
+                </TablixColumn>`
           )
           .join("");
 
-        const headerCellsXml = item.columns
+        const headerCellsXml = processedColumns
           .map(
             (col, index) => `<TablixCell>
             <CellContents>
@@ -148,10 +166,12 @@ function generateRDL(items) {
                               </Style>
                             </Paragraph>
                         </Paragraphs>
-                        <UserSort>
-                          <SortExpression>=Fields!${col.mappedField}.Value</SortExpression>
-                          <SortExpressionScope>Details</SortExpressionScope>
-                        </UserSort> 
+                        ${ col.mappedField !== "RowNumber" &&                     
+                             `<UserSort>
+                               <SortExpression>=Fields!${col.mappedField}.Value</SortExpression>
+                               <SortExpressionScope>Details</SortExpressionScope>
+                             </UserSort>` 
+                          }    
               </Textbox>
                 <ColSpan>1</ColSpan>
                 <RowSpan>1</RowSpan>
@@ -160,7 +180,7 @@ function generateRDL(items) {
           )
           .join("");
 
-        const dataCellsXml = item.columns
+        const dataCellsXml = processedColumns
           .map(
             (col, index) => `<TablixCell>
             <CellContents>
@@ -187,7 +207,11 @@ function generateRDL(items) {
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=Fields!${col.mappedField}.Value</Value>
+                        <Value>${
+                          col.mappedField === "RowNumber"
+                            ? "=RowNumber(nothing)"
+                            : `=Fields!${col.mappedField}.Value`
+                        }</Value>
                         <Style>
                            <FontFamily>${Layout.FONT_FAMILY}</FontFamily>
                            <FontSize>6.75002pt</FontSize>
@@ -242,7 +266,7 @@ function generateRDL(items) {
           </TablixBody>
           <TablixColumnHierarchy>
             <TablixMembers>
-              ${item.columns.map(() => "<TablixMember />").join("")}
+              ${processedColumns.map(() => "<TablixMember />").join("")}
             </TablixMembers>
           </TablixColumnHierarchy>
           <TablixRowHierarchy>
@@ -314,10 +338,12 @@ function generateRDL(items) {
           (col) => col.mappedField === key
         );
         const typeName = mappedColumn ? mappedColumn.dataType : "System.String";
+        console.log(typeName);
+        
 
         return `<Field Name="${key}">
         <DataField>${key}</DataField>
-        <rd:TypeName>${getRdlTypeName(typeName)}</rd:TypeName>
+        <rd:TypeName>${getDataType(typeName)}</rd:TypeName>
       </Field>`;
       })
       .join("\n");
@@ -329,6 +355,8 @@ function generateRDL(items) {
     };
 
     const connectStringContent = JSON.stringify(connectStringData);
+    console.log(connectStringContent);
+    
 
     const dataSourceXml = `<DataSources>
       <DataSource Name="DataSource1">
