@@ -3,7 +3,7 @@ import { Plus, Trash2, Table, X, ListOrdered, Group } from 'lucide-react';
 function TableEditor({ item, updateItem, deleteItem, reportItems }) {
 
   const addGroup = () => {
-    const newGroup = { id: Date.now(), name: `Grup${Date.now()}`, mappedField: null };
+    const newGroup = { id: Date.now(), name: `Grup1`, mappedField: null };
     //updateItem(item.id, { groups: [...item.groups, newGroup] });
     updateItem(item.id, { groups: [...(item.groups || []), newGroup] });
   };

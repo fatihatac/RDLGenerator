@@ -47,11 +47,29 @@ function generateRDL(items) {
 
   // const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * Layout.COLUMN_WIDTH : 468; //pt
   let totalTableWidth = 0;
-  if (tableItem && tableItem.columns.length > 0) {
-    totalTableWidth = tableItem.columns.reduce(
-      (sum, col) => sum + (Number(col.width) || 72),
-      0
-    );
+  if (tableItem) {
+    const columnWidths = tableItem.columns.reduce((sum, col) => sum + (Number(col.width) || 72), 0);
+    
+    let parsedDataResult;
+    try {
+      // JSON'ı parse et ve 'Result' anahtarını al, yoksa doğrudan ana JSON'ı kullan
+      const parsedJson = dataItem && dataItem.value ? JSON.parse(dataItem.value) : null;
+      parsedDataResult = parsedJson ? (parsedJson.Result || parsedJson) : [];
+      if (!Array.isArray(parsedDataResult)) parsedDataResult = [];
+
+    } catch (e) {
+      console.error(e.message)
+      parsedDataResult = [];
+    }
+
+    const groupWidths = (tableItem.groups || []).reduce((sum, group) => {
+      // mappedField'ı olmayan grup genişlik hesaplamasına dahil edilmez
+      if (!group.mappedField) return sum;
+      const groupWidth = getMaxCharWidth(parsedDataResult, group.mappedField, group.name);
+      return sum + groupWidth;
+    }, 0);
+
+    totalTableWidth = columnWidths + groupWidths;
   } else {
     totalTableWidth = 468;
   }
@@ -105,8 +123,26 @@ function generateRDL(items) {
       }
 
       if (item.type === "table") {
-        const processedColumns = item.columns;
-        const columnsXml = processedColumns
+
+        let parsedDataResult;
+        try {
+          const parsedJson = dataItem && dataItem.value ? JSON.parse(dataItem.value) : null;
+          parsedDataResult = parsedJson ? (parsedJson.Result || parsedJson) : [];
+          if (!Array.isArray(parsedDataResult)) parsedDataResult = [];
+        } catch (e) {
+          console.error(e.message)
+          parsedDataResult = [];
+        }
+
+        const processedGroups = (item.groups || []).map(group => ({
+          ...group,
+          width: group.mappedField ? getMaxCharWidth(parsedDataResult, group.mappedField, group.name) : 72,
+          isGroup: true // Grupları sütunlardan ayırt etmek için bir bayrak
+        }));
+
+        const allDisplayColumns = [...processedGroups, ...item.columns];
+
+        const columnsXml = allDisplayColumns
           .map(
             (col) => `<TablixColumn>
                   <Width>${col.width}pt</Width>
@@ -114,7 +150,7 @@ function generateRDL(items) {
           )
           .join("");
 
-        const headerCellsXml = processedColumns
+        const headerCellsXml = allDisplayColumns
           .map(
             (col, index) => `<TablixCell>
             <CellContents>
@@ -170,7 +206,7 @@ function generateRDL(items) {
                               </Style>
                             </Paragraph>
                         </Paragraphs>
-                        ${ col.mappedField !== "RowNumber" &&                     
+                        ${ !col.isGroup && col.mappedField !== "RowNumber" &&                     
                              `<UserSort>
                                <SortExpression>=Fields!${col.mappedField}.Value</SortExpression>
                                <SortExpressionScope>Details</SortExpressionScope>
@@ -184,7 +220,7 @@ function generateRDL(items) {
           )
           .join("");
 
-        const dataCellsXml = processedColumns
+        const dataCellsXml = allDisplayColumns
           .map(
             (col, index) => `<TablixCell>
             <CellContents>
@@ -244,7 +280,58 @@ function generateRDL(items) {
           //     <TablixMember>
           //       <Group Name="Details" />
           //     </TablixMember>
-          //   </TablixMembers>`
+          //   </TablixMembers>
+          // 
+                //           <TablixMember>
+                //   <TablixHeader>
+                //     <Size>72pt</Size>
+                //     <CellContents>
+                //       <Textbox Name="GroupTextBox${Date.now()}">
+                //         <Left>0in</Left>
+                //         <Top>0in</Top>
+                //         <Height>18.6pt</Height>
+                //         <Width>72pt</Width>
+                //         <Style>
+                //           <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}</FontSize>
+                //           <VerticalAlign>Middle</VerticalAlign>
+                //           <PaddingLeft>2pt</PaddingLeft>
+                //           <PaddingRight>2pt</PaddingRight>
+                //           <PaddingTop>2pt</PaddingTop>
+                //           <PaddingBottom>2pt</PaddingBottom>
+                //           <Border>
+                //             <Color>LightGrey</Color>
+                //             <Style>Solid</Style>
+                //           </Border>
+                //         </Style>
+                //         <CanGrow>true</CanGrow>
+                //         <KeepTogether>true</KeepTogether>
+                //         <Paragraphs>
+                //           <Paragraph>
+                //             <TextRuns>
+                //               <TextRun>
+                //                 <Value>sicilId1</Value>
+                //                 <Style>
+                //                   <FontFamily>Trebuchet MS</FontFamily>
+                //                   <FontSize>7.50003pt</FontSize>
+                //                   <FontWeight>Bold</FontWeight>
+                //                   <Color>black</Color>
+                //                 </Style>
+                //               </TextRun>
+                //             </TextRuns>
+                //             <Style>
+                //               <FontSize>10.00003pt</FontSize>
+                //               <TextAlign>Left</TextAlign>
+                //             </Style>
+                //           </Paragraph>
+                //         </Paragraphs>
+                //       </Textbox>
+                //     </CellContents>
+                //   </TablixHeader>
+                //   <TablixMembers>
+                //     <TablixMember />
+                //   </TablixMembers>
+                //   <KeepWithGroup>After</KeepWithGroup>
+                // </TablixMember>`
 
           const generateGroupHierarchy = (groups) =>{
             if (!groups || groups.length === 0) {
@@ -252,62 +339,8 @@ function generateRDL(items) {
             }
 
             const group = groups[0];
-            const remainingGroups = groups.slice(1);
-            console.log(group);
-            console.log(remainingGroups);
-            
-          
+            console.log(group);          
             return `<TablixMembers>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>72pt</Size>
-                    <CellContents>
-                      <Textbox Name="GroupTextBox${Date.now()}">
-                        <Left>0in</Left>
-                        <Top>0in</Top>
-                        <Height>18.6pt</Height>
-                        <Width>72pt</Width>
-                        <Style>
-                          <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}</FontSize>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                        </Style>
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>sicilId1</Value>
-                                <Style>
-                                  <FontFamily>Trebuchet MS</FontFamily>
-                                  <FontSize>7.50003pt</FontSize>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>black</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <FontSize>10.00003pt</FontSize>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                  <TablixMembers>
-                    <TablixMember />
-                  </TablixMembers>
-                  <KeepWithGroup>After</KeepWithGroup>
-                </TablixMember>
                 <TablixMember>
                   <Group Name="Group_${group.id}">
                     <GroupExpressions>
@@ -405,7 +438,7 @@ function generateRDL(items) {
           </TablixBody>
           <TablixColumnHierarchy>
             <TablixMembers>
-              ${processedColumns.map(() => "<TablixMember />").join("")}
+              ${allDisplayColumns.map(() => "<TablixMember />").join("")}
             </TablixMembers>
           </TablixColumnHierarchy>
           <TablixRowHierarchy>
