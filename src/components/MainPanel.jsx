@@ -101,6 +101,7 @@ function MainPanel({ reportItems, updateItem, deleteItem }) {
                                         item={item}
                                         updateItem={updateItem}
                                         deleteItem={deleteItem}
+                                        reportItems={reportItems}
                                     />
                                 )}
                                 {item.type === 'data' && (

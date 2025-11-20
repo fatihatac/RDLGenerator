@@ -27,8 +27,8 @@ function generateRDL(items) {
 
   if (tableItem) {
     // Override width for row number column for dynamic sizing
-    tableItem.columns = tableItem.columns.map(col => {
-      if (col.mappedField === 'RowNumber') {
+    tableItem.columns = tableItem.columns.map((col) => {
+      if (col.mappedField === "RowNumber") {
         return { ...col, width: NUMBER_COLUMN_WIDTH };
       }
       return col;
@@ -170,12 +170,13 @@ function generateRDL(items) {
                               </Style>
                             </Paragraph>
                         </Paragraphs>
-                        ${ col.mappedField !== "RowNumber" &&                     
-                             `<UserSort>
+                        ${
+                          col.mappedField !== "RowNumber" &&
+                          `<UserSort>
                                <SortExpression>=Fields!${col.mappedField}.Value</SortExpression>
                                <SortExpressionScope>Details</SortExpressionScope>
-                             </UserSort>` 
-                          }    
+                             </UserSort>`
+                        }    
               </Textbox>
                 <ColSpan>1</ColSpan>
                 <RowSpan>1</RowSpan>
@@ -195,7 +196,9 @@ function generateRDL(items) {
                   <Width>${col.width}pt</Width>
                   <Style>
                     <FontSize>10.00003pt</FontSize>
-                    <VerticalAlign>${Layout.COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
+                    <VerticalAlign>${
+                      Layout.COLUMN_TEXT_VERTICAL_ALIGN
+                    }</VerticalAlign>
                     <PaddingLeft>2pt</PaddingLeft>
                     <PaddingRight>2pt</PaddingRight>
                     <PaddingTop>2pt</PaddingTop>
@@ -225,7 +228,9 @@ function generateRDL(items) {
                     </TextRuns>
                     <Style>
                       <FontSize>10.00003pt</FontSize>
-                      <TextAlign>${Layout.COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
+                      <TextAlign>${
+                        Layout.COLUMN_TEXT_HORIZONTAL_ALIGN
+                      }</TextAlign>
                     </Style>
                   </Paragraph>
                 </Paragraphs>
@@ -237,54 +242,139 @@ function generateRDL(items) {
           )
           .join("");
 
+        const generateGroupHierarchy = (groups) => {
+          if (!groups || groups.length === 0) {
+            return ``;
+            // return `
+            //   <TablixMember>
+            //     <KeepWithGroup>After</KeepWithGroup>
+            //   </TablixMember>
+            //   <TablixMember>
+            //     <Group Name="Details" />
+            //   </TablixMember>
+            // `;
+          }
+          const group = groups[0];
+          const remainingGroups = groups.slice(1);
+
+          return `
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>72pt</Size>
+                        <CellContents>
+                        <Textbox Name="TextBox1">
+                        <Left>0in</Left>
+                        <Top>0in</Top>
+                        <Height>18.6pt</Height>
+                        <Width>72pt</Width>
+                        <Style>
+                          <FontSize>10.00003pt</FontSize>
+                          <VerticalAlign>Middle</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                        </Style>
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>sicilId1</Value>
+                                <Style>
+                                  <FontFamily>Trebuchet MS</FontFamily>
+                                  <FontSize>7.50003pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>black</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <FontSize>10.00003pt</FontSize>
+                              <TextAlign>Left</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        </Textbox>
+                      </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember />
+                      </TablixMembers>
+                    </TablixMember>
+                    <TablixMember>
+                      <KeepWithGroup>After</KeepWithGroup>
+                      <Group Name="Group_${group.id}">
+                        <GroupExpressions>
+                          <GroupExpression>=Fields!${group.mappedField}.Value</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=Fields!${group.mappedField}.Value</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        ${generateGroupHierarchy(remainingGroups)}
+                      </TablixMembers>
+                    </TablixMember>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Details" />
+                    </TablixMember>
+                  </TablixMembers>
+                  `;
+        };
+
         return `<Tablix Name="Tablix_${item.id}">
-            <Left>0pt</Left>
-            <Top>${Layout.TITLE_HEIGHT}pt</Top>
-            <Height>37.50011pt</Height>
-            <Width>504.0004pt</Width>
-            <Style>
-              <FontSize>10.00003pt</FontSize>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-            <DataSetName>${dataSetName}</DataSetName> 
-          <TablixBody>
-            <TablixColumns>
-              ${columnsXml}
-            </TablixColumns>
-            <TablixRows>
-              <TablixRow>
-                <Height>18.6pt</Height>
-                <TablixCells>
-                  ${headerCellsXml}
-                </TablixCells>
-              </TablixRow>
-              <TablixRow>
-                <Height>18.6pt</Height>
-                <TablixCells>
-                  ${dataCellsXml}
-                </TablixCells>
-              </TablixRow>
-            </TablixRows>
-          </TablixBody>
-          <TablixColumnHierarchy>
-            <TablixMembers>
-              ${processedColumns.map(() => "<TablixMember />").join("")}
-            </TablixMembers>
-          </TablixColumnHierarchy>
-          <TablixRowHierarchy>
-            <TablixMembers>
-              <TablixMember>
-                <KeepWithGroup>After</KeepWithGroup>
-              </TablixMember>
-              <TablixMember>
-                <Group Name="Details" />
-              </TablixMember>
-            </TablixMembers>
-          </TablixRowHierarchy>
-        </Tablix>`;
+                    <Left>0pt</Left>
+                    <Top>${Layout.TITLE_HEIGHT}pt</Top>
+                    <Height>37.50011pt</Height>
+                    <Width>504.0004pt</Width>
+                    <Style>
+                      <FontSize>10.00003pt</FontSize>
+                      <Border>
+                        <Style>None</Style>
+                      </Border>
+                    </Style>
+                    <DataSetName>${dataSetName}</DataSetName> 
+                  <TablixBody>
+                    <TablixColumns>
+                      ${columnsXml}
+                    </TablixColumns>
+                    <TablixRows>
+                      <TablixRow>
+                        <Height>18.6pt</Height>
+                        <TablixCells>
+                          ${headerCellsXml}
+                        </TablixCells>
+                      </TablixRow>
+                      <TablixRow>
+                        <Height>18.6pt</Height>
+                        <TablixCells>
+                          ${dataCellsXml}
+                        </TablixCells>
+                      </TablixRow>
+                    </TablixRows>
+                  </TablixBody>
+                  <TablixColumnHierarchy>
+                    <TablixMembers>
+                      ${processedColumns.map(() => "<TablixMember />").join("")}
+                    </TablixMembers>
+                  </TablixColumnHierarchy>
+                  <TablixRowHierarchy>
+                    <TablixMembers>
+                      ${generateGroupHierarchy(item.groups)}
+                    </TablixMembers>
+                  </TablixRowHierarchy>
+                </Tablix>`;
       }
+
       if (item.type === "dateRange") {
         const valueExpr = `=First(Fields!${escapeXml(item.mappedField)}.Value)`;
 
@@ -341,9 +431,8 @@ function generateRDL(items) {
         const mappedColumn = tableItem.columns.find(
           (col) => col.mappedField === key
         );
-        const typeName = mappedColumn ? mappedColumn.dataType : "System.String";   
+        const typeName = mappedColumn ? mappedColumn.dataType : "System.String";
         console.log(mappedColumn);
-             
 
         return `<Field Name="${key}">
         <DataField>${key}</DataField>
@@ -360,7 +449,6 @@ function generateRDL(items) {
 
     const connectStringContent = JSON.stringify(connectStringData);
     console.log(connectStringContent);
-    
 
     const dataSourceXml = `<DataSources>
       <DataSource Name="DataSource1">
