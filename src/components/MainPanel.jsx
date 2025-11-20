@@ -11,41 +11,35 @@ function MainPanel({ reportItems, updateItem, deleteItem }) {
     const tableItem = reportItems.find(item => item.type === 'table');
     const dataItem = reportItems.find(item => item.type === 'data');
 
-    // useEffect hook'u ile veri değişikliklerini izle ve kolon genişliklerini güncelle
     useEffect(() => {
-        // Sadece dataItem ve tableItem varsa ve tablonun sütunları varsa devam et
         if (dataItem && dataItem.value && tableItem && tableItem.columns.length > 0) {
             let parsedData = [];
             try {
                 parsedData = JSON.parse(dataItem.value);
             } catch (e) {
                 console.error("Genişlik hesaplanırken JSON parse edilemedi:", e);
-                return; // Hata durumunda işlem yapma
+                return; 
             }
 
             if (!Array.isArray(parsedData)) return;
 
-            // Mevcut kolonlar üzerinden yeni genişlikleri hesapla
             const updatedColumns = tableItem.columns.map(col => {
                 const fixedName = fixColumnNames(col.mappedField);
                 const newWidth = getMaxCharWidth(parsedData, col.mappedField, fixedName);
                 
-                // Eğer genişlik değiştiyse yeni değeriyle kolonu döndür
                 if (col.width !== newWidth) {
                     return { ...col, width: newWidth };
                 }
                 return col;
             });
 
-            // Genişliklerde bir değişiklik olup olmadığını kontrol et
             const hasWidthChanged = updatedColumns.some((col, index) => col.width !== tableItem.columns[index].width);
 
-            // Sadece genişlikler gerçekten değiştiyse state'i güncelle (sonsuz döngüyü önler)
             if (hasWidthChanged) {
                 updateItem(tableItem.id, { columns: updatedColumns });
             }
         }
-    }, [dataItem?.value, tableItem, updateItem]); // Bağımlılıklar: dataItem'ın içeriği, tableItem veya updateItem fonksiyonu değiştiğinde tetiklenir.
+    }, [dataItem?.value, tableItem, updateItem]);
 
 
     const handleTableColumnMappingUpdate = (columnId, newMappedField) => {
@@ -101,6 +95,7 @@ function MainPanel({ reportItems, updateItem, deleteItem }) {
                                         item={item}
                                         updateItem={updateItem}
                                         deleteItem={deleteItem}
+                                        reportItems={reportItems}
                                     />
                                 )}
                                 {item.type === 'data' && (

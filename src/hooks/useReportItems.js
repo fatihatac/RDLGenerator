@@ -12,7 +12,7 @@ function useReportItems() {
     if (type === "title") {
       newItem = { id: Date.now(), type: "title", value: "" };
     } else if (type === "table") {
-      newItem = { id: Date.now(), type: "table", columns: [], groups:[] };
+      newItem = { id: Date.now(), type: "table", columns: [], groups: [] };
     } else if (type === "data") {
       newItem = { id: Date.now(), type: "data", value: "", jsonKeys: [] };
     } else if (type === "dateRange") {
@@ -25,15 +25,14 @@ function useReportItems() {
   };
 
   const deleteItem = (id) => {
-    const itemToDelete = reportItems.find(item => item.id === id);
+    const itemToDelete = reportItems.find((item) => item.id === id);
 
-    if (itemToDelete && itemToDelete.type === 'data') {
-      setReportItems(prev => prev.filter(item =>
-        item.id !== id && 
-        item.dataSourceId !== id 
-      ));
+    if (itemToDelete && itemToDelete.type === "data") {
+      setReportItems((prev) =>
+        prev.filter((item) => item.id !== id && item.dataSourceId !== id)
+      );
     } else {
-      setReportItems(prev => prev.filter(item => item.id !== id));
+      setReportItems((prev) => prev.filter((item) => item.id !== id));
     }
   };
 
@@ -45,10 +44,10 @@ function useReportItems() {
       return item;
     });
 
-    const updatedItem = baseReportItems.find(item => item.id === id);
+    const updatedItem = baseReportItems.find((item) => item.id === id);
 
     if (updatedItem && updatedItem.type === "data") {
-      const isValueEmpty = updatedItem.value.trim() === '';
+      const isValueEmpty = updatedItem.value.trim() === "";
       let parsedData;
 
       try {
@@ -59,14 +58,15 @@ function useReportItems() {
         console.error("JSON parse hatası:", e.message);
       }
 
-      // Eğer veri boşsa VEYA parse edilemediyse, ilişkili TÜM öğeleri sil
       if (isValueEmpty || !parsedData) {
-        const finalItems = baseReportItems.filter(item =>
-          item.dataSourceId !== id
+        const finalItems = baseReportItems.filter(
+          (item) => item.dataSourceId !== id
         );
-        // Güncellenen (artık boş olan) veri kaynağını koru
-        const currentDataItem = baseReportItems.find(item => item.id === id);
-        setReportItems([...finalItems.filter(item => item.id !== id), currentDataItem]);
+        const currentDataItem = baseReportItems.find((item) => item.id === id);
+        setReportItems([
+          ...finalItems.filter((item) => item.id !== id),
+          currentDataItem,
+        ]);
         return;
       }
 
@@ -79,24 +79,20 @@ function useReportItems() {
           id: Date.now() + 1,
           type: "title",
           value: "RAPOR_ADI",
-          dataSourceId: updatedItem.id 
+          dataSourceId: updatedItem.id,
         });
       }
 
-      const existingTable = baseReportItems.find(item => item.type === "table");
-      const firstRow = (Array.isArray(parsedData) && parsedData.length > 0) ? parsedData[0] : {};
-      console.log(typeof firstRow['sicilId']);
-      console.log(typeof firstRow['NormalMesai']);
-      console.log(typeof firstRow['mesaitarih'])
+      const existingTable = baseReportItems.find(
+        (item) => item.type === "table"
+      );
+      const firstRow =
+        Array.isArray(parsedData) && parsedData.length > 0 ? parsedData[0] : {};
 
-      console.log(getDataType(firstRow['sicilId']));
-      console.log(getDataType(firstRow['NormalMesai']));
-      console.log(getDataType(firstRow['mesaitarih']));
-      
-      
-      
       const jsonKeys = Object.keys(firstRow);
-      const columnsToMap = jsonKeys.filter(key => !['TarihAralik'].includes(key));
+      const columnsToMap = jsonKeys.filter(
+        (key) => !["TarihAralik"].includes(key)
+      );
 
       const newColumns = columnsToMap.map((key, index) => {
         const fixedName = fixColumnNames(key);
@@ -114,25 +110,30 @@ function useReportItems() {
           id: Date.now() + 2,
           type: "table",
           columns: newColumns,
-          dataSourceId: updatedItem.id, // <-- TABLO İÇİN BAĞLANTI
+          dataSourceId: updatedItem.id,
         });
       } else if (existingTable.columns.length === 0) {
         itemsToUpdate[existingTable.id] = {
           ...existingTable,
           columns: newColumns,
-          dataSourceId: updatedItem.id, // <-- TABLO İÇİN BAĞLANTI
-          groups: existingTable.groups || [], // Grupları koru veya başlat
+          dataSourceId: updatedItem.id,
+          groups: existingTable.groups || [],
         };
       }
-      
-      itemsToUpdate[updatedItem.id] = { ...updatedItem, jsonKeys: jsonKeys, filteredJsonKeys: columnsToMap };
+
+      itemsToUpdate[updatedItem.id] = {
+        ...updatedItem,
+        jsonKeys: jsonKeys,
+        filteredJsonKeys: columnsToMap,
+      };
 
       const finalReportItems = baseReportItems
-        .map((item) => (itemsToUpdate[item.id] ? { ...item, ...itemsToUpdate[item.id] } : item))
+        .map((item) =>
+          itemsToUpdate[item.id] ? { ...item, ...itemsToUpdate[item.id] } : item
+        )
         .concat(itemsToAdd);
 
       setReportItems(finalReportItems);
-
     } else {
       setReportItems(baseReportItems);
     }
