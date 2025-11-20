@@ -22,7 +22,7 @@ function generateRDL(items) {
       console.error("Error parsing dataItem.value:", e);
     }
   }
-
+//test
   const NUMBER_COLUMN_WIDTH = getMaxCharWidth(null, null, String(rowCount));
 
   if (tableItem) {
