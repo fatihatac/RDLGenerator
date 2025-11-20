@@ -2,21 +2,10 @@ import { Plus, Trash2, Table, X, ListOrdered, Group } from 'lucide-react';
 
 function TableEditor({ item, updateItem, deleteItem }) {
 
-  const addGroup = () => {                                                                                                                                                            
-    const newGroup = { id: Date.now(), name: 'Group1', mappedField: null };
-    updateItem(item.id, { groups: [...(item.groups || []), newGroup] });                                                                                                                      
-  };
-
-  const updateGroupName = (groupId, newName) => {                                                                                                                                     
-    const newGroups = item.groups.map(g => g.id === groupId ? { ...g, name: newName } : g);                                                                                           
-    updateItem(item.id, { groups: newGroups });                                                                                                                                       
-  };
-
-  const updateGroupMappedField = (groupId, newMappedField) => {                                                                                                                       
-    const newGroups = item.groups.map(g => g.id === groupId ? { ...g, mappedField: newMappedField } : g);                                                                             
-    updateItem(item.id, { groups: newGroups });                                                                                                                                       
-  };
-
+  function addGroup() {
+    console.log("tıklandı");
+    
+  }
   const addRowNumberColumn = () => {
     if (item.columns.find(c => c.mappedField === 'RowNumber')) {
       alert('Satır numarası sütunu zaten ekli.');
