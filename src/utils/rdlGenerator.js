@@ -237,140 +237,6 @@ function generateRDL(items) {
           )
           .join("");
 
-          // const backup = `<TablixMembers>
-          //     <TablixMember>
-          //       <KeepWithGroup>After</KeepWithGroup>
-          //     </TablixMember>
-          //     <TablixMember>
-          //       <Group Name="Details" />
-          //     </TablixMember>
-          //   </TablixMembers>`
-
-          const generateGroupHierarchy = (groups) =>{
-            if (!groups || groups.length === 0) {
-              console.log("grup yok");
-            }
-
-            const group = groups[0];
-            const remainingGroups = groups.slice(1);
-            console.log(group);
-            console.log(remainingGroups);
-            
-          
-            return `<TablixMembers>
-                <TablixMember>
-                  <TablixHeader>
-                    <Size>72pt</Size>
-                    <CellContents>
-                      <Textbox Name="GroupTextBox${Date.now()}">
-                        <Left>0in</Left>
-                        <Top>0in</Top>
-                        <Height>18.6pt</Height>
-                        <Width>72pt</Width>
-                        <Style>
-                          <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}</FontSize>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                        </Style>
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>sicilId1</Value>
-                                <Style>
-                                  <FontFamily>Trebuchet MS</FontFamily>
-                                  <FontSize>7.50003pt</FontSize>
-                                  <FontWeight>Bold</FontWeight>
-                                  <Color>black</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <FontSize>10.00003pt</FontSize>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                  <TablixMembers>
-                    <TablixMember />
-                  </TablixMembers>
-                  <KeepWithGroup>After</KeepWithGroup>
-                </TablixMember>
-                <TablixMember>
-                  <Group Name="Group_${group.id}">
-                    <GroupExpressions>
-                      <GroupExpression>=Fields!${group.mappedField}.Value</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>=Fields!${group.mappedField}.Value</Value>
-                    </SortExpression>
-                  </SortExpressions>
-                  <TablixHeader>
-                    <Size>72pt</Size>
-                    <CellContents>
-                      <Textbox Name="sicilId11">
-                        <Left>0in</Left>
-                        <Top>0in</Top>
-                        <Height>18.6pt</Height>
-                        <Width>72pt</Width>
-                        <Style>
-                          <FontSize>10.00003pt</FontSize>
-                          <VerticalAlign>Middle</VerticalAlign>
-                          <PaddingLeft>2pt</PaddingLeft>
-                          <PaddingRight>2pt</PaddingRight>
-                          <PaddingTop>2pt</PaddingTop>
-                          <PaddingBottom>2pt</PaddingBottom>
-                          <Border>
-                            <Color>LightGrey</Color>
-                            <Style>Solid</Style>
-                          </Border>
-                        </Style>
-                        <CanGrow>true</CanGrow>
-                        <KeepTogether>true</KeepTogether>
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value>=Fields!sicilId.Value</Value>
-                                <Style>
-                                  <FontFamily>Trebuchet MS</FontFamily>
-                                  <FontSize>6.75002pt</FontSize>
-                                  <Color>black</Color>
-                                </Style>
-                              </TextRun>
-                            </TextRuns>
-                            <Style>
-                              <FontSize>10.00003pt</FontSize>
-                              <TextAlign>Left</TextAlign>
-                            </Style>
-                          </Paragraph>
-                        </Paragraphs>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
-                  <TablixMembers>
-                    <TablixMember>
-                      <Group Name="Details" />
-                    </TablixMember>
-                  </TablixMembers>
-                </TablixMember>
-              </TablixMembers>`
-          }
-
 
         return `<Tablix Name="Tablix_${item.id}">
             <Left>0pt</Left>
@@ -409,7 +275,14 @@ function generateRDL(items) {
             </TablixMembers>
           </TablixColumnHierarchy>
           <TablixRowHierarchy>
-            ${generateGroupHierarchy(item.groups)}
+            <TablixMembers>
+              <TablixMember>
+                <KeepWithGroup>After</KeepWithGroup>
+              </TablixMember>
+              <TablixMember>
+                <Group Name="Details" />
+              </TablixMember>
+            </TablixMembers>
           </TablixRowHierarchy>
         </Tablix>`;
       }

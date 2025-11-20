@@ -1,29 +1,11 @@
 import { Plus, Trash2, Table, X, ListOrdered, Group } from 'lucide-react';
 
-function TableEditor({ item, updateItem, deleteItem, reportItems }) {
+function TableEditor({ item, updateItem, deleteItem }) {
 
   const addGroup = () => {
-    const newGroup = { id: Date.now(), name: `Grup${Date.now()}`, mappedField: null };
-    //updateItem(item.id, { groups: [...item.groups, newGroup] });
-    updateItem(item.id, { groups: [...(item.groups || []), newGroup] });
+    console.log("tıklandı");
   };
 
-  const updateGroupName = (groupId, newName) => {
-    const newGroups = item.groups.map(g => g.id === groupId ? { ...g, name: newName } : g);
-    updateItem(item.id, { groups: newGroups });
-  };
-
-  const updateGroupMappedField = (groupId, newMappedField) => {
-    const newGroups = item.groups.map(g => g.id === groupId ? { ...g, mappedField: newMappedField } : g);
-    updateItem(item.id, { groups: newGroups });
-  };
-
-  const removeGroup = (groupId) => {
-    const newGroups = item.groups.filter(g => g.id !== groupId);
-    updateItem(item.id, { groups: newGroups });
-  };
-
-  const dataItem = reportItems.find(i => i.type ==='data')
 
   const addRowNumberColumn = () => {
     if (item.columns.find(c => c.mappedField === 'RowNumber')) {
@@ -84,40 +66,6 @@ function TableEditor({ item, updateItem, deleteItem, reportItems }) {
           ))}
         </div>
       </div>
-
-      <div className="mb-3">
-        <label className="block text-sm font-medium text-gray-700 mb-2">Grup Tanımları</label>
-        <div className="bg-gray-50 p-3 rounded border border-gray-100 space-y-2">
-          {(item.groups || []).length === 0 && <p className="text-xs text-gray-400 italic">Henüz grup eklenmedi.</p>}
-
-          {(item.groups || []).map((group, idx) => (
-            <div key={group.id} className="flex items-center gap-2">
-              <span className="text-xs text-gray-400 w-6">{idx + 1}.</span>
-              <input
-                type="text"
-                value={group.name}
-                onChange={(e) => updateGroupName(group.id, e.target.value)}
-                className="flex-1 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
-                placeholder="Grup Adı (Örn: Bölüm)"
-              />
-              <select
-                value={group.mappedField || ''}
-                onChange={(e) => updateGroupMappedField(group.id, e.target.value || null)}
-                className="w-32 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
-              >
-                <option value="">Alan Seç</option>
-                {dataItem && dataItem.filteredJsonKeys && dataItem.filteredJsonKeys.map(key => (
-                  <option key={key} value={key}>{key}</option>
-                ))}
-              </select>
-              <button onClick={() => removeGroup(group.id)} className="text-gray-400 hover:text-red-500">
-                <X size={16} />
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-
       <div className="flex items-center gap-4">
         <button
           onClick={addColumn}
