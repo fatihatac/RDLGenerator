@@ -14,7 +14,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
     } catch (e1) {
       console.error(e1.message);
       try {
-        const cleanString = jsonString.replace(/[\n\r\t]/g, '');        
+        const cleanString = jsonString.replace(/[\n\r\t]/g, '');
         parsedValue = JSON.parse(cleanString);
 
       } catch (e2) {
@@ -97,6 +97,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
               <div className="col-span-1"></div>
             </div>
             {tableItem.columns.map((col) => (
+              col.mappedField !== "RowNumber" && (
               <div key={col.id} className="grid grid-cols-12 items-center gap-2">
 
                 <input
@@ -115,6 +116,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
                   value={col.mappedField || ''}
                   onChange={(e) => onUpdateTableColumnMapping(col.id, e.target.value)}
                   className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
+                  disabled={col.mappedField === "RowNumber"}
                 >
                   <option value="">-- Eşleştir --</option>
                   {item.jsonKeys.map(key => (
@@ -129,7 +131,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
                   <Trash2 size={16} />
                 </button>
 
-              </div>
+              </div>)
             ))}
           </div>
         </div>

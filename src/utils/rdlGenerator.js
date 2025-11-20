@@ -25,6 +25,16 @@ function generateRDL(items) {
 
   const NUMBER_COLUMN_WIDTH = getMaxCharWidth(null, null, String(rowCount));
 
+  if (tableItem) {
+    // Override width for row number column for dynamic sizing
+    tableItem.columns = tableItem.columns.map(col => {
+      if (col.mappedField === 'RowNumber') {
+        return { ...col, width: NUMBER_COLUMN_WIDTH };
+      }
+      return col;
+    });
+  }
+
   items.forEach((item) => {
     if (
       item.type === "table" &&
@@ -46,7 +56,7 @@ function generateRDL(items) {
     totalTableWidth = 468;
   }
 
-  const TOTAL_REPORT_WIDTH = totalTableWidth + NUMBER_COLUMN_WIDTH;
+  const TOTAL_REPORT_WIDTH = totalTableWidth;
 
   const TOTAL_REPORT_HIGHT =
     items && items.length > 0 ? Layout.PAGE_HEIGHT : 225; //pt
@@ -95,13 +105,7 @@ function generateRDL(items) {
       }
 
       if (item.type === "table") {
-        const rowNumberColumn = {
-          name: "No",
-          mappedField: "RowNumber",
-          width: NUMBER_COLUMN_WIDTH,
-        };
-
-        const processedColumns = [rowNumberColumn, ...item.columns.filter(c => c.mappedField !== 'RowNumber')];
+        const processedColumns = item.columns;
         const columnsXml = processedColumns
           .map(
             (col) => `<TablixColumn>
