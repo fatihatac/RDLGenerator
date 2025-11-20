@@ -10,7 +10,7 @@ function useReportItems() {
   const addItem = (type) => {
     let newItem;
     if (type === "title") {
-      newItem = { id: Date.now(), type: "title", value: "RAPOR BAŞLIĞI" };
+      newItem = { id: Date.now(), type: "title", value: "" };
     } else if (type === "table") {
       newItem = { id: Date.now(), type: "table", columns: [] };
     } else if (type === "data") {
@@ -78,8 +78,8 @@ function useReportItems() {
         itemsToAdd.push({
           id: Date.now() + 1,
           type: "title",
-          value: "RAPOR BAŞLIĞI",
-          dataSourceId: updatedItem.id // <-- BAŞLIK İÇİN BAĞLANTI
+          value: "RAPOR_ADI",
+          dataSourceId: updatedItem.id 
         });
       }
 
