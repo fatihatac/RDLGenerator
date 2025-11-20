@@ -39,7 +39,7 @@ function MainPanel({ reportItems, updateItem, deleteItem }) {
                 updateItem(tableItem.id, { columns: updatedColumns });
             }
         }
-    }, [dataItem?.value, tableItem, updateItem]);
+    }, [dataItem?.value, tableItem, updateItem, dataItem]);
 
 
     const handleTableColumnMappingUpdate = (columnId, newMappedField) => {
