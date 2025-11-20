@@ -1,54 +1,29 @@
-import { Trash2, FileText, Link, CheckSquare } from 'lucide-react';
-import { EXCLUDED_KEYS } from '../constants/appConstants';
+import { Trash2, FileText, Link } from 'lucide-react';
+import useReportStore from '../store/reportStore';
+import { shallow } from 'zustand/shallow';
 
-function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColumnMapping, onUpdateColumnName, onDeleteColumn }) {
-
-  const handleJsonChange = (e) => {
-    const jsonString = e.target.value;
-    let keys = [];
-    let filteredKeys = [];
-    let parsedValue = null;
-
-    try {
-      parsedValue = JSON.parse(jsonString);
-    } catch (e1) {
-      console.error(e1.message);
-      try {
-        const cleanString = jsonString.replace(/[\n\r\t]/g, '');
-        parsedValue = JSON.parse(cleanString);
-
-      } catch (e2) {
-        console.error("JSON temizlendikten sonra bile parse edilemedi:", e2.message);
-        keys = [];
-      }
-    }
-
-    if (parsedValue) {
-      try {
-        if (Array.isArray(parsedValue) && parsedValue.length > 0) {
-          keys = Object.keys(parsedValue[0]);
-        }
-        else if (typeof parsedValue === 'object' && parsedValue !== null && !Array.isArray(parsedValue)) {
-          keys = Object.keys(parsedValue);
-        }
-
-        filteredKeys = keys.filter(key => !EXCLUDED_KEYS.includes(key));
-      } catch (keyError) {
-        console.error("Anahtar çıkarma hatası:", keyError);
-        keys = [];
-      }
-    }
-
-
-    updateItem(item.id, { value: jsonString, jsonKeys: keys, filteredJsonKeys: filteredKeys });
-  };
+function JSONEditor({ item }) {
+  const { 
+    tableItem, 
+    deleteItem, 
+    updateDataItemValue, 
+    updateColumnName, 
+    updateTableColumnMapping, 
+    deleteTableColumn 
+  } = useReportStore(state => ({
+    tableItem: state.reportItems.find(i => i.type === 'table'),
+    deleteItem: state.deleteItem,
+    updateDataItemValue: state.updateDataItemValue,
+    updateColumnName: state.updateColumnName,
+    updateTableColumnMapping: state.updateTableColumnMapping,
+    deleteTableColumn: state.deleteTableColumn,
+  }), shallow);
 
   const showMappingUI =
     tableItem &&
     tableItem.columns.length > 0 &&
     item.jsonKeys &&
     item.jsonKeys.length > 0;
-
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -66,7 +41,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
         <label className="block text-sm font-medium text-gray-700">JSON Verisi (Dizi formatında)</label>
         <textarea
           value={item.value}
-          onChange={handleJsonChange}
+          onChange={(e) => updateDataItemValue(item.id, e.target.value)}
           className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none font-mono text-sm"
           rows={5}
           placeholder="Örn: [{ &quot;isim&quot;: &quot;Ahmet&quot;, &quot;yas&quot;: 30 }]"
@@ -103,7 +78,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
                 <input
                   type="text"
                   value={col.name}
-                  onChange={(e) => onUpdateColumnName(col.id, e.target.value)}
+                  onChange={(e) => updateColumnName(col.id, e.target.value)}
                   className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-green-500 outline-none"
                   placeholder="Rapor Sütun Adı"
                 />
@@ -114,7 +89,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
 
                 <select
                   value={col.mappedField || ''}
-                  onChange={(e) => onUpdateTableColumnMapping(col.id, e.target.value)}
+                  onChange={(e) => updateTableColumnMapping(col.id, e.target.value)}
                   className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
                   disabled={col.mappedField === "RowNumber"}
                 >
@@ -124,7 +99,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
                   ))}
                 </select>
                 <button
-                  onClick={() => onDeleteColumn(col.id)}
+                  onClick={() => deleteTableColumn(col.id)}
                   className="col-span-1 text-gray-400 hover:text-red-500 justify-self-center"
                   title="Sütunu Sil"
                 >

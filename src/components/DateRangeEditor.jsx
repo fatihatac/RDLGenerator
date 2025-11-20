@@ -1,15 +1,16 @@
 import { Trash2, Calendar } from 'lucide-react';
+import useReportStore from '../store/reportStore';
+import { shallow } from 'zustand/shallow';
 
-function DateRangeEditor({ 
-  item, 
-  updateItem, 
-  deleteItem, 
-  dataItem 
-}) {
+function DateRangeEditor({ item }) {
+  const { dataItem, updateItem, deleteItem } = useReportStore(state => ({
+    dataItem: state.reportItems.find(i => i.type === 'data'),
+    updateItem: state.updateItem,
+    deleteItem: state.deleteItem,
+  }), shallow);
 
   const availableFields = dataItem?.jsonKeys || [];
   
-
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
       <div className="flex justify-between items-center mb-3">

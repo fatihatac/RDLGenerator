@@ -1,7 +1,14 @@
 import { Trash2, FileText } from 'lucide-react';
+import useReportStore from '../store/reportStore';
+import { shallow } from 'zustand/shallow';
 
 
-function TextboxEditor({ item, updateItem, deleteItem }) {
+function TextboxEditor({ item }) {
+  const { updateItem, deleteItem } = useReportStore(state => ({
+    updateItem: state.updateItem,
+    deleteItem: state.deleteItem,
+  }), shallow);
+
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
       <div className="flex justify-between items-center mb-2">

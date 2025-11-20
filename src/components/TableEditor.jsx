@@ -1,36 +1,26 @@
 import { Plus, Trash2, Table, X, ListOrdered, Group } from 'lucide-react';
+import useReportStore from '../store/reportStore';
+import { shallow } from 'zustand/shallow';
 
-function TableEditor({ item, updateItem, deleteItem }) {
+function TableEditor({ item }) {
+  const { 
+    deleteItem, 
+    addTableColumn, 
+    addRowNumberColumn, 
+    updateColumnName, 
+    deleteTableColumn 
+  } = useReportStore(state => ({
+    deleteItem: state.deleteItem,
+    addTableColumn: state.addTableColumn,
+    addRowNumberColumn: state.addRowNumberColumn,
+    updateColumnName: state.updateColumnName,
+    deleteTableColumn: state.deleteTableColumn,
+  }), shallow);
 
   const addGroup = () => {
     console.log("tıklandı");
+    // TODO: Bu özellik için store'a yeni bir action eklenebilir.
   };
-
-
-  const addRowNumberColumn = () => {
-    if (item.columns.find(c => c.mappedField === 'RowNumber')) {
-      alert('Satır numarası sütunu zaten ekli.');
-      return;
-    }
-    const newCol = { id: Date.now(), name: 'No', mappedField: 'RowNumber', width: 30 };
-    updateItem(item.id, { columns: [newCol, ...item.columns] });
-  };
-
-  const addColumn = () => {
-    const newCol = { id: Date.now(), name: `Sütun ${item.columns.length + 1}`, mappedField: null };
-    updateItem(item.id, { columns: [...item.columns, newCol] });
-  };
-
-  const updateColumnName = (colId, newName) => {
-    const newCols = item.columns.map(c => c.id === colId ? { ...c, name: newName } : c);
-    updateItem(item.id, { columns: newCols });
-  };
-
-  const removeColumn = (colId) => {
-    const newCols = item.columns.filter(c => c.id !== colId);
-    updateItem(item.id, { columns: newCols });
-  };
-
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -59,7 +49,7 @@ function TableEditor({ item, updateItem, deleteItem }) {
                 className="flex-1 p-1.5 text-sm border border-gray-300 rounded focus:border-green-500 outline-none"
                 placeholder="Alan Adı (Örn: Ad)"
               />
-              <button onClick={() => removeColumn(col.id)} className="text-gray-400 hover:text-red-500">
+              <button onClick={() => deleteTableColumn(col.id)} className="text-gray-400 hover:text-red-500">
                 <X size={16} />
               </button>
             </div>
@@ -68,7 +58,7 @@ function TableEditor({ item, updateItem, deleteItem }) {
       </div>
       <div className="flex items-center gap-4">
         <button
-          onClick={addColumn}
+          onClick={addTableColumn}
           className="text-sm flex items-center text-green-600 hover:text-green-700 font-medium"
         >
           <Plus size={16} className="mr-1" /> Sütun Ekle

@@ -1,8 +1,10 @@
-import { Download, LayoutTemplate, } from 'lucide-react';
+import { Download, LayoutTemplate } from 'lucide-react';
 import { useState } from 'react';
+import useReportStore from '../store/reportStore';
 
-function Header({ downloadReport }) {
+function Header() {
     const [fileName, setFileName] = useState('');
+    const downloadReport = useReportStore(state => state.downloadReport);
 
     function handleDownload() {
         downloadReport(fileName);
