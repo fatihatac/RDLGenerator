@@ -12,7 +12,7 @@ function useReportItems() {
     if (type === "title") {
       newItem = { id: Date.now(), type: "title", value: "" };
     } else if (type === "table") {
-      newItem = { id: Date.now(), type: "table", columns: [] };
+      newItem = { id: Date.now(), type: "table", columns: [], groups:[] };
     } else if (type === "data") {
       newItem = { id: Date.now(), type: "data", value: "", jsonKeys: [] };
     } else if (type === "dateRange") {
@@ -118,8 +118,10 @@ function useReportItems() {
         });
       } else if (existingTable.columns.length === 0) {
         itemsToUpdate[existingTable.id] = {
+          ...existingTable,
           columns: newColumns,
           dataSourceId: updatedItem.id, // <-- TABLO İÇİN BAĞLANTI
+          groups: existingTable.groups || [], // Grupları koru veya başlat
         };
       }
       

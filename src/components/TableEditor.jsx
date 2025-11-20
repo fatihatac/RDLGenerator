@@ -1,12 +1,28 @@
-import { Plus, Trash2, Table, X, ListOrdered } from 'lucide-react';
+import { Plus, Trash2, Table, X, ListOrdered, Group } from 'lucide-react';
 
 function TableEditor({ item, updateItem, deleteItem }) {
+
+  const addGroup = () => {                                                                                                                                                            
+    const newGroup = { id: Date.now(), name: 'Group1', mappedField: null };
+    updateItem(item.id, { groups: [...(item.groups || []), newGroup] });                                                                                                                      
+  };
+
+  const updateGroupName = (groupId, newName) => {                                                                                                                                     
+    const newGroups = item.groups.map(g => g.id === groupId ? { ...g, name: newName } : g);                                                                                           
+    updateItem(item.id, { groups: newGroups });                                                                                                                                       
+  };
+
+  const updateGroupMappedField = (groupId, newMappedField) => {                                                                                                                       
+    const newGroups = item.groups.map(g => g.id === groupId ? { ...g, mappedField: newMappedField } : g);                                                                             
+    updateItem(item.id, { groups: newGroups });                                                                                                                                       
+  };
+
   const addRowNumberColumn = () => {
     if (item.columns.find(c => c.mappedField === 'RowNumber')) {
       alert('Satır numarası sütunu zaten ekli.');
       return;
     }
-    const newCol = { id: Date.now(), name: 'No', mappedField: 'RowNumber', width: 30 }; 
+    const newCol = { id: Date.now(), name: 'No', mappedField: 'RowNumber', width: 30 };
     updateItem(item.id, { columns: [newCol, ...item.columns] });
   };
 
@@ -73,6 +89,13 @@ function TableEditor({ item, updateItem, deleteItem }) {
           className="text-sm flex items-center text-blue-600 hover:text-blue-700 font-medium"
         >
           <ListOrdered size={16} className="mr-1" /> Satır Numarası Ekle
+        </button>
+        |
+        <button
+          onClick={addGroup}
+          className='text-sm flex items-center text-gray-600 hover:text-gray-700 font-medium'
+        >
+          <Group size={16} className='mr-1' /> Grup Ekle
         </button>
       </div>
     </div>
