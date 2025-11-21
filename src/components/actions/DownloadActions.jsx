@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Download } from 'lucide-react';
-import useReportItems from '../hooks/useReportItems';
-//import useReportStore from '../stores/useReportStore'; // Store yolunuzu düzenleyin
+import useReportItems from '../../hooks/useReportItems';
 
 const DownloadActions = () => {
     const [fileName, setFileName] = useState('');

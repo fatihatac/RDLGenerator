@@ -1,5 +1,5 @@
-import BrandLogo from './BrandLogo';
-import DownloadActions from './DownloadActions';
+import BrandLogo from '../ui/BrandLogo';
+import DownloadActions from '../actions/DownloadActions';
 
 function Header() {
     return (

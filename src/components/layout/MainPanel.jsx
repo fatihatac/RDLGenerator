@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
-import getMaxCharWidth from '../utils/getMaxCharWidth';
-import fixColumnNames from '../utils/fixColumnNames';
+import getMaxCharWidth from '../../utils/getMaxCharWidth';
+import fixColumnNames from '../../utils/fixColumnNames';
 import EmptyReport from '../report/EmptyReport';
 import ReportHeader from '../report/ReportHeader';
 import ReportItemRenderer from '../report/ReportItemRenderer';
+
 
 
 function MainPanel({ reportItems, updateItem, deleteItem }) {
