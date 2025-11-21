@@ -2,11 +2,28 @@ import { Plus, Trash2, Table, X, ListOrdered, Group } from 'lucide-react';
 
 function TableEditor({ item, updateItem, deleteItem, reportItems }) {
 
+  console.log(item.groups);
+  
+
   const addGroup = () => {
-    const newGroup = {id:Date.now(), name:`Group${item.groups?.length  + 1}`, mappedField:null}
+    const newGroup = { id: Date.now(), name: `Group${item.groups?.length + 1}`, mappedField: null }
     updateItem(item.id, { groups: [...(item.groups || []), newGroup] });
   };
 
+  const updateGroupName = (groupId, newName) => {
+    const newGroups = item.groups.map(g => g.id === groupId ? { ...g, name: newName } : g);
+    updateItem(item.id, { groups: newGroups });
+  };
+
+  const updateGroupMappedField = (groupId, newMappedField) => {
+    const newGroups = item.groups.map(g => g.id === groupId ? { ...g, mappedField: newMappedField } : g);
+    updateItem(item.id, { groups: newGroups });
+  };
+
+  const removeGroup = (groupId) => {
+    const newGroups = item.groups.filter(g => g.id !== groupId);
+    updateItem(item.id, { groups: newGroups });
+  };
 
   const addRowNumberColumn = () => {
     if (item.columns.find(c => c.mappedField === 'RowNumber')) {
@@ -33,7 +50,7 @@ function TableEditor({ item, updateItem, deleteItem, reportItems }) {
   };
 
   const dataItem = reportItems.find(i => i.type === 'data')
-  
+
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
       <div className="flex justify-between items-center mb-3">
@@ -80,13 +97,13 @@ function TableEditor({ item, updateItem, deleteItem, reportItems }) {
               <input
                 type="text"
                 value={group.name}
-                //onChange={(e) => updateGroupName(group.id, e.target.value)}
+                onChange={(e) => updateGroupName(group.id, e.target.value)}
                 className="flex-1 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
                 placeholder="Grup Adı (Örn: Bölüm)"
               />
               <select
                 value={group.mappedField || ''}
-                //onChange={(e) => updateGroupMappedField(group.id, e.target.value || null)}
+                onChange={(e) => updateGroupMappedField(group.id, e.target.value || null)}
                 className="w-32 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
               >
                 <option value="">Alan Seç</option>
@@ -94,8 +111,8 @@ function TableEditor({ item, updateItem, deleteItem, reportItems }) {
                   <option key={key} value={key}>{key}</option>
                 ))}
               </select>
-              <button //onClick={() => removeGroup(group.id)} className="text-gray-400 hover:text-red-500"
-                >
+              <button onClick={() => removeGroup(group.id)} className="text-gray-400 hover:text-red-500"
+              >
                 <X size={16} />
               </button>
             </div>
