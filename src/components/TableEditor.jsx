@@ -1,6 +1,6 @@
 import { Plus, Trash2, Table, X, ListOrdered, Group } from 'lucide-react';
 
-function TableEditor({ item, updateItem, deleteItem }) {
+function TableEditor({ item, updateItem, deleteItem, reportItems }) {
 
   const addGroup = () => {
     console.log("tıklandı");
@@ -31,6 +31,9 @@ function TableEditor({ item, updateItem, deleteItem }) {
     updateItem(item.id, { columns: newCols });
   };
 
+  const dataItem = reportItems.filter(i => i.type === 'table')
+  console.log(dataItem)
+  
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -66,6 +69,41 @@ function TableEditor({ item, updateItem, deleteItem }) {
           ))}
         </div>
       </div>
+
+      <div className="mb-3">
+        <label className="block text-sm font-medium text-gray-700 mb-2">Grup Tanımları</label>
+        <div className="bg-gray-50 p-3 rounded border border-gray-100 space-y-2">
+          {(item.groups || []).length === 0 && <p className="text-xs text-gray-400 italic">Henüz grup eklenmedi.</p>}
+
+          {(item.groups || []).map((group, idx) => (
+            <div key={group.id} className="flex items-center gap-2">
+              <span className="text-xs text-gray-400 w-6">{idx + 1}.</span>
+              <input
+                type="text"
+                value={group.name}
+                //onChange={(e) => updateGroupName(group.id, e.target.value)}
+                className="flex-1 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
+                placeholder="Grup Adı (Örn: Bölüm)"
+              />
+              <select
+                value={group.mappedField || ''}
+                //onChange={(e) => updateGroupMappedField(group.id, e.target.value || null)}
+                className="w-32 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
+              >
+                <option value="">Alan Seç</option>
+                {dataItem && dataItem.filteredJsonKeys && dataItem.filteredJsonKeys.map(key => (
+                  <option key={key} value={key}>{key}</option>
+                ))}
+              </select>
+              <button //onClick={() => removeGroup(group.id)} className="text-gray-400 hover:text-red-500"
+                >
+                <X size={16} />
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="flex items-center gap-4">
         <button
           onClick={addColumn}
