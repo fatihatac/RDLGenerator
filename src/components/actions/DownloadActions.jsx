@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import { Download } from 'lucide-react';
-// import useReportItems from '../../hooks/useReportItems'; // Remove this import
 
-// Accept downloadReport as a prop
 const DownloadActions = ({ downloadReport }) => { 
     const [fileName, setFileName] = useState('');
-    // const {downloadReport} = useReportItems(); // Remove this line
 
     const handleDownload = () => {
         downloadReport(fileName);

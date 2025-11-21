@@ -45,18 +45,20 @@ function generateRDL(items) {
   });
 
   console.log(tableItem);
-  
 
   let totalTableWidth = 0;
   if (tableItem && tableItem.columns.length > 0) {
-    const columnsWidth = tableItem.columns.reduce((sum, col) => sum + (Number(col.width) || 72),0);
-    let groupsWidth = 0
+    const columnsWidth = tableItem.columns.reduce(
+      (sum, col) => sum + (Number(col.width) || 72),
+      0
+    );
+    let groupsWidth = 0;
 
     if (tableItem.groups && tableItem.groups.length > 0) {
-      groupsWidth = tableItem.groups.length * 72
+      groupsWidth = tableItem.groups.length * 72;
     }
 
-    totalTableWidth = columnsWidth + groupsWidth
+    totalTableWidth = columnsWidth + groupsWidth;
   } else {
     totalTableWidth = 468;
   }
@@ -253,6 +255,11 @@ function generateRDL(items) {
         const generateGroupHierarchy = (groups) => {
           if (!groups || groups.length === 0) {
             console.log("grup yok");
+            return `<TablixMembers>
+                      <TablixMember>
+                        <Group Name="Details" />
+                      </TablixMember>
+                    </TablixMembers>`;
           }
 
           const group = groups[0];
