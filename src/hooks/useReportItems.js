@@ -12,7 +12,7 @@ function useReportItems() {
     if (type === "title") {
       newItem = { id: Date.now(), type: "title", value: "" };
     } else if (type === "table") {
-      newItem = { id: Date.now(), type: "table", columns: [] };
+      newItem = { id: Date.now(), type: "table", columns: [], group:[] };
     } else if (type === "data") {
       newItem = { id: Date.now(), type: "data", value: "", jsonKeys: [] };
     } else if (type === "dateRange") {
