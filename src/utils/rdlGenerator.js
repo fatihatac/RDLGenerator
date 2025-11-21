@@ -26,9 +26,8 @@ function generateRDL(items) {
   const NUMBER_COLUMN_WIDTH = getMaxCharWidth(null, null, String(rowCount));
 
   if (tableItem) {
-    // Override width for row number column for dynamic sizing
-    tableItem.columns = tableItem.columns.map(col => {
-      if (col.mappedField === 'RowNumber') {
+    tableItem.columns = tableItem.columns.map((col) => {
+      if (col.mappedField === "RowNumber") {
         return { ...col, width: NUMBER_COLUMN_WIDTH };
       }
       return col;
@@ -45,13 +44,19 @@ function generateRDL(items) {
     }
   });
 
-  // const TOTAL_REPORT_WIDTH = maxColumns > 0 ? maxColumns * Layout.COLUMN_WIDTH : 468; //pt
+  console.log(tableItem);
+  
+
   let totalTableWidth = 0;
   if (tableItem && tableItem.columns.length > 0) {
-    totalTableWidth = tableItem.columns.reduce(
-      (sum, col) => sum + (Number(col.width) || 72),
-      0
-    );
+    const columnsWidth = tableItem.columns.reduce((sum, col) => sum + (Number(col.width) || 72),0);
+    let groupsWidth = 0
+
+    if (tableItem.groups && tableItem.groups.length > 0) {
+      groupsWidth = tableItem.groups.length * 72
+    }
+
+    totalTableWidth = columnsWidth + groupsWidth
   } else {
     totalTableWidth = 468;
   }
@@ -105,6 +110,9 @@ function generateRDL(items) {
       }
 
       if (item.type === "table") {
+        const group1 = item.groups[0];
+        console.log(group1);
+
         const processedColumns = item.columns;
         const columnsXml = processedColumns
           .map(
@@ -170,12 +178,13 @@ function generateRDL(items) {
                               </Style>
                             </Paragraph>
                         </Paragraphs>
-                        ${ col.mappedField !== "RowNumber" &&                     
-                             `<UserSort>
+                        ${
+                          col.mappedField !== "RowNumber" &&
+                          `<UserSort>
                                <SortExpression>=Fields!${col.mappedField}.Value</SortExpression>
                                <SortExpressionScope>Details</SortExpressionScope>
-                             </UserSort>` 
-                          }    
+                             </UserSort>`
+                        }    
               </Textbox>
                 <ColSpan>1</ColSpan>
                 <RowSpan>1</RowSpan>
@@ -195,7 +204,9 @@ function generateRDL(items) {
                   <Width>${col.width}pt</Width>
                   <Style>
                     <FontSize>10.00003pt</FontSize>
-                    <VerticalAlign>${Layout.COLUMN_TEXT_VERTICAL_ALIGN}</VerticalAlign>
+                    <VerticalAlign>${
+                      Layout.COLUMN_TEXT_VERTICAL_ALIGN
+                    }</VerticalAlign>
                     <PaddingLeft>2pt</PaddingLeft>
                     <PaddingRight>2pt</PaddingRight>
                     <PaddingTop>2pt</PaddingTop>
@@ -225,7 +236,9 @@ function generateRDL(items) {
                     </TextRuns>
                     <Style>
                       <FontSize>10.00003pt</FontSize>
-                      <TextAlign>${Layout.COLUMN_TEXT_HORIZONTAL_ALIGN}</TextAlign>
+                      <TextAlign>${
+                        Layout.COLUMN_TEXT_HORIZONTAL_ALIGN
+                      }</TextAlign>
                     </Style>
                   </Paragraph>
                 </Paragraphs>
@@ -237,6 +250,130 @@ function generateRDL(items) {
           )
           .join("");
 
+        const generateGroupHierarchy = (groups) => {
+          if (!groups || groups.length === 0) {
+            console.log("grup yok");
+          }
+
+          const group = groups[0];
+          const remainingGroups = groups.slice(1);
+          console.log(group);
+          console.log(remainingGroups);
+
+          return `<TablixMembers>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>72pt</Size>
+                    <CellContents>
+                      <Textbox Name="TextBox_${group.name}">
+                        <Left>0in</Left>
+                        <Top>0in</Top>
+                        <Height>18.6pt</Height>
+                        <Width>72pt</Width>
+                        <Style>
+                          <FontSize>10.00003pt</FontSize>
+                          <VerticalAlign>Middle</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                        </Style>
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>${group.mappedField}</Value>
+                                <Style>
+                                  <FontFamily>Trebuchet MS</FontFamily>
+                                  <FontSize>7.50003pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>black</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <FontSize>10.00003pt</FontSize>
+                              <TextAlign>Left</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <!-- group data cell -->
+                <TablixMember>
+                  <Group Name="sicilId1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!${group.mappedField}.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!${group.mappedField}.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>72pt</Size>
+                    <CellContents>
+                      <Textbox Name="${group.name}">
+                        <Left>0in</Left>
+                        <Top>0in</Top>
+                        <Height>18.6pt</Height>
+                        <Width>72pt</Width>
+                        <Style>
+                          <FontSize>10.00003pt</FontSize>
+                          <VerticalAlign>Middle</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                          <Border>
+                            <Color>LightGrey</Color>
+                            <Style>Solid</Style>
+                          </Border>
+                        </Style>
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Fields!${group.mappedField}.Value</Value>
+                                <Style>
+                                  <FontFamily>Trebuchet MS</FontFamily>
+                                  <FontSize>6.75002pt</FontSize>
+                                  <Color>black</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <FontSize>10.00003pt</FontSize>
+                              <TextAlign>Left</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember>
+                      <Group Name="Details" />
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>`;
+        };
 
         return `<Tablix Name="Tablix_${item.id}">
             <Left>0pt</Left>
@@ -275,14 +412,7 @@ function generateRDL(items) {
             </TablixMembers>
           </TablixColumnHierarchy>
           <TablixRowHierarchy>
-            <TablixMembers>
-              <TablixMember>
-                <KeepWithGroup>After</KeepWithGroup>
-              </TablixMember>
-              <TablixMember>
-                <Group Name="Details" />
-              </TablixMember>
-            </TablixMembers>
+            ${generateGroupHierarchy(item.groups)}
           </TablixRowHierarchy>
         </Tablix>`;
       }
@@ -342,8 +472,7 @@ function generateRDL(items) {
         const mappedColumn = tableItem.columns.find(
           (col) => col.mappedField === key
         );
-        const typeName = mappedColumn ? mappedColumn.dataType : "System.String";   
-             
+        const typeName = mappedColumn ? mappedColumn.dataType : "System.String";
 
         return `<Field Name="${key}">
         <DataField>${key}</DataField>
@@ -359,7 +488,6 @@ function generateRDL(items) {
     };
 
     const connectStringContent = JSON.stringify(connectStringData);
-    
 
     const dataSourceXml = `<DataSources>
       <DataSource Name="DataSource1">

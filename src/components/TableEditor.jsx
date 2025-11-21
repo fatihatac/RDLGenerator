@@ -4,7 +4,6 @@ function TableEditor({ item, updateItem, deleteItem, reportItems }) {
 
   console.log(item.groups);
   
-
   const addGroup = () => {
     const newGroup = { id: Date.now(), name: `Group${item.groups?.length + 1}`, mappedField: null }
     updateItem(item.id, { groups: [...(item.groups || []), newGroup] });
