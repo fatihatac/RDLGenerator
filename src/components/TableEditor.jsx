@@ -31,10 +31,8 @@ function TableEditor({ item, updateItem, deleteItem, reportItems }) {
     updateItem(item.id, { columns: newCols });
   };
 
-  const dataItem = reportItems.filter(i => i.type === 'table')
-  console.log(dataItem)
+  const dataItem = reportItems.find(i => i.type === 'data')
   
-
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
       <div className="flex justify-between items-center mb-3">
