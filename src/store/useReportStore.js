@@ -15,7 +15,7 @@ const useReportStore = create((set, get) => ({
     }
 
     if (newItem) {
-      set((state) => [...state.reportItems, newItem]);
+      set((state) => ({reportItems : [...state.reportItems, newItem]}));
     }
   },
 
