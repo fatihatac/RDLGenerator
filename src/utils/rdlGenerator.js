@@ -253,6 +253,11 @@ function generateRDL(items) {
         const generateGroupHierarchy = (groups) => {
           if (!groups || groups.length === 0) {
             console.log("grup yok");
+            return `<TablixMembers>
+                      <TablixMember>
+                         <Group Name="Details" />
+                      </TablixMember>
+                    </TablixMembers>`;
           }
 
           const group = groups[0];
