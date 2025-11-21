@@ -6,8 +6,12 @@ import DateRangeEditor from './DateRangeEditor';
 import { useEffect } from 'react';
 import getMaxCharWidth from '../utils/getMaxCharWidth';
 import fixColumnNames from '../utils/fixColumnNames';
+import useReportStore from '../store/useReportStore';
 
-function MainPanel({ reportItems, updateItem, deleteItem }) {
+function MainPanel() {
+
+    const { reportItems,updateItem, deleteItem } = useReportStore();
+
     const tableItem = reportItems.find(item => item.type === 'table');
     const dataItem = reportItems.find(item => item.type === 'data');
 

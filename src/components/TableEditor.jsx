@@ -1,8 +1,6 @@
 import { Plus, Trash2, Table, X, ListOrdered, Group } from 'lucide-react';
 
 function TableEditor({ item, updateItem, deleteItem, reportItems }) {
-
-  console.log(item.groups);
   
   const addGroup = () => {
     const newGroup = { id: Date.now(), name: `Group${item.groups?.length + 1}`, mappedField: null }
