@@ -1,7 +1,7 @@
-import AddTitleButton from './AddTitleButton';
-import AddTableButton from './AddTableButton';
-import AddDataButton from './AddDataButton';
-import AddDateRangeButton from './AddDateRangeButton';
+import AddTitleButton from '../actions/AddTitleButton';
+import AddTableButton from '../actions/AddTableButton';
+import AddDataButton from '../actions/AddDataButton';
+import AddDateRangeButton from '../actions/AddDateRangeButton';
 
 
 function SidePanel({ addItem }) {

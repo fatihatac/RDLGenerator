@@ -1,7 +1,7 @@
-import TextboxEditor from './TextboxEditor';
-import TableEditor from './TableEditor';
-import JSONEditor from './JSONEditor';
-import DateRangeEditor from './DateRangeEditor';
+import TextboxEditor from '../editors/TextboxEditor';
+import TableEditor from '../editors/TableEditor';
+import JSONEditor from '../editors/JSONEditor';
+import DateRangeEditor from '../editors/DateRangeEditor';
 
 function ReportItemRenderer({ 
     item, 

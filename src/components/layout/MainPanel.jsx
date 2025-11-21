@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import getMaxCharWidth from '../utils/getMaxCharWidth';
 import fixColumnNames from '../utils/fixColumnNames';
-import EmptyReport from './EmptyReport';
-import ReportHeader from './ReportHeader';
-import ReportItemRenderer from './ReportItemRenderer';
+import EmptyReport from '../report/EmptyReport';
+import ReportHeader from '../report/ReportHeader';
+import ReportItemRenderer from '../report/ReportItemRenderer';
 
 
 function MainPanel({ reportItems, updateItem, deleteItem }) {
@@ -103,10 +103,10 @@ export default MainPanel;
 
 
 // import { LayoutTemplate } from 'lucide-react';
-// import TextboxEditor from './TextboxEditor';
-// import TableEditor from './TableEditor';
-// import JSONEditor from './JSONEditor';
-// import DateRangeEditor from './DateRangeEditor';
+// import TextboxEditor from '../editors/TextboxEditor';
+// import TableEditor from '../editors/TableEditor';
+// import JSONEditor from '../editors/JSONEditor';
+// import DateRangeEditor from '../editors/DateRangeEditor';
 // import { useEffect } from 'react';
 // import getMaxCharWidth from '../utils/getMaxCharWidth';
 // import fixColumnNames from '../utils/fixColumnNames';
