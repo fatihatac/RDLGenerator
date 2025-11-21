@@ -412,7 +412,15 @@ function generateRDL(items) {
             </TablixMembers>
           </TablixColumnHierarchy>
           <TablixRowHierarchy>
-            ${generateGroupHierarchy(item.groups)}
+            ${
+              item.groups && item.groups.length > 0
+                ? generateGroupHierarchy(item.groups)
+                : `<TablixMembers>
+                  <TablixMember>
+                    <Group Name="Details" />
+                  </TablixMember>
+                </TablixMembers>`
+            }
           </TablixRowHierarchy>
         </Tablix>`;
       }
