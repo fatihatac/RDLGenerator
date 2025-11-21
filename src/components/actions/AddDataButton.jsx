@@ -1,6 +1,5 @@
 import { FileBraces } from 'lucide-react';
 
-
 function AddDataButton({ onClick }) {
 
     return (<button
