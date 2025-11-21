@@ -12,7 +12,7 @@ function useReportItems() {
     if (type === "title") {
       newItem = { id: Date.now(), type: "title", value: "" };
     } else if (type === "table") {
-      newItem = { id: Date.now(), type: "table", columns: [], group:[] };
+      newItem = { id: Date.now(), type: "table", columns: [], groups:[] };
     } else if (type === "data") {
       newItem = { id: Date.now(), type: "data", value: "", jsonKeys: [] };
     } else if (type === "dateRange") {
@@ -111,6 +111,7 @@ function useReportItems() {
           type: "table",
           columns: newColumns,
           dataSourceId: updatedItem.id,
+          groups:[]
         });
       } else if (existingTable.columns.length === 0) {
         itemsToUpdate[existingTable.id] = {
