@@ -112,10 +112,9 @@ function generateRDL(items) {
       }
 
       if (item.type === "table") {
-        const group1 = item.groups[0];
-        console.log(group1);
 
         const processedColumns = item.columns;
+        console.log(processedColumns);
         const columnsXml = processedColumns
           .map(
             (col) => `<TablixColumn>
