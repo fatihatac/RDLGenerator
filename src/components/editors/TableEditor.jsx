@@ -1,52 +1,21 @@
 import { Plus, Trash2, Table, X, ListOrdered, Group } from 'lucide-react';
+import useReportStore from '../../store/useReportStore';
 
-function TableEditor({ item, updateItem, deleteItem, reportItems }) {
-  
-  const addGroup = () => {
-    const newGroup = { id: Date.now(), name: `Group${item.groups?.length + 1}`, mappedField: null }
-    updateItem(item.id, { groups: [...(item.groups || []), newGroup] });
-  };
+function TableEditor({ item }) {
+  const {
+    deleteItem,
+    reportItems,
+    addColumn,
+    removeColumn,
+    updateColumnName,
+    addRowNumberColumn,
+    addGroup,
+    removeGroup,
+    updateGroupName,
+    updateGroupMappedField,
+  } = useReportStore();
 
-  const updateGroupName = (groupId, newName) => {
-    const newGroups = item.groups.map(g => g.id === groupId ? { ...g, name: newName } : g);
-    updateItem(item.id, { groups: newGroups });
-  };
-
-  const updateGroupMappedField = (groupId, newMappedField) => {
-    const newGroups = item.groups.map(g => g.id === groupId ? { ...g, mappedField: newMappedField } : g);
-    updateItem(item.id, { groups: newGroups });
-  };
-
-  const removeGroup = (groupId) => {
-    const newGroups = item.groups.filter(g => g.id !== groupId);
-    updateItem(item.id, { groups: newGroups });
-  };
-
-  const addRowNumberColumn = () => {
-    if (item.columns.find(c => c.mappedField === 'RowNumber')) {
-      alert('Satır numarası sütunu zaten ekli.');
-      return;
-    }
-    const newCol = { id: Date.now(), name: 'No', mappedField: 'RowNumber', width: 30 };
-    updateItem(item.id, { columns: [newCol, ...item.columns] });
-  };
-
-  const addColumn = () => {
-    const newCol = { id: Date.now(), name: `Sütun ${item.columns.length + 1}`, mappedField: null };
-    updateItem(item.id, { columns: [...item.columns, newCol] });
-  };
-
-  const updateColumnName = (colId, newName) => {
-    const newCols = item.columns.map(c => c.id === colId ? { ...c, name: newName } : c);
-    updateItem(item.id, { columns: newCols });
-  };
-
-  const removeColumn = (colId) => {
-    const newCols = item.columns.filter(c => c.id !== colId);
-    updateItem(item.id, { columns: newCols });
-  };
-
-  const dataItem = reportItems.find(i => i.type === 'data')
+  const dataItem = reportItems.find(i => i.type === 'data');
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -71,11 +40,11 @@ function TableEditor({ item, updateItem, deleteItem, reportItems }) {
               <input
                 type="text"
                 value={col.name}
-                onChange={(e) => updateColumnName(col.id, e.target.value)}
+                onChange={(e) => updateColumnName(item.id, col.id, e.target.value)}
                 className="flex-1 p-1.5 text-sm border border-gray-300 rounded focus:border-green-500 outline-none"
                 placeholder="Alan Adı (Örn: Ad)"
               />
-              <button onClick={() => removeColumn(col.id)} className="text-gray-400 hover:text-red-500">
+              <button onClick={() => removeColumn(item.id, col.id)} className="text-gray-400 hover:text-red-500">
                 <X size={16} />
               </button>
             </div>
@@ -94,13 +63,13 @@ function TableEditor({ item, updateItem, deleteItem, reportItems }) {
               <input
                 type="text"
                 value={group.name}
-                onChange={(e) => updateGroupName(group.id, e.target.value)}
+                onChange={(e) => updateGroupName(item.id, group.id, e.target.value)}
                 className="flex-1 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
                 placeholder="Grup Adı (Örn: Bölüm)"
               />
               <select
                 value={group.mappedField || ''}
-                onChange={(e) => updateGroupMappedField(group.id, e.target.value || null)}
+                onChange={(e) => updateGroupMappedField(item.id, group.id, e.target.value || null)}
                 className="w-32 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
               >
                 <option value="">Alan Seç</option>
@@ -108,7 +77,7 @@ function TableEditor({ item, updateItem, deleteItem, reportItems }) {
                   <option key={key} value={key}>{key}</option>
                 ))}
               </select>
-              <button onClick={() => removeGroup(group.id)} className="text-gray-400 hover:text-red-500"
+              <button onClick={() => removeGroup(item.id, group.id)} className="text-gray-400 hover:text-red-500"
               >
                 <X size={16} />
               </button>
@@ -119,21 +88,21 @@ function TableEditor({ item, updateItem, deleteItem, reportItems }) {
 
       <div className="flex items-center gap-4">
         <button
-          onClick={addColumn}
+          onClick={() => addColumn(item.id)}
           className="text-sm flex items-center text-green-600 hover:text-green-700 font-medium"
         >
           <Plus size={16} className="mr-1" /> Sütun Ekle
         </button>
         |
         <button
-          onClick={addRowNumberColumn}
+          onClick={() => addRowNumberColumn(item.id)}
           className="text-sm flex items-center text-blue-600 hover:text-blue-700 font-medium"
         >
           <ListOrdered size={16} className="mr-1" /> Satır Numarası Ekle
         </button>
         |
         <button
-          onClick={addGroup}
+          onClick={() => addGroup(item.id)}
           className='text-sm flex items-center text-gray-600 hover:text-gray-700 font-medium'
         >
           <Group size={16} className='mr-1' /> Grup Ekle
