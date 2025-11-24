@@ -1,5 +1,5 @@
 import { Trash2, FileText, Link, CheckSquare } from 'lucide-react';
-import { EXCLUDED_KEYS } from '../constants/appConstants';
+import { EXCLUDED_KEYS } from '../../constants/appConstants';
 
 function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColumnMapping, onUpdateColumnName, onDeleteColumn }) {
 

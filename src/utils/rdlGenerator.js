@@ -45,18 +45,20 @@ function generateRDL(items) {
   });
 
   console.log(tableItem);
-  
 
   let totalTableWidth = 0;
   if (tableItem && tableItem.columns.length > 0) {
-    const columnsWidth = tableItem.columns.reduce((sum, col) => sum + (Number(col.width) || 72),0);
-    let groupsWidth = 0
+    const columnsWidth = tableItem.columns.reduce(
+      (sum, col) => sum + (Number(col.width) || 72),
+      0
+    );
+    let groupsWidth = 0;
 
     if (tableItem.groups && tableItem.groups.length > 0) {
-      groupsWidth = tableItem.groups.length * 72
+      groupsWidth = tableItem.groups.length * 72;
     }
 
-    totalTableWidth = columnsWidth + groupsWidth
+    totalTableWidth = columnsWidth + groupsWidth;
   } else {
     totalTableWidth = 468;
   }
@@ -110,10 +112,8 @@ function generateRDL(items) {
       }
 
       if (item.type === "table") {
-        const group1 = item.groups[0];
-        console.log(group1);
-
         const processedColumns = item.columns;
+        console.log(processedColumns);
         const columnsXml = processedColumns
           .map(
             (col) => `<TablixColumn>
@@ -255,15 +255,20 @@ function generateRDL(items) {
             console.log("grup yok");
             return `<TablixMembers>
                       <TablixMember>
+<<<<<<< HEAD
                          <Group Name="Details" />
+=======
+                        <KeepWithGroup>After</KeepWithGroup>
+                      </TablixMember>
+                      <TablixMember>
+                        <Group Name="Details" />
+>>>>>>> componentRefactor
                       </TablixMember>
                     </TablixMembers>`;
           }
 
           const group = groups[0];
-          const remainingGroups = groups.slice(1);
-          console.log(group);
-          console.log(remainingGroups);
+          //const remainingGroups = groups.slice(1);
 
           return `<TablixMembers>
                 <TablixMember>
@@ -316,7 +321,6 @@ function generateRDL(items) {
                   </TablixMembers>
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
-                <!-- group data cell -->
                 <TablixMember>
                   <Group Name="sicilId1">
                     <GroupExpressions>

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { generateRDL } from "../utils/rdlGenerator";
 
 const useReportStore = create((set, get) => ({
   reportItems: [],
@@ -15,10 +16,9 @@ const useReportStore = create((set, get) => ({
     }
 
     if (newItem) {
-      set((state) => ({reportItems : [...state.reportItems, newItem]}));
+      set((state) => ({ reportItems: [...state.reportItems, newItem] }));
     }
   },
-
   deleteItem: (id) => {
     const { reportItems } = get();
     const itemToDelete = reportItems.find((item) => item.id === id);
@@ -39,6 +39,30 @@ const useReportStore = create((set, get) => ({
         item.id === id ? { ...item, ...updates } : item
       ),
     }));
+  },
+
+  fileName:'',
+  setFileName: (newFileName) => set({fileName:newFileName}),
+
+
+  downloadReport: (fileName) => {
+    const {reportItems} = get()
+    const titleItem = reportItems.find((item) => item.type === "title");
+    const reportTitle = titleItem ? titleItem.value : "TaslakRapor";
+
+    let reportName =
+      fileName && fileName.trim() !== "" ? fileName.trim() : reportTitle;
+
+    const rdlContent = generateRDL(reportItems);
+
+    const blob = new Blob([rdlContent], { type: "application/xml" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = `${reportName.toUpperCase()}.rdl`;
+
+    a.click();
   },
 }));
 

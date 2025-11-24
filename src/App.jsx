@@ -1,6 +1,6 @@
-import Header from './components/Header';
-import SidePanel from './components/SidePanel';
-import MainPanel from './components/MainPanel';
+import Header from './components/layout/Header';
+import SidePanel from './components/layout/SidePanel';
+import MainPanel from './components/layout/MainPanel';
 import useReportItems from './hooks/useReportItems';
 
 function App() {
