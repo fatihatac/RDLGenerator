@@ -2,11 +2,7 @@ import { Download } from 'lucide-react';
 import useReportStore from '../../store/useReportStore';
 
 const DownloadActions = () => {
-    const {downloadReport,fileName, setFileName} = useReportStore() 
-
-    const handleDownload = () => {
-        downloadReport(fileName);
-    };
+    const {downloadReport, fileName, setFileName} = useReportStore() 
 
     return (
         <div className="flex items-center gap-3">
@@ -24,7 +20,7 @@ const DownloadActions = () => {
                 </span>
             </div>
             <button
-                onClick={handleDownload}
+                onClick={()=> downloadReport(fileName)}
                 className="bg-white text-[#9D201B] hover:bg-[#fee2e2] px-4 py-2 rounded-md flex items-center font-medium transition-colors shadow-sm active:scale-95"
             >
                 <Download size={18} className="mr-2" />
