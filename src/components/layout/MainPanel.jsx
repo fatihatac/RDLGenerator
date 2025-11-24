@@ -4,10 +4,12 @@ import fixColumnNames from '../../utils/fixColumnNames';
 import EmptyReport from '../report/EmptyReport';
 import ReportHeader from '../report/ReportHeader';
 import ReportItemRenderer from '../report/ReportItemRenderer';
+import useReportStore from '../../store/useReportStore';
 
 
 
-function MainPanel({ reportItems, updateItem, deleteItem }) {
+function MainPanel() {
+    const {reportItems, updateItem, deleteItem} = useReportStore()
     const tableItem = reportItems.find(item => item.type === 'table');
     const dataItem = reportItems.find(item => item.type === 'data');
 
@@ -62,23 +64,17 @@ function MainPanel({ reportItems, updateItem, deleteItem }) {
         const newCols = tableItem.columns.filter(c => c.id !== columnId);
         updateItem(tableItem.id, { columns: newCols });
     };
-    // ------------------------------------------
 
     return (
         <main className="flex-1 p-8 overflow-y-auto">
-            <div className="max-w-3xl mx-auto">
-                
-                {/* 1. Başlık */}
+            <div className="max-w-3xl mx-auto">       
                 <ReportHeader count={reportItems.length} />
-
-                {/* 2. İçerik */}
                 {reportItems.length === 0 ? (
                     <EmptyReport />
                 ) : (
                     <div className="space-y-6">
                         {reportItems.map((item) => (
                             <div key={item.id}>
-                                {/* 3. Item Renderer */}
                                 <ReportItemRenderer
                                     item={item}
                                     updateItem={updateItem}

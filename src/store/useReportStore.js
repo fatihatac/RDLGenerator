@@ -4,6 +4,8 @@ import { generateRDL } from "../utils/rdlGenerator";
 const useReportStore = create((set, get) => ({
   reportItems: [],
   addItem: (type) => {
+    console.log("addItem");
+    
     let newItem;
     if (type === "title") {
       newItem = { id: Date.now(), type: "title", value: "" };
@@ -20,6 +22,7 @@ const useReportStore = create((set, get) => ({
     }
   },
   deleteItem: (id) => {
+    console.log("deleteItem");
     const { reportItems } = get();
     const itemToDelete = reportItems.find((item) => item.id === id);
 
@@ -33,19 +36,26 @@ const useReportStore = create((set, get) => ({
     }
     set({ reportItems: newReportItems });
   },
-  updateItem: (id, updates) => {
-    set((state) => ({
-      reportItems: state.reportItems.map((item) =>
-        item.id === id ? { ...item, ...updates } : item
-      ),
-    }));
+  updateItem:(id, updates) =>{
+    console.log("update");
+    
   },
+
+  // updateItem: (id, updates) => {
+  //   console.log("updateItem");
+  //   set((state) => ({
+  //     reportItems: state.reportItems.map((item) =>
+  //       item.id === id ? { ...item, ...updates } : item
+  //     ),
+  //   }));
+  // },
 
   fileName:'',
   setFileName: (newFileName) => set({fileName:newFileName}),
 
 
   downloadReport: (fileName) => {
+    console.log("downloadReport");
     const {reportItems} = get()
     const titleItem = reportItems.find((item) => item.type === "title");
     const reportTitle = titleItem ? titleItem.value : "TaslakRapor";

@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { Download } from 'lucide-react';
+import useReportStore from '../../store/useReportStore';
 
-const DownloadActions = ({ downloadReport }) => { 
-    const [fileName, setFileName] = useState('');
+const DownloadActions = () => {
+    const {downloadReport,fileName, setFileName} = useReportStore() 
 
     const handleDownload = () => {
         downloadReport(fileName);

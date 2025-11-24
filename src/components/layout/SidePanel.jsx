@@ -2,9 +2,10 @@ import AddTitleButton from '../actions/AddTitleButton';
 import AddTableButton from '../actions/AddTableButton';
 import AddDataButton from '../actions/AddDataButton';
 import AddDateRangeButton from '../actions/AddDateRangeButton';
+import useReportStore from '../../store/useReportStore';
 
-
-function SidePanel({ addItem }) {
+function SidePanel() {
+    const {addItem} = useReportStore()
 
     return (
         <aside className="w-full md:w-64 bg-white border-r border-gray-200 p-6 flex flex-col gap-4 shadow-inner z-0">
