@@ -4,7 +4,7 @@ import AddDataButton from '../actions/AddDataButton';
 import AddDateRangeButton from '../actions/AddDateRangeButton';
 
 
-function SidePanel({ addItem, reportItems }) {
+function SidePanel({ addItem }) {
 
     return (
         <aside className="w-full md:w-64 bg-white border-r border-gray-200 p-6 flex flex-col gap-4 shadow-inner z-0">

@@ -2,17 +2,16 @@ import { FileBraces } from 'lucide-react';
 import BaseAddItemButton from '../ui/BaseAddButton';
 
 function AddDataButton({ onClick }) {
-
-    return (<BaseAddItemButton
+    return (
+        <BaseAddItemButton
             onClick={onClick}
             icon={<FileBraces size={20} />}
-            iconColor="bg-blue-100 text-blue-600"
-            bgColor="bg-gray-50"
-            hoverBgColor="bg-blue-50"
-            hoverBorderColor="blue-300"
-            title="Metin Kutusu"
-            description="Başlık veya etiket için"
-        />)
+            title="JSON Datasource"
+            description="Veri eklemek için"
+            className="bg-gray-50 hover:bg-yellow-50 hover:border-yellow-300"
+            iconClassName="bg-yellow-100 text-yellow-600 group-hover:bg-yellow-200"
+        />
+    );
 }
 
 export default AddDataButton;

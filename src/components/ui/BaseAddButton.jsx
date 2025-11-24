@@ -1,10 +1,18 @@
-function BaseAddItemButton({ icon, iconColor, bgColor, title, description, onClick, hoverBgColor, hoverBorderColor }) {
+function BaseAddItemButton({
+    icon,
+    title,
+    description,
+    onClick,
+    className,
+    iconClassName
+}) {
+
     return (
         <button
             onClick={onClick}
-            className={`flex items-center p-3 ${bgColor} hover:${hoverBgColor} hover:border-${hoverBorderColor} border border-gray-200 rounded-lg transition-all text-left group`}
+            className={`flex items-center p-3 border border-gray-200 rounded-lg transition-all text-left group ${className}`}
         >
-            <div className={`p-2 rounded mr-3 ${iconColor} group-hover:${hoverBgColor}`}>
+            <div className={`p-2 rounded mr-3 transition-colors ${iconClassName}`}>
                 {icon}
             </div>
             <div>
@@ -15,5 +23,6 @@ function BaseAddItemButton({ icon, iconColor, bgColor, title, description, onCli
     );
 }
 
-export default BaseAddItemButton
+export default BaseAddItemButton;
+
 
