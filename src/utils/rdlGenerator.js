@@ -44,7 +44,6 @@ function generateRDL(items) {
     }
   });
 
-  console.log(tableItem);
 
   let totalTableWidth = 0;
   if (tableItem && tableItem.columns.length > 0) {
@@ -113,7 +112,6 @@ function generateRDL(items) {
 
       if (item.type === "table") {
         const processedColumns = item.columns;
-        console.log(processedColumns);
         const columnsXml = processedColumns
           .map(
             (col) => `<TablixColumn>
@@ -252,7 +250,6 @@ function generateRDL(items) {
 
         const generateGroupHierarchy = (groups) => {
           if (!groups || groups.length === 0) {
-            console.log("grup yok");
             return `<TablixMembers>
                       <TablixMember>
                         <KeepWithGroup>After</KeepWithGroup>
