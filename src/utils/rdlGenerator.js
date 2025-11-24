@@ -112,7 +112,6 @@ function generateRDL(items) {
       }
 
       if (item.type === "table") {
-
         const processedColumns = item.columns;
         console.log(processedColumns);
         const columnsXml = processedColumns
@@ -256,15 +255,16 @@ function generateRDL(items) {
             console.log("grup yok");
             return `<TablixMembers>
                       <TablixMember>
+                        <KeepWithGroup>After</KeepWithGroup>
+                      </TablixMember>
+                      <TablixMember>
                         <Group Name="Details" />
                       </TablixMember>
                     </TablixMembers>`;
           }
 
           const group = groups[0];
-          const remainingGroups = groups.slice(1);
-          console.log(group);
-          console.log(remainingGroups);
+          //const remainingGroups = groups.slice(1);
 
           return `<TablixMembers>
                 <TablixMember>
@@ -317,7 +317,6 @@ function generateRDL(items) {
                   </TablixMembers>
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
-                <!-- group data cell -->
                 <TablixMember>
                   <Group Name="sicilId1">
                     <GroupExpressions>
@@ -374,6 +373,9 @@ function generateRDL(items) {
                   </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
+                      <KeepWithGroup>After</KeepWithGroup>
+                    </TablixMember>
+                    <TablixMember>
                       <Group Name="Details" />
                     </TablixMember>
                   </TablixMembers>
@@ -418,11 +420,6 @@ function generateRDL(items) {
             </TablixMembers>
           </TablixColumnHierarchy>
           <TablixRowHierarchy>
-            <TablixMembers>
-              <TablixMember>
-                <KeepWithGroup>After</KeepWithGroup>
-              </TablixMember>
-            </TablixMembers>
             ${generateGroupHierarchy(item.groups)}
           </TablixRowHierarchy>
         </Tablix>`;
