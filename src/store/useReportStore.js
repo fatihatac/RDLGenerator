@@ -3,7 +3,6 @@ import { generateRDL } from "../utils/rdlGenerator";
 
 const useReportStore = create((set, get) => ({
   reportItems: [],
-  fileName:'',
   addItem: (type) => {
     let newItem;
     if (type === "title") {
@@ -20,7 +19,6 @@ const useReportStore = create((set, get) => ({
       set((state) => ({ reportItems: [...state.reportItems, newItem] }));
     }
   },
-
   deleteItem: (id) => {
     const { reportItems } = get();
     const itemToDelete = reportItems.find((item) => item.id === id);
@@ -42,6 +40,10 @@ const useReportStore = create((set, get) => ({
       ),
     }));
   },
+
+  fileName:'',
+  setFileName: (newFileName) => set({fileName:newFileName}),
+
 
   downloadReport: (fileName) => {
     const {reportItems} = get()
