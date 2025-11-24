@@ -8,10 +8,8 @@ function ReportItemRenderer({
     updateItem, 
     deleteItem, 
     reportItems,
-    // Data ve Tablo ilişki propsları
     tableItem,
     dataItem,
-    // Handlerlar
     onUpdateTableColumnMapping,
     onUpdateColumnName,
     onDeleteColumn

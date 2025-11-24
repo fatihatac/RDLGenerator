@@ -3,6 +3,7 @@ import { generateRDL } from "../utils/rdlGenerator";
 
 const useReportStore = create((set, get) => ({
   reportItems: [],
+  fileName:'',
   addItem: (type) => {
     let newItem;
     if (type === "title") {
