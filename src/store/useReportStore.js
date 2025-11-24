@@ -44,7 +44,6 @@ const useReportStore = create((set, get) => ({
   updateItem: (id, updates) => {
     const currentItems = get().reportItems;
 
-    // Apply the initial update to the target item
     let updatedItems = currentItems.map((item) => {
       if (item.id === id) {
         return { ...item, ...updates };
@@ -54,7 +53,6 @@ const useReportStore = create((set, get) => ({
 
     const updatedItem = updatedItems.find((item) => item.id === id);
 
-    // If the updated item is a 'data' item, handle its side-effects
     if (updatedItem && updatedItem.type === "data") {
       updatedItems = handleDataUpdateSideEffects(updatedItem, updatedItems);
     }
