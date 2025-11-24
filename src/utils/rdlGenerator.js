@@ -373,9 +373,6 @@ function generateRDL(items) {
                   </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
-                      <KeepWithGroup>After</KeepWithGroup>
-                    </TablixMember>
-                    <TablixMember>
                       <Group Name="Details" />
                     </TablixMember>
                   </TablixMembers>
