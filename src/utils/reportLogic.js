@@ -1,76 +1,64 @@
 import { getDataType } from "./getDataType";
 import fixColumnNames from "./fixColumnNames";
 import getMaxCharWidth from "./getMaxCharWidth";
+import { EXCLUDED_KEYS } from "../constants/appConstants"; // Import EXCLUDED_KEYS
+import generateId from "./generateId"; // Import generateId
 
-/**
- * Handles the side-effects of updating a 'data' item.
- * It generates a title and a table if they don't exist,
- * and cleans up related items if the JSON data is removed or invalid.
- * @param {object} updatedItem - The 'data' item that was just updated.
- * @param {Array} allItems - The entire list of report items.
- * @returns {Array} The new, transformed list of report items.
- */
-export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
-  const isValueEmpty = updatedItem.value.trim() === "";
-  let parsedData;
-
+// Helper function to safely parse JSON
+const parseJson = (value) => {
+  if (!value || value.trim() === "") return null;
   try {
-    if (!isValueEmpty) {
-      parsedData = JSON.parse(updatedItem.value);
-    }
+    return JSON.parse(value);
   } catch (e) {
     console.error("JSON parse error:", e.message);
+    return null;
   }
+};
 
-  // If JSON is empty or invalid, remove related auto-generated items
-  if (isValueEmpty || !parsedData) {
-    const itemsToKeep = allItems.filter(
-      (item) => item.dataSourceId !== updatedItem.id
-    );
-    // Find the original data item to ensure it's not removed
-    const currentDataItem = allItems.find((item) => item.id === updatedItem.id);
-    return [
-      ...itemsToKeep.filter((item) => item.id !== updatedItem.id),
-      currentDataItem,
-    ];
-  }
+// Helper function to cleanup stale items
+const cleanupStaleItems = (updatedItem, allItems) => {
+  const itemsToKeep = allItems.filter(
+    (item) => item.dataSourceId !== updatedItem.id && item.id !== updatedItem.id
+  );
+  return [...itemsToKeep, updatedItem];
+};
 
-  // --- If JSON is valid, proceed with creating/updating other items ---
-
-  let itemsToAdd = [];
-  let itemsToUpdate = {};
-
-  // 1. Create Title if it doesn't exist
+// Helper function to get or create title item
+const getOrCreateTitleItem = (allItems, updatedItem, itemsToAdd) => {
   const titleExists = allItems.some((item) => item.type === "title");
   if (!titleExists) {
     itemsToAdd.push({
-      id: Date.now() + 1,
+      id: generateId(), // Use generateId()
       type: "title",
       value: "RAPOR_ADI",
       dataSourceId: updatedItem.id,
     });
   }
+};
 
-  // 2. Create or Update Table
-  const existingTable = allItems.find((item) => item.type === "table");
+// Helper function to generate table columns
+const generateTableColumns = (parsedData, jsonKeys) => {
   const firstRow = Array.isArray(parsedData) && parsedData.length > 0 ? parsedData[0] : {};
-  const jsonKeys = Object.keys(firstRow);
-  const columnsToMap = jsonKeys.filter((key) => !["TarihAralik"].includes(key));
+  const columnsToMap = jsonKeys.filter((key) => !EXCLUDED_KEYS.includes(key)); // Use EXCLUDED_KEYS
 
-  const newColumns = columnsToMap.map((key, index) => {
+  return columnsToMap.map((key, index) => {
     const fixedName = fixColumnNames(key);
     return {
-      id: Date.now() + index + 2,
+      id: generateId(), // Use generateId()
       name: fixedName,
       mappedField: key,
       dataType: getDataType(firstRow[key]),
       width: getMaxCharWidth(parsedData, key, fixedName),
     };
   });
+};
 
+// Helper function to get or create table item
+const getOrCreateTableItem = (allItems, updatedItem, newColumns, itemsToAdd, itemsToUpdate) => {
+  const existingTable = allItems.find((item) => item.type === "table");
   if (!existingTable) {
     itemsToAdd.push({
-      id: Date.now() + 2,
+      id: generateId(), // Use generateId()
       type: "table",
       columns: newColumns,
       dataSourceId: updatedItem.id,
@@ -84,15 +72,45 @@ export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
       groups: existingTable.groups || [],
     };
   }
+};
 
-  // 3. Update the data item itself with discovered keys
+
+/**
+ * Handles the side-effects of updating a 'data' item.
+ * It generates a title and a table if they don't exist,
+ * and cleans up related items if the JSON data is removed or invalid.
+ * @param {object} updatedItem - The 'data' item that was just updated.
+ * @param {Array} allItems - The entire list of report items.
+ * @returns {Array} The new, transformed list of report items.
+ */
+export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
+  const parsedData = parseJson(updatedItem.value);
+
+  // If JSON is empty or invalid, remove related auto-generated items
+  if (!parsedData) {
+    return cleanupStaleItems(updatedItem, allItems);
+  }
+
+  // --- If JSON is valid, proceed with creating/updating other items ---
+  let itemsToAdd = [];
+  let itemsToUpdate = {};
+
+  const firstRow = Array.isArray(parsedData) && parsedData.length > 0 ? parsedData[0] : {};
+  const jsonKeys = Object.keys(firstRow);
+
+  getOrCreateTitleItem(allItems, updatedItem, itemsToAdd);
+
+  const newColumns = generateTableColumns(parsedData, jsonKeys);
+  getOrCreateTableItem(allItems, updatedItem, newColumns, itemsToAdd, itemsToUpdate);
+
+  // Update the data item itself with discovered keys
   itemsToUpdate[updatedItem.id] = {
     ...updatedItem,
     jsonKeys: jsonKeys,
-    filteredJsonKeys: columnsToMap,
+    filteredJsonKeys: newColumns.map(col => col.mappedField), // Use mappedField from generated columns
   };
 
-  // 4. Combine all changes into the final list of items
+  // Combine all changes into the final list of items
   const finalReportItems = allItems
     .map((item) => (itemsToUpdate[item.id] ? { ...item, ...itemsToUpdate[item.id] } : item))
     .concat(itemsToAdd);

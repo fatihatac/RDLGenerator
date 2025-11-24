@@ -9,7 +9,7 @@ import useReportStore from '../../store/useReportStore';
 
 
 function MainPanel() {
-    const {reportItems, updateItem, deleteItem} = useReportStore()
+    const {reportItems, updateItem} = useReportStore()
     const tableItem = reportItems.find(item => item.type === 'table');
     const dataItem = reportItems.find(item => item.type === 'data');
 
@@ -20,7 +20,7 @@ function MainPanel() {
                 parsedData = JSON.parse(dataItem.value);
             } catch (e) {
                 console.error("Genişlik hesaplanırken JSON parse edilemedi:", e);
-                return; 
+                return;
             }
 
             if (!Array.isArray(parsedData)) return;
@@ -28,7 +28,7 @@ function MainPanel() {
             const updatedColumns = tableItem.columns.map(col => {
                 const fixedName = fixColumnNames(col.mappedField);
                 const newWidth = getMaxCharWidth(parsedData, col.mappedField, fixedName);
-                
+
                 if (col.width !== newWidth) {
                     return { ...col, width: newWidth };
                 }
@@ -43,31 +43,9 @@ function MainPanel() {
         }
     }, [dataItem?.value, tableItem, updateItem, dataItem]);
 
-    const handleTableColumnMappingUpdate = (columnId, newMappedField) => {
-        if (!tableItem) return;
-        const newCols = tableItem.columns.map(c =>
-            c.id === columnId ? { ...c, mappedField: newMappedField } : c
-        );
-        updateItem(tableItem.id, { columns: newCols });
-    };
-
-    const handleUpdateColumnName = (columnId, newName) => {
-        if (!tableItem) return;
-        const newCols = tableItem.columns.map(c =>
-            c.id === columnId ? { ...c, name: newName } : c
-        );
-        updateItem(tableItem.id, { columns: newCols });
-    };
-
-    const handleDeleteColumn = (columnId) => {
-        if (!tableItem) return;
-        const newCols = tableItem.columns.filter(c => c.id !== columnId);
-        updateItem(tableItem.id, { columns: newCols });
-    };
-
     return (
         <main className="flex-1 p-8 overflow-y-auto">
-            <div className="max-w-3xl mx-auto">       
+            <div className="max-w-3xl mx-auto">
                 <ReportHeader count={reportItems.length} />
                 {reportItems.length === 0 ? (
                     <EmptyReport />
@@ -77,14 +55,6 @@ function MainPanel() {
                             <div key={item.id}>
                                 <ReportItemRenderer
                                     item={item}
-                                    updateItem={updateItem}
-                                    deleteItem={deleteItem}
-                                    reportItems={reportItems}
-                                    tableItem={tableItem}
-                                    dataItem={dataItem}
-                                    onUpdateTableColumnMapping={handleTableColumnMappingUpdate}
-                                    onUpdateColumnName={handleUpdateColumnName}
-                                    onDeleteColumn={handleDeleteColumn}
                                 />
                             </div>
                         ))}

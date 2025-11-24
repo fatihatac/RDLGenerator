@@ -5,26 +5,15 @@ import DateRangeEditor from '../editors/DateRangeEditor';
 
 function ReportItemRenderer({ 
     item, 
-    updateItem, 
-    deleteItem, 
-    reportItems,
-    tableItem,
-    dataItem,
-    onUpdateTableColumnMapping,
-    onUpdateColumnName,
-    onDeleteColumn
 }) {
     switch (item.type) {
         case 'title':
-            return <TextboxEditor item={item} updateItem={updateItem} deleteItem={deleteItem} />;
+            return <TextboxEditor item={item} />;
         
         case 'table':
             return (
                 <TableEditor 
                     item={item} 
-                    updateItem={updateItem} 
-                    deleteItem={deleteItem} 
-                    reportItems={reportItems} 
                 />
             );
         
@@ -32,12 +21,6 @@ function ReportItemRenderer({
             return (
                 <JSONEditor
                     item={item}
-                    updateItem={updateItem}
-                    deleteItem={deleteItem}
-                    tableItem={tableItem}
-                    onUpdateTableColumnMapping={onUpdateTableColumnMapping}
-                    onUpdateColumnName={onUpdateColumnName}
-                    onDeleteColumn={onDeleteColumn}
                 />
             );
         
@@ -45,10 +28,6 @@ function ReportItemRenderer({
             return (
                 <DateRangeEditor
                     item={item}
-                    updateItem={updateItem}
-                    deleteItem={deleteItem}
-                    tableItem={tableItem}
-                    dataItem={dataItem}
                 />
             );
             

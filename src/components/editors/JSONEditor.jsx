@@ -1,7 +1,17 @@
 import { Trash2, FileText, Link, CheckSquare } from 'lucide-react';
 import { EXCLUDED_KEYS } from '../../constants/appConstants';
+import useReportStore from '../../store/useReportStore';
 
-function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColumnMapping, onUpdateColumnName, onDeleteColumn }) {
+function JSONEditor({ item }) {
+  const storeUpdateItem = useReportStore((state) => state.updateItem);
+  const storeDeleteItem = useReportStore((state) => state.deleteItem);
+  const storeUpdateColumnName = useReportStore((state) => state.updateColumnName);
+  const storeRemoveColumn = useReportStore((state) => state.removeColumn);
+  const storeUpdateColumnMappedField = useReportStore((state) => state.updateColumnMappedField);
+
+  const tableItem = useReportStore((state) =>
+    state.reportItems.find((reportItem) => reportItem.type === 'table')
+  );
 
   const handleJsonChange = (e) => {
     const jsonString = e.target.value;
@@ -39,8 +49,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
       }
     }
 
-
-    updateItem(item.id, { value: jsonString, jsonKeys: keys, filteredJsonKeys: filteredKeys });
+    storeUpdateItem(item.id, { value: jsonString, jsonKeys: keys, filteredJsonKeys: filteredKeys });
   };
 
   const showMappingUI =
@@ -57,7 +66,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
           <FileText size={18} className="mr-2" />
           <span>JSON Veri Kaynağı</span>
         </div>
-        <button onClick={() => deleteItem(item.id)} className="text-red-400 hover:text-red-600 p-1">
+        <button onClick={() => storeDeleteItem(item.id)} className="text-red-400 hover:text-red-600 p-1">
           <Trash2 size={18} />
         </button>
       </div>
@@ -103,7 +112,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
                 <input
                   type="text"
                   value={col.name}
-                  onChange={(e) => onUpdateColumnName(col.id, e.target.value)}
+                  onChange={(e) => storeUpdateColumnName(tableItem.id, col.id, e.target.value)}
                   className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-green-500 outline-none"
                   placeholder="Rapor Sütun Adı"
                 />
@@ -114,7 +123,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
 
                 <select
                   value={col.mappedField || ''}
-                  onChange={(e) => onUpdateTableColumnMapping(col.id, e.target.value)}
+                  onChange={(e) => storeUpdateColumnMappedField(tableItem.id, col.id, e.target.value)}
                   className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
                   disabled={col.mappedField === "RowNumber"}
                 >
@@ -124,7 +133,7 @@ function JSONEditor({ item, updateItem, deleteItem, tableItem, onUpdateTableColu
                   ))}
                 </select>
                 <button
-                  onClick={() => onDeleteColumn(col.id)}
+                  onClick={() => storeRemoveColumn(tableItem.id, col.id)}
                   className="col-span-1 text-gray-400 hover:text-red-500 justify-self-center"
                   title="Sütunu Sil"
                 >

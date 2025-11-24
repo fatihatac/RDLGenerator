@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { generateRDL } from "../utils/rdlGenerator";
 import { handleDataUpdateSideEffects } from "../utils/reportLogic";
+import generateId from "../utils/generateId"; // Import generateId
 
 const useReportStore = create((set, get) => ({
   reportItems: [],
@@ -11,13 +12,13 @@ const useReportStore = create((set, get) => ({
   addItem: (type) => {
     let newItem;
     if (type === "title") {
-      newItem = { id: Date.now(), type: "title", value: "" };
+      newItem = { id: generateId(), type: "title", value: "" };
     } else if (type === "table") {
-      newItem = { id: Date.now(), type: "table", columns: [], groups: [] };
+      newItem = { id: generateId(), type: "table", columns: [], groups: [] };
     } else if (type === "data") {
-      newItem = { id: Date.now(), type: "data", value: "", jsonKeys: [] };
+      newItem = { id: generateId(), type: "data", value: "", jsonKeys: [] };
     } else if (type === "dateRange") {
-      newItem = { id: Date.now(), type: "dateRange", mappedField: null };
+      newItem = { id: generateId(), type: "dateRange", mappedField: null };
     }
 
     if (newItem) {
@@ -77,7 +78,7 @@ const useReportStore = create((set, get) => ({
   addColumn: (tableId) => set(state => ({
     reportItems: state.reportItems.map(item => {
       if (item.id === tableId && item.type === 'table') {
-        const newCol = { id: Date.now(), name: `Sütun ${item.columns.length + 1}`, mappedField: null };
+        const newCol = { id: generateId(), name: `Sütun ${item.columns.length + 1}`, mappedField: null };
         return { ...item, columns: [...item.columns, newCol] };
       }
       return item;
@@ -108,10 +109,10 @@ const useReportStore = create((set, get) => ({
     reportItems: state.reportItems.map(item => {
       if (item.id === tableId && item.type === 'table') {
         if (item.columns.find(c => c.mappedField === 'RowNumber')) {
-          alert('Satır numarası sütunu zaten ekli.');
+          console.warn('Satır numarası sütunu zaten ekli.'); // Replaced alert with console.warn
           return item;
         }
-        const newCol = { id: Date.now(), name: 'No', mappedField: 'RowNumber', width: 30 };
+        const newCol = { id: generateId(), name: 'No', mappedField: 'RowNumber', width: 30 };
         return { ...item, columns: [newCol, ...item.columns] };
       }
       return item;
@@ -121,7 +122,7 @@ const useReportStore = create((set, get) => ({
   addGroup: (tableId) => set(state => ({
     reportItems: state.reportItems.map(item => {
       if (item.id === tableId && item.type === 'table') {
-        const newGroup = { id: Date.now(), name: `Group${(item.groups || []).length + 1}`, mappedField: null };
+        const newGroup = { id: generateId(), name: `Group${(item.groups || []).length + 1}`, mappedField: null };
         return { ...item, groups: [...(item.groups || []), newGroup] };
       }
       return item;
@@ -158,6 +159,17 @@ const useReportStore = create((set, get) => ({
     })
   })),
 
+  updateColumnMappedField: (tableId, columnId, newMappedField) => set(state => ({
+    reportItems: state.reportItems.map(item => {
+      if (item.id === tableId && item.type === 'table') {
+        const newCols = item.columns.map(c => c.id === columnId ? { ...c, mappedField: newMappedField } : c);
+        return { ...item, columns: newCols };
+      }
+      return item;
+    })
+  })),
+
 }));
 
 export default useReportStore;
+
