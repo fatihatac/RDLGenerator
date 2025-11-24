@@ -1,6 +1,6 @@
 import { Trash2, FileText, Link, CheckSquare } from 'lucide-react';
-import { EXCLUDED_KEYS } from '../../constants/appConstants';
 import useReportStore from '../../store/useReportStore';
+import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo'; // Import the new utility
 
 function JSONEditor({ item }) {
   const storeUpdateItem = useReportStore((state) => state.updateItem);
@@ -15,41 +15,19 @@ function JSONEditor({ item }) {
 
   const handleJsonChange = (e) => {
     const jsonString = e.target.value;
-    let keys = [];
-    let filteredKeys = [];
-    let parsedValue = null;
+    const { parsedData, allKeys, filteredKeys, error } = parseAndExtractJsonInfo(jsonString);
 
-    try {
-      parsedValue = JSON.parse(jsonString);
-    } catch (e1) {
-      console.error(e1.message);
-      try {
-        const cleanString = jsonString.replace(/[\n\r\t]/g, '');
-        parsedValue = JSON.parse(cleanString);
-
-      } catch (e2) {
-        console.error("JSON temizlendikten sonra bile parse edilemedi:", e2.message);
-        keys = [];
-      }
+    if (error) {
+      // You might want to display this error in the UI eventually
+      console.error("JSON parsing error in JSONEditor:", error);
     }
-
-    if (parsedValue) {
-      try {
-        if (Array.isArray(parsedValue) && parsedValue.length > 0) {
-          keys = Object.keys(parsedValue[0]);
-        }
-        else if (typeof parsedValue === 'object' && parsedValue !== null && !Array.isArray(parsedValue)) {
-          keys = Object.keys(parsedValue);
-        }
-
-        filteredKeys = keys.filter(key => !EXCLUDED_KEYS.includes(key));
-      } catch (keyError) {
-        console.error("Anahtar çıkarma hatası:", keyError);
-        keys = [];
-      }
-    }
-
-    storeUpdateItem(item.id, { value: jsonString, jsonKeys: keys, filteredJsonKeys: filteredKeys });
+    
+    // Even if parsedData is null due to error, we still update with current string and empty keys
+    storeUpdateItem(item.id, { 
+      value: jsonString, 
+      jsonKeys: allKeys, 
+      filteredJsonKeys: filteredKeys 
+    });
   };
 
   const showMappingUI =

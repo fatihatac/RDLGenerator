@@ -3,17 +3,7 @@ import fixColumnNames from "./fixColumnNames";
 import getMaxCharWidth from "./getMaxCharWidth";
 import { EXCLUDED_KEYS } from "../constants/appConstants"; // Import EXCLUDED_KEYS
 import generateId from "./generateId"; // Import generateId
-
-// Helper function to safely parse JSON
-const parseJson = (value) => {
-  if (!value || value.trim() === "") return null;
-  try {
-    return JSON.parse(value);
-  } catch (e) {
-    console.error("JSON parse error:", e.message);
-    return null;
-  }
-};
+import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo"; // Import the new utility
 
 // Helper function to cleanup stale items
 const cleanupStaleItems = (updatedItem, allItems) => {
@@ -37,9 +27,9 @@ const getOrCreateTitleItem = (allItems, updatedItem, itemsToAdd) => {
 };
 
 // Helper function to generate table columns
-const generateTableColumns = (parsedData, jsonKeys) => {
+const generateTableColumns = (parsedData, allKeys) => { // Changed jsonKeys to allKeys
   const firstRow = Array.isArray(parsedData) && parsedData.length > 0 ? parsedData[0] : {};
-  const columnsToMap = jsonKeys.filter((key) => !EXCLUDED_KEYS.includes(key)); // Use EXCLUDED_KEYS
+  const columnsToMap = allKeys.filter((key) => !EXCLUDED_KEYS.includes(key)); // Use EXCLUDED_KEYS
 
   return columnsToMap.map((key, index) => {
     const fixedName = fixColumnNames(key);
@@ -84,7 +74,12 @@ const getOrCreateTableItem = (allItems, updatedItem, newColumns, itemsToAdd, ite
  * @returns {Array} The new, transformed list of report items.
  */
 export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
-  const parsedData = parseJson(updatedItem.value);
+  const { parsedData, allKeys, filteredKeys, error } = parseAndExtractJsonInfo(updatedItem.value);
+
+  if (error) {
+    console.error("JSON parsing error in reportLogic:", error);
+    // Even if there's an error, we should proceed with cleanup if parsedData is null
+  }
 
   // If JSON is empty or invalid, remove related auto-generated items
   if (!parsedData) {
@@ -95,18 +90,15 @@ export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
   let itemsToAdd = [];
   let itemsToUpdate = {};
 
-  const firstRow = Array.isArray(parsedData) && parsedData.length > 0 ? parsedData[0] : {};
-  const jsonKeys = Object.keys(firstRow);
-
   getOrCreateTitleItem(allItems, updatedItem, itemsToAdd);
 
-  const newColumns = generateTableColumns(parsedData, jsonKeys);
+  const newColumns = generateTableColumns(parsedData, allKeys); // Pass allKeys
   getOrCreateTableItem(allItems, updatedItem, newColumns, itemsToAdd, itemsToUpdate);
 
   // Update the data item itself with discovered keys
   itemsToUpdate[updatedItem.id] = {
     ...updatedItem,
-    jsonKeys: jsonKeys,
+    jsonKeys: allKeys, // Use allKeys from the utility
     filteredJsonKeys: newColumns.map(col => col.mappedField), // Use mappedField from generated columns
   };
 
@@ -117,3 +109,4 @@ export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
 
   return finalReportItems;
 };
+

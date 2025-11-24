@@ -3,6 +3,7 @@ import { escapeXml } from "./escapeXml.js";
 import convertTitleCase from "./convertTitleCase.js";
 import * as Layout from "../constants/layoutConstants.js";
 import getMaxCharWidth from "./getMaxCharWidth.js";
+import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js"; // Import the new utility
 
 function generateRDL(items) {
   const dataItem = items.find((item) => item.type === "data");
@@ -13,13 +14,12 @@ function generateRDL(items) {
 
   let rowCount = 0;
   if (dataItem && dataItem.value) {
-    try {
-      const parsedData = JSON.parse(dataItem.value);
-      if (parsedData && parsedData.Result && Array.isArray(parsedData.Result)) {
-        rowCount = parsedData.Result.length;
-      }
-    } catch (e) {
-      console.error("Error parsing dataItem.value:", e);
+    const { parsedData, error } = parseAndExtractJsonInfo(dataItem.value);
+    if (error) {
+      console.error("Error parsing dataItem.value in rdlGenerator:", error);
+      // Decide how to handle this error in RDL generation, for now proceed with 0 rowCount
+    } else if (parsedData && parsedData.Result && Array.isArray(parsedData.Result)) {
+      rowCount = parsedData.Result.length;
     }
   }
 
