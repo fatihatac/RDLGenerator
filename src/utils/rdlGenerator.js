@@ -255,14 +255,10 @@ function generateRDL(items) {
             console.log("grup yok");
             return `<TablixMembers>
                       <TablixMember>
-<<<<<<< HEAD
-                         <Group Name="Details" />
-=======
                         <KeepWithGroup>After</KeepWithGroup>
                       </TablixMember>
                       <TablixMember>
                         <Group Name="Details" />
->>>>>>> componentRefactor
                       </TablixMember>
                     </TablixMembers>`;
           }
