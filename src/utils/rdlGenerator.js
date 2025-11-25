@@ -1,74 +1,16 @@
 import { escapeXml } from "./escapeXml.js";
-//import { getDataType } from "./getDataType.js";
 import convertTitleCase from "./convertTitleCase.js";
 import * as Layout from "../constants/layoutConstants.js";
-import getMaxCharWidth from "./getMaxCharWidth.js";
-import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js"; 
+import { calculateReportValues } from "./reportCalculations.js";
 
 function generateRDL(items) {
-  const dataItem = items.find((item) => item.type === "data");
-  const tableItem = items.find((item) => item.type === "table");
-
-  let maxColumns = 0;
-
-  let rowCount = 0;
-  if (dataItem && dataItem.value) {
-    const { parsedData, error } = parseAndExtractJsonInfo(dataItem.value);
-    if (error) {
-      console.error("Error parsing dataItem.value in rdlGenerator:", error);
-    } else if (
-      parsedData &&
-      parsedData.Result &&
-      Array.isArray(parsedData.Result)
-    ) {
-      rowCount = parsedData.Result.length;
-    }
-  }
-
-  const NUMBER_COLUMN_WIDTH = getMaxCharWidth(null, null, String(rowCount));
-
-  if (tableItem) {
-    tableItem.columns = tableItem.columns.map((col) => {
-      if (col.mappedField === "RowNumber") {
-        return { ...col, width: NUMBER_COLUMN_WIDTH };
-      }
-      return col;
-    });
-  }
-
-  items.forEach((item) => {
-    if (
-      item.type === "table" &&
-      item.columns &&
-      item.columns.length > maxColumns
-    ) {
-      maxColumns = item.columns.length;
-    }
-  });
-
-  let totalTableWidth = 0;
-  if (tableItem && tableItem.columns.length > 0) {
-    const columnsWidth = tableItem.columns.reduce(
-      (sum, col) => sum + (Number(col.width) || 72),
-      0
-    );
-    let groupsWidth = 0;
-
-    if (tableItem.groups && tableItem.groups.length > 0) {
-      groupsWidth = tableItem.groups.length * 72;
-    }
-
-    totalTableWidth = columnsWidth + groupsWidth;
-  } else {
-    totalTableWidth = 468;
-  }
-
-  const TOTAL_REPORT_WIDTH = totalTableWidth;
-
-  const TOTAL_REPORT_HIGHT =
-    items && items.length > 0 ? Layout.PAGE_HEIGHT : 225; //pt
-
-  const dataSetName = `DataSet_${dataItem ? dataItem.id : "1"}`;
+  const {
+    dataItem,
+    tableItem,
+    TOTAL_REPORT_WIDTH,
+    TOTAL_REPORT_HEIGHT,
+    dataSetName,
+  } = calculateReportValues(items);
 
   const itemsXml = items
     .map((item) => {
@@ -683,7 +625,7 @@ function generateRDL(items) {
         <ReportItems>
           ${itemsXml}
         </ReportItems>
-        <Height>${TOTAL_REPORT_HIGHT}pt</Height>
+        <Height>${TOTAL_REPORT_HEIGHT}pt</Height>
       </Body>
       <Width>${TOTAL_REPORT_WIDTH}pt</Width>
       <Page>
