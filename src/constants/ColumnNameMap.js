@@ -1,8 +1,8 @@
 export const COLUMN_NAME_MAP = {
   'sicilno': 'Sicil No',
   'sicilid':'Sicil ID',
-  'id':'ID',
-  'i d':"ID",
+  'ıd':'ID',
+  'ı d':"ID",
   'ad': 'Ad',
   'adi':' Adı',
   'yon':'Yön',

@@ -20,7 +20,7 @@ function TableEditor({ item }) {
     addSum,
     removeSum,
     updateSumMappedField,
-    updateItem, // updateItem'ı store'dan alıyoruz
+    updateItem, 
   } = useReportStore();
 
   const dataItem = reportItems.find(i => i.type === 'data');
@@ -39,8 +39,6 @@ function TableEditor({ item }) {
     const updatedColumns = item.columns.map(col => {
       if (col.mappedField === 'RowNumber') return col;
 
-      // `col.name` zaten merkezi `createColumnDefinition` fonksiyonunda `fixColumnNames`'ten geçtiği için,
-      // burada tekrar çağırmaya gerek yok.
       const newWidth = getMaxCharWidth(parsedData, col.mappedField, col.name);
 
       if (col.width !== newWidth) {

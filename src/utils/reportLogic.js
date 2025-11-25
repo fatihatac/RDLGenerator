@@ -34,7 +34,7 @@ const generateTableColumns = (parsedData, allKeys) => { // Changed jsonKeys to a
   return columnsToMap.map((key, index) => {
     const fixedName = fixColumnNames(key);
     return {
-      id: generateId(), // Use generateId()
+      id: generateId(), 
       name: fixedName,
       mappedField: key,
       dataType: getDataType(firstRow[key]),
@@ -43,12 +43,11 @@ const generateTableColumns = (parsedData, allKeys) => { // Changed jsonKeys to a
   });
 };
 
-// Helper function to get or create table item
 const getOrCreateTableItem = (allItems, updatedItem, newColumns, itemsToAdd, itemsToUpdate) => {
   const existingTable = allItems.find((item) => item.type === "table");
   if (!existingTable) {
     itemsToAdd.push({
-      id: generateId(), // Use generateId()
+      id: generateId(), 
       type: "table",
       columns: newColumns,
       dataSourceId: updatedItem.id,

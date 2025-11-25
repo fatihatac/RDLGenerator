@@ -3,11 +3,10 @@ import { escapeXml } from "./escapeXml.js";
 import convertTitleCase from "./convertTitleCase.js";
 import * as Layout from "../constants/layoutConstants.js";
 import getMaxCharWidth from "./getMaxCharWidth.js";
-import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js"; // Import the new utility
+import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js"; 
 
 function generateRDL(items) {
   const dataItem = items.find((item) => item.type === "data");
-
   const tableItem = items.find((item) => item.type === "table");
 
   let maxColumns = 0;
@@ -251,6 +250,14 @@ function generateRDL(items) {
           .join("");
 
         const generateGroupHierarchy = (groups, sums) => {
+          let sumTablixMemberContent = "";
+          if (sums && sums.length > 0) {
+            sumTablixMemberContent = `
+              <TablixMember>
+                  <KeepWithGroup>Before</KeepWithGroup>
+              </TablixMember>`;
+          }
+
           let hierarchyXml = "";
           let detailsMember = `
             <TablixMember>
@@ -264,6 +271,7 @@ function generateRDL(items) {
                         <KeepWithGroup>After</KeepWithGroup>
                       </TablixMember>
                       ${detailsMember}
+                      ${sumTablixMemberContent}
                     </TablixMembers>`;
           } else {
             const group = groups[0];
@@ -295,7 +303,7 @@ function generateRDL(items) {
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>${group.mappedField}</Value>
+                                <Value>${group.name}</Value>
                                 <Style>
                                   <FontFamily>Trebuchet MS</FontFamily>
                                   <FontSize>7.50003pt</FontSize>
@@ -332,7 +340,7 @@ function generateRDL(items) {
                   <TablixHeader>
                     <Size>72pt</Size>
                     <CellContents>
-                      <Textbox Name="${group.name}">
+                      <Textbox Name="${group.mappedField}">
                         <Left>0in</Left>
                         <Top>0in</Top>
                         <Height>18.6pt</Height>
@@ -374,49 +382,12 @@ function generateRDL(items) {
                   </TablixHeader>
                   <TablixMembers>
                     ${detailsMember}
+                    ${sumTablixMemberContent}
                   </TablixMembers>
                 </TablixMember>
               </TablixMembers>`;
           }
 
-          if (sums && sums.length > 0) {
-            const sumTablixMember = `
-                  <TablixMember>
-                      <KeepWithGroup>Before</KeepWithGroup>
-                  </TablixMember>`;
-
-            // This is a simplified placement, may need adjustment based on exact RDL structure requirements
-            // For now, I'll append it to the main TablixMembers if no groups,
-            // or after the details member if groups exist.
-            if (!groups || groups.length === 0) {
-              hierarchyXml = hierarchyXml.replace(
-                "</TablixMembers>",
-                `${sumTablixMember}</TablixMembers>`
-              );
-            } else {
-              // Find the details member and insert the sum tablix member right before it or after the last group member
-              // This is a more complex string manipulation. A simpler approach is to add it after the main group structure.
-              // Given the user said "altına" (under/below), appending to the outermost TablixMembers seems appropriate.
-              const lastTablixMemberIndex =
-                hierarchyXml.lastIndexOf("</TablixMember>");
-              if (lastTablixMemberIndex !== -1) {
-                hierarchyXml =
-                  hierarchyXml.substring(
-                    0,
-                    lastTablixMemberIndex + "</TablixMember>".length
-                  ) +
-                  sumTablixMember +
-                  hierarchyXml.substring(
-                    lastTablixMemberIndex + "</TablixMember>".length
-                  );
-              } else {
-                hierarchyXml = hierarchyXml.replace(
-                  "</TablixMembers>",
-                  `${sumTablixMember}</TablixMembers>`
-                );
-              }
-            }
-          }
           return hierarchyXml;
         };
 
