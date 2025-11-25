@@ -17,8 +17,11 @@ function generateRDL(items) {
     const { parsedData, error } = parseAndExtractJsonInfo(dataItem.value);
     if (error) {
       console.error("Error parsing dataItem.value in rdlGenerator:", error);
-      // Decide how to handle this error in RDL generation, for now proceed with 0 rowCount
-    } else if (parsedData && parsedData.Result && Array.isArray(parsedData.Result)) {
+    } else if (
+      parsedData &&
+      parsedData.Result &&
+      Array.isArray(parsedData.Result)
+    ) {
       rowCount = parsedData.Result.length;
     }
   }
@@ -43,7 +46,6 @@ function generateRDL(items) {
       maxColumns = item.columns.length;
     }
   });
-
 
   let totalTableWidth = 0;
   if (tableItem && tableItem.columns.length > 0) {
@@ -248,22 +250,24 @@ function generateRDL(items) {
           )
           .join("");
 
-        const generateGroupHierarchy = (groups) => {
+        const generateGroupHierarchy = (groups, sums) => {
+          let hierarchyXml = "";
+          let detailsMember = `
+            <TablixMember>
+              <Group Name="Details" />
+            </TablixMember>
+          `;
+
           if (!groups || groups.length === 0) {
-            return `<TablixMembers>
+            hierarchyXml = `<TablixMembers>
                       <TablixMember>
                         <KeepWithGroup>After</KeepWithGroup>
                       </TablixMember>
-                      <TablixMember>
-                        <Group Name="Details" />
-                      </TablixMember>
+                      ${detailsMember}
                     </TablixMembers>`;
-          }
-
-          const group = groups[0];
-          //const remainingGroups = groups.slice(1);
-
-          return `<TablixMembers>
+          } else {
+            const group = groups[0];
+            hierarchyXml = `<TablixMembers>
                 <TablixMember>
                   <TablixHeader>
                     <Size>72pt</Size>
@@ -369,12 +373,51 @@ function generateRDL(items) {
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>
-                    <TablixMember>
-                      <Group Name="Details" />
-                    </TablixMember>
+                    ${detailsMember}
                   </TablixMembers>
                 </TablixMember>
               </TablixMembers>`;
+          }
+
+          if (sums && sums.length > 0) {
+            const sumTablixMember = `
+                  <TablixMember>
+                      <KeepWithGroup>Before</KeepWithGroup>
+                  </TablixMember>`;
+
+            // This is a simplified placement, may need adjustment based on exact RDL structure requirements
+            // For now, I'll append it to the main TablixMembers if no groups,
+            // or after the details member if groups exist.
+            if (!groups || groups.length === 0) {
+              hierarchyXml = hierarchyXml.replace(
+                "</TablixMembers>",
+                `${sumTablixMember}</TablixMembers>`
+              );
+            } else {
+              // Find the details member and insert the sum tablix member right before it or after the last group member
+              // This is a more complex string manipulation. A simpler approach is to add it after the main group structure.
+              // Given the user said "altına" (under/below), appending to the outermost TablixMembers seems appropriate.
+              const lastTablixMemberIndex =
+                hierarchyXml.lastIndexOf("</TablixMember>");
+              if (lastTablixMemberIndex !== -1) {
+                hierarchyXml =
+                  hierarchyXml.substring(
+                    0,
+                    lastTablixMemberIndex + "</TablixMember>".length
+                  ) +
+                  sumTablixMember +
+                  hierarchyXml.substring(
+                    lastTablixMemberIndex + "</TablixMember>".length
+                  );
+              } else {
+                hierarchyXml = hierarchyXml.replace(
+                  "</TablixMembers>",
+                  `${sumTablixMember}</TablixMembers>`
+                );
+              }
+            }
+          }
+          return hierarchyXml;
         };
 
         return `<Tablix Name="Tablix_${item.id}">
@@ -406,6 +449,125 @@ function generateRDL(items) {
                   ${dataCellsXml}
                 </TablixCells>
               </TablixRow>
+              ${
+                item.sums && item.sums.length > 0
+                  ? `
+              <TablixRow>
+                  <Height>18pt</Height>
+                  <TablixCells>
+                  ${item.columns
+                    .map((col) => {
+                      const sum = item.sums.find(
+                        (s) => s.mappedField === col.mappedField
+                      );
+                      if (sum) {
+                        return `
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="TextBox_SUM_${sum.id}">
+                              <Left>0in</Left>
+                              <Top>0in</Top>
+                              <Height>18pt</Height>
+                              <Width>${col.width}pt</Width>
+                              <Style>
+                                <FontSize>10.00003pt</FontSize>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Sum(Fields!${sum.mappedField}.Value)</Value>
+                                      <Style>
+                                        <FontFamily>Trebuchet MS</FontFamily>
+                                        <FontSize>6.75002pt</FontSize>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <FontSize>10.00003pt</FontSize>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <ColSpan>1</ColSpan>
+                            <RowSpan>1</RowSpan>
+                          </CellContents>
+                        </TablixCell>
+                      `;
+                      } else {
+                        return `
+                        <TablixCell>
+                          <CellContents>
+                            <Textbox Name="TextBox_SUM_EMPTY_${col.id}">
+                              <Left>0in</Left>
+                              <Top>0in</Top>
+                              <Height>18pt</Height>
+                              <Width>${col.width}pt</Width>
+                              <Style>
+                                <FontSize>10.00003pt</FontSize>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Color>LightGrey</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>${
+                                        item.columns.findIndex(
+                                          (c) => c.id === col.id
+                                        ) === 0
+                                          ? "TOPLAM"
+                                          : ""
+                                      }</Value>
+                                      <Style>
+                                        <FontFamily>Trebuchet MS</FontFamily>
+                                        <FontSize>6.75002pt</FontSize>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <FontSize>10.00003pt</FontSize>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <ColSpan>1</ColSpan>
+                            <RowSpan>1</RowSpan>
+                          </CellContents>
+                        </TablixCell>
+                      `;
+                      }
+                    })
+                    .join("")}
+                  </TablixCells>
+                </TablixRow>
+              `
+                  : ""
+              }
             </TablixRows>
           </TablixBody>
           <TablixColumnHierarchy>
@@ -414,7 +576,7 @@ function generateRDL(items) {
             </TablixMembers>
           </TablixColumnHierarchy>
           <TablixRowHierarchy>
-            ${generateGroupHierarchy(item.groups)}
+            ${generateGroupHierarchy(item.groups, item.sums)}
           </TablixRowHierarchy>
         </Tablix>`;
       }

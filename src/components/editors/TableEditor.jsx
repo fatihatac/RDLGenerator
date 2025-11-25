@@ -17,6 +17,9 @@ function TableEditor({ item }) {
     removeGroup,
     updateGroupName,
     updateGroupMappedField,
+    addSum,
+    removeSum,
+    updateSumMappedField,
     updateItem, // updateItem'ı store'dan alıyoruz
   } = useReportStore();
 
@@ -123,6 +126,33 @@ function TableEditor({ item }) {
         </div>
       </div>
 
+      <div className="mb-3">
+        <label className="block text-sm font-medium text-gray-700 mb-2">Toplam Tanımları</label>
+        <div className="bg-gray-50 p-3 rounded border border-gray-100 space-y-2">
+          {(item.sums || []).length === 0 && <p className="text-xs text-gray-400 italic">Henüz toplam tanımı eklenmedi.</p>}
+
+          {(item.sums || []).map((sum, idx) => (
+            <div key={sum.id} className="flex items-center gap-2">
+              <span className="text-xs text-gray-400 w-6">{idx + 1}.</span>
+              <select
+                value={sum.mappedField || ''}
+                onChange={(e) => updateSumMappedField(item.id, sum.id, e.target.value || null)}
+                className="w-32 p-1.5 text-sm border border-gray-300 rounded focus:border-red-500 outline-none"
+              >
+                <option value="">Alan Seç</option>
+                {dataItem && dataItem.filteredJsonKeys && dataItem.filteredJsonKeys.map(key => (
+                  <option key={key} value={key}>{key}</option>
+                ))}
+              </select>
+              <button onClick={() => removeSum(item.id, sum.id)} className="text-gray-400 hover:text-red-500"
+              >
+                <X size={16} />
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="flex items-center gap-4">
         <button
           onClick={() => addColumn(item.id)}
@@ -146,8 +176,7 @@ function TableEditor({ item }) {
         </button>
         |
         <button
-          onClick={() => console.log("sum function")
-          }
+          onClick={() => addSum(item.id)}
           className='text-sm flex items-center text-red-600 hover:text-red-700 font-medium'
         >
           <Sigma size={16} className='mr-1' /> SUM Ekle

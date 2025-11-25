@@ -14,7 +14,7 @@ const useReportStore = create((set, get) => ({
     if (type === "title") {
       newItem = { id: generateId(), type: "title", value: "" };
     } else if (type === "table") {
-      newItem = { id: generateId(), type: "table", columns: [], groups: [] };
+      newItem = { id: generateId(), type: "table", columns: [], groups: [], sums: [] };
     } else if (type === "data") {
       newItem = { id: generateId(), type: "data", value: "", jsonKeys: [] };
     } else if (type === "dateRange") {
@@ -154,6 +154,36 @@ const useReportStore = create((set, get) => ({
       if (item.id === tableId && item.type === 'table') {
         const newGroups = item.groups.map(g => g.id === groupId ? { ...g, mappedField: newMappedField } : g);
         return { ...item, groups: newGroups };
+      }
+      return item;
+    })
+  })),
+
+  addSum: (tableId) => set(state => ({
+    reportItems: state.reportItems.map(item => {
+      if (item.id === tableId && item.type === 'table') {
+        const newSum = { id: generateId(), mappedField: null };
+        return { ...item, sums: [...(item.sums || []), newSum] };
+      }
+      return item;
+    })
+  })),
+
+  removeSum: (tableId, sumId) => set(state => ({
+    reportItems: state.reportItems.map(item => {
+      if (item.id === tableId && item.type === 'table') {
+        const newSums = item.sums.filter(s => s.id !== sumId);
+        return { ...item, sums: newSums };
+      }
+      return item;
+    })
+  })),
+
+  updateSumMappedField: (tableId, sumId, newMappedField) => set(state => ({
+    reportItems: state.reportItems.map(item => {
+      if (item.id === tableId && item.type === 'table') {
+        const newSums = item.sums.map(s => s.id === sumId ? { ...s, mappedField: newMappedField } : s);
+        return { ...item, sums: newSums };
       }
       return item;
     })
