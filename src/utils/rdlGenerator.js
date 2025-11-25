@@ -2,6 +2,7 @@ import { escapeXml } from "./escapeXml.js";
 import convertTitleCase from "./convertTitleCase.js";
 import * as Layout from "../constants/layoutConstants.js";
 import { calculateReportValues } from "./reportCalculations.js";
+import { XMLBuilder } from "fast-xml-parser";
 
 function generateRDL(items) {
   const {
