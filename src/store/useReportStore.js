@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import { generateRDL } from "../utils/rdlGenerator";
 import { handleDataUpdateSideEffects } from "../utils/reportLogic";
-import generateId from "../utils/generateId"; // Import generateId
+import generateId from "../utils/generateId";
+import fixColumnNames from "../utils/fixColumnNames";
 
 const useReportStore = create((set, get) => ({
   reportItems: [],
@@ -152,7 +153,11 @@ const useReportStore = create((set, get) => ({
   updateGroupMappedField: (tableId, groupId, newMappedField) => set(state => ({
     reportItems: state.reportItems.map(item => {
       if (item.id === tableId && item.type === 'table') {
-        const newGroups = item.groups.map(g => g.id === groupId ? { ...g, mappedField: newMappedField } : g);
+        const newGroups = item.groups.map(g => g.id === groupId ? {
+          ...g,
+          mappedField: newMappedField,
+          name: newMappedField ? fixColumnNames(newMappedField) : g.name // Update name using fixColumnNames
+        } : g);
         return { ...item, groups: newGroups };
       }
       return item;
