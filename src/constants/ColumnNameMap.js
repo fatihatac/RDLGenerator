@@ -1,5 +1,6 @@
 export const COLUMN_NAME_MAP = {
   'sicilno': 'Sicil No',
+  'sicilid':'Sicil ID',
   'ad': 'Ad',
   'adi':' Adı',
   'yon':'Yön',
@@ -20,6 +21,7 @@ export const COLUMN_NAME_MAP = {
   'ceptelefon': 'Cep Telefonu',
   'okuyucuadi':"Okuyucu Adı",
   'tkidem':"Toplam Kıdem",
+  'mesaitarih':'Mesai Tarih',
   'email': 'E-Posta',
   'okod1': 'Özel Kod 1',
   'okod2': 'Özel Kod 2',
