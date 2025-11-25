@@ -73,9 +73,6 @@ function generateRDL(items) {
                           <Height>${Layout.COLUMN_HEIGHT}</Height>
                           <Width>${col.width}pt</Width>
                           <Style>
-                            <FontSize>${
-                              Layout.COLUMN_HEADER_FONT_SIZE
-                            }pt</FontSize>
                             <VerticalAlign>${
                               Layout.COLUMN_TEXT_VERTICAL_ALIGN
                             }</VerticalAlign>
@@ -110,9 +107,6 @@ function generateRDL(items) {
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <FontSize>${
-                                  Layout.COLUMN_HEADER_FONT_SIZE
-                                }pt</FontSize>
                                 <TextAlign>${
                                   Layout.COLUMN_TEXT_HORIZONTAL_ALIGN
                                 }</TextAlign>
@@ -144,7 +138,6 @@ function generateRDL(items) {
                   <Height>18.6pt</Height>
                   <Width>${col.width}pt</Width>
                   <Style>
-                    <FontSize>10.00003pt</FontSize>
                     <VerticalAlign>${
                       Layout.COLUMN_TEXT_VERTICAL_ALIGN
                     }</VerticalAlign>
@@ -170,13 +163,12 @@ function generateRDL(items) {
                         }</Value>
                         <Style>
                            <FontFamily>${Layout.FONT_FAMILY}</FontFamily>
-                           <FontSize>6.75002pt</FontSize>
+                           <FontSize>6.75pt</FontSize>
                            <Color>black</Color>
                         </Style>
                       </TextRun>
                     </TextRuns>
                     <Style>
-                      <FontSize>10.00003pt</FontSize>
                       <TextAlign>${
                         Layout.COLUMN_TEXT_HORIZONTAL_ALIGN
                       }</TextAlign>
@@ -339,7 +331,6 @@ function generateRDL(items) {
             <Height>37.50011pt</Height>
             <Width>504.0004pt</Width>
             <Style>
-              <FontSize>10.00003pt</FontSize>
               <Border>
                 <Style>None</Style>
               </Border>
@@ -617,7 +608,6 @@ function generateRDL(items) {
     <ReportSection>
       <Body>
         <Style>
-          <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}pt</FontSize>
           <Border>
             <Style>None</Style>
           </Border>
@@ -629,15 +619,11 @@ function generateRDL(items) {
       </Body>
       <Width>${TOTAL_REPORT_WIDTH}pt</Width>
       <Page>
-        <PageHeight>792.0023pt</PageHeight>
-        <PageWidth>612.0018pt</PageWidth>
         <LeftMargin>72.00021pt</LeftMargin>
         <RightMargin>72.00021pt</RightMargin>
         <TopMargin>72.00021pt</TopMargin>
         <BottomMargin>72.00021pt</BottomMargin>
-        <ColumnSpacing>36.00011pt</ColumnSpacing>
         <Style>
-          <FontSize>${Layout.COLUMN_HEADER_FONT_SIZE}pt</FontSize>
           <Border>
             <Style>None</Style>
           </Border>
