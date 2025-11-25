@@ -1,5 +1,9 @@
-import { Plus, Trash2, Table, X, ListOrdered, Group } from 'lucide-react';
+import { Plus, Trash2, Table, X, ListOrdered, Group, Sigma } from 'lucide-react';
+
 import useReportStore from '../../store/useReportStore';
+import { useMemo, useEffect } from 'react';
+import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo';
+import getMaxCharWidth from '../../utils/getMaxCharWidth';
 
 function TableEditor({ item }) {
   const {
@@ -13,9 +17,42 @@ function TableEditor({ item }) {
     removeGroup,
     updateGroupName,
     updateGroupMappedField,
+    updateItem, // updateItem'ı store'dan alıyoruz
   } = useReportStore();
 
   const dataItem = reportItems.find(i => i.type === 'data');
+
+
+  const { parsedData } = useMemo(() => {
+    if (!dataItem?.value) return { parsedData: null };
+    return parseAndExtractJsonInfo(dataItem.value);
+  }, [dataItem?.value]);
+
+  useEffect(() => {
+    if (!parsedData || !Array.isArray(parsedData) || item.columns.length === 0) {
+      return;
+    }
+
+    const updatedColumns = item.columns.map(col => {
+      if (col.mappedField === 'RowNumber') return col;
+
+      // `col.name` zaten merkezi `createColumnDefinition` fonksiyonunda `fixColumnNames`'ten geçtiği için,
+      // burada tekrar çağırmaya gerek yok.
+      const newWidth = getMaxCharWidth(parsedData, col.mappedField, col.name);
+
+      if (col.width !== newWidth) {
+        return { ...col, width: newWidth };
+      }
+      return col;
+    });
+
+    const hasWidthChanged = updatedColumns.some((col, index) => col.width !== item.columns[index].width);
+
+    if (hasWidthChanged) {
+      updateItem(item.id, { columns: updatedColumns });
+    }
+  }, [parsedData, item, updateItem]);
+
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -106,6 +143,14 @@ function TableEditor({ item }) {
           className='text-sm flex items-center text-gray-600 hover:text-gray-700 font-medium'
         >
           <Group size={16} className='mr-1' /> Grup Ekle
+        </button>
+        |
+        <button
+          onClick={() => console.log("sum function")
+          }
+          className='text-sm flex items-center text-red-600 hover:text-red-700 font-medium'
+        >
+          <Sigma size={16} className='mr-1' /> SUM Ekle
         </button>
       </div>
     </div >
