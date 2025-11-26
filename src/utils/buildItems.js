@@ -1,37 +1,23 @@
-import { buildTable } from "./buildTable.js";
 import { buildTitle } from "./buildTitle.js";
+import { buildTable } from "./buildTable.js";
 import buildDateRange from "./buildDateRange.js";
 
-function buildReportItems(items, context) {
-  const result = {
-    Textbox: [],
-    Tablix: [],
-  };
-
-  for (const item of items) {
+function buildReportItems(items, totalWidth, dataSetName) {
+  return items.map(item => {
     switch (item.type) {
-      case "title":
-        result.Textbox.push(buildTitle(item, context).Textbox);
-        break;
+       case "title":
+         return buildTitle(item, totalWidth);
 
-      case "table":
-        result.Tablix.push(buildTable(item, context).Tablix);
-        break;
+       case "table":
+         return buildTable(item, dataSetName);
 
-      case "dateRange":
-        result.Textbox.push(buildDateRange(item, context).Textbox);
-        break;
+       case "dateRange":
+         return buildDateRange(item, totalWidth);
+
+      default:
+        return null;
     }
-  }
-
-  // Boş array olanları tamamen sil
-  Object.keys(result).forEach((key) => {
-    if (result[key].length === 0) {
-      delete result[key];
-    }
-  });
-
-  return result;
+  }).filter(Boolean);
 }
 
 export { buildReportItems };
