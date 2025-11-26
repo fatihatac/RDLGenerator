@@ -3,8 +3,8 @@
   const TITLE_FONT_WEIGHT = "Bold";
   const COLUMN_WIDTH = 72; //pt
   const COLUMN_HEIGHT = 18.6; //pt
-  const COLUMN_HEADER_FONT_SIZE = 10.00003; //pt
-  const COLUMN_DATA_FONT_SIZE = 7.50003; //pt
+  const COLUMN_HEADER_FONT_SIZE = 10; //pt
+  const COLUMN_DATA_FONT_SIZE = 7.5; //pt
   const COLUMN_TEXT_HORIZONTAL_ALIGN = "Left";
   const COLUMN_TEXT_VERTICAL_ALIGN = "Middle";
   const TITLE_TEXT_HORIZONTAL_ALIGN = "Center";

@@ -119,7 +119,7 @@ function generateRDL(items) {
                           `<UserSort>
                                <SortExpression>=Fields!${col.mappedField}.Value</SortExpression>
                                <SortExpressionScope>Details</SortExpressionScope>
-                             </UserSort>`
+                            </UserSort>`
                         }    
               </Textbox>
                 <ColSpan>1</ColSpan>
