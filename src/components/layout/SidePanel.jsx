@@ -2,6 +2,7 @@ import AddTitleButton from '../actions/AddTitleButton';
 import AddTableButton from '../actions/AddTableButton';
 import AddDataButton from '../actions/AddDataButton';
 import AddDateRangeButton from '../actions/AddDateRangeButton';
+import AddChartButton from '../actions/AddChartButton';
 import useReportStore from '../../store/useReportStore';
 
 function SidePanel() {
@@ -14,6 +15,8 @@ function SidePanel() {
             <AddTableButton onClick={() => addItem('table')} />
             <AddDataButton onClick={() => addItem('data')} />
             <AddDateRangeButton onClick={() => addItem('dateRange')} />
+            <AddChartButton onClick={()=>{console.log("Chart");
+            }} />
         </aside>)
 }
 

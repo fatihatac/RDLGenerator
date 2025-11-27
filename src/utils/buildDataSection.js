@@ -23,6 +23,7 @@ const buildDataSection = (dataItem, tableItem, dataSetName) => {
     };
   });
 
+  
   // Query Columns
   const queryColumns = dataItem.jsonKeys.map((key) => ({
     Column: { "@_Name": key, "@_IsDuplicate": "False", "@_IsSelected": "True" },
@@ -38,7 +39,7 @@ const buildDataSection = (dataItem, tableItem, dataSetName) => {
   return {
     DataSources: {
       DataSource: {
-        "@_Name": "DataSource1",
+        "@_Name": `Datasource${dataItem.length + 1}`,
         ConnectionProperties: {
           DataProvider: "JSON",
           ConnectString: JSON.stringify(connectStringData), // Builder otomatik escape yapacaktır

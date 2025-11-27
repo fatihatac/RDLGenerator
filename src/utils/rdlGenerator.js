@@ -1,9 +1,6 @@
 import * as Layout from "../constants/layoutConstants.js";
 import { calculateReportValues } from "./reportCalculations.js";
 import { XMLBuilder } from "fast-xml-parser";
-// import { buildTitle } from "./buildTitle.js";
-// import buildDateRange from "./buildDateRange.js";
-// import { buildTable } from "./buildTable.js";
 import buildDataSection from "./buildDataSection.js";
 import { buildReportItems } from "./buildItems.js";
 
@@ -22,16 +19,6 @@ function generateRDL(items) {
     attributeNamePrefix: "@_",
     suppressEmptyNode: true,
   });
-
-  // const reportItemsList = items
-  //   .map((item) => {
-  //     if (item.type === "title") return buildTitle(item, TOTAL_REPORT_WIDTH);
-  //     if (item.type === "table") return buildTable(item, dataSetName);
-  //     if (item.type === "dateRange")
-  //       return buildDateRange(item, TOTAL_REPORT_WIDTH);
-  //     return null;
-  //   })
-  //   .filter(Boolean);
 
   const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH, dataSetName )
 
@@ -63,7 +50,7 @@ function generateRDL(items) {
         },
       },
       AutoRefresh: "0",
-      ...dataSection, // DataSources ve DataSets buraya spread edilir
+      ...dataSection, 
       ReportParametersLayout: {
         GridLayoutDefinition: {
           NumberOfColumns: "4",
@@ -741,85 +728,6 @@ export { generateRDL };
 //   <rd:PageUnit>Px</rd:PageUnit>
 //   <df:DefaultFontFamily>${Layout.FONT_FAMILY}</df:DefaultFontFamily>
 // </Report>`;
-// }
-
-// export { generateRDL };
-
-// import { XMLBuilder } from "fast-xml-parser";
-// import { buildReportItems } from "./buildItems.js";
-// import { buildDataSources } from "./buildDataSources.js";
-// import { buildDataSet } from "./buildDataset.js";
-// import { calculateReportValues } from "./reportCalculations.js";
-// import * as Layout from "../constants/layoutConstants.js";
-
-// function generateRDL(items) {
-//   const builder = new XMLBuilder({
-//     ignoreAttributes: false,
-//     format: true,
-//     attributeNamePrefix: "@_",
-//     suppressEmptyNode: true,
-//   });
-
-//   const {
-//     dataItem,
-//     tableItem,
-//     TOTAL_REPORT_WIDTH,
-//     TOTAL_REPORT_HEIGHT,
-//     dataSetName,
-//   } = calculateReportValues(items);
-
-//   console.log(buildReportItems(items, { TOTAL_REPORT_WIDTH }));
-
-//   const reportObj = {
-//     Report: {
-//       "@_xmlns:df":
-//         "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily",
-//       "@_xmlns:rd":
-//         "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner",
-//       "@_xmlns":
-//         "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition",
-
-//       ReportSections: {
-//         ReportSection: {
-//           Body: {
-//             Style: { Border: { Style: "None" } },
-//             ReportItems: [buildReportItems(items, { TOTAL_REPORT_WIDTH })],
-//             Height: `${TOTAL_REPORT_HEIGHT}pt`,
-//           },
-//           Width: `${TOTAL_REPORT_WIDTH}pt`,
-//           Page: {
-//             LeftMargin: "72pt",
-//             RightMargin: "72pt",
-//             TopMargin: "72pt",
-//             BottomMargin: "72pt",
-//             Style: { Border: { Style: "None" } },
-//           },
-//         },
-//       },
-
-//       AutoRefresh: 0,
-
-//       ...(dataItem
-//         ? {
-//             //DataSources: buildDataSources(dataItem),
-//             DataSets: buildDataSet(dataItem, tableItem, "Dataset1"),
-//           }
-//         : {}),
-
-//       ReportParametersLayout: {
-//         GridLayoutDefinition: {
-//           NumberOfColumns: 4,
-//           NumberOfRows: 2,
-//         },
-//       },
-
-//       "rd:ReportUnitType": "Inch",
-//       "rd:PageUnit": "Px",
-//       "df:DefaultFontFamily": Layout.FONT_FAMILY,
-//     },
-//   };
-//     const xmlOutput = builder.build(reportObj)
-//   return `<?xml version="1.0"?>\n${xmlOutput}`;;
 // }
 
 // export { generateRDL };
