@@ -13,13 +13,13 @@ const useReportStore = create((set, get) => ({
   addItem: (type) => {
     let newItem;
     if (type === "title") {
-      newItem = { id: generateId(), type: "title", value: "" };
+      newItem = { id: generateId("title"), type: "title", value: "" };
     } else if (type === "table") {
-      newItem = { id: generateId(), type: "table", columns: [], groups: [], sums: [] };
+      newItem = { id: generateId("table"), type: "table", columns: [], groups: [], sums: [] };
     } else if (type === "data") {
-      newItem = { id: generateId(), type: "data", value: "", jsonKeys: [] };
+      newItem = { id: generateId("data"), type: "data", value: "", jsonKeys: [] };
     } else if (type === "dateRange") {
-      newItem = { id: generateId(), type: "dateRange", mappedField: null };
+      newItem = { id: generateId("dateRange"), type: "dateRange", mappedField: null };
     }
 
     if (newItem) {
@@ -79,7 +79,7 @@ const useReportStore = create((set, get) => ({
   addColumn: (tableId) => set(state => ({
     reportItems: state.reportItems.map(item => {
       if (item.id === tableId && item.type === 'table') {
-        const newCol = { id: generateId(), name: `Sütun ${item.columns.length + 1}`, mappedField: null };
+        const newCol = { id: generateId("column"), name: `Sütun ${item.columns.length + 1}`, mappedField: null };
         return { ...item, columns: [...item.columns, newCol] };
       }
       return item;
@@ -113,7 +113,7 @@ const useReportStore = create((set, get) => ({
           console.warn('Satır numarası sütunu zaten ekli.'); // Replaced alert with console.warn
           return item;
         }
-        const newCol = { id: generateId(), name: 'No', mappedField: 'RowNumber', width: 30 };
+        const newCol = { id: generateId("RowNumber"), name: 'No', mappedField: 'RowNumber', width: 30 };
         return { ...item, columns: [newCol, ...item.columns] };
       }
       return item;
@@ -123,7 +123,7 @@ const useReportStore = create((set, get) => ({
   addGroup: (tableId) => set(state => ({
     reportItems: state.reportItems.map(item => {
       if (item.id === tableId && item.type === 'table') {
-        const newGroup = { id: generateId(), name: `Group${(item.groups || []).length + 1}`, mappedField: null };
+        const newGroup = { id: generateId("group"), name: `Group${(item.groups || []).length + 1}`, mappedField: null };
         return { ...item, groups: [...(item.groups || []), newGroup] };
       }
       return item;
@@ -167,7 +167,7 @@ const useReportStore = create((set, get) => ({
   addSum: (tableId) => set(state => ({
     reportItems: state.reportItems.map(item => {
       if (item.id === tableId && item.type === 'table') {
-        const newSum = { id: generateId(), mappedField: null };
+        const newSum = { id: generateId("sum"), mappedField: null };
         return { ...item, sums: [...(item.sums || []), newSum] };
       }
       return item;

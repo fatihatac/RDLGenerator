@@ -39,7 +39,7 @@ const buildDataSection = (dataItem, tableItem, dataSetName) => {
   return {
     DataSources: {
       DataSource: {
-        "@_Name": `Datasource${dataItem.length + 1}`,
+        "@_Name": `${dataItem.id}`,
         ConnectionProperties: {
           DataProvider: "JSON",
           ConnectString: JSON.stringify(connectStringData), // Builder otomatik escape yapacaktır
@@ -52,7 +52,7 @@ const buildDataSection = (dataItem, tableItem, dataSetName) => {
         "@_Name": dataSetName,
         Fields: { Field: fields.map((f) => f.Field) },
         Query: {
-          DataSourceName: "DataSource1",
+          DataSourceName: `${dataItem.id}`,
           CommandType: "Text",
           CommandText: '{"Name":"Result","Columns":[]}',
           QueryDesignerState: {

@@ -4,7 +4,7 @@ const buildDateRange = (item, totalWidth) => {
   const valueExpr = `=First(Fields!${item.mappedField}.Value)`;
   return {
     Textbox: {
-      "@_Name": `DateRange_${item.id}`,
+      "@_Name": `${item.id}`,
       Left: "0pt",
       Top: "0pt",
       Height: `${Layout.TITLE_HEIGHT}pt`,
