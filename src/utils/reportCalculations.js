@@ -1,6 +1,7 @@
 import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js";
 import getMaxCharWidth from "./getMaxCharWidth.js";
 import * as Layout from "../constants/layoutConstants.js";
+import generateId from './generateId.js'
 
 function getDataAndTableItems(items) {
   const dataItem = items.find(item => item.type === "data");
@@ -66,7 +67,8 @@ function calculateReportValues(items) {
   const TOTAL_REPORT_WIDTH = getTotalTableWidth(tableItem);
   const TOTAL_REPORT_HEIGHT = items.length > 0 ? Layout.PAGE_HEIGHT : 225;
 
-  const dataSetName = `DataSet_${dataItem ? dataItem.id : "1"}`;
+  // const dataSetName = `DataSet_${dataItem ? dataItem.id : "1"}`;
+  const dataSetName = generateId("dataset");
 
   return {
     dataItem,

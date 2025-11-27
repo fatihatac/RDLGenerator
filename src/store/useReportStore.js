@@ -17,7 +17,7 @@ const useReportStore = create((set, get) => ({
     } else if (type === "table") {
       newItem = { id: generateId("table"), type: "table", columns: [], groups: [], sums: [] };
     } else if (type === "data") {
-      newItem = { id: generateId("data"), type: "data", value: "", jsonKeys: [] };
+      newItem = { id: generateId("datasource"), type: "data", value: "", jsonKeys: [] };
     } else if (type === "dateRange") {
       newItem = { id: generateId("dateRange"), type: "dateRange", mappedField: null };
     }

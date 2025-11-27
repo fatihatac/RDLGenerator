@@ -18,7 +18,7 @@ const getOrCreateTitleItem = (allItems, updatedItem, itemsToAdd) => {
   const titleExists = allItems.some((item) => item.type === "title");
   if (!titleExists) {
     itemsToAdd.push({
-      id: generateId(), 
+      id: generateId("title"), 
       type: "title",
       value: "RAPOR_ADI",
       dataSourceId: updatedItem.id,
@@ -34,7 +34,7 @@ const generateTableColumns = (parsedData, allKeys) => { // Changed jsonKeys to a
   return columnsToMap.map((key, index) => {
     const fixedName = fixColumnNames(key);
     return {
-      id: generateId(), 
+      id: generateId("column"), 
       name: fixedName,
       mappedField: key,
       dataType: getDataType(firstRow[key]),
@@ -47,7 +47,7 @@ const getOrCreateTableItem = (allItems, updatedItem, newColumns, itemsToAdd, ite
   const existingTable = allItems.find((item) => item.type === "table");
   if (!existingTable) {
     itemsToAdd.push({
-      id: generateId(), 
+      id: generateId("table"), 
       type: "table",
       columns: newColumns,
       dataSourceId: updatedItem.id,
