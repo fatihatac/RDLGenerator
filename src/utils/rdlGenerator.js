@@ -4,14 +4,12 @@ import { XMLBuilder } from "fast-xml-parser";
 import buildDataSection from "./buildDataSection.js";
 import { buildReportItems } from "./buildItems.js";
 
-function generateRDL(items) {
+function generateRDL(items, allDataSources, activeDataSource) {
   const {
-    dataItem,
     tableItem,
     TOTAL_REPORT_WIDTH,
     TOTAL_REPORT_HEIGHT,
-    dataSetName,
-  } = calculateReportValues(items);
+  } = calculateReportValues(items, activeDataSource);
 
   const builder = new XMLBuilder({
     ignoreAttributes: false,
@@ -20,9 +18,13 @@ function generateRDL(items) {
     suppressEmptyNode: true,
   });
 
-  const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH, dataSetName )
+  // The visual table in the report must be bound to a specific DataSet. 
+  // We'll bind it to the DataSet corresponding to the ACTIVE data source.
+  const activeDataSetName = activeDataSource ? `DataSet_${activeDataSource.id}` : null;
 
-  const dataSection = buildDataSection(dataItem, tableItem, dataSetName);
+  const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH, activeDataSetName )
+
+  const dataSection = buildDataSection(allDataSources);
 
   const reportObj = {
     Report: {

@@ -1,28 +1,31 @@
-import { Trash2, FileText, Link, CheckSquare } from 'lucide-react';
+import { Trash2, FileText, Link, CheckSquare, Star } from 'lucide-react';
 import useReportStore from '../../store/useReportStore';
-import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo'; // Import the new utility
+import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo'; 
 
 function JSONEditor({ item }) {
-  const storeUpdateItem = useReportStore((state) => state.updateItem);
-  const storeDeleteItem = useReportStore((state) => state.deleteItem);
-  const storeUpdateColumnName = useReportStore((state) => state.updateColumnName);
-  const storeRemoveColumn = useReportStore((state) => state.removeColumn);
-  const storeUpdateColumnMappedField = useReportStore((state) => state.updateColumnMappedField);
+  const { 
+    updateItem: storeUpdateItem, 
+    deleteItem: storeDeleteItem, 
+    updateColumnName: storeUpdateColumnName, 
+    removeColumn: storeRemoveColumn, 
+    updateColumnMappedField: storeUpdateColumnMappedField,
+    reportItems,
+    activeDataSourceId,
+    setActiveDataSourceId
+  } = useReportStore();
 
-  const tableItem = useReportStore((state) =>
-    state.reportItems.find((reportItem) => reportItem.type === 'table')
-  );
+  const is_active = item.id === activeDataSourceId;
+
+  const tableItem = reportItems.find((reportItem) => reportItem.type === 'table');
 
   const handleJsonChange = (e) => {
     const jsonString = e.target.value;
     const { parsedData, allKeys, filteredKeys, error } = parseAndExtractJsonInfo(jsonString);
 
     if (error) {
-      // You might want to display this error in the UI eventually
       console.error("JSON parsing error in JSONEditor:", error);
     }
     
-    // Even if parsedData is null due to error, we still update with current string and empty keys
     storeUpdateItem(item.id, { 
       value: jsonString, 
       jsonKeys: allKeys, 
@@ -38,11 +41,25 @@ function JSONEditor({ item }) {
 
 
   return (
-    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
+    <div className={`bg-white p-4 rounded-lg shadow-sm border mb-4 transition-all hover:shadow-md ${is_active ? 'border-green-400 shadow-lg' : 'border-gray-200'}`}>
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center text-yellow-600 font-semibold">
           <FileText size={18} className="mr-2" />
           <span>JSON Veri Kaynağı</span>
+          {is_active && (
+            <span className="ml-3 text-xs font-bold text-white bg-green-500 px-2 py-0.5 rounded-full flex items-center">
+              <Star size={12} className="mr-1" />
+              Aktif
+            </span>
+          )}
+           {!is_active && (
+            <button 
+              onClick={() => setActiveDataSourceId(item.id)}
+              className="ml-3 text-xs font-bold text-gray-600 bg-gray-200 hover:bg-gray-300 px-2 py-0.5 rounded-full flex items-center transition-colors"
+            >
+              Aktif Olarak Ayarla
+            </button>
+          )}
         </div>
         <button onClick={() => storeDeleteItem(item.id)} className="text-red-400 hover:text-red-600 p-1">
           <Trash2 size={18} />
@@ -69,7 +86,7 @@ function JSONEditor({ item }) {
         <div className="mt-6 border-t border-gray-200 pt-4">
           <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center">
             <Link size={18} className="mr-2 text-blue-600" />
-            Veri Eşleştirme
+            Veri Eşleştirme (Aktif Veri Kaynağı ile)
           </h3>
           <p className="text-sm text-gray-500 mb-4">
             Tablo sütunlarınız ile JSON veri alanlarınızı eşleştirin.

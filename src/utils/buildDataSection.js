@@ -1,78 +1,77 @@
-const buildDataSection = (dataItem, tableItem, dataSetName) => {
-  if (
-    !dataItem ||
-    !tableItem ||
-    !dataItem.jsonKeys ||
-    dataItem.jsonKeys.length === 0
-  ) {
+import { getDataType } from "./getDataType.js";
+import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js";
+
+const buildDataSection = (allDataSources) => {
+  if (!allDataSources || allDataSources.length === 0) {
     return {};
   }
 
-  // Fields
-  const fields = dataItem.jsonKeys.map((key) => {
-    const mappedColumn = tableItem.columns.find(
-      (col) => col.mappedField === key
-    );
-    const typeName = mappedColumn ? mappedColumn.dataType : "System.String";
+  const dataSourcesXml = allDataSources.map(ds => {
+    const connectStringData = {
+      Data: ds.value,
+      DataMode: "inline",
+      URL: "",
+    };
     return {
-      Field: {
-        "@_Name": key,
-        DataField: key,
-        "rd:TypeName": typeName,
+      "@_Name": `${ds.id}`,
+      ConnectionProperties: {
+        DataProvider: "JSON",
+        ConnectString: JSON.stringify(connectStringData),
       },
+      "rd:ImpersonateUser": "false",
     };
   });
 
-  
-  // Query Columns
-  const queryColumns = dataItem.jsonKeys.map((key) => ({
-    Column: { "@_Name": key, "@_IsDuplicate": "False", "@_IsSelected": "True" },
-  }));
+  const dataSetsXml = allDataSources.map(ds => {
+    const { parsedData } = parseAndExtractJsonInfo(ds.value);
+    const firstRow = parsedData?.[0];
 
-  // Connection String
-  const connectStringData = {
-    Data: dataItem.value,
-    DataMode: "inline",
-    URL: "",
-  };
+    // Fields for this specific DataSet
+    const fields = (ds.jsonKeys || []).map((key) => ({
+      "@_Name": key,
+      DataField: key,
+      "rd:TypeName": getDataType(firstRow?.[key]),
+    }));
 
-  return {
-    DataSources: {
-      DataSource: {
-        "@_Name": `${dataItem.id}`,
-        ConnectionProperties: {
-          DataProvider: "JSON",
-          ConnectString: JSON.stringify(connectStringData), // Builder otomatik escape yapacaktır
-        },
-        "rd:ImpersonateUser": "false",
-      },
-    },
-    DataSets: {
-      DataSet: {
-        "@_Name": dataSetName,
-        Fields: { Field: fields.map((f) => f.Field) },
-        Query: {
-          DataSourceName: `${dataItem.id}`,
-          CommandType: "Text",
-          CommandText: '{"Name":"Result","Columns":[]}',
-          QueryDesignerState: {
-            "@_xmlns":
-              "http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational",
-            Tables: {
-              Table: {
-                "@_Name": "Result",
-                "@_Schema": "",
-                Columns: { Column: queryColumns.map((c) => c.Column) },
-                SchemaLevels: {
-                  SchemaInfo: { "@_Name": "Result", "@_SchemaType": "Table" },
-                },
+    // Query Columns for this specific DataSet
+    const queryColumns = (ds.jsonKeys || []).map((key) => ({
+      "@_Name": key,
+      "@_IsDuplicate": "False",
+      "@_IsSelected": "True",
+    }));
+
+    return {
+      "@_Name": `DataSet_${ds.id}`, // Unique DataSet name
+      Fields: { Field: fields },
+      Query: {
+        DataSourceName: `${ds.id}`, // Link to the correct DataSource
+        CommandType: "Text",
+        CommandText: '{"Name":"Result","Columns":[]}',
+        QueryDesignerState: {
+          "@_xmlns": "http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational",
+          Tables: {
+            Table: {
+              "@_Name": "Result",
+              "@_Schema": "",
+              Columns: { Column: queryColumns },
+              SchemaLevels: {
+                SchemaInfo: { "@_Name": "Result", "@_SchemaType": "Table" },
               },
             },
           },
         },
       },
+    };
+  });
+
+  return {
+    DataSources: {
+      DataSource: dataSourcesXml,
+    },
+    DataSets: {
+      DataSet: dataSetsXml,
     },
   };
 };
 
-export default buildDataSection
+export default buildDataSection;

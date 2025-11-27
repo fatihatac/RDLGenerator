@@ -20,10 +20,11 @@ function TableEditor({ item }) {
     addSum,
     removeSum,
     updateSumMappedField,
-    updateItem, 
+    updateItem,
+    getActiveDataSource,
   } = useReportStore();
 
-  const dataItem = reportItems.find(i => i.type === 'data');
+  const dataItem = getActiveDataSource();
 
 
   const { parsedData } = useMemo(() => {

@@ -52,8 +52,8 @@ function getTotalTableWidth(tableItem) {
   return columnsWidth + groupsWidth;
 }
 
-function calculateReportValues(items) {
-  const { dataItem, tableItem } = getDataAndTableItems(items);
+function calculateReportValues(items, dataItem) {
+  const tableItem = items.find(item => item.type === "table");
   const rowCount = getRowCount(dataItem);
   const NUMBER_COLUMN_WIDTH = getNumberColumnWidth(rowCount);
 
@@ -67,11 +67,9 @@ function calculateReportValues(items) {
   const TOTAL_REPORT_WIDTH = getTotalTableWidth(tableItem);
   const TOTAL_REPORT_HEIGHT = items.length > 0 ? Layout.PAGE_HEIGHT : 225;
 
-  // const dataSetName = `DataSet_${dataItem ? dataItem.id : "1"}`;
   const dataSetName = generateId("dataset");
 
   return {
-    dataItem,
     tableItem,
     rowCount,
     maxColumns,

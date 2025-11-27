@@ -7,7 +7,23 @@ import fixColumnNames from "../utils/fixColumnNames";
 const useReportStore = create((set, get) => ({
   reportItems: [],
   fileName: '',
+  activeDataSourceId: null, // To track the active data source
   setFileName: (newFileName) => set({ fileName: newFileName }),
+
+  // --- Data Source Management ---
+  setActiveDataSourceId: (id) => set({ activeDataSourceId: id }),
+  getActiveDataSource: () => {
+    const { reportItems, activeDataSourceId } = get();
+    const dataSources = reportItems.filter(item => item.type === 'data');
+    if (dataSources.length === 0) return null;
+
+    if (activeDataSourceId) {
+      const activeSource = dataSources.find(ds => ds.id === activeDataSourceId);
+      if (activeSource) return activeSource;
+    }
+    
+    return dataSources[0]; // Fallback to the first one
+  },
 
   // --- General Actions ---
   addItem: (type) => {
@@ -24,12 +40,22 @@ const useReportStore = create((set, get) => ({
 
     if (newItem) {
       set((state) => ({ reportItems: [...state.reportItems, newItem] }));
+      // If the first data source is added, set it as active
+      if (type === 'data' && !get().activeDataSourceId) {
+        set({ activeDataSourceId: newItem.id });
+      }
     }
   },
 
   deleteItem: (id) => {
-    const { reportItems } = get();
+    const { reportItems, activeDataSourceId } = get();
     const itemToDelete = reportItems.find((item) => item.id === id);
+  
+    // If the deleted item is the active data source, reset activeDataSourceId
+    if (itemToDelete && itemToDelete.type === "data" && itemToDelete.id === activeDataSourceId) {
+      const otherDataSources = reportItems.filter(item => item.type === 'data' && item.id !== id);
+      set({ activeDataSourceId: otherDataSources.length > 0 ? otherDataSources[0].id : null });
+    }
 
     if (itemToDelete && itemToDelete.type === "data") {
       set((state) => ({
@@ -61,11 +87,15 @@ const useReportStore = create((set, get) => ({
   },
 
   downloadReport: (fileName) => {
-    const { reportItems } = get();
+    const { reportItems, getActiveDataSource } = get();
+
+    const allDataSources = reportItems.filter(item => item.type === 'data');
+    const activeDataSource = getActiveDataSource();
+
     const titleItem = reportItems.find((item) => item.type === "title");
     const reportTitle = titleItem ? titleItem.value : "TaslakRapor";
     let reportName = fileName && fileName.trim() !== "" ? fileName.trim() : reportTitle;
-    const rdlContent = generateRDL(reportItems);
+    const rdlContent = generateRDL(reportItems, allDataSources, activeDataSource);
     const blob = new Blob([rdlContent], { type: "application/xml" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
