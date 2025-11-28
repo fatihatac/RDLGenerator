@@ -45,19 +45,20 @@ const useReportStore = create((set, get) => ({
   },
 
   updateItem: (id, updates) => {
-    const currentItems = get().reportItems;
-    let updatedItems = currentItems.map((item) => {
-      if (item.id === id) {
-        return { ...item, ...updates };
-      }
-      return item;
-    });
+    set((state) => ({
+      reportItems: state.reportItems.map((item) =>
+        item.id === id ? { ...item, ...updates } : item
+      ),
+    }));
+  },
 
-    const updatedItem = updatedItems.find((item) => item.id === id);
-    if (updatedItem && updatedItem.type === "data") {
-      updatedItems = handleDataUpdateSideEffects(updatedItem, updatedItems);
+  triggerDataSideEffects: (dataItemId) => {
+    const { reportItems } = get();
+    const dataItem = reportItems.find((item) => item.id === dataItemId);
+    if (dataItem) {
+      const updatedItems = handleDataUpdateSideEffects(dataItem, reportItems);
+      set({ reportItems: updatedItems });
     }
-    set({ reportItems: updatedItems });
   },
 
   downloadReport: (fileName) => {

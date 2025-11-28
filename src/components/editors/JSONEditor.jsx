@@ -1,6 +1,7 @@
-import { Trash2, FileText, Link, CheckSquare } from 'lucide-react';
+import { Trash2, FileText, Link } from 'lucide-react';
 import useReportStore from '../../store/useReportStore';
-import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo'; // Import the new utility
+import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo';
+import GenerateReportButton from '../actions/GenerateReportButton';
 
 function JSONEditor({ item }) {
   const storeUpdateItem = useReportStore((state) => state.updateItem);
@@ -8,6 +9,7 @@ function JSONEditor({ item }) {
   const storeUpdateColumnName = useReportStore((state) => state.updateColumnName);
   const storeRemoveColumn = useReportStore((state) => state.removeColumn);
   const storeUpdateColumnMappedField = useReportStore((state) => state.updateColumnMappedField);
+  const triggerDataSideEffects = useReportStore((state) => state.triggerDataSideEffects);
 
   const tableItem = useReportStore((state) =>
     state.reportItems.find((reportItem) => reportItem.type === 'table')
@@ -28,12 +30,17 @@ function JSONEditor({ item }) {
     });
   };
 
+  const handleGenerateReport = () => {
+    triggerDataSideEffects(item.id);
+  };
+
   const showMappingUI =
     tableItem &&
     tableItem.columns.length > 0 &&
     item.jsonKeys &&
     item.jsonKeys.length > 0;
 
+  const showGenerateButton = item.jsonKeys && item.jsonKeys.length > 0;
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -54,7 +61,7 @@ function JSONEditor({ item }) {
           onChange={handleJsonChange}
           className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none font-mono text-sm"
           rows={5}
-          placeholder="Örn: [{ &quot;isim&quot;: &quot;Ahmet&quot;, &quot;yas&quot;: 30 }]"
+          placeholder='Örn: [{ "isim": "Ahmet", "yas": 30 }]'
         />
         {item.jsonKeys && item.jsonKeys.length > 0 && (
           <div className="text-xs text-gray-500 pt-1">
@@ -63,12 +70,21 @@ function JSONEditor({ item }) {
         )}
       </div>
 
+      {showGenerateButton && !showMappingUI && (
+        <div className="mt-4 flex justify-center">
+          <GenerateReportButton onClick={handleGenerateReport} />
+        </div>
+      )}
+
       {showMappingUI && (
         <div className="mt-6 border-t border-gray-200 pt-4">
-          <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center">
-            <Link size={18} className="mr-2 text-blue-600" />
-            Veri Eşleştirme
-          </h3>
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="text-lg font-semibold text-gray-800 flex items-center">
+              <Link size={18} className="mr-2 text-blue-600" />
+              Veri Eşleştirme
+            </h3>
+            {/* You could add a re-map button here if needed */}
+          </div>
           <p className="text-sm text-gray-500 mb-4">
             Tablo sütunlarınız ile JSON veri alanlarınızı eşleştirin.
           </p>
