@@ -1,6 +1,6 @@
 import { BarChart, Trash2 } from 'lucide-react';
 import useReportStore from '../../store/useReportStore';
-import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo';
+//import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo';
 
 
 function ChartEditor({ item }) {
@@ -16,21 +16,26 @@ function ChartEditor({ item }) {
 	console.log(dataItems);
 
 
-	const handleJsonInputChange = (e) => {
-		const jsonString = e.target.value;
-		const { allKeys, filteredKeys, error } = parseAndExtractJsonInfo(jsonString);
+	// const handleJsonInputChange = (e) => {
+	// 	const jsonString = e.target.value;
+	// 	const { allKeys, filteredKeys, error } = parseAndExtractJsonInfo(jsonString);
 
-		if (error) {
-			console.error("JSON parsing error in ChartEditor:", error);
-		}
+	// 	if (error) {
+	// 		console.error("JSON parsing error in ChartEditor:", error);
+	// 	}
 
-		storeUpdateItem(item.id, {
-			//dataSourceId: ,
-			value: jsonString,
-			jsonKeys: allKeys,
-			filteredJsonKeys: filteredKeys
-		});
-	};
+	// 	storeUpdateItem(item.id, {
+	// 		//dataSourceId: ,
+	// 		value: jsonString,
+	// 		jsonKeys: allKeys,
+	// 		filteredJsonKeys: filteredKeys
+	// 	});
+	// };
+
+  function handleOnChange(e) {
+    console.log(e.target.value);
+    storeUpdateItem(item.id, { dataSourceId: e.target.value });
+  }
 
 	// const handleApplyChartData = () => {
 	//   const { allKeys, filteredKeys, error } = parseAndExtractJsonInfo(jsonInput);
@@ -50,7 +55,7 @@ function ChartEditor({ item }) {
 	//   triggerDataSideEffects(item.id);
 	// };
 
-	const hasJsonData = item.jsonKeys && item.jsonKeys.length > 0;
+	//const hasJsonData = item.jsonKeys && item.jsonKeys.length > 0;
 
 	return (
 		<div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -64,10 +69,11 @@ function ChartEditor({ item }) {
 				</button>
 			</div>
 
-			{/* <select
+			<select
+        onChange={handleOnChange}
 				className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
 			>
-				<option value="">-- Eşleştir --</option>
+				<option>-- Eşleştir --</option>
 				{dataItems.map((reportItem) => {
 					if (reportItem.type === 'data' && reportItem.jsonKeys && reportItem.jsonKeys.length > 0) {
 						return (
@@ -77,10 +83,9 @@ function ChartEditor({ item }) {
 						);
 					}
 				})}
+			</select>
 
-			</select> */}
-
-			<div className="space-y-2">
+			{/* <div className="space-y-2">
 				<label className="block text-sm font-medium text-gray-700">JSON Verisi (Dizi formatında)</label>
 				<textarea
 					value={item.value}
@@ -94,7 +99,7 @@ function ChartEditor({ item }) {
 						<span className="font-medium">Bulunan Alanlar:</span> {item.jsonKeys.join(', ')}
 					</div>
 				)}
-			</div>
+			</div> */}
 			{/*
       <div className="mt-4 flex justify-center">
         <GenerateReportButton
