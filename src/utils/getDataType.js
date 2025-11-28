@@ -9,4 +9,4 @@ function getDataType(value) {
   return "System.String";
 }
 
-export { getDataType };
+export default getDataType;

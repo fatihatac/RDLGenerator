@@ -2,6 +2,7 @@ import TextboxEditor from '../editors/TextboxEditor';
 import TableEditor from '../editors/TableEditor';
 import JSONEditor from '../editors/JSONEditor';
 import DateRangeEditor from '../editors/DateRangeEditor';
+import ChartEditor from '../editors/ChartEditor'; // New import
 
 function ReportItemRenderer({ 
     item, 
@@ -27,6 +28,13 @@ function ReportItemRenderer({
         case 'dateRange':
             return (
                 <DateRangeEditor
+                    item={item}
+                />
+            );
+
+        case 'chart': 
+            return (
+                <ChartEditor
                     item={item}
                 />
             );

@@ -1,6 +1,6 @@
 import { Play } from 'lucide-react';
 
-const GenerateReportButton = ({ onClick, disabled }) => {
+const GenerateReportButton = ({ onClick, disabled, label }) => {
     return (
         <button
             onClick={onClick}
@@ -9,7 +9,7 @@ const GenerateReportButton = ({ onClick, disabled }) => {
             title="Rapor öğelerini oluşturur ve JSON alanlarıyla otomatik olarak eşleştirir"
         >
             <Play size={16} className="mr-2" />
-            Raporu Oluştur & Eşleştir
+            {label || "Raporu Oluştur & Eşleştir"}
         </button>
     );
 };

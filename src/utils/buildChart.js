@@ -1,3 +1,5 @@
+// newItem = { id: generateId("chart"), type: "chart", chartType: "bar", dataSourceId: null, xAxis: null, yAxis: null };
+
 function buildChart() {
   return {
     Chart: {
@@ -906,43 +908,45 @@ function buildChart() {
           TextOrientation: "Auto",
         },
       },
-      Palette: "BrightPastel",
-      ChartBorderSkin: {
-        Style: {
-          BackgroundColor: "White",
-          FontFamily: "Segoe UI",
-          FontSize: "8pt",
-          BackgroundGradientEndColor: "White",
-          TextAlign: "Center",
-          Color: "White",
-          ShadowColor: "Transparent",
-          Border: {
-            Color: "#d3d3d3",
-            Style: "Solid",
-          },
-        },
-      },
-      ChartNoDataMessage: {
-        Name: "Default",
-        Caption: null,
-        Hidden: false,
-        Style: {
-          BackgroundColor: "White",
-          FontFamily: "Segoe UI",
-          FontSize: "8pt",
-          BackgroundGradientEndColor: "White",
-          TextAlign: "Center",
-          Color: "Gray",
-          ShadowColor: "Transparent",
-          Border: {
-            Color: "#d3d3d3",
-            Style: "Solid",
-          },
-        },
-        Position: "TopCenter",
-        DockOffset: 0,
-        TextOrientation: "Auto",
-      },
+      
+  "Palette": "BrightPastel",
+  "ChartBorderSkin": {
+    "Style": {
+      "BackgroundColor": "White",
+      "FontFamily": "Segoe UI",
+      "FontSize": "8pt",
+      "BackgroundGradientEndColor": "White",
+      "TextAlign": "Center",
+      "Color": "White",
+      "ShadowColor": "Transparent",
+      "Border": {
+        "Color": "#d3d3d3",
+        "Style": "Solid"
+      }
+    }
+  },
+  "ChartNoDataMessage": {
+    "Name": "Default",
+    "Caption": null,
+    "Hidden": false,
+    "Style": {
+      "BackgroundColor": "White",
+      "FontFamily": "Segoe UI",
+      "FontSize": "8pt",
+      "BackgroundGradientEndColor": "White",
+      "TextAlign": "Center",
+      "Color": "Gray",
+      "ShadowColor": "Transparent",
+      "Border": {
+        "Color": "#d3d3d3",
+        "Style": "Solid"
+      }
+    },
+    "Position": "TopCenter",
+    "DockOffset": 0,
+    "TextOrientation": "Auto"
+  }
+
     },
   };
 }

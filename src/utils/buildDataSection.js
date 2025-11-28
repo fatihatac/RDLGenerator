@@ -1,19 +1,26 @@
-const buildDataSection = (dataItem, tableItem, dataSetName) => {
+import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js";
+import getDataType from "./getDataType.js"; 
+
+const buildDataSection = (dataItem, dataSetName) => {
   if (
     !dataItem ||
-    !tableItem ||
+    !dataItem.value ||
     !dataItem.jsonKeys ||
     dataItem.jsonKeys.length === 0
   ) {
     return {};
   }
 
-  // Fields
-  const fields = dataItem.jsonKeys.map((key) => {
-    const mappedColumn = tableItem.columns.find(
-      (col) => col.mappedField === key
-    );
-    const typeName = mappedColumn ? mappedColumn.dataType : "System.String";
+  const { parsedData, allKeys, error } = parseAndExtractJsonInfo(dataItem.value);
+
+  if (error || !parsedData) {
+    console.error("Error parsing dataItem JSON in buildDataSection:", error);
+    return {};
+  }
+
+  const firstRow = Array.isArray(parsedData) && parsedData.length > 0 ? parsedData[0] : {};
+  const fields = allKeys.map((key) => {
+    const typeName = getDataType(firstRow[key]);
     return {
       Field: {
         "@_Name": key,
@@ -23,13 +30,10 @@ const buildDataSection = (dataItem, tableItem, dataSetName) => {
     };
   });
 
-  
-  // Query Columns
-  const queryColumns = dataItem.jsonKeys.map((key) => ({
+  const queryColumns = allKeys.map((key) => ({
     Column: { "@_Name": key, "@_IsDuplicate": "False", "@_IsSelected": "True" },
   }));
 
-  // Connection String
   const connectStringData = {
     Data: dataItem.value,
     DataMode: "inline",
@@ -42,7 +46,7 @@ const buildDataSection = (dataItem, tableItem, dataSetName) => {
         "@_Name": `${dataItem.id}`,
         ConnectionProperties: {
           DataProvider: "JSON",
-          ConnectString: JSON.stringify(connectStringData), // Builder otomatik escape yapacaktır
+          ConnectString: JSON.stringify(connectStringData),
         },
         "rd:ImpersonateUser": "false",
       },
@@ -75,4 +79,4 @@ const buildDataSection = (dataItem, tableItem, dataSetName) => {
   };
 };
 
-export default buildDataSection
+export default buildDataSection;

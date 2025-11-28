@@ -1,4 +1,4 @@
-import { getDataType } from "./getDataType";
+import getDataType from "./getDataType";
 import fixColumnNames from "./fixColumnNames";
 import getMaxCharWidth from "./getMaxCharWidth";
 import { EXCLUDED_KEYS } from "../constants/appConstants"; // Import EXCLUDED_KEYS

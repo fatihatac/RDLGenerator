@@ -6,11 +6,8 @@ import { buildReportItems } from "./buildItems.js";
 
 function generateRDL(items) {
   const {
-    dataItem,
-    tableItem,
     TOTAL_REPORT_WIDTH,
     TOTAL_REPORT_HEIGHT,
-    dataSetName,
   } = calculateReportValues(items);
 
   const builder = new XMLBuilder({
@@ -20,9 +17,23 @@ function generateRDL(items) {
     suppressEmptyNode: true,
   });
 
-  const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH, dataSetName )
+  const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH)
 
-  const dataSection = buildDataSection(dataItem, tableItem, dataSetName);
+  const allDataItems = items.filter(item => item.type === "data");
+  let allDataSources = [];
+  let allDataSets = [];
+
+  allDataItems.forEach(dataItem => {
+    const currentDataSetName = `DataSet_${dataItem.id}`;
+    const { DataSources, DataSets } = buildDataSection(dataItem, currentDataSetName);
+    
+    if (DataSources && DataSources.DataSource) {
+      allDataSources.push(DataSources.DataSource);
+    }
+    if (DataSets && DataSets.DataSet) {
+      allDataSets.push(DataSets.DataSet);
+    }
+  });
 
   const reportObj = {
     Report: {
@@ -36,7 +47,7 @@ function generateRDL(items) {
         ReportSection: {
           Body: {
             Style: { Border: { Style: "None" } },
-            ReportItems: reportItemsList, // Dizi olarak veriyoruz, parser children olarak ekler
+            ReportItems: reportItemsList,
             Height: `${TOTAL_REPORT_HEIGHT}pt`,
           },
           Width: `${TOTAL_REPORT_WIDTH}pt`,
@@ -50,7 +61,8 @@ function generateRDL(items) {
         },
       },
       AutoRefresh: "0",
-      ...dataSection, 
+      ...(allDataSources.length > 0 && { DataSources: { DataSource: allDataSources } }),
+      ...(allDataSets.length > 0 && { DataSets: { DataSet: allDataSets } }),
       ReportParametersLayout: {
         GridLayoutDefinition: {
           NumberOfColumns: "4",
