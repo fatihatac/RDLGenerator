@@ -1,6 +1,16 @@
 // newItem = { id: generateId("chart"), type: "chart", chartType: "bar", dataSourceId: null, xAxis: null, yAxis: null };
 
-function buildChart() {
+import useReportStore from "../store/useReportStore";
+
+function buildChart(item) {
+  console.log(item);
+  const dataItem = useReportStore
+    .getState()
+    .reportItems.find((ri) => ri.id === item.dataSourceId);
+  const jsonKeys = dataItem ? dataItem.jsonKeys : [];
+  console.log(jsonKeys);
+  console.log(dataItem);
+
   return {
     Chart: {
       "@_Name": "Chart1",
@@ -21,19 +31,33 @@ function buildChart() {
           Style: "Solid",
         },
       },
-      DataSetName: "DataSet1",
+      DataSetName: `DataSet_${dataItem.id}`,
       ChartSeriesHierarchy: {
-        ChartMembers: [
-          {
-            Label: "Bilinmiyor",
-          },
-          {
-            Label: "Erkek",
-          },
-          {
-            Label: "Kadın",
-          },
-        ],
+        ChartMembers: {
+          ChartMember: jsonKeys.map((i) => {
+            return {
+              Label: i,
+            };
+          }),
+        },
+        // ChartMembers: [
+        //   jsonKeys.map((i) => {
+        //     return {
+        //       ChartMember: {
+        //         Label: i,
+        //       },
+        //     };
+        //   }),
+        //   //   {
+        //   //     Label: "Bilinmiyor",
+        //   //   },
+        //   //   {
+        //   //     Label: "Erkek",
+        //   //   },
+        //   //   {
+        //   //     Label: "Kadın",
+        //   //   },
+        // ],
       },
       ChartCategoryHierarchy: {
         ChartMembers: [
@@ -49,13 +73,13 @@ function buildChart() {
       },
       ChartData: {
         ChartSeriesCollection: {
-          ChartSeries: [
-            {
-              "@_Name": "Bilinmiyor1",
+          ChartSeries: jsonKeys.map((key) => {
+            return {
+              "@_Name": `${key}`,
               ChartDataPoints: {
                 ChartDataPoint: {
                   ChartDataPointValues: {
-                    Y: "=Sum(Fields!Bilinmiyor.Value)",
+                    Y: `=Sum(Fields!${key}.Value)`,
                   },
                   ChartDataLabel: {
                     Style: {
@@ -124,167 +148,242 @@ function buildChart() {
               },
               ValueAxisName: "Primary",
               CategoryAxisName: "Primary",
-            },
-            {
-              "@_Name": "Erkek1",
-              ChartDataPoints: {
-                ChartDataPoint: {
-                  ChartDataPointValues: {
-                    Y: "=Sum(Fields!Erkek.Value)",
-                  },
-                  ChartDataLabel: {
-                    Style: {
-                      BackgroundGradientEndColor: "White",
-                      Color: "Black",
-                      ShadowColor: "Transparent",
-                      Border: {
-                        Color: "LightGrey",
-                        Style: "None",
-                      },
-                    },
-                    UseValueAsLabel: "false",
-                    Label: "#PERCENT",
-                    Visible: "false",
-                    Position: "Auto",
-                  },
-                  Style: {
-                    FontFamily: "Segoe UI",
-                    FontSize: "8pt",
-                    BackgroundGradientEndColor: "White",
-                    ShadowColor: "Transparent",
-                    Border: {
-                      Color: "Transparent",
-                      Style: "None",
-                    },
-                  },
-                  ChartMarker: {
-                    Size: "6pt",
-                    Style: {
-                      FontFamily: "Segoe UI",
-                      FontSize: "8pt",
-                      BackgroundGradientEndColor: "White",
-                      ShadowColor: "Transparent",
-                      Border: {
-                        Color: "Transparent",
-                        Style: "Solid",
-                      },
-                    },
-                  },
-                },
-              },
-              Type: "Shape",
-              Style: {
-                FontFamily: "Segoe UI",
-                FontSize: "8pt",
-                BackgroundGradientEndColor: "White",
-                Color: "Gray",
-                ShadowColor: "Transparent",
-                Border: {
-                  Color: "LightGrey",
-                  Style: "Solid",
-                },
-              },
-              ChartMarker: {
-                Size: "6pt",
-                Style: {
-                  FontFamily: "Segoe UI",
-                  FontSize: "8pt",
-                  BackgroundGradientEndColor: "White",
-                  ShadowColor: "Transparent",
-                  Border: {
-                    Color: "Transparent",
-                    Style: "Solid",
-                  },
-                },
-              },
-              ValueAxisName: "Primary",
-              CategoryAxisName: "Primary",
-            },
-            {
-              "@_Name": "Kadın1",
-              ChartDataPoints: {
-                ChartDataPoint: {
-                  ChartDataPointValues: {
-                    Y: "=Sum(Fields!Kadın.Value)",
-                  },
-                  ChartDataLabel: {
-                    Style: {
-                      BackgroundGradientEndColor: "White",
-                      Color: "Black",
-                      ShadowColor: "Transparent",
-                      Border: {
-                        Color: "LightGrey",
-                        Style: "None",
-                      },
-                    },
-                    UseValueAsLabel: "false",
-                    Label: "#PERCENT",
-                    Visible: "false",
-                    Position: "Auto",
-                  },
-                  Style: {
-                    FontFamily: "Segoe UI",
-                    FontSize: "8pt",
-                    BackgroundGradientEndColor: "White",
-                    ShadowColor: "Transparent",
-                    Border: {
-                      Color: "Transparent",
-                      Style: "None",
-                    },
-                  },
-                  ChartMarker: {
-                    Size: "6pt",
-                    Style: {
-                      FontFamily: "Segoe UI",
-                      FontSize: "8pt",
-                      BackgroundGradientEndColor: "White",
-                      ShadowColor: "Transparent",
-                      Border: {
-                        Color: "Transparent",
-                        Style: "Solid",
-                      },
-                    },
-                  },
-                },
-              },
-              Type: "Shape",
-              Style: {
-                FontFamily: "Segoe UI",
-                FontSize: "8pt",
-                BackgroundGradientEndColor: "White",
-                Color: "Gray",
-                ShadowColor: "Transparent",
-                Border: {
-                  Color: "LightGrey",
-                  Style: "Solid",
-                },
-              },
-              ChartMarker: {
-                Size: "6pt",
-                Style: {
-                  FontFamily: "Segoe UI",
-                  FontSize: "8pt",
-                  BackgroundGradientEndColor: "White",
-                  ShadowColor: "Transparent",
-                  Border: {
-                    Color: "Transparent",
-                    Style: "Solid",
-                  },
-                },
-              },
-              ValueAxisName: "Primary",
-              CategoryAxisName: "Primary",
-            },
-          ],
+            };
+          }),
         },
+        // {
+        //   "@_Name": "Bilinmiyor1",
+        //   ChartDataPoints: {
+        //     ChartDataPoint: {
+        //       ChartDataPointValues: {
+        //         Y: "=Sum(Fields!Bilinmiyor.Value)",
+        //       },
+        //       ChartDataLabel: {
+        //         Style: {
+        //           BackgroundGradientEndColor: "White",
+        //           Color: "Black",
+        //           ShadowColor: "Transparent",
+        //           Border: {
+        //             Color: "LightGrey",
+        //             Style: "None",
+        //           },
+        //         },
+        //         UseValueAsLabel: "false",
+        //         Label: "#PERCENT",
+        //         Visible: "false",
+        //         Position: "Auto",
+        //       },
+        //       Style: {
+        //         FontFamily: "Segoe UI",
+        //         FontSize: "8pt",
+        //         BackgroundGradientEndColor: "White",
+        //         ShadowColor: "Transparent",
+        //         Border: {
+        //           Color: "Transparent",
+        //           Style: "None",
+        //         },
+        //       },
+        //       ChartMarker: {
+        //         Size: "6pt",
+        //         Style: {
+        //           FontFamily: "Segoe UI",
+        //           FontSize: "8pt",
+        //           BackgroundGradientEndColor: "White",
+        //           ShadowColor: "Transparent",
+        //           Border: {
+        //             Color: "Transparent",
+        //             Style: "Solid",
+        //           },
+        //         },
+        //       },
+        //     },
+        //   },
+        //   Type: "Shape",
+        //   Style: {
+        //     FontFamily: "Segoe UI",
+        //     FontSize: "8pt",
+        //     BackgroundGradientEndColor: "White",
+        //     Color: "Gray",
+        //     ShadowColor: "Transparent",
+        //     Border: {
+        //       Color: "LightGrey",
+        //       Style: "Solid",
+        //     },
+        //   },
+        //   ChartMarker: {
+        //     Size: "6pt",
+        //     Style: {
+        //       FontFamily: "Segoe UI",
+        //       FontSize: "8pt",
+        //       BackgroundGradientEndColor: "White",
+        //       ShadowColor: "Transparent",
+        //       Border: {
+        //         Color: "Transparent",
+        //         Style: "Solid",
+        //       },
+        //     },
+        //   },
+        //   ValueAxisName: "Primary",
+        //   CategoryAxisName: "Primary",
+        // },
+        // {
+        //   "@_Name": "Erkek1",
+        //   ChartDataPoints: {
+        //     ChartDataPoint: {
+        //       ChartDataPointValues: {
+        //         Y: "=Sum(Fields!Erkek.Value)",
+        //       },
+        //       ChartDataLabel: {
+        //         Style: {
+        //           BackgroundGradientEndColor: "White",
+        //           Color: "Black",
+        //           ShadowColor: "Transparent",
+        //           Border: {
+        //             Color: "LightGrey",
+        //             Style: "None",
+        //           },
+        //         },
+        //         UseValueAsLabel: "false",
+        //         Label: "#PERCENT",
+        //         Visible: "false",
+        //         Position: "Auto",
+        //       },
+        //       Style: {
+        //         FontFamily: "Segoe UI",
+        //         FontSize: "8pt",
+        //         BackgroundGradientEndColor: "White",
+        //         ShadowColor: "Transparent",
+        //         Border: {
+        //           Color: "Transparent",
+        //           Style: "None",
+        //         },
+        //       },
+        //       ChartMarker: {
+        //         Size: "6pt",
+        //         Style: {
+        //           FontFamily: "Segoe UI",
+        //           FontSize: "8pt",
+        //           BackgroundGradientEndColor: "White",
+        //           ShadowColor: "Transparent",
+        //           Border: {
+        //             Color: "Transparent",
+        //             Style: "Solid",
+        //           },
+        //         },
+        //       },
+        //     },
+        //   },
+        //   Type: "Shape",
+        //   Style: {
+        //     FontFamily: "Segoe UI",
+        //     FontSize: "8pt",
+        //     BackgroundGradientEndColor: "White",
+        //     Color: "Gray",
+        //     ShadowColor: "Transparent",
+        //     Border: {
+        //       Color: "LightGrey",
+        //       Style: "Solid",
+        //     },
+        //   },
+        //   ChartMarker: {
+        //     Size: "6pt",
+        //     Style: {
+        //       FontFamily: "Segoe UI",
+        //       FontSize: "8pt",
+        //       BackgroundGradientEndColor: "White",
+        //       ShadowColor: "Transparent",
+        //       Border: {
+        //         Color: "Transparent",
+        //         Style: "Solid",
+        //       },
+        //     },
+        //   },
+        //   ValueAxisName: "Primary",
+        //   CategoryAxisName: "Primary",
+        // },
+        // {
+        //   "@_Name": "Kadın1",
+        //   ChartDataPoints: {
+        //     ChartDataPoint: {
+        //       ChartDataPointValues: {
+        //         Y: "=Sum(Fields!Kadın.Value)",
+        //       },
+        //       ChartDataLabel: {
+        //         Style: {
+        //           BackgroundGradientEndColor: "White",
+        //           Color: "Black",
+        //           ShadowColor: "Transparent",
+        //           Border: {
+        //             Color: "LightGrey",
+        //             Style: "None",
+        //           },
+        //         },
+        //         UseValueAsLabel: "false",
+        //         Label: "#PERCENT",
+        //         Visible: "false",
+        //         Position: "Auto",
+        //       },
+        //       Style: {
+        //         FontFamily: "Segoe UI",
+        //         FontSize: "8pt",
+        //         BackgroundGradientEndColor: "White",
+        //         ShadowColor: "Transparent",
+        //         Border: {
+        //           Color: "Transparent",
+        //           Style: "None",
+        //         },
+        //       },
+        //       ChartMarker: {
+        //         Size: "6pt",
+        //         Style: {
+        //           FontFamily: "Segoe UI",
+        //           FontSize: "8pt",
+        //           BackgroundGradientEndColor: "White",
+        //           ShadowColor: "Transparent",
+        //           Border: {
+        //             Color: "Transparent",
+        //             Style: "Solid",
+        //           },
+        //         },
+        //       },
+        //     },
+        //   },
+        //   Type: "Shape",
+        //   Style: {
+        //     FontFamily: "Segoe UI",
+        //     FontSize: "8pt",
+        //     BackgroundGradientEndColor: "White",
+        //     Color: "Gray",
+        //     ShadowColor: "Transparent",
+        //     Border: {
+        //       Color: "LightGrey",
+        //       Style: "Solid",
+        //     },
+        //   },
+        //   ChartMarker: {
+        //     Size: "6pt",
+        //     Style: {
+        //       FontFamily: "Segoe UI",
+        //       FontSize: "8pt",
+        //       BackgroundGradientEndColor: "White",
+        //       ShadowColor: "Transparent",
+        //       Border: {
+        //         Color: "Transparent",
+        //         Style: "Solid",
+        //       },
+        //     },
+        //   },
+        //   ValueAxisName: "Primary",
+        //   CategoryAxisName: "Primary",
+        // },
       },
       ChartAreas: {
         ChartArea: {
-          Name: "Default",
+          "@_Name": "Default",
           ChartCategoryAxes: {
             ChartAxis: [
               {
-                Name: "Primary",
+                "@_Name": "Primary",
                 Visible: "Auto",
                 Style: {
                   BackgroundColor: "White",
@@ -354,7 +453,7 @@ function buildChart() {
                   IntervalOffsetType: "Default",
                 },
                 ChartMajorTickMarks: {
-                  Enabled: false,
+                  Enabled: "false",
                   Type: "Outside",
                   Style: {
                     FontFamily: "Segoe UI",
@@ -373,7 +472,7 @@ function buildChart() {
                   IntervalOffsetType: "Default",
                 },
                 ChartMinorTickMarks: {
-                  Enabled: false,
+                  Enabled: "false",
                   Type: "Outside",
                   Style: {
                     FontFamily: "Segoe UI",
@@ -393,9 +492,9 @@ function buildChart() {
                 },
                 Location: "Default",
                 InterlacedColor: "Transparent",
-                LabelsAutoFitDisabled: true,
+                LabelsAutoFitDisabled: "True",
                 ChartAxisScaleBreak: {
-                  Enabled: false,
+                  Enabled: "false",
                   BreakLineType: "Ragged",
                   CollapsibleSpaceThreshold: 25,
                   MaxNumberOfBreaks: 2,
@@ -417,7 +516,7 @@ function buildChart() {
                 },
               },
               {
-                Name: "Secondary",
+                "@_Name": "Secondary",
                 Visible: "Auto",
                 Style: {
                   BackgroundColor: "White",
@@ -487,7 +586,7 @@ function buildChart() {
                   IntervalOffsetType: "Default",
                 },
                 ChartMajorTickMarks: {
-                  Enabled: false,
+                  Enabled: "false",
                   Type: "Outside",
                   Style: {
                     FontFamily: "Segoe UI",
@@ -506,7 +605,7 @@ function buildChart() {
                   IntervalOffsetType: "Default",
                 },
                 ChartMinorTickMarks: {
-                  Enabled: false,
+                  Enabled: "false",
                   Type: "Outside",
                   Style: {
                     FontFamily: "Segoe UI",
@@ -526,9 +625,9 @@ function buildChart() {
                 },
                 Location: "Opposite",
                 InterlacedColor: "Transparent",
-                LabelsAutoFitDisabled: true,
+                LabelsAutoFitDisabled: "True",
                 ChartAxisScaleBreak: {
-                  Enabled: false,
+                  Enabled: "false",
                   BreakLineType: "Ragged",
                   CollapsibleSpaceThreshold: 25,
                   MaxNumberOfBreaks: 2,
@@ -554,7 +653,7 @@ function buildChart() {
           ChartValueAxes: {
             ChartAxis: [
               {
-                Name: "Primary",
+                "@_Name": "Primary",
                 Visible: "Auto",
                 Style: {
                   BackgroundColor: "White",
@@ -624,7 +723,7 @@ function buildChart() {
                   IntervalOffsetType: "Default",
                 },
                 ChartMajorTickMarks: {
-                  Enabled: false,
+                  Enabled: "false",
                   Type: "Outside",
                   Style: {
                     FontFamily: "Segoe UI",
@@ -643,7 +742,7 @@ function buildChart() {
                   IntervalOffsetType: "Default",
                 },
                 ChartMinorTickMarks: {
-                  Enabled: false,
+                  Enabled: "false",
                   Type: "Outside",
                   Style: {
                     FontFamily: "Segoe UI",
@@ -663,9 +762,9 @@ function buildChart() {
                 },
                 Location: "Default",
                 InterlacedColor: "Transparent",
-                LabelsAutoFitDisabled: true,
+                LabelsAutoFitDisabled: "True",
                 ChartAxisScaleBreak: {
-                  Enabled: false,
+                  Enabled: "false",
                   BreakLineType: "Ragged",
                   CollapsibleSpaceThreshold: 25,
                   MaxNumberOfBreaks: 2,
@@ -687,7 +786,7 @@ function buildChart() {
                 },
               },
               {
-                Name: "Secondary",
+                "@_Name": "Secondary",
                 Visible: "Auto",
                 Style: {
                   BackgroundColor: "White",
@@ -757,7 +856,7 @@ function buildChart() {
                   IntervalOffsetType: "Default",
                 },
                 ChartMajorTickMarks: {
-                  Enabled: false,
+                  Enabled: "false",
                   Type: "Outside",
                   Style: {
                     FontFamily: "Segoe UI",
@@ -776,7 +875,7 @@ function buildChart() {
                   IntervalOffsetType: "Default",
                 },
                 ChartMinorTickMarks: {
-                  Enabled: false,
+                  Enabled: "false",
                   Type: "Outside",
                   Style: {
                     FontFamily: "Segoe UI",
@@ -796,9 +895,9 @@ function buildChart() {
                 },
                 Location: "Opposite",
                 InterlacedColor: "Transparent",
-                LabelsAutoFitDisabled: true,
+                LabelsAutoFitDisabled: "True",
                 ChartAxisScaleBreak: {
-                  Enabled: false,
+                  Enabled: "false",
                   BreakLineType: "Ragged",
                   CollapsibleSpaceThreshold: 25,
                   MaxNumberOfBreaks: 2,
@@ -838,8 +937,8 @@ function buildChart() {
       },
       ChartLegends: {
         ChartLegend: {
-          Name: "Default",
-          Hidden: false,
+          "@_Name": "Default",
+          Hidden: "false",
           Style: {
             BackgroundColor: "White",
             FontFamily: "Segoe UI",
@@ -876,18 +975,18 @@ function buildChart() {
           ColumnSeparator: "None",
           ColumnSeparatorColor: "Black",
           ColumnSpacing: 0,
-          InterlacedRows: false,
+          InterlacedRows: "false",
           InterlacedRowsColor: "Transparent",
-          EquallySpacedItems: false,
+          EquallySpacedItems: "false",
           Reversed: "Auto",
           TextWrapThreshold: 0,
         },
       },
       ChartTitles: {
         ChartTitle: {
-          Name: "Default",
+          "@_Name": "Default",
           Caption: "Chart Title",
-          Hidden: false,
+          Hidden: "false",
           Style: {
             FontFamily: "Segoe UI",
             FontSize: "10.5pt",
@@ -908,45 +1007,44 @@ function buildChart() {
           TextOrientation: "Auto",
         },
       },
-      
-  "Palette": "BrightPastel",
-  "ChartBorderSkin": {
-    "Style": {
-      "BackgroundColor": "White",
-      "FontFamily": "Segoe UI",
-      "FontSize": "8pt",
-      "BackgroundGradientEndColor": "White",
-      "TextAlign": "Center",
-      "Color": "White",
-      "ShadowColor": "Transparent",
-      "Border": {
-        "Color": "#d3d3d3",
-        "Style": "Solid"
-      }
-    }
-  },
-  "ChartNoDataMessage": {
-    "Name": "Default",
-    "Caption": null,
-    "Hidden": false,
-    "Style": {
-      "BackgroundColor": "White",
-      "FontFamily": "Segoe UI",
-      "FontSize": "8pt",
-      "BackgroundGradientEndColor": "White",
-      "TextAlign": "Center",
-      "Color": "Gray",
-      "ShadowColor": "Transparent",
-      "Border": {
-        "Color": "#d3d3d3",
-        "Style": "Solid"
-      }
-    },
-    "Position": "TopCenter",
-    "DockOffset": 0,
-    "TextOrientation": "Auto"
-  }
 
+      Palette: "BrightPastel",
+      ChartBorderSkin: {
+        Style: {
+          BackgroundColor: "White",
+          FontFamily: "Segoe UI",
+          FontSize: "8pt",
+          BackgroundGradientEndColor: "White",
+          TextAlign: "Center",
+          Color: "White",
+          ShadowColor: "Transparent",
+          Border: {
+            Color: "#d3d3d3",
+            Style: "Solid",
+          },
+        },
+      },
+      ChartNoDataMessage: {
+        "@_Name": "Default",
+        Caption: null,
+        Hidden: "false",
+        Style: {
+          BackgroundColor: "White",
+          FontFamily: "Segoe UI",
+          FontSize: "8pt",
+          BackgroundGradientEndColor: "White",
+          TextAlign: "Center",
+          Color: "Gray",
+          ShadowColor: "Transparent",
+          Border: {
+            Color: "#d3d3d3",
+            Style: "Solid",
+          },
+        },
+        Position: "TopCenter",
+        DockOffset: 0,
+        TextOrientation: "Auto",
+      },
     },
   };
 }

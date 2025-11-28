@@ -48,7 +48,6 @@ function getTotalTableWidth(tableItem) {
   );
 
   const groupsWidth = tableItem.groups?.length ? tableItem.groups.length * 72 : 0;
-
   return columnsWidth + groupsWidth;
 }
 
