@@ -20,8 +20,9 @@ const useReportStore = create((set, get) => ({
       newItem = { id: generateId("datasource"), type: "data", value: "", jsonKeys: [] };
     } else if (type === "dateRange") {
       newItem = { id: generateId("dateRange"), type: "dateRange", mappedField: null };
+    }else if (type === "chart") {
+      newItem = { id: generateId("chart"), type: "chart", chartType: "bar", dataSourceId: null, xAxis: null, yAxis: null };
     }
-
     if (newItem) {
       set((state) => ({ reportItems: [...state.reportItems, newItem] }));
     }

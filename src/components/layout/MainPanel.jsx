@@ -7,6 +7,8 @@ import useReportStore from '../../store/useReportStore';
 
 function MainPanel() {
     const {reportItems} = useReportStore()
+    console.log(reportItems);
+    
 
     return (
         <main className="flex-1 p-8 overflow-y-auto">

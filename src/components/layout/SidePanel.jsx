@@ -15,8 +15,7 @@ function SidePanel() {
             <AddTableButton onClick={() => addItem('table')} />
             <AddDataButton onClick={() => addItem('data')} />
             <AddDateRangeButton onClick={() => addItem('dateRange')} />
-            <AddChartButton onClick={()=>{console.log("Chart");
-            }} />
+            <AddChartButton onClick={()=>{ addItem('chart')}}/>
         </aside>)
 }
 
