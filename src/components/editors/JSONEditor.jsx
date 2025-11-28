@@ -15,14 +15,12 @@ function JSONEditor({ item }) {
 
   const handleJsonChange = (e) => {
     const jsonString = e.target.value;
-    const { parsedData, allKeys, filteredKeys, error } = parseAndExtractJsonInfo(jsonString);
+    const { allKeys, filteredKeys, error } = parseAndExtractJsonInfo(jsonString);
 
     if (error) {
-      // You might want to display this error in the UI eventually
       console.error("JSON parsing error in JSONEditor:", error);
     }
     
-    // Even if parsedData is null due to error, we still update with current string and empty keys
     storeUpdateItem(item.id, { 
       value: jsonString, 
       jsonKeys: allKeys, 
