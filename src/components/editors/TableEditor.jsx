@@ -25,6 +25,13 @@ function TableEditor({ item }) {
 
   const dataItem = reportItems.find(i => i.type === 'data');
 
+            //   <button 
+            //   onClick={() => setActiveDataSourceId(item.id)}
+            //   className="ml-3 text-xs font-bold text-gray-600 bg-gray-200 hover:bg-gray-300 px-2 py-0.5 rounded-full flex items-center transition-colors"
+            // >
+            //   Aktif Olarak Ayarla
+            // </button>
+
 
   const { parsedData } = useMemo(() => {
     if (!dataItem?.value) return { parsedData: null };
