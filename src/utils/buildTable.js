@@ -2,18 +2,16 @@ import * as Layout from "../constants/layoutConstants.js";
 import convertTitleCase from "./convertTitleCase.js";
 
 const buildTableHierarchy = (groups, sums) => {
-  // --- SENARYO 1: HİÇ GRUP YOKSA (DÜZ TABLO) ---
   if (!groups || groups.length === 0) {
     const members = [
       { TablixMember: { KeepWithGroup: "After" } }, // Header Row
       { TablixMember: { Group: { "@_Name": "Details" } } } // Details Row
     ];
-    
-    // Toplam satırı en sona eklenir
+
     if (sums && sums.length > 0) {
       members.push({ TablixMember: { KeepWithGroup: "Before" } });
     }
-    
+
     return {
       TablixMembers: {
         TablixMember: members.map(m => m.TablixMember)
@@ -21,16 +19,13 @@ const buildTableHierarchy = (groups, sums) => {
     };
   }
 
-  // --- SENARYO 2: GRUPLAMA VARSA ---
-
-  // 1. Header Hierarchy (Grup başlıklarını oluşturur)
   const createHeaderHierarchy = (index) => {
     if (index >= groups.length) {
       return { TablixMember: { KeepWithGroup: "After" } };
     }
 
     const group = groups[index];
-    
+
     return {
       TablixMember: {
         TablixHeader: {
@@ -75,14 +70,11 @@ const buildTableHierarchy = (groups, sums) => {
     };
   };
 
-  // 2. Sum Hierarchy (Toplam satırı için hiyerarşi oluşturur)
   const createSumHierarchy = (currentIndex, labelIndex) => {
-    // Base Case: Gruplar bitti, Sum Row'a bağlanıyoruz
     if (currentIndex >= groups.length) {
       return { TablixMember: { KeepWithGroup: "Before" } };
     }
 
-    // "TOPLAM" yazısını uygun sütuna yerleştir
     const value = currentIndex === labelIndex ? "TOPLAM" : "";
 
     return {
@@ -124,9 +116,7 @@ const buildTableHierarchy = (groups, sums) => {
     };
   };
 
-  // 3. Data Hierarchy (Grup verilerini ve İÇİNE GÖMÜLÜ toplamları oluşturur)
   const createDataHierarchy = (index) => {
-    // Base Case: En içteki detaylar
     if (index >= groups.length) {
       return {
         TablixMember: { Group: { "@_Name": "Details" } }
@@ -137,18 +127,14 @@ const buildTableHierarchy = (groups, sums) => {
     const groupNameBase = group.name ? group.name.replace(/\s+/g, '') : `Group${index}`;
     const uniqueGroupName = `Group_${groupNameBase}_${group.id || index}`;
 
-    // --- RECURSION ---
-    // Bir sonraki seviyeyi (Alt grubu veya Detayları) oluştur
+
     const nextLevelMember = createDataHierarchy(index + 1);
-    
-    // Grubun içindeki üyeler listesi
+
     const innerMembers = [];
-    
-    // A. Alt Grup/Detay ekle
+
     innerMembers.push(nextLevelMember.TablixMember);
 
-    // B. Eğer toplam isteniyorsa, GRUBUN İÇİNE toplam satırını (footer) ekle
-    // Bu sayede toplam satırı, verilerin hemen altında ve grup kapanmadan önce görünür.
+
     if (sums && sums.length > 0) {
       const footerMember = createSumHierarchy(index + 1, index + 1);
       innerMembers.push(footerMember.TablixMember);
@@ -199,7 +185,6 @@ const buildTableHierarchy = (groups, sums) => {
             }
           }
         },
-        // TablixMembers artık [NextLevel, Footer] içerir
         TablixMembers: {
           TablixMember: innerMembers
         }
@@ -207,13 +192,10 @@ const buildTableHierarchy = (groups, sums) => {
     };
   };
 
-  // --- BİRLEŞTİRME ---
   const members = [];
-  
-  // 1. Header Row (Sabit)
+
   members.push(createHeaderHierarchy(0).TablixMember);
-  
-  // 2. Data Rows (Gruplar ve içindeki toplamlar)
+
   members.push(createDataHierarchy(0).TablixMember);
 
   return {
@@ -223,18 +205,14 @@ const buildTableHierarchy = (groups, sums) => {
   };
 };
 
-/**
- * Tablo (Tablix) nesnesini oluşturur.
- */
+
 const buildTable = (item, dataSetName) => {
   const processedColumns = item.columns;
 
-  // 1. Sütun Tanımları
   const tablixColumns = processedColumns.map((col) => ({
     TablixColumn: { Width: `${col.width}pt` },
   }));
 
-  // 2. Header (Başlık) Hücreleri
   const headerCells = processedColumns.map((col, index) => {
     const textbox = {
       "@_Name": `Header_${item.id}_${index}`,
@@ -288,7 +266,6 @@ const buildTable = (item, dataSetName) => {
     };
   });
 
-  // 3. Data (Veri) Hücreleri
   const dataCells = processedColumns.map((col, index) => {
     const valueExpr =
       col.mappedField === "RowNumber"
@@ -337,7 +314,6 @@ const buildTable = (item, dataSetName) => {
     };
   });
 
-  // 4. Sum (Toplam) Hücreleri
   let sumCells = null;
   if (item.sums && item.sums.length > 0) {
     sumCells = processedColumns.map((col) => {
@@ -399,7 +375,6 @@ const buildTable = (item, dataSetName) => {
     });
   }
 
-  // Satırları Oluştur
   const tablixRows = [
     {
       TablixRow: {
@@ -424,7 +399,6 @@ const buildTable = (item, dataSetName) => {
     });
   }
 
-  // Tablix Ana Objesi
   return {
     Tablix: {
       "@_Name": `Tablix_${item.id}`,

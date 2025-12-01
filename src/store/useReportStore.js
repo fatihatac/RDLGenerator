@@ -20,7 +20,7 @@ const useReportStore = create((set, get) => ({
       newItem = { id: generateId("datasource"), type: "data", value: "", jsonKeys: [] };
     } else if (type === "dateRange") {
       newItem = { id: generateId("dateRange"), type: "dateRange", mappedField: null };
-    }else if (type === "chart") {
+    } else if (type === "chart") {
       newItem = { id: generateId("chart"), type: "chart", chartType: "bar", dataSourceId: null, xAxis: null, yAxis: null };
     }
     if (newItem) {
@@ -112,7 +112,7 @@ const useReportStore = create((set, get) => ({
     reportItems: state.reportItems.map(item => {
       if (item.id === tableId && item.type === 'table') {
         if (item.columns.find(c => c.mappedField === 'RowNumber')) {
-          console.warn('Satır numarası sütunu zaten ekli.'); // Replaced alert with console.warn
+          console.warn('Satır numarası sütunu zaten ekli.');
           return item;
         }
         const newCol = { id: generateId("RowNumber"), name: 'No', mappedField: 'RowNumber', width: 30 };
@@ -158,7 +158,7 @@ const useReportStore = create((set, get) => ({
         const newGroups = item.groups.map(g => g.id === groupId ? {
           ...g,
           mappedField: newMappedField,
-          name: newMappedField ? fixColumnNames(newMappedField) : g.name // Update name using fixColumnNames
+          name: newMappedField ? fixColumnNames(newMappedField) : g.name
         } : g);
         return { ...item, groups: newGroups };
       }
