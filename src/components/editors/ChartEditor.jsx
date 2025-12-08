@@ -13,7 +13,6 @@ function ChartEditor({ item }) {
 	//const [jsonInput, setJsonInput] = useState(item.value || '');
 
 	const dataItems = reportItems.filter((reportItem) => reportItem.type === 'data');
-	console.log(dataItems);
 
 
 	// const handleJsonInputChange = (e) => {
@@ -33,7 +32,6 @@ function ChartEditor({ item }) {
 	// };
 
   function handleOnChange(e) {
-    console.log(e.target.value);
     storeUpdateItem(item.id, { dataSourceId: e.target.value });
   }
 
@@ -84,29 +82,6 @@ function ChartEditor({ item }) {
 					}
 				})}
 			</select>
-
-			{/* <div className="space-y-2">
-				<label className="block text-sm font-medium text-gray-700">JSON Verisi (Dizi formatında)</label>
-				<textarea
-					value={item.value}
-					onChange={handleJsonInputChange}
-					className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none font-mono text-sm"
-					rows={5}
-					placeholder='Örn: [{ "kategori": "A", "deger": 10 }, { "kategori": "B", "deger": 20 }]'
-				/>
-				{hasJsonData && (
-					<div className="text-xs text-gray-500 pt-1">
-						<span className="font-medium">Bulunan Alanlar:</span> {item.jsonKeys.join(', ')}
-					</div>
-				)}
-			</div> */}
-			{/*
-      <div className="mt-4 flex justify-center">
-        <GenerateReportButton
-          onClick={() =>{console.log("chart eklendi")}}
-          label="Grafik Verisini Oluştur & Eşleştir" // Override label for chart context
-        />
-      </div> */}
 		</div>
 	);
 }

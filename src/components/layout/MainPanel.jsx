@@ -7,7 +7,6 @@ import useReportStore from '../../store/useReportStore';
 
 function MainPanel() {
     const {reportItems} = useReportStore()
-    console.log(reportItems);
     
 
     return (

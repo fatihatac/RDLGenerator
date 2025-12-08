@@ -8,10 +8,8 @@ function buildReportItems(items, totalWidth, dataSetName) {
     switch (item.type) {
        case "title":
          return buildTitle(item, totalWidth);
-
        case "table":
          return buildTable(item, dataSetName);
-
        case "dateRange":
          return buildDateRange(item, totalWidth);
         case "chart":

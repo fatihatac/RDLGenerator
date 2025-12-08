@@ -7,7 +7,6 @@ const generateId = (itemType = "")=>{
   counters[itemType]++;
   const capitalizedItemType = itemType.charAt(0).toUpperCase() + itemType.slice(1);
   let id =  `${capitalizedItemType}${counters[itemType]}`;
-  console.log(id);
   return id
 }
 

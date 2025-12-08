@@ -27,9 +27,7 @@ function JSONEditor({ item }) {
       value: jsonString, 
       jsonKeys: allKeys, 
       filteredJsonKeys: filteredKeys 
-    });
-    console.log("burada oluştu");
-    
+    });    
   };
 
   const handleGenerateReport = () => {

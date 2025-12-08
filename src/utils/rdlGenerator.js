@@ -17,7 +17,10 @@ function generateRDL(items) {
     suppressEmptyNode: true,
   });
 
+
   const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH)
+  console.log(items);
+  
 
   const allDataItems = items.filter(item => item.type === "data");
   let allDataSources = [];

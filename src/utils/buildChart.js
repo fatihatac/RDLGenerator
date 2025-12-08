@@ -1,13 +1,11 @@
 import useReportStore from "../store/useReportStore";
 
 function buildChart(item) {
-  console.log(item);
   const dataItem = useReportStore
     .getState()
     .reportItems.find((ri) => ri.id === item.dataSourceId);
   const jsonKeys = dataItem ? dataItem.jsonKeys : [];
-  console.log(jsonKeys);
-  console.log(dataItem);
+
 
   return {
     Chart: {
