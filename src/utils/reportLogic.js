@@ -28,7 +28,7 @@ const generateTableColumns = (parsedData, allKeys) => { // Changed jsonKeys to a
   const firstRow = Array.isArray(parsedData) && parsedData.length > 0 ? parsedData[0] : {};
   const columnsToMap = allKeys.filter((key) => !EXCLUDED_KEYS.includes(key)); // Use EXCLUDED_KEYS
 
-  return columnsToMap.map((key, index) => {
+  return columnsToMap.map((key) => {
     const fixedName = fixColumnNames(key);
     return {
       id: generateId("column"),
@@ -63,7 +63,7 @@ const getOrCreateTableItem = (allItems, updatedItem, newColumns, itemsToAdd, ite
 
 
 export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
-  const { parsedData, allKeys, filteredKeys, error } = parseAndExtractJsonInfo(updatedItem.value);
+  const { parsedData, allKeys, error } = parseAndExtractJsonInfo(updatedItem.value);
 
   if (error) {
     console.error("JSON parsing error in reportLogic:", error);

@@ -1,12 +1,11 @@
 import useReportStore from "../store/useReportStore";
 import * as Layout from "../constants/layoutConstants.js";
 
-function buildChart(item,totalHeight) {
+function buildChart(item) {
   const dataItem = useReportStore
     .getState()
     .reportItems.find((ri) => ri.id === item.dataSourceId);
   const jsonKeys = dataItem ? dataItem.jsonKeys : [];
-
 
   return {
     Chart: {

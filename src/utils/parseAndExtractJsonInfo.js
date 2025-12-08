@@ -1,17 +1,14 @@
 import { EXCLUDED_KEYS } from "../constants/appConstants";
 
-// Recursively traverses an object or an array of objects to collect all unique keys.
 function collectKeys(data, keys = new Set()) {
   if (Array.isArray(data)) {
     data.forEach(item => collectKeys(item, keys));
   } else if (data && typeof data === 'object') {
     Object.keys(data).forEach(key => {
       const value = data[key];
-      // Only add keys that do not point to an object or array.
       if (typeof value !== 'object' || value === null) {
         keys.add(key);
       }
-      // Always recurse to find nested keys.
       collectKeys(value, keys);
     });
   }
@@ -40,7 +37,6 @@ const parseAndExtractJsonInfo = (jsonString) => {
       const allKeysArray = [...allKeysSet];
       const filteredKeys = allKeysArray.filter(key => !EXCLUDED_KEYS.includes(key));
       
-      // Return the original parsed data and the collected keys
       return { parsedData, allKeys: allKeysArray, filteredKeys, error };
 
     } catch (keyError) {

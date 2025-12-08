@@ -3,7 +3,7 @@ import * as Layout from "../constants/layoutConstants.js";
 const buildTitle = (item, totalWidth) => {
   return {
     Textbox: {
-      "@_Name": `Title_${item.id}`,
+      "@_Name": `${item.id}`,
       Left: "0pt",
       Top: "0pt",
       Height: `${Layout.TITLE_HEIGHT}pt`,

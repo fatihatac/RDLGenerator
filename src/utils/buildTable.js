@@ -32,7 +32,7 @@ const buildTableHierarchy = (groups, sums) => {
           Size: "72pt",
           CellContents: {
             Textbox: {
-              "@_Name": `GroupHeaderLabel_${group.id || index}_${Math.random().toString(36).substr(2, 5)}`,
+              "@_Name": `GroupHeaderLabel_${group.id || index}_${Math.random().toString(36)}`,
               Left: "0in", Top: "0in", Height: "18.6pt", Width: "72pt",
               Style: {
                 FontSize: "10.00003pt",
@@ -83,7 +83,7 @@ const buildTableHierarchy = (groups, sums) => {
           Size: "72pt",
           CellContents: {
             Textbox: {
-              "@_Name": `GroupFooterLabel_${currentIndex}_${Math.random().toString(36).substr(2, 5)}`,
+              "@_Name": `GroupFooterLabel_${currentIndex}_${Math.random().toString(36)}`,
               Left: "0in", Top: "0in", Height: "18pt", Width: "72pt",
               Style: {
                 VerticalAlign: "Middle",
