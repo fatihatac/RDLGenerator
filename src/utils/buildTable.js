@@ -417,7 +417,7 @@ const buildTable = (item) => {
       },
       TablixColumnHierarchy: {
         TablixMembers: {
-          TablixMember: processedColumns.map(() => ({})), // Boş TablixMember objeleri
+          TablixMember: processedColumns.map(() => ({})), 
         },
       },
       TablixRowHierarchy: buildTableHierarchy(item.groups, item.sums),
