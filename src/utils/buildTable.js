@@ -208,6 +208,7 @@ const buildTableHierarchy = (groups, sums) => {
 
 const buildTable = (item, dataSetName) => {
   const processedColumns = item.columns;
+  console.log(item);
 
   const tablixColumns = processedColumns.map((col) => ({
     TablixColumn: { Width: `${col.width}pt` },
@@ -407,7 +408,7 @@ const buildTable = (item, dataSetName) => {
       Height: "37.50011pt",
       Width: "504.0004pt",
       Style: { Border: { Style: "None" } },
-      DataSetName: dataSetName,
+      DataSetName: `DataSet_${item.dataSourceId}`,
       TablixBody: {
         TablixColumns: {
           TablixColumn: tablixColumns.map((c) => c.TablixColumn),
