@@ -1,26 +1,36 @@
 import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js";
 import getDataType from "./getDataType.js"; 
+import { flattenData } from "./flattenData.js";
 
 const buildDataSection = (dataItem, dataSetName) => {
   if (
     !dataItem ||
-    !dataItem.value ||
-    !dataItem.jsonKeys ||
-    dataItem.jsonKeys.length === 0
+    !dataItem.value
   ) {
     return {};
   }
 
-  const { parsedData, allKeys, error } = parseAndExtractJsonInfo(dataItem.value);
+  // First, parse the JSON and get all possible keys for UI purposes
+  const { parsedData, error } = parseAndExtractJsonInfo(dataItem.value);
 
   if (error || !parsedData) {
     console.error("Error parsing dataItem JSON in buildDataSection:", error);
     return {};
   }
 
-  const firstRow = Array.isArray(parsedData) && parsedData.length > 0 ? parsedData[0] : {};
+  // Now, flatten the data for the RDL engine
+  const flattenedData = flattenData(parsedData);
+
+  // If flattening results in no data, there's nothing to do.
+  if (flattenedData.length === 0) {
+    return {};
+  }
+
+  // Get keys from the new flattened structure
+  const allKeys = Object.keys(flattenedData[0]);
+
   const fields = allKeys.map((key) => {
-    const typeName = getDataType(firstRow[key]);
+    const typeName = getDataType(flattenedData[0][key]);
     return {
       Field: {
         "@_Name": key,
@@ -34,8 +44,9 @@ const buildDataSection = (dataItem, dataSetName) => {
     Column: { "@_Name": key, "@_IsDuplicate": "False", "@_IsSelected": "True" },
   }));
 
+  // The ConnectString now contains the flattened data
   const connectStringData = {
-    Data: dataItem.value,
+    Data: JSON.stringify(flattenedData),
     DataMode: "inline",
     URL: "",
   };
