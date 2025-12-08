@@ -3,17 +3,17 @@ import { buildTable } from "./buildTable.js";
 import buildDateRange from "./buildDateRange.js";
 import buildChart from "./buildChart.js";
 
-function buildReportItems(items, totalWidth, dataSetName) {
+function buildReportItems(items, totalWidth, totalHeight) {
   return items.map(item => {
     switch (item.type) {
        case "title":
          return buildTitle(item, totalWidth);
        case "table":
-         return buildTable(item, dataSetName);
+         return buildTable(item);
        case "dateRange":
          return buildDateRange(item, totalWidth);
         case "chart":
-          return buildChart(item);
+          return buildChart(item,totalHeight);
       default:
         return null;
     }

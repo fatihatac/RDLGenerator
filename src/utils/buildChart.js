@@ -1,6 +1,6 @@
 import useReportStore from "../store/useReportStore";
 
-function buildChart(item) {
+function buildChart(item,totalHeight) {
   const dataItem = useReportStore
     .getState()
     .reportItems.find((ri) => ri.id === item.dataSourceId);
@@ -11,7 +11,7 @@ function buildChart(item) {
     Chart: {
       "@_Name": "Chart1",
       Left: "0pt",
-      Top: "0pt",
+      Top: `${totalHeight}pt`,
       Height: "216pt",
       Width: "288pt",
       Style: {

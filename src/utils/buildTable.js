@@ -206,7 +206,7 @@ const buildTableHierarchy = (groups, sums) => {
 };
 
 
-const buildTable = (item, dataSetName) => {
+const buildTable = (item) => {
   const processedColumns = item.columns;
   console.log(item);
 

@@ -18,7 +18,7 @@ function generateRDL(items) {
   });
 
 
-  const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH)
+  const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH,TOTAL_REPORT_HEIGHT)
   console.log(items);
   
 
