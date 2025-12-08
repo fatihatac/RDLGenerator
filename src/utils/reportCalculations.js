@@ -6,7 +6,8 @@ import generateId from './generateId.js'
 function getDataAndTableItems(items) {
   const dataItem = items.find(item => item.type === "data");
   const tableItem = items.find(item => item.type === "table");
-  return { dataItem, tableItem };
+  const chartItem = items.find(item => item.type === "chart");
+  return { dataItem, tableItem, chartItem };
 }
 
 function getRowCount(dataItem) {
@@ -52,7 +53,7 @@ function getTotalTableWidth(tableItem) {
 }
 
 function calculateReportValues(items) {
-  const { dataItem, tableItem } = getDataAndTableItems(items);
+  const { dataItem, tableItem, chartItem } = getDataAndTableItems(items);
   const rowCount = getRowCount(dataItem);
   const NUMBER_COLUMN_WIDTH = getNumberColumnWidth(rowCount);
 
@@ -63,8 +64,19 @@ function calculateReportValues(items) {
   }
 
   const maxColumns = getMaxColumns(items);
-  const TOTAL_REPORT_WIDTH = getTotalTableWidth(tableItem);
-  const TOTAL_REPORT_HEIGHT = items.length > 0 ? Layout.PAGE_HEIGHT : 225;
+  const TOTAL_REPORT_WIDTH = (chartItem) 
+  ? Math.max(getTotalTableWidth(tableItem), Layout.CHART_WIDTH)
+  : getTotalTableWidth(tableItem);
+  
+  const chartHeight = chartItem ? Layout.CHART_HEIGHT : 0;
+  console.log(chartHeight);
+  
+
+  const TOTAL_REPORT_HEIGHT = items.length > 0 ? (Layout.PAGE_HEIGHT + chartHeight) : 225;
+
+
+  console.log(TOTAL_REPORT_HEIGHT);
+  
 
   // const dataSetName = `DataSet_${dataItem ? dataItem.id : "1"}`;
   const dataSetName = generateId("dataset");

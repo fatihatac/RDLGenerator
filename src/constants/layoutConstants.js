@@ -1,19 +1,20 @@
-  const TITLE_HEIGHT = 49.5; //pt
-  const TITLE_FONT_SIZE = 10.5; //pt
-  const TITLE_FONT_WEIGHT = "Bold";
-  const COLUMN_WIDTH = 72; //pt
-  const COLUMN_HEIGHT = 18.6; //pt
-  const COLUMN_HEADER_FONT_SIZE = 10; //pt
-  const COLUMN_DATA_FONT_SIZE = 7.5; //pt
-  const COLUMN_TEXT_HORIZONTAL_ALIGN = "Left";
-  const COLUMN_TEXT_VERTICAL_ALIGN = "Middle";
-  const TITLE_TEXT_HORIZONTAL_ALIGN = "Center";
-  const TITLE_TEXT_VERTICAL_ALIGN = "Middle";
-  const TABLE_HEIGHT = 37.50011; //pt
-  const PAGE_HEIGHT = TITLE_HEIGHT + TABLE_HEIGHT; //pt
-  const FONT_FAMILY = "Trebuchet MS"; 
-  const PADDING = 0
-  
+const TITLE_HEIGHT = 49.5; //pt
+const TITLE_FONT_SIZE = 10.5; //pt
+const TITLE_FONT_WEIGHT = "Bold";
+const COLUMN_WIDTH = 72; //pt
+const COLUMN_HEIGHT = 18.6; //pt
+const COLUMN_HEADER_FONT_SIZE = 10; //pt
+const COLUMN_DATA_FONT_SIZE = 7.5; //pt
+const COLUMN_TEXT_HORIZONTAL_ALIGN = "Left";
+const COLUMN_TEXT_VERTICAL_ALIGN = "Middle";
+const TITLE_TEXT_HORIZONTAL_ALIGN = "Center";
+const TITLE_TEXT_VERTICAL_ALIGN = "Middle";
+const TABLE_HEIGHT = 37.50011; //pt
+const CHART_HEIGHT = 216; //pt
+const CHART_WIDTH = 288; //pt
+const PAGE_HEIGHT = TITLE_HEIGHT + TABLE_HEIGHT; //pt
+const FONT_FAMILY = "Trebuchet MS";
+const PADDING = 0;
 
 export {
   COLUMN_DATA_FONT_SIZE,
@@ -30,5 +31,7 @@ export {
   TITLE_TEXT_HORIZONTAL_ALIGN,
   TITLE_TEXT_VERTICAL_ALIGN,
   FONT_FAMILY,
-  PADDING
+  PADDING,
+  CHART_HEIGHT,
+  CHART_WIDTH,
 };

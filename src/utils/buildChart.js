@@ -1,4 +1,5 @@
 import useReportStore from "../store/useReportStore";
+import * as Layout from "../constants/layoutConstants.js";
 
 function buildChart(item,totalHeight) {
   const dataItem = useReportStore
@@ -11,7 +12,7 @@ function buildChart(item,totalHeight) {
     Chart: {
       "@_Name": "Chart1",
       Left: "0pt",
-      Top: `${totalHeight}pt`,
+      Top: `${Layout.PAGE_HEIGHT}pt`,
       Height: "216pt",
       Width: "288pt",
       Style: {
