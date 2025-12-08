@@ -9,7 +9,6 @@ const useReportStore = create((set, get) => ({
   fileName: '',
   setFileName: (newFileName) => set({ fileName: newFileName }),
 
-  // --- General Actions ---
   addItem: (type) => {
     let newItem;
     if (type === "title") {
@@ -75,8 +74,6 @@ const useReportStore = create((set, get) => ({
     a.download = `${reportName.toUpperCase()}.rdl`;
     a.click();
   },
-
-  // --- Table-Specific Actions ---
 
   addColumn: (tableId) => set(state => ({
     reportItems: state.reportItems.map(item => {
