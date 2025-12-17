@@ -1,3 +1,4 @@
+import { difference, keyBy, merge, values } from 'lodash';
 import getDataType from "./getDataType";
 import fixColumnNames from "./fixColumnNames";
 import getMaxCharWidth from "./getMaxCharWidth";
@@ -24,9 +25,9 @@ const getOrCreateTitleItem = (allItems, updatedItem, itemsToAdd) => {
   }
 };
 
-const generateTableColumns = (parsedData, allKeys) => { // Changed jsonKeys to allKeys
+const generateTableColumns = (parsedData, allKeys) => {
   const firstRow = Array.isArray(parsedData) && parsedData.length > 0 ? parsedData[0] : {};
-  const columnsToMap = allKeys.filter((key) => !EXCLUDED_KEYS.includes(key)); // Use EXCLUDED_KEYS
+  const columnsToMap = difference(allKeys, EXCLUDED_KEYS);
 
   return columnsToMap.map((key) => {
     const fixedName = fixColumnNames(key);
@@ -78,7 +79,7 @@ export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
 
   getOrCreateTitleItem(allItems, updatedItem, itemsToAdd);
 
-  const newColumns = generateTableColumns(parsedData, allKeys); // Pass allKeys
+  const newColumns = generateTableColumns(parsedData, allKeys);
   getOrCreateTableItem(allItems, updatedItem, newColumns, itemsToAdd, itemsToUpdate);
 
   itemsToUpdate[updatedItem.id] = {
@@ -87,9 +88,9 @@ export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
     filteredJsonKeys: newColumns.map(col => col.mappedField),
   };
 
-  const finalReportItems = allItems
-    .map((item) => (itemsToUpdate[item.id] ? { ...item, ...itemsToUpdate[item.id] } : item))
-    .concat(itemsToAdd);
+  const allItemsById = keyBy(allItems, 'id');
+  const mergedItems = merge(allItemsById, itemsToUpdate);
+  const finalReportItems = values(mergedItems).concat(itemsToAdd);
 
   return finalReportItems;
 };

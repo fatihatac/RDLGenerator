@@ -1,38 +1,35 @@
+import { isArray, isObject, isNil, flatMap } from 'lodash';
+
 function flattenData(data) {
-  if (!Array.isArray(data)) {
+  if (!isArray(data)) {
     return [];
   }
 
-  let flattenedRows = [];
+  const flatten = (items, parentData = {}) => {
+    return flatMap(items, item => {
+      const ownData = { ...parentData };
+      let arrayChildren = [];
 
-  function processEntry(entry, currentRow) {
-    let nextRow = { ...currentRow };
-    let arrayChildren = [];
-
-    for (const key in entry) {
-      if (Array.isArray(entry[key])) {
-        arrayChildren.push(...entry[key]);
-      } else if (typeof entry[key] !== 'object' || entry[key] === null) {
-        nextRow[key] = entry[key];
-      } else if (typeof entry[key] === 'object') {
-          Object.assign(nextRow, entry[key]);
+      for (const key in item) {
+        const value = item[key];
+        if (isArray(value)) {
+          arrayChildren.push(...value);
+        } else if (isObject(value) && !isNil(value)) {
+          Object.assign(ownData, value);
+        } else {
+          ownData[key] = value;
+        }
       }
-    }
 
-    if (arrayChildren.length === 0) {
-      flattenedRows.push(nextRow);
-    } else {
-      arrayChildren.forEach(child => {
-        processEntry(child, nextRow);
-      });
-    }
-  }
+      if (arrayChildren.length > 0) {
+        return flatten(arrayChildren, ownData);
+      } else {
+        return ownData;
+      }
+    });
+  };
 
-  data.forEach(item => {
-    processEntry(item, {});
-  });
-
-  return flattenedRows;
+  return flatten(data);
 }
 
 export { flattenData };

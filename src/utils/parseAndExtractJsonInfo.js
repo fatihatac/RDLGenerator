@@ -1,13 +1,17 @@
+import { isObject, isArray, isNil, forEach, uniq, difference } from 'lodash';
 import { EXCLUDED_KEYS } from "../constants/appConstants";
 
-function collectKeys(data, keys = new Set()) {
-  if (Array.isArray(data)) {
-    data.forEach(item => collectKeys(item, keys));
-  } else if (data && typeof data === 'object') {
-    Object.keys(data).forEach(key => {
-      const value = data[key];
-      if (typeof value !== 'object' || value === null) {
-        keys.add(key);
+function collectKeys(data, keys = []) {
+  if (isNil(data)) {
+    return keys;
+  }
+
+  if (isArray(data)) {
+    forEach(data, item => collectKeys(item, keys));
+  } else if (isObject(data)) {
+    forEach(data, (value, key) => {
+      if (!isObject(value)) {
+        keys.push(key);
       }
       collectKeys(value, keys);
     });
@@ -33,11 +37,10 @@ const parseAndExtractJsonInfo = (jsonString) => {
 
   if (parsedData) {
     try {
-      const allKeysSet = collectKeys(parsedData);
-      const allKeysArray = [...allKeysSet];
-      const filteredKeys = allKeysArray.filter(key => !EXCLUDED_KEYS.includes(key));
+      const allKeys = uniq(collectKeys(parsedData, []));
+      const filteredKeys = difference(allKeys, EXCLUDED_KEYS);
       
-      return { parsedData, allKeys: allKeysArray, filteredKeys, error };
+      return { parsedData, allKeys, filteredKeys, error };
 
     } catch (keyError) {
       error = "Error collecting keys from JSON: " + keyError.message;

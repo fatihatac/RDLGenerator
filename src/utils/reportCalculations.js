@@ -1,13 +1,16 @@
+import { cloneDeep, keyBy, sumBy } from 'lodash';
 import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js";
 import getMaxCharWidth from "./getMaxCharWidth.js";
 import * as Layout from "../constants/layoutConstants.js";
 import generateId from './generateId.js'
 
 function getDataAndTableItems(items) {
-  const dataItem = items.find(item => item.type === "data");
-  const tableItem = items.find(item => item.type === "table");
-  const chartItem = items.find(item => item.type === "chart");
-  return { dataItem, tableItem, chartItem };
+  const itemsByType = keyBy(items, 'type');
+  return {
+    dataItem: itemsByType.data,
+    tableItem: itemsByType.table,
+    chartItem: itemsByType.chart
+  };
 }
 
 function getRowCount(dataItem) {
@@ -43,16 +46,14 @@ function getMaxColumns(items) {
 function getTotalTableWidth(tableItem) {
   if (!tableItem?.columns?.length) return 468;
 
-  const columnsWidth = tableItem.columns.reduce(
-    (sum, col) => sum + (Number(col.width) || 72),
-    0
-  );
-
-  const groupsWidth = tableItem.groups?.length ? tableItem.groups.length * 72 : 0;
+  const columnsWidth = sumBy(tableItem.columns, col => Number(col.width) || 72);
+  const groupsWidth = (tableItem.groups?.length || 0) * 72;
+  
   return columnsWidth + groupsWidth;
 }
 
-function calculateReportValues(items) {
+function calculateReportValues(originalItems) {
+  const items = cloneDeep(originalItems);
   const { dataItem, tableItem, chartItem } = getDataAndTableItems(items);
   const rowCount = getRowCount(dataItem);
   const NUMBER_COLUMN_WIDTH = getNumberColumnWidth(rowCount);
@@ -77,8 +78,6 @@ function calculateReportValues(items) {
 
   console.log(TOTAL_REPORT_HEIGHT);
   
-
-  // const dataSetName = `DataSet_${dataItem ? dataItem.id : "1"}`;
   const dataSetName = generateId("dataset");
 
   return {
