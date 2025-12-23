@@ -172,7 +172,7 @@ const buildTableHierarchy = (groups, sums) => {
                     TextRun: {
                       Value: `=Fields!${group.mappedField}.Value`,
                       Style: {
-                        FontFamily: "Trebuchet MS",
+                        FontFamily: Layout.FONT_FAMILY,
                         FontSize: "6.75002pt",
                         FontWeight: "Bold",
                         Color: "black"
@@ -206,7 +206,7 @@ const buildTableHierarchy = (groups, sums) => {
 };
 
 
-const buildTable = (item) => {
+const buildTable = (item, dataSetMap) => {
   const processedColumns = item.columns;
   console.log(item);
 
@@ -357,7 +357,7 @@ const buildTable = (item) => {
                     TextRun: {
                       Value: value,
                       Style: {
-                        FontFamily: "Trebuchet MS",
+                        FontFamily: Layout.FONT_FAMILY,
                         FontSize: "6.75002pt",
                         FontWeight: "Bold",
                         Color: "black",
@@ -408,7 +408,7 @@ const buildTable = (item) => {
       Height: "37.50011pt",
       Width: "504.0004pt",
       Style: { Border: { Style: "None" } },
-      DataSetName: `DataSet_${item.dataSourceId}`,
+      DataSetName: dataSetMap ? dataSetMap[item.dataSourceId] : `DataSet_${item.dataSourceId}`,
       TablixBody: {
         TablixColumns: {
           TablixColumn: tablixColumns.map((c) => c.TablixColumn),

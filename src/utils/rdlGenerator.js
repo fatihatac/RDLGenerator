@@ -18,17 +18,25 @@ function generateRDL(items) {
   });
 
 
-  const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH,TOTAL_REPORT_HEIGHT)
+  const allDataItems = items.filter(item => item.type === "data");
+  const dataSetMap = {};
+  const dataSourceMap = {};
+
+  allDataItems.forEach((item, index) => {
+    dataSetMap[item.id] = `DataSet${index + 1}`;
+    dataSourceMap[item.id] = `DataSource${index + 1}`;
+  });
+
+  const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH,TOTAL_REPORT_HEIGHT, dataSetMap)
   console.log(items);
   
-
-  const allDataItems = items.filter(item => item.type === "data");
   let allDataSources = [];
   let allDataSets = [];
 
   allDataItems.forEach(dataItem => {
-    const currentDataSetName = `DataSet_${dataItem.id}`;
-    const { DataSources, DataSets } = buildDataSection(dataItem, currentDataSetName);
+    const currentDataSetName = dataSetMap[dataItem.id];
+    const currentDataSourceName = dataSourceMap[dataItem.id];
+    const { DataSources, DataSets } = buildDataSection(dataItem, currentDataSetName, currentDataSourceName);
     
     if (DataSources && DataSources.DataSource) {
       allDataSources.push(DataSources.DataSource);

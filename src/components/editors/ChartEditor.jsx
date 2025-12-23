@@ -9,7 +9,6 @@ function ChartEditor({ item }) {
 	const reportItems = useReportStore((state) => state.reportItems);
 	//const triggerDataSideEffects = useReportStore((state) => state.triggerDataSideEffects);
 
-	// Use local state for the textarea value
 	//const [jsonInput, setJsonInput] = useState(item.value || '');
 
 	const dataItems = reportItems.filter((reportItem) => reportItem.type === 'data');
@@ -49,7 +48,6 @@ function ChartEditor({ item }) {
 	//     filteredJsonKeys: filteredKeys
 	//   });
 
-	//   // Then, trigger the side effects to generate the chart's data source and dataset
 	//   triggerDataSideEffects(item.id);
 	// };
 

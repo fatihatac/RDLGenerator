@@ -2,7 +2,7 @@ import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js";
 import getDataType from "./getDataType.js"; 
 import { flattenData } from "./flattenData.js";
 
-const buildDataSection = (dataItem, dataSetName) => {
+const buildDataSection = (dataItem, dataSetName, dataSourceName) => {
   if (
     !dataItem ||
     !dataItem.value
@@ -49,7 +49,7 @@ const buildDataSection = (dataItem, dataSetName) => {
   return {
     DataSources: {
       DataSource: {
-        "@_Name": `${dataItem.id}`,
+        "@_Name": dataSourceName,
         ConnectionProperties: {
           DataProvider: "JSON",
           ConnectString: JSON.stringify(connectStringData),
@@ -62,7 +62,7 @@ const buildDataSection = (dataItem, dataSetName) => {
         "@_Name": dataSetName,
         Fields: { Field: fields.map((f) => f.Field) },
         Query: {
-          DataSourceName: `${dataItem.id}`,
+          DataSourceName: dataSourceName,
           CommandType: "Text",
           CommandText: '{"Name":"Result","Columns":[]}',
           QueryDesignerState: {
