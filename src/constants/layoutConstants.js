@@ -12,9 +12,9 @@ const TITLE_TEXT_VERTICAL_ALIGN = "Middle";
 const TABLE_HEIGHT = 37.50011; //pt
 const CHART_HEIGHT = 216; //pt
 const CHART_WIDTH = 288; //pt
-const PAGE_HEIGHT = TITLE_HEIGHT + TABLE_HEIGHT; //pt
+const PAGE_HEIGHT = 501 //TITLE_HEIGHT + TABLE_HEIGHT; //pt
 const FONT_FAMILY = "Segoe UI";
-const PADDING = 0;
+const PADDING = 10;
 
 export {
   COLUMN_DATA_FONT_SIZE,

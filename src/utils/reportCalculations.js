@@ -73,7 +73,7 @@ function calculateReportValues(originalItems) {
   console.log(chartHeight);
   
 
-  const TOTAL_REPORT_HEIGHT = items.length > 0 ? (Layout.PAGE_HEIGHT + chartHeight) : 225;
+  const TOTAL_REPORT_HEIGHT = 375.75 //items.length > 0 ? (Layout.PAGE_HEIGHT + chartHeight) : 225;
 
 
   console.log(TOTAL_REPORT_HEIGHT);
