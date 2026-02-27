@@ -114,7 +114,7 @@ function MainPanel() {
 
             <div className="absolute inset-0 flex flex-col">
 
-                <div className="w-full flex justify-center py-3 backdrop-blur-md bg-transparent shadow-sm z-10 shrink-0">
+                <div className="w-full flex justify-end px-8 py-3 backdrop-blur-md bg-transparent shadow-sm z-10 shrink-0">
                     <div className="bg-gray-100 p-1 rounded-lg flex items-center">
                         <button
                             onClick={() => setViewMode('design')}
