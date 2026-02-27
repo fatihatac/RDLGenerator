@@ -6,13 +6,16 @@ import generateId from "../utils/generateId";
 import fixColumnNames from "../utils/fixColumnNames";
 
 const useReportStore = create((set, get) => {
-  // Helper to find a table item, reducing repetition
   const findTable = (items, tableId) =>
     items.find((item) => item.id === tableId && item.type === "table");
 
   return {
     reportItems: [],
+    viewMode: "design",
     fileName: "",
+    isPortrait: true,
+    setIsPortrait: (portraitMode) => set({ isPortrait: portraitMode }),
+    setViewMode: (mode) => set({ viewMode: mode }),
     setFileName: (newFileName) => set({ fileName: newFileName }),
 
     addItem: (type) => {
