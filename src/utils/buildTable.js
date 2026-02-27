@@ -5,7 +5,7 @@ const buildTableHierarchy = (groups, sums) => {
   if (!groups || groups.length === 0) {
     const members = [
       { TablixMember: { KeepWithGroup: "After" } }, // Header Row
-      { TablixMember: { Group: { "@_Name": "Details" } } } // Details Row
+      { TablixMember: { Group: { "@_Name": "Details" } } }, // Details Row
     ];
 
     if (sums && sums.length > 0) {
@@ -14,8 +14,8 @@ const buildTableHierarchy = (groups, sums) => {
 
     return {
       TablixMembers: {
-        TablixMember: members.map(m => m.TablixMember)
-      }
+        TablixMember: members.map((m) => m.TablixMember),
+      },
     };
   }
 
@@ -33,40 +33,49 @@ const buildTableHierarchy = (groups, sums) => {
           CellContents: {
             Textbox: {
               "@_Name": `GroupHeaderLabel_${group.id || index}_${Math.random().toString(36)}`,
-              Left: "0in", Top: "0in", Height: "18.6pt", Width: "72pt",
+              Left: "0in",
+              Top: "0in",
+              Height: "18.6pt",
+              Width: "72pt",
               Style: {
                 FontSize: "10.00003pt",
                 VerticalAlign: "Middle",
-                PaddingLeft: "2pt", PaddingRight: "2pt", PaddingTop: "2pt", PaddingBottom: "2pt",
+                PaddingLeft: "2pt",
+                PaddingRight: "2pt",
+                PaddingTop: "2pt",
+                PaddingBottom: "2pt",
                 Border: { Color: "LightGrey", Style: "Solid" },
               },
-              CanGrow: true, KeepTogether: true,
+              CanGrow: true,
+              KeepTogether: true,
               Paragraphs: {
                 Paragraph: {
                   TextRuns: {
                     TextRun: {
-                      Value: convertTitleCase(group.name || `Grup ${index + 1}`),
+                      Value: convertTitleCase(
+                        group.name || `Grup ${index + 1}`,
+                      ),
                       Style: {
                         FontFamily: Layout.FONT_FAMILY,
                         FontSize: `${Layout.COLUMN_DATA_FONT_SIZE}pt`,
                         FontWeight: "Bold",
-                        Color: "black"
-                      }
-                    }
+                        Color: "black",
+                      },
+                    },
                   },
-                  Style: { TextAlign: "Left" }
-                }
+                  Style: { TextAlign: "Left" },
+                },
               },
               UserSort: {
                 SortExpression: `=Fields!${group.mappedField}.Value`,
-                SortExpressionScope: `Group_${(group.name || `Group${index}`).replace(/\s+/g, '')}_${group.id || index}`
-              }
-            }
-          }
+                SortExpressionScope: `Group_${(group.name || `Group${index}`).replace(/\s+/g, "")}_${group.id || index}`,
+              },
+            },
+          },
         },
         TablixMembers: createHeaderHierarchy(index + 1),
-        KeepWithGroup: "After"
-      }
+        KeepWithGroup: "After",
+      },
     };
   };
 
@@ -84,13 +93,20 @@ const buildTableHierarchy = (groups, sums) => {
           CellContents: {
             Textbox: {
               "@_Name": `GroupFooterLabel_${currentIndex}_${Math.random().toString(36)}`,
-              Left: "0in", Top: "0in", Height: "18pt", Width: "72pt",
+              Left: "0in",
+              Top: "0in",
+              Height: "18pt",
+              Width: "72pt",
               Style: {
                 VerticalAlign: "Middle",
-                PaddingLeft: "2pt", PaddingRight: "2pt", PaddingTop: "2pt", PaddingBottom: "2pt",
-                Border: { Color: "LightGrey", Style: "Solid" }
+                PaddingLeft: "2pt",
+                PaddingRight: "2pt",
+                PaddingTop: "2pt",
+                PaddingBottom: "2pt",
+                Border: { Color: "LightGrey", Style: "Solid" },
               },
-              CanGrow: true, KeepTogether: true,
+              CanGrow: true,
+              KeepTogether: true,
               Paragraphs: {
                 Paragraph: {
                   TextRuns: {
@@ -100,40 +116,40 @@ const buildTableHierarchy = (groups, sums) => {
                         FontFamily: Layout.FONT_FAMILY,
                         FontSize: "10pt",
                         FontWeight: "Bold",
-                        Color: "black"
-                      }
-                    }
+                        Color: "black",
+                      },
+                    },
                   },
-                  Style: { TextAlign: "Left" }
-                }
-              }
-            }
-          }
+                  Style: { TextAlign: "Left" },
+                },
+              },
+            },
+          },
         },
         TablixMembers: createSumHierarchy(currentIndex + 1, labelIndex),
-        KeepWithGroup: "Before"
-      }
+        KeepWithGroup: "Before",
+      },
     };
   };
 
   const createDataHierarchy = (index) => {
     if (index >= groups.length) {
       return {
-        TablixMember: { Group: { "@_Name": "Details" } }
+        TablixMember: { Group: { "@_Name": "Details" } },
       };
     }
 
     const group = groups[index];
-    const groupNameBase = group.name ? group.name.replace(/\s+/g, '') : `Group${index}`;
+    const groupNameBase = group.name
+      ? group.name.replace(/\s+/g, "")
+      : `Group${index}`;
     const uniqueGroupName = `Group_${groupNameBase}_${group.id || index}`;
-
 
     const nextLevelMember = createDataHierarchy(index + 1);
 
     const innerMembers = [];
 
     innerMembers.push(nextLevelMember.TablixMember);
-
 
     if (sums && sums.length > 0) {
       const footerMember = createSumHierarchy(index + 1, index + 1);
@@ -145,27 +161,34 @@ const buildTableHierarchy = (groups, sums) => {
         Group: {
           "@_Name": uniqueGroupName,
           GroupExpressions: {
-            GroupExpression: `=Fields!${group.mappedField}.Value`
-          }
+            GroupExpression: `=Fields!${group.mappedField}.Value`,
+          },
         },
         SortExpressions: {
           SortExpression: {
-            Value: `=Fields!${group.mappedField}.Value`
-          }
+            Value: `=Fields!${group.mappedField}.Value`,
+          },
         },
         TablixHeader: {
           Size: "72pt",
           CellContents: {
             Textbox: {
               "@_Name": `GroupHeaderValue_${uniqueGroupName}`,
-              Left: "0in", Top: "0in", Height: "18.6pt", Width: "72pt",
+              Left: "0in",
+              Top: "0in",
+              Height: "18.6pt",
+              Width: "72pt",
               Style: {
                 FontSize: "10.00003pt",
                 VerticalAlign: "Middle",
-                PaddingLeft: "2pt", PaddingRight: "2pt", PaddingTop: "2pt", PaddingBottom: "2pt",
-                Border: { Color: "LightGrey", Style: "Solid" }
+                PaddingLeft: "2pt",
+                PaddingRight: "2pt",
+                PaddingTop: "2pt",
+                PaddingBottom: "2pt",
+                Border: { Color: "LightGrey", Style: "Solid" },
               },
-              CanGrow: true, KeepTogether: true,
+              CanGrow: true,
+              KeepTogether: true,
               Paragraphs: {
                 Paragraph: {
                   TextRuns: {
@@ -175,20 +198,20 @@ const buildTableHierarchy = (groups, sums) => {
                         FontFamily: Layout.FONT_FAMILY,
                         FontSize: "6.75002pt",
                         FontWeight: "Bold",
-                        Color: "black"
-                      }
-                    }
+                        Color: "black",
+                      },
+                    },
                   },
-                  Style: { FontSize: "10.00003pt", TextAlign: "Left" }
-                }
-              }
-            }
-          }
+                  Style: { FontSize: "10.00003pt", TextAlign: "Left" },
+                },
+              },
+            },
+          },
         },
         TablixMembers: {
-          TablixMember: innerMembers
-        }
-      }
+          TablixMember: innerMembers,
+        },
+      },
     };
   };
 
@@ -200,11 +223,10 @@ const buildTableHierarchy = (groups, sums) => {
 
   return {
     TablixMembers: {
-      TablixMember: members
-    }
+      TablixMember: members,
+    },
   };
 };
-
 
 const buildTable = (item, dataSetMap) => {
   const processedColumns = item.columns;
@@ -403,12 +425,14 @@ const buildTable = (item, dataSetMap) => {
   return {
     Tablix: {
       "@_Name": `Tablix_${item.id}`,
-      Left: "0pt",
+      Left: "14.5pt",
       Top: `${Layout.TITLE_HEIGHT}pt`,
       Height: "37.50011pt",
       Width: "504.0004pt",
       Style: { Border: { Style: "None" } },
-      DataSetName: dataSetMap ? dataSetMap[item.dataSourceId] : `DataSet_${item.dataSourceId}`,
+      DataSetName: dataSetMap
+        ? dataSetMap[item.dataSourceId]
+        : `DataSet_${item.dataSourceId}`,
       TablixBody: {
         TablixColumns: {
           TablixColumn: tablixColumns.map((c) => c.TablixColumn),
@@ -417,7 +441,7 @@ const buildTable = (item, dataSetMap) => {
       },
       TablixColumnHierarchy: {
         TablixMembers: {
-          TablixMember: processedColumns.map(() => ({})), 
+          TablixMember: processedColumns.map(() => ({})),
         },
       },
       TablixRowHierarchy: buildTableHierarchy(item.groups, item.sums),

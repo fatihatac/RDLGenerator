@@ -10,7 +10,7 @@ function buildChart(item, totalHeight, dataSetMap) {
   return {
     Chart: {
       "@_Name": "Chart1",
-      Left: "0pt",
+      Left: "14.5pt",
       Top: `${Layout.PAGE_HEIGHT}pt`,
       Height: "216pt",
       Width: "288pt",
@@ -27,7 +27,9 @@ function buildChart(item, totalHeight, dataSetMap) {
           Style: "Solid",
         },
       },
-      DataSetName: dataSetMap ? dataSetMap[dataItem.id] : `DataSet_${dataItem.id}`,
+      DataSetName: dataSetMap
+        ? dataSetMap[dataItem.id]
+        : `DataSet_${dataItem.id}`,
       ChartSeriesHierarchy: {
         ChartMembers: {
           ChartMember: jsonKeys.map((i) => {
