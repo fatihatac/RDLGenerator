@@ -1,5 +1,5 @@
-import { Plus, Trash2, Table, X, ListOrdered, Group, Sigma } from 'lucide-react';
-
+import { Plus, Trash2, Table, X, ListOrdered, Group, Sigma, GripVertical } from 'lucide-react';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import useReportStore from '../../store/useReportStore';
 import { useMemo, useEffect } from 'react';
 import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo';
@@ -20,17 +20,18 @@ function TableEditor({ item }) {
     addSum,
     removeSum,
     updateSumMappedField,
-    updateItem, 
+    updateItem,
+    reorderColumn,
   } = useReportStore();
 
   const dataItem = reportItems.find(i => i.type === 'data');
 
-            //   <button 
-            //   onClick={() => setActiveDataSourceId(item.id)}
-            //   className="ml-3 text-xs font-bold text-gray-600 bg-gray-200 hover:bg-gray-300 px-2 py-0.5 rounded-full flex items-center transition-colors"
-            // >
-            //   Aktif Olarak Ayarla
-            // </button>
+  //   <button 
+  //   onClick={() => setActiveDataSourceId(item.id)}
+  //   className="ml-3 text-xs font-bold text-gray-600 bg-gray-200 hover:bg-gray-300 px-2 py-0.5 rounded-full flex items-center transition-colors"
+  // >
+  //   Aktif Olarak Ayarla
+  // </button>
 
 
   const { parsedData } = useMemo(() => {
@@ -61,6 +62,13 @@ function TableEditor({ item }) {
     }
   }, [parsedData, item, updateItem]);
 
+  const handleDragEnd = (result) => {
+    if (!result.destination) return; // Liste dışına bırakıldıysa iptal et
+    if (result.destination.index === result.source.index) return; // Aynı yere bırakıldıysa iptal et
+
+    reorderColumn(item.id, result.source.index, result.destination.index);
+  };
+
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -74,7 +82,7 @@ function TableEditor({ item }) {
         </button>
       </div>
 
-      <div className="mb-3">
+      {/* <div className="mb-3">
         <label className="block text-sm font-medium text-gray-700 mb-2">Sütun Tanımları</label>
         <div className="bg-gray-50 p-3 rounded border border-gray-100 space-y-2">
           {item.columns.length === 0 && <p className="text-xs text-gray-400 italic">Henüz sütun eklenmedi.</p>}
@@ -95,6 +103,59 @@ function TableEditor({ item }) {
             </div>
           ))}
         </div>
+      </div> */}
+
+      <div className="mb-3">
+        <label className="block text-sm font-medium text-gray-700 mb-2">Sütun Tanımları</label>
+
+        {/* Sürükle Bırak Context'i */}
+        <DragDropContext onDragEnd={handleDragEnd}>
+          <Droppable droppableId={`columns-${item.id}`}>
+            {(provided) => (
+              <div
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                className="bg-gray-50 p-3 rounded border border-gray-100 space-y-2"
+              >
+                {item.columns.length === 0 && <p className="text-xs text-gray-400 italic">Henüz sütun eklenmedi.</p>}
+
+                {item.columns.map((col, idx) => (
+                  <Draggable key={col.id} draggableId={col.id} index={idx}>
+                    {(provided, snapshot) => (
+                      <div
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        className={`flex items-center gap-2 p-1 rounded transition-colors ${snapshot.isDragging ? 'bg-white shadow-md border border-gray-200' : ''}`}
+                      >
+                        {/* Sürükleme Tutamacı */}
+                        <div
+                          {...provided.dragHandleProps}
+                          className="text-gray-400 hover:text-gray-600 cursor-grab active:cursor-grabbing"
+                        >
+                          <GripVertical size={16} />
+                        </div>
+
+                        <span className="text-xs text-gray-400 w-6">{idx + 1}.</span>
+                        <input
+                          type="text"
+                          value={col.name}
+                          onChange={(e) => updateColumnName(item.id, col.id, e.target.value)}
+                          className="flex-1 p-1.5 text-sm border border-gray-300 rounded focus:border-green-500 outline-none"
+                          placeholder="Alan Adı (Örn: Ad)"
+                        />
+                        <button onClick={() => removeColumn(item.id, col.id)} className="text-gray-400 hover:text-red-500">
+                          <X size={16} />
+                        </button>
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {/* Droppable için zorunlu placeholder */}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
       </div>
 
       <div className="mb-3">
