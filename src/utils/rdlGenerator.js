@@ -5,10 +5,8 @@ import buildDataSection from "./buildDataSection.js";
 import { buildReportItems } from "./buildItems.js";
 
 function generateRDL(items) {
-  const {
-    TOTAL_REPORT_WIDTH,
-    TOTAL_REPORT_HEIGHT,
-  } = calculateReportValues(items);
+  const { TOTAL_REPORT_WIDTH, TOTAL_REPORT_HEIGHT } =
+    calculateReportValues(items);
 
   const builder = new XMLBuilder({
     ignoreAttributes: false,
@@ -17,8 +15,7 @@ function generateRDL(items) {
     suppressEmptyNode: true,
   });
 
-
-  const allDataItems = items.filter(item => item.type === "data");
+  const allDataItems = items.filter((item) => item.type === "data");
   const dataSetMap = {};
   const dataSourceMap = {};
 
@@ -27,17 +24,26 @@ function generateRDL(items) {
     dataSourceMap[item.id] = `DataSource${index + 1}`;
   });
 
-  const reportItemsList = buildReportItems(items, TOTAL_REPORT_WIDTH,TOTAL_REPORT_HEIGHT, dataSetMap)
+  const reportItemsList = buildReportItems(
+    items,
+    TOTAL_REPORT_WIDTH,
+    TOTAL_REPORT_HEIGHT,
+    dataSetMap,
+  );
   console.log(items);
-  
+
   let allDataSources = [];
   let allDataSets = [];
 
-  allDataItems.forEach(dataItem => {
+  allDataItems.forEach((dataItem) => {
     const currentDataSetName = dataSetMap[dataItem.id];
     const currentDataSourceName = dataSourceMap[dataItem.id];
-    const { DataSources, DataSets } = buildDataSection(dataItem, currentDataSetName, currentDataSourceName);
-    
+    const { DataSources, DataSets } = buildDataSection(
+      dataItem,
+      currentDataSetName,
+      currentDataSourceName,
+    );
+
     if (DataSources && DataSources.DataSource) {
       allDataSources.push(DataSources.DataSource);
     }
@@ -61,8 +67,10 @@ function generateRDL(items) {
             ReportItems: reportItemsList,
             Height: `${TOTAL_REPORT_HEIGHT}pt`,
           },
-          Width: `${TOTAL_REPORT_WIDTH + 14.5}spt`,
+          Width: `${TOTAL_REPORT_WIDTH + 14.5}pt`,
           Page: {
+            PageHeight: "841.68pt",
+            PageWidth: "595.44pt",
             LeftMargin: "72.00021pt",
             RightMargin: "72.00021pt",
             TopMargin: "72.00021pt",
@@ -72,7 +80,9 @@ function generateRDL(items) {
         },
       },
       AutoRefresh: "0",
-      ...(allDataSources.length > 0 && { DataSources: { DataSource: allDataSources } }),
+      ...(allDataSources.length > 0 && {
+        DataSources: { DataSource: allDataSources },
+      }),
       ...(allDataSets.length > 0 && { DataSets: { DataSet: allDataSets } }),
       ReportParametersLayout: {
         GridLayoutDefinition: {
