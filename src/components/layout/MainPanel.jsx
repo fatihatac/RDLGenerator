@@ -1,10 +1,17 @@
 import { EmptyReport, ReportHeader, ReportItemRenderer } from '../report';
 import ReportPreview from '../preview/ReportPreview';
 import useReportStore from '../../store/useReportStore';
+import { useShallow } from 'zustand/react/shallow';
 import { LayoutTemplate, MonitorPlay } from 'lucide-react';
 
 function MainPanel() {
-    const { reportItems, viewMode, setViewMode } = useReportStore();
+    const { reportItems, viewMode, setViewMode } = useReportStore(
+        useShallow((state) => ({
+            reportItems: state.reportItems,
+            viewMode: state.viewMode,
+            setViewMode: state.setViewMode,
+        }))
+    );
 
     return (
         <main className="flex-1 relative bg-gray-50/30">

@@ -384,12 +384,19 @@
 
 import React, { useMemo } from 'react';
 import useReportStore from '../../store/useReportStore';
+import { useShallow } from 'zustand/react/shallow';
 import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo';
 import { PAPER_DIMENSIONS, PAPER_STYLES } from '../../constants/layoutConstants';
 import { ITEM_TYPES } from '../../constants/appConstants';
 
 function ReportPreview() {
-    const { reportItems, isPortrait, setIsPortrait } = useReportStore();
+    const { reportItems, isPortrait, setIsPortrait } = useReportStore(
+        useShallow((state) => ({
+            reportItems: state.reportItems,
+            isPortrait: state.isPortrait,
+            setIsPortrait: state.setIsPortrait,
+        }))
+    );
 
     const titleItem = reportItems.find(item => item.type === ITEM_TYPES.TITLE);
     const dateRangeItem = reportItems.find(item => item.type === ITEM_TYPES.DATE_RANGE);

@@ -1,11 +1,17 @@
 import { useMemo, useEffect } from "react";
 import useReportStore from "../store/useReportStore";
+import { useShallow } from "zustand/react/shallow";
 import parseAndExtractJsonInfo from "../utils/parseAndExtractJsonInfo";
 import getMaxCharWidth from "../utils/getMaxCharWidth";
 
 export default function useTableData(tableItem) {
   // Global store'dan gerekli verileri ve fonksiyonları alıyoruz
-  const { reportItems, updateItem } = useReportStore();
+  const { reportItems, updateItem } = useReportStore(
+    useShallow((state) => ({
+      reportItems: state.reportItems,
+      updateItem: state.updateItem,
+    })),
+  );
   const dataItem = reportItems.find((i) => i.type === "data");
   const jsonKeys = dataItem?.filteredJsonKeys || [];
 
