@@ -4,8 +4,8 @@ const buildTitle = (item, totalWidth) => {
   return {
     Textbox: {
       "@_Name": `${item.id}`,
-      Left: "14.5pt",
-      Top: "14.5pt",
+      Left: "0pt",
+      Top: "0pt",
       Height: `${Layout.TITLE_HEIGHT}pt`,
       Width: `${totalWidth}pt`,
       Style: {
