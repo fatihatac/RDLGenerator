@@ -10,7 +10,7 @@ function buildChart(item, totalHeight, dataSetMap) {
   return {
     Chart: {
       "@_Name": "Chart1",
-      Left: "14.5pt",
+      Left: "0pt",
       Top: `${Layout.PAGE_HEIGHT}pt`,
       Height: "216pt",
       Width: "288pt",

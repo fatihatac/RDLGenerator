@@ -425,7 +425,7 @@ const buildTable = (item, dataSetMap) => {
   return {
     Tablix: {
       "@_Name": `Tablix_${item.id}`,
-      Left: "14.5pt",
+      Left: "0pt",
       Top: `${Layout.TITLE_HEIGHT}pt`,
       Height: "37.50011pt",
       Width: "504.0004pt",

@@ -52,7 +52,7 @@ function getTotalTableWidth(tableItem) {
   );
   const groupsWidth = (tableItem.groups?.length || 0) * 72;
 
-  return columnsWidth + groupsWidth + 14.5;
+  return columnsWidth + groupsWidth;
 }
 
 function calculateReportValues(originalItems) {

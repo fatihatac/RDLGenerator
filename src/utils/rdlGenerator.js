@@ -67,7 +67,7 @@ function generateRDL(items) {
             ReportItems: reportItemsList,
             Height: `${TOTAL_REPORT_HEIGHT}pt`,
           },
-          Width: `${TOTAL_REPORT_WIDTH + 14.5}pt`,
+          Width: `${TOTAL_REPORT_WIDTH}pt`,
           Page: {
             PageHeight: "841.68pt",
             PageWidth: "595.44pt",
