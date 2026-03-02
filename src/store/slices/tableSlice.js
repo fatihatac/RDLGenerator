@@ -1,6 +1,5 @@
 import { cloneDeep, remove } from "lodash";
-import generateId from "../../utils/generateId";
-import fixColumnNames from "../../utils/fixColumnNames";
+import { generateId, fixColumnNames } from "../../utils";
 
 // Helper Function
 const findTable = (items, tableId) =>

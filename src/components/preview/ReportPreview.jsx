@@ -385,7 +385,7 @@
 import React, { useMemo } from 'react';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
-import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo';
+import { parseAndExtractJsonInfo } from '../../utils';
 import { PAPER_DIMENSIONS, PAPER_STYLES } from '../../constants/layoutConstants';
 import { ITEM_TYPES } from '../../constants/appConstants';
 

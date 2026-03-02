@@ -1,7 +1,9 @@
 import { cloneDeep, remove } from "lodash";
-import generateId from "../../utils/generateId";
-import { handleDataUpdateSideEffects } from "../../utils/reportLogic";
-import { generateRDL } from "../../utils/rdlGenerator";
+import {
+  generateId,
+  handleDataUpdateSideEffects,
+  generateRDL,
+} from "../../utils";
 
 export const createReportSlice = (set, get) => ({
   reportItems: [],

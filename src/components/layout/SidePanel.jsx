@@ -24,19 +24,18 @@
 
 // src/components/layout/SidePanel.jsx
 
-import { Type, Table, Database, CalendarRange, BarChart3 } from 'lucide-react';
+import { Table, CalendarRange, ChartArea, FileText, FileBraces } from 'lucide-react';
 import BaseAddItemButton from '../ui/BaseAddButton';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
-import { ITEM_TYPES } from '../../constants/appConstants'; // Bir önceki adımda oluşturduğumuz sabitler
+import { ITEM_TYPES } from '../../constants/appConstants';
 
-// Buton konfigürasyonlarını tutan dizi
 const ACTION_BUTTONS = [
     {
         type: ITEM_TYPES.TITLE,
-        icon: <Type size={20} />,
-        title: 'Başlık',
-        description: 'Rapor başlığı eklemek için',
+        icon: <FileText size={20} />,
+        title: 'Metin Kutusu',
+        description: 'Başlık veya etiket için',
         className: 'bg-gray-50 hover:bg-blue-50 hover:border-blue-300',
         iconClassName: 'bg-blue-100 text-blue-600 group-hover:bg-blue-200'
     },
@@ -50,8 +49,8 @@ const ACTION_BUTTONS = [
     },
     {
         type: ITEM_TYPES.DATA,
-        icon: <Database size={20} />,
-        title: 'Veri Kaynağı',
+        icon: <FileBraces size={20} />,
+        title: 'JSON Datasource',
         description: 'JSON verisi eklemek için',
         className: 'bg-gray-50 hover:bg-yellow-50 hover:border-yellow-300',
         iconClassName: 'bg-yellow-100 text-yellow-600 group-hover:bg-yellow-200'
@@ -60,22 +59,21 @@ const ACTION_BUTTONS = [
         type: ITEM_TYPES.DATE_RANGE,
         icon: <CalendarRange size={20} />,
         title: 'Tarih Aralığı',
-        description: 'Tarih filtresi için',
+        description: 'Rapor tarih aralığı',
         className: 'bg-gray-50 hover:bg-purple-50 hover:border-purple-300',
         iconClassName: 'bg-purple-100 text-purple-600 group-hover:bg-purple-200'
     },
     {
         type: ITEM_TYPES.CHART,
-        icon: <BarChart3 size={20} />,
+        icon: <ChartArea size={20} />,
         title: 'Grafik',
-        description: 'Veriyi görselleştirmek için',
+        description: 'Grafik eklemek için',
         className: 'bg-gray-50 hover:bg-pink-50 hover:border-pink-300',
         iconClassName: 'bg-pink-100 text-pink-600 group-hover:bg-pink-200'
     }
 ];
 
 function SidePanel() {
-    // Performans optimizasyonu ile global store bağlantısı
     const { addItem, viewMode } = useReportStore(
         useShallow((state) => ({
             addItem: state.addItem,
@@ -83,7 +81,6 @@ function SidePanel() {
         }))
     );
 
-    // Eğer önizleme modundaysak SidePanel tamamen gizlenir (App.jsx temiz kalır)
     if (viewMode === 'preview') return null;
 
     return (
