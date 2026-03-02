@@ -1,6 +1,4 @@
-import EmptyReport from '../report/EmptyReport';
-import ReportHeader from '../report/ReportHeader';
-import ReportItemRenderer from '../report/ReportItemRenderer';
+import { EmptyReport, ReportHeader, ReportItemRenderer } from '../report';
 import ReportPreview from '../preview/ReportPreview';
 import useReportStore from '../../store/useReportStore';
 import { LayoutTemplate, MonitorPlay } from 'lucide-react';

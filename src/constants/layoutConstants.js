@@ -12,9 +12,25 @@ const TITLE_TEXT_VERTICAL_ALIGN = "Middle";
 const TABLE_HEIGHT = 37.50011; //pt
 const CHART_HEIGHT = 216; //pt
 const CHART_WIDTH = 288; //pt
-const PAGE_HEIGHT = 501 //TITLE_HEIGHT + TABLE_HEIGHT; //pt
+const PAGE_HEIGHT = 501; //TITLE_HEIGHT + TABLE_HEIGHT; //pt
 const FONT_FAMILY = "Segoe UI";
 const PADDING = 10;
+const PAPER_DIMENSIONS = {
+  PORTRAIT: {
+    width: "210mm",
+    height: "297mm",
+    maxRows: 28,
+  },
+  LANDSCAPE: {
+    width: "297mm",
+    height: "210mm",
+    maxRows: 12,
+  },
+};
+const PAPER_STYLES = {
+  padding: "20mm",
+  fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
+};
 
 export {
   COLUMN_DATA_FONT_SIZE,
@@ -34,4 +50,6 @@ export {
   PADDING,
   CHART_HEIGHT,
   CHART_WIDTH,
+  PAPER_DIMENSIONS,
+  PAPER_STYLES,
 };
