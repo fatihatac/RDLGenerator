@@ -1,6 +1,5 @@
-import * as Layout from "../constants/layoutConstants.js";
-import convertTitleCase from "./convertTitleCase.js";
-
+import * as Layout from "../../constants/layoutConstants.js";
+import convertTitleCase from "../helpers/convertTitleCase.js";
 const buildTableHierarchy = (groups, sums) => {
   if (!groups || groups.length === 0) {
     const members = [

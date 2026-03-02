@@ -1,5 +1,5 @@
-import useReportStore from "../store/useReportStore";
-import * as Layout from "../constants/layoutConstants.js";
+import useReportStore from "../../store/useReportStore";
+import * as Layout from "../../constants/layoutConstants.js";
 
 function buildChart(item, totalHeight, dataSetMap) {
   const dataItem = useReportStore

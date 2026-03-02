@@ -1,12 +1,9 @@
-import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js";
-import getDataType from "./getDataType.js"; 
-import { flattenData } from "./flattenData.js";
+import parseAndExtractJsonInfo from "../core/parseAndExtractJsonInfo.js";
+import getDataType from "../helpers/getDataType.js";
+import { flattenData } from "../helpers/flattenData.js";
 
 const buildDataSection = (dataItem, dataSetName, dataSourceName) => {
-  if (
-    !dataItem ||
-    !dataItem.value
-  ) {
+  if (!dataItem || !dataItem.value) {
     return {};
   }
 

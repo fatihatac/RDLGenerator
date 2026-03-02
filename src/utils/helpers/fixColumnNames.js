@@ -1,4 +1,4 @@
-import { COLUMN_NAME_MAP } from "../constants/ColumnNameMap";
+import { COLUMN_NAME_MAP } from "../../constants/ColumnNameMap";
 
 function fixColumnNames(key) {
   if (!key) return "";

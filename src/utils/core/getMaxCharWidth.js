@@ -1,4 +1,4 @@
-import * as Layout from "../constants/layoutConstants";
+import * as Layout from "../../constants/layoutConstants";
 
 const ICON_WIDTH_PX = 35;
 

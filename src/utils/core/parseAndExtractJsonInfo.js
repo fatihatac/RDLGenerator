@@ -1,5 +1,5 @@
-import { isObject, isArray, isNil, forEach, uniq, difference } from 'lodash';
-import { EXCLUDED_KEYS } from "../constants/appConstants";
+import { isObject, isArray, isNil, forEach, uniq, difference } from "lodash";
+import { EXCLUDED_KEYS } from "../../constants/appConstants";
 
 function collectKeys(data, keys = []) {
   if (isNil(data)) {
@@ -7,7 +7,7 @@ function collectKeys(data, keys = []) {
   }
 
   if (isArray(data)) {
-    forEach(data, item => collectKeys(item, keys));
+    forEach(data, (item) => collectKeys(item, keys));
   } else if (isObject(data)) {
     forEach(data, (value, key) => {
       if (!isObject(value)) {
@@ -24,7 +24,12 @@ const parseAndExtractJsonInfo = (jsonString) => {
   let error = null;
 
   if (!jsonString || jsonString.trim() === "") {
-    return { parsedData: null, allKeys: [], filteredKeys: [], error: "JSON string is empty." };
+    return {
+      parsedData: null,
+      allKeys: [],
+      filteredKeys: [],
+      error: "JSON string is empty.",
+    };
   }
 
   try {
@@ -39,9 +44,8 @@ const parseAndExtractJsonInfo = (jsonString) => {
     try {
       const allKeys = uniq(collectKeys(parsedData, []));
       const filteredKeys = difference(allKeys, EXCLUDED_KEYS);
-      
-      return { parsedData, allKeys, filteredKeys, error };
 
+      return { parsedData, allKeys, filteredKeys, error };
     } catch (keyError) {
       error = "Error collecting keys from JSON: " + keyError.message;
       console.error(error);
@@ -49,8 +53,12 @@ const parseAndExtractJsonInfo = (jsonString) => {
     }
   }
 
-  return { parsedData: null, allKeys: [], filteredKeys: [], error: "Unknown error." };
+  return {
+    parsedData: null,
+    allKeys: [],
+    filteredKeys: [],
+    error: "Unknown error.",
+  };
 };
 
 export default parseAndExtractJsonInfo;
-

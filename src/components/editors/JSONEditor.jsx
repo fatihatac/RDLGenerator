@@ -1,6 +1,6 @@
 import { Trash2, FileText, Link } from 'lucide-react';
 import useReportStore from '../../store/useReportStore';
-import parseAndExtractJsonInfo from '../../utils/parseAndExtractJsonInfo';
+import { parseAndExtractJsonInfo } from '../../utils';
 import GenerateReportButton from '../actions/GenerateReportButton';
 
 function JSONEditor({ item }) {
@@ -22,12 +22,12 @@ function JSONEditor({ item }) {
     if (error) {
       console.error("JSON parsing error in JSONEditor:", error);
     }
-    
-    storeUpdateItem(item.id, { 
-      value: jsonString, 
-      jsonKeys: allKeys, 
-      filteredJsonKeys: filteredKeys 
-    });    
+
+    storeUpdateItem(item.id, {
+      value: jsonString,
+      jsonKeys: allKeys,
+      filteredJsonKeys: filteredKeys
+    });
   };
 
   const handleGenerateReport = () => {
@@ -99,40 +99,40 @@ function JSONEditor({ item }) {
             </div>
             {tableItem.columns.map((col) => (
               col.mappedField !== "RowNumber" && (
-              <div key={col.id} className="grid grid-cols-12 items-center gap-2">
+                <div key={col.id} className="grid grid-cols-12 items-center gap-2">
 
-                <input
-                  type="text"
-                  value={col.name}
-                  onChange={(e) => storeUpdateColumnName(tableItem.id, col.id, e.target.value)}
-                  className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-green-500 outline-none"
-                  placeholder="Rapor Sütun Adı"
-                />
+                  <input
+                    type="text"
+                    value={col.name}
+                    onChange={(e) => storeUpdateColumnName(tableItem.id, col.id, e.target.value)}
+                    className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-green-500 outline-none"
+                    placeholder="Rapor Sütun Adı"
+                  />
 
-                <div className="col-span-1 text-center text-gray-400">
-                  <Link size={14} />
-                </div>
+                  <div className="col-span-1 text-center text-gray-400">
+                    <Link size={14} />
+                  </div>
 
-                <select
-                  value={col.mappedField || ''}
-                  onChange={(e) => storeUpdateColumnMappedField(tableItem.id, col.id, e.target.value)}
-                  className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
-                  disabled={col.mappedField === "RowNumber"}
-                >
-                  <option value="">-- Eşleştir --</option>
-                  {item.jsonKeys.map(key => (
-                    <option key={key} value={key}>{key}</option>
-                  ))}
-                </select>
-                <button
-                  onClick={() => storeRemoveColumn(tableItem.id, col.id)}
-                  className="col-span-1 text-gray-400 hover:text-red-500 justify-self-center"
-                  title="Sütunu Sil"
-                >
-                  <Trash2 size={16} />
-                </button>
+                  <select
+                    value={col.mappedField || ''}
+                    onChange={(e) => storeUpdateColumnMappedField(tableItem.id, col.id, e.target.value)}
+                    className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
+                    disabled={col.mappedField === "RowNumber"}
+                  >
+                    <option value="">-- Eşleştir --</option>
+                    {item.jsonKeys.map(key => (
+                      <option key={key} value={key}>{key}</option>
+                    ))}
+                  </select>
+                  <button
+                    onClick={() => storeRemoveColumn(tableItem.id, col.id)}
+                    className="col-span-1 text-gray-400 hover:text-red-500 justify-self-center"
+                    title="Sütunu Sil"
+                  >
+                    <Trash2 size={16} />
+                  </button>
 
-              </div>)
+                </div>)
             ))}
           </div>
         </div>

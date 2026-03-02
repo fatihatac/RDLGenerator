@@ -1,7 +1,6 @@
-import * as Layout from "../constants/layoutConstants.js";
+import * as Layout from "../../constants/layoutConstants.js";
 
-const buildDateRange = (item, totalWidth) => {
-  const valueExpr = `=First(Fields!${item.mappedField}.Value)`;
+const buildTitle = (item, totalWidth) => {
   return {
     Textbox: {
       "@_Name": `${item.id}`,
@@ -10,7 +9,7 @@ const buildDateRange = (item, totalWidth) => {
       Height: `${Layout.TITLE_HEIGHT}pt`,
       Width: `${totalWidth}pt`,
       Style: {
-        VerticalAlign: "Middle",
+        VerticalAlign: Layout.TITLE_TEXT_VERTICAL_ALIGN,
         PaddingLeft: "2pt",
         PaddingRight: "2pt",
         PaddingTop: "2pt",
@@ -23,19 +22,20 @@ const buildDateRange = (item, totalWidth) => {
         Paragraph: {
           TextRuns: {
             TextRun: {
-              Value: valueExpr,
+              Value: item.value.toLocaleUpperCase("tr"),
               Style: {
                 FontFamily: Layout.FONT_FAMILY,
-                FontSize: `${Layout.TITLE_FONT_SIZE - 1}pt`,
+                FontSize: `${Layout.TITLE_FONT_SIZE}pt`,
+                FontWeight: Layout.TITLE_FONT_WEIGHT,
                 Color: "Black",
               },
             },
           },
-          Style: { TextAlign: "Left" },
+          Style: { TextAlign: Layout.TITLE_TEXT_HORIZONTAL_ALIGN },
         },
       },
     },
   };
 };
 
-export default buildDateRange
+export { buildTitle };

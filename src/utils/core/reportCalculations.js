@@ -1,8 +1,8 @@
 import { cloneDeep, keyBy, sumBy } from "lodash";
 import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js";
 import getMaxCharWidth from "./getMaxCharWidth.js";
-import * as Layout from "../constants/layoutConstants.js";
-import generateId from "./generateId.js";
+import * as Layout from "../../constants/layoutConstants.js";
+import generateId from "../helpers/generateId.js";
 
 function getDataAndTableItems(items) {
   const itemsByType = keyBy(items, "type");
