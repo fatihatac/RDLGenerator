@@ -1,35 +1,87 @@
-import { isArray, isObject, isNil, flatMap } from 'lodash';
+// import { isArray, isObject, isNil, flatMap } from 'lodash';
 
+// function flattenData(data) {
+//   if (!isArray(data)) {
+//     return [];
+//   }
+
+//   const flatten = (items, parentData = {}) => {
+//     return flatMap(items, item => {
+//       const ownData = { ...parentData };
+//       let arrayChildren = [];
+
+//       for (const key in item) {
+//         const value = item[key];
+//         if (isArray(value)) {
+//           arrayChildren.push(...value);
+//         } else if (isObject(value) && !isNil(value)) {
+//           Object.assign(ownData, value);
+//         } else {
+//           ownData[key] = value;
+//         }
+//       }
+
+//       if (arrayChildren.length > 0) {
+//         return flatten(arrayChildren, ownData);
+//       } else {
+//         return ownData;
+//       }
+//     });
+//   };
+
+//   return flatten(data);
+// }
+
+// export { flattenData };
+
+import { isArray, isObject, isNil } from "lodash";
+
+// Refactored to use an iterative approach instead of recursion to prevent Call Stack Overflow
 function flattenData(data) {
   if (!isArray(data)) {
     return [];
   }
 
-  const flatten = (items, parentData = {}) => {
-    return flatMap(items, item => {
-      const ownData = { ...parentData };
-      let arrayChildren = [];
+  const flattenedResult = [];
+  // Stack stores objects to process: { currentItem, parentContext }
+  const processingStack = data.map((item) => ({
+    currentItem: item,
+    parentContext: {},
+  }));
 
-      for (const key in item) {
-        const value = item[key];
+  while (processingStack.length > 0) {
+    const { currentItem, parentContext } = processingStack.pop();
+    const mergedData = { ...parentContext };
+    const childArrays = [];
+
+    for (const key in currentItem) {
+      if (Object.prototype.hasOwnProperty.call(currentItem, key)) {
+        const value = currentItem[key];
+
         if (isArray(value)) {
-          arrayChildren.push(...value);
+          childArrays.push(...value);
         } else if (isObject(value) && !isNil(value)) {
-          Object.assign(ownData, value);
+          Object.assign(mergedData, value);
         } else {
-          ownData[key] = value;
+          mergedData[key] = value;
         }
       }
+    }
 
-      if (arrayChildren.length > 0) {
-        return flatten(arrayChildren, ownData);
-      } else {
-        return ownData;
+    if (childArrays.length > 0) {
+      // Push children to stack to process them iteratively
+      for (let i = childArrays.length - 1; i >= 0; i--) {
+        processingStack.push({
+          currentItem: childArrays[i],
+          parentContext: mergedData,
+        });
       }
-    });
-  };
+    } else {
+      flattenedResult.push(mergedData);
+    }
+  }
 
-  return flatten(data);
+  return flattenedResult;
 }
 
 export { flattenData };

@@ -1,9 +1,5 @@
 import { cloneDeep, remove } from "lodash";
-import {
-  generateId,
-  handleDataUpdateSideEffects,
-  generateRDL,
-} from "../../utils";
+import { generateId } from "../../utils";
 
 export const createReportSlice = (set, get) => ({
   reportItems: [],
@@ -72,28 +68,7 @@ export const createReportSlice = (set, get) => ({
     }));
   },
 
-  triggerDataSideEffects: (dataItemId) => {
-    const { reportItems } = get();
-    const dataItem = reportItems.find((item) => item.id === dataItemId);
-    if (dataItem) {
-      const updatedItems = handleDataUpdateSideEffects(dataItem, reportItems);
-      set({ reportItems: updatedItems });
-    }
-  },
-
-  downloadReport: (fileName) => {
-    const { reportItems } = get();
-    const titleItem = reportItems.find((item) => item.type === "title");
-    const reportTitle = titleItem ? titleItem.value : "TaslakRapor";
-    let reportName =
-      fileName && fileName.trim() !== "" ? fileName.trim() : reportTitle;
-
-    const rdlContent = generateRDL(reportItems);
-    const blob = new Blob([rdlContent], { type: "application/xml" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${reportName.toUpperCase()}.rdl`;
-    a.click();
+  setReportItems: (newItems) => {
+    set({ reportItems: newItems });
   },
 });

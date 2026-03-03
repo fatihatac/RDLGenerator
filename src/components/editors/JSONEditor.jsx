@@ -2,6 +2,11 @@ import { Trash2, FileText, Link } from 'lucide-react';
 import useReportStore from '../../store/useReportStore';
 import { parseAndExtractJsonInfo } from '../../utils';
 import GenerateReportButton from '../actions/GenerateReportButton';
+import { useState } from 'react';
+import Alert from '../ui/Alert'
+import { processDataSideEffects } from '../../services/reportService';
+
+const MAX_JSON_LENGTH = 100000;
 
 function JSONEditor({ item }) {
   const storeUpdateItem = useReportStore((state) => state.updateItem);
@@ -9,7 +14,11 @@ function JSONEditor({ item }) {
   const storeUpdateColumnName = useReportStore((state) => state.updateColumnName);
   const storeRemoveColumn = useReportStore((state) => state.removeColumn);
   const storeUpdateColumnMappedField = useReportStore((state) => state.updateColumnMappedField);
-  const triggerDataSideEffects = useReportStore((state) => state.triggerDataSideEffects);
+
+  const reportItems = useReportStore((state) => state.reportItems);
+  const setReportItems = useReportStore((state) => state.setReportItems);
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   const tableItem = useReportStore((state) =>
     state.reportItems.find((reportItem) => reportItem.type === 'table')
@@ -17,6 +26,11 @@ function JSONEditor({ item }) {
 
   const handleJsonChange = (e) => {
     const jsonString = e.target.value;
+    if (jsonString.length > MAX_JSON_LENGTH) {
+      setErrorMessage(`JSON verisi ${MAX_JSON_LENGTH} karakteri aşamaz.`);
+      return
+    }
+
     const { allKeys, filteredKeys, error } = parseAndExtractJsonInfo(jsonString);
 
     if (error) {
@@ -31,7 +45,7 @@ function JSONEditor({ item }) {
   };
 
   const handleGenerateReport = () => {
-    triggerDataSideEffects(item.id);
+    processDataSideEffects(item.id, reportItems, setReportItems);
   };
 
   const showMappingUI =
@@ -63,6 +77,12 @@ function JSONEditor({ item }) {
           rows={5}
           placeholder='Örn: [{ "isim": "Ahmet", "yas": 30 }]'
         />
+        {/* Error Alert Display */}
+        {errorMessage && (
+          <div className="mt-2">
+            <Alert type="error" message={errorMessage} />
+          </div>
+        )}
         {item.jsonKeys && item.jsonKeys.length > 0 && (
           <div className="text-xs text-gray-500 pt-1">
             <span className="font-medium">Bulunan Alanlar:</span> {item.jsonKeys.join(', ')}
