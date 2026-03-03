@@ -34,19 +34,19 @@ function TableEditor({ item }) {
       {/* Aksiyon Butonları */}
       <div className="flex items-center gap-4 mt-4">
         <button onClick={() => addColumn(item.id)} className="text-sm flex items-center text-green-600 hover:text-green-700 font-medium">
-          <Plus size={16} className="mr-1" /> Add Column
+          <Plus size={16} className="mr-1" /> Sütun Ekle
         </button>
         <span className="text-gray-300">|</span>
         <button onClick={() => addRowNumberColumn(item.id)} className="text-sm flex items-center text-blue-600 hover:text-blue-700 font-medium">
-          <ListOrdered size={16} className="mr-1" /> Add Row No
+          <ListOrdered size={16} className="mr-1" /> Satır Numarası Ekle
         </button>
         <span className="text-gray-300">|</span>
         <button onClick={() => addGroup(item.id)} className='text-sm flex items-center text-gray-600 hover:text-gray-700 font-medium'>
-          <Group size={16} className='mr-1' /> Add Group
+          <Group size={16} className='mr-1' /> Grup Ekle
         </button>
         <span className="text-gray-300">|</span>
         <button onClick={() => addSum(item.id)} className='text-sm flex items-center text-red-600 hover:text-red-700 font-medium'>
-          <Sigma size={16} className='mr-1' /> Add Sum
+          <Sigma size={16} className='mr-1' /> SUM Ekle
         </button>
       </div>
     </div>

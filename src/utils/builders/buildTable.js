@@ -229,7 +229,6 @@ const buildTableHierarchy = (groups, sums) => {
 
 const buildTable = (item, dataSetMap) => {
   const processedColumns = item.columns;
-  console.log(item);
 
   const tablixColumns = processedColumns.map((col) => ({
     TablixColumn: { Width: `${col.width}pt` },

@@ -2,7 +2,8 @@ import { Table, CalendarRange, ChartArea, FileText, FileBraces } from 'lucide-re
 import BaseAddItemButton from '../ui/BaseAddButton';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
-import { ITEM_TYPES } from '../../constants/appConstants';
+import { ITEM_TYPES, VIEW_MODES } from '../../constants/appConstants';
+
 
 const ACTION_BUTTONS = [
     {
@@ -55,13 +56,12 @@ function SidePanel() {
         }))
     );
 
-    if (viewMode === 'preview') return null;
+    if (viewMode === VIEW_MODES.PREVIEW) return null;
 
     return (
         <aside className="w-full md:w-64 bg-white border-r border-gray-200 p-6 flex flex-col gap-4 shadow-inner z-0 overflow-y-auto">
             <h2 className="text-xs font-bold text-gray-600 tracking-wider mb-2 uppercase">Bileşenler</h2>
 
-            {/* Dinamik Render (DRY Prensi) */}
             {ACTION_BUTTONS.map((btn) => (
                 <BaseAddItemButton
                     key={btn.type}

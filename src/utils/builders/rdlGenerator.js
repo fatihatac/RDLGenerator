@@ -30,7 +30,6 @@ function generateRDL(items) {
     TOTAL_REPORT_HEIGHT,
     dataSetMap,
   );
-  console.log(items);
 
   let allDataSources = [];
   let allDataSets = [];

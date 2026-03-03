@@ -1,5 +1,7 @@
+import { VIEW_MODES } from "../../constants/appConstants";
+
 export const createUISlice = (set) => ({
-  viewMode: "design",
+  viewMode: VIEW_MODES.DESIGN,
   fileName: "",
   isPortrait: true,
 

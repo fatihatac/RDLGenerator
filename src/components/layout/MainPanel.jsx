@@ -3,6 +3,8 @@ import ReportPreview from '../preview/ReportPreview';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
 import { LayoutTemplate, MonitorPlay } from 'lucide-react';
+import { VIEW_MODES } from '../../constants/appConstants';
+
 
 function MainPanel() {
     const { reportItems, viewMode, setViewMode } = useReportStore(
@@ -21,8 +23,8 @@ function MainPanel() {
                 <div className="w-full flex justify-end px-8 py-3 backdrop-blur-md bg-transparent shadow-sm z-10 shrink-0">
                     <div className="bg-gray-100 p-1 rounded-lg flex items-center">
                         <button
-                            onClick={() => setViewMode('design')}
-                            className={`flex items-center px-4 py-1.5 rounded-md text-sm font-medium transition-all  duration-200 ${viewMode === 'design'
+                            onClick={() => setViewMode(VIEW_MODES.DESIGN)}
+                            className={`flex items-center px-4 py-1.5 rounded-md text-sm font-medium transition-all  duration-200 ${viewMode === VIEW_MODES.DESIGN
                                 ? 'bg-white text-red-600 shadow-sm'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200/50'
                                 }`}
@@ -31,8 +33,8 @@ function MainPanel() {
                             Design
                         </button>
                         <button
-                            onClick={() => setViewMode('preview')}
-                            className={`flex items-center px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 ${viewMode === 'preview'
+                            onClick={() => setViewMode(VIEW_MODES.PREVIEW)}
+                            className={`flex items-center px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 ${viewMode === VIEW_MODES.PREVIEW
                                 ? 'bg-white text-green-600 shadow-sm'
                                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200/50'
                                 }`}
