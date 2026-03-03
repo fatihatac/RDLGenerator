@@ -1,16 +1,13 @@
 import { Trash2, Calendar } from 'lucide-react';
-import useReportStore from '../../store/useReportStore';
+import { useItemActions } from '../../hooks/useItemActions';
+import { useDataSource } from '../../hooks/useDataSource';
 
 function DateRangeEditor({
   item,
 }) {
-  const storeUpdateItem = useReportStore((state) => state.updateItem);
-  const storeDeleteItem = useReportStore((state) => state.deleteItem);
-  const dataItem = useReportStore((state) =>
-    state.reportItems.find((reportItem) => reportItem.type === 'data')
-  );
+  const { updateItem, deleteItem } = useItemActions(item.id);
+  const { jsonKeys } = useDataSource();
 
-  const availableFields = dataItem?.jsonKeys || [];
 
 
   return (
@@ -20,7 +17,7 @@ function DateRangeEditor({
           <Calendar size={18} className="mr-2" />
           <span>Tarih Aralığı Göstergesi</span>
         </div>
-        <button onClick={() => storeDeleteItem(item.id)} className="text-red-400 hover:text-red-600 p-1">
+        <button onClick={deleteItem} className="text-red-400 hover:text-red-600 p-1">
           <Trash2 size={18} />
         </button>
       </div>
@@ -28,11 +25,11 @@ function DateRangeEditor({
         <label className="block text-sm font-medium text-gray-700 mb-1">Veri Alanı</label>
         <select
           value={item.mappedField || ''}
-          onChange={(e) => storeUpdateItem(item.id, { mappedField: e.target.value })}
+          onChange={(e) => updateItem({ mappedField: e.target.value })}
           className="w-full p-2 text-sm border border-gray-300 rounded focus:border-purple-500 outline-none"
         >
           <option value="">-- Alan Seçin --</option>
-          {availableFields.map(key => (
+          {jsonKeys.map(key => (
             <option key={key} value={key}>{key}</option>
           ))}
         </select>

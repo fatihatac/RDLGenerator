@@ -1,18 +1,12 @@
-import { BarChart, Trash2 } from 'lucide-react';
+import { useItemActions } from '../../hooks/useItemActions';
 import useReportStore from '../../store/useReportStore';
 
-
 function ChartEditor({ item }) {
-	const storeUpdateItem = useReportStore((state) => state.updateItem);
-	const storeDeleteItem = useReportStore((state) => state.deleteItem);
-	const reportItems = useReportStore((state) => state.reportItems);
+	const { updateItem, deleteItem } = useItemActions(item.id);
 
-	const dataItems = reportItems.filter((reportItem) => reportItem.type === 'data');
-
-
-	function handleOnChange(e) {
-		storeUpdateItem(item.id, { dataSourceId: e.target.value });
-	}
+	const dataItems = useReportStore((state) =>
+		state.reportItems.filter((i) => i.type === 'data' && i.jsonKeys?.length > 0)
+	);
 
 	return (
 		<div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
@@ -21,25 +15,22 @@ function ChartEditor({ item }) {
 					<BarChart size={18} className="mr-2" />
 					<span>Grafik Veri Kaynağı</span>
 				</div>
-				<button onClick={() => storeDeleteItem(item.id)} className="text-red-400 hover:text-red-600 p-1">
+				<button onClick={deleteItem} className="text-red-400 hover:text-red-600 p-1">
 					<Trash2 size={18} />
 				</button>
 			</div>
 
 			<select
-				onChange={handleOnChange}
-				className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
+				value={item.dataSourceId || ''}
+				onChange={(e) => updateItem({ dataSourceId: e.target.value })}
+				className="w-full p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
 			>
-				<option>-- Eşleştir --</option>
-				{dataItems.map((reportItem) => {
-					if (reportItem.type === 'data' && reportItem.jsonKeys && reportItem.jsonKeys.length > 0) {
-						return (
-							<option key={reportItem.id} value={reportItem.id}>
-								Veri Kaynağı ID: {reportItem.id}
-							</option>
-						);
-					}
-				})}
+				<option value="">-- Veri Kaynağı Seçin --</option>
+				{dataItems.map((dataItem) => (
+					<option key={dataItem.id} value={dataItem.id}>
+						Veri Kaynağı: {dataItem.id}
+					</option>
+				))}
 			</select>
 		</div>
 	);
