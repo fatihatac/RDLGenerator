@@ -455,7 +455,7 @@ function ReportPreview() {
 
                 {dateRangeItem && (
                     <div className="text-right text-sm text-gray-600 mb-6 italic shrink-0">
-                        Rapor Tarihi: {new Date().toLocaleDateString('tr-TR')}
+                        Rapor Tarih Aralığı: {new Date().toLocaleDateString('tr-TR')}
                     </div>
                 )}
 
