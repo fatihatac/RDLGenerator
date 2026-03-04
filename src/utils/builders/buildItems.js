@@ -2,19 +2,24 @@ import { buildTitle } from "../builders/buildTitle.js";
 import { buildTable } from "../builders/buildTable.js";
 import buildDateRange from "../builders/buildDateRange.js";
 import buildChart from "../builders/buildChart.js";
+import { ITEM_TYPES } from "../../constants/appConstants.js";
 
 function buildReportItems(items, totalWidth, totalHeight, dataSetMap) {
   return items
     .map((item) => {
       switch (item.type) {
-        case "title":
+        case ITEM_TYPES.TITLE:
           return buildTitle(item, totalWidth);
-        case "table":
+        case ITEM_TYPES.TABLE:
           return buildTable(item, dataSetMap);
-        case "dateRange":
+        case ITEM_TYPES.DATE_RANGE:
           return buildDateRange(item, totalWidth);
-        case "chart":
-          return buildChart(item, totalHeight, dataSetMap);
+        case ITEM_TYPES.CHART: {
+          const dataItem = items.find(
+            (i) => i.id === item.dataSourceId && i.type === ITEM_TYPES.DATA,
+          );
+          return buildChart(item, totalHeight, dataSetMap, dataItem);
+        }
         default:
           return null;
       }

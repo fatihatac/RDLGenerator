@@ -1,9 +1,16 @@
 import { X, GripVertical } from 'lucide-react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import useReportStore from '../../../store/useReportStore';
+import { useShallow } from 'zustand/react/shallow';
 
 export default function ColumnListEditor({ tableId, columns }) {
-    const { updateColumnName, removeColumn, reorderColumn } = useReportStore();
+    const { updateColumnName, removeColumn, reorderColumn } = useReportStore(
+        useShallow((state) => ({
+            updateColumnName: state.updateColumnName,
+            removeColumn: state.removeColumn,
+            reorderColumn: state.reorderColumn,
+        }))
+    );
 
     const handleDragEnd = (result) => {
         if (!result.destination) return;
@@ -23,7 +30,6 @@ export default function ColumnListEditor({ tableId, columns }) {
                             className="bg-gray-50 p-3 rounded border border-gray-100 space-y-2"
                         >
                             {columns.length === 0 && <p className="text-xs text-gray-400 italic">Henüz sütun eklenmedi.</p>}
-
                             {columns.map((col, idx) => (
                                 <Draggable key={col.id} draggableId={col.id} index={idx}>
                                     {(provided, snapshot) => (
@@ -41,7 +47,7 @@ export default function ColumnListEditor({ tableId, columns }) {
                                                 value={col.name}
                                                 onChange={(e) => updateColumnName(tableId, col.id, e.target.value)}
                                                 className="flex-1 p-1.5 text-sm border border-gray-300 rounded focus:border-green-500 outline-none"
-                                                placeholder="Field Name (e.g. Name)"
+                                                placeholder="Sütun Adı (Örn: Müşteri Adı)"
                                             />
                                             <button onClick={() => removeColumn(tableId, col.id)} className="text-gray-400 hover:text-red-500">
                                                 <X size={16} />

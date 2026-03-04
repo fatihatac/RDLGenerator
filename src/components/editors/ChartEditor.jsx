@@ -1,3 +1,4 @@
+import { BarChart, Trash2 } from 'lucide-react';
 import { useItemActions } from '../../hooks/useItemActions';
 import useReportStore from '../../store/useReportStore';
 

@@ -1,46 +1,56 @@
 import { Trash2, FileText, Link } from 'lucide-react';
 import useReportStore from '../../store/useReportStore';
+import { useShallow } from 'zustand/react/shallow';
 import { parseAndExtractJsonInfo } from '../../utils';
 import GenerateReportButton from '../actions/GenerateReportButton';
 import { useState } from 'react';
-import Alert from '../ui/Alert'
+import Alert from '../ui/Alert';
 import { processDataSideEffects } from '../../services/reportService';
 
 const MAX_JSON_LENGTH = 100000;
 
 function JSONEditor({ item }) {
-  const storeUpdateItem = useReportStore((state) => state.updateItem);
-  const storeDeleteItem = useReportStore((state) => state.deleteItem);
-  const storeUpdateColumnName = useReportStore((state) => state.updateColumnName);
-  const storeRemoveColumn = useReportStore((state) => state.removeColumn);
-  const storeUpdateColumnMappedField = useReportStore((state) => state.updateColumnMappedField);
-
-  const reportItems = useReportStore((state) => state.reportItems);
-  const setReportItems = useReportStore((state) => state.setReportItems);
+  const {
+    updateItem,
+    deleteItem,
+    updateColumnName,
+    removeColumn,
+    updateColumnMappedField,
+    reportItems,
+    setReportItems,
+  } = useReportStore(
+    useShallow((state) => ({
+      updateItem: state.updateItem,
+      deleteItem: state.deleteItem,
+      updateColumnName: state.updateColumnName,
+      removeColumn: state.removeColumn,
+      updateColumnMappedField: state.updateColumnMappedField,
+      reportItems: state.reportItems,
+      setReportItems: state.setReportItems,
+    }))
+  );
 
   const [errorMessage, setErrorMessage] = useState('');
 
-  const tableItem = useReportStore((state) =>
-    state.reportItems.find((reportItem) => reportItem.type === 'table')
-  );
+  const tableItem = reportItems.find((i) => i.type === 'table');
 
   const handleJsonChange = (e) => {
     const jsonString = e.target.value;
     if (jsonString.length > MAX_JSON_LENGTH) {
       setErrorMessage(`JSON verisi ${MAX_JSON_LENGTH} karakteri aşamaz.`);
-      return
+      return;
     }
+    setErrorMessage('');
 
     const { allKeys, filteredKeys, error } = parseAndExtractJsonInfo(jsonString);
-
     if (error) {
       console.error("JSON parsing error in JSONEditor:", error);
     }
 
-    storeUpdateItem(item.id, {
+    updateItem(item.id, {
       value: jsonString,
       jsonKeys: allKeys,
-      filteredJsonKeys: filteredKeys
+      filteredJsonKeys: filteredKeys,
     });
   };
 
@@ -63,7 +73,7 @@ function JSONEditor({ item }) {
           <FileText size={18} className="mr-2" />
           <span>JSON Veri Kaynağı</span>
         </div>
-        <button onClick={() => storeDeleteItem(item.id)} className="text-red-400 hover:text-red-600 p-1">
+        <button onClick={() => deleteItem(item.id)} className="text-red-400 hover:text-red-600 p-1">
           <Trash2 size={18} />
         </button>
       </div>
@@ -77,7 +87,6 @@ function JSONEditor({ item }) {
           rows={5}
           placeholder='Örn: [{ "isim": "Ahmet", "yas": 30 }]'
         />
-        {/* Error Alert Display */}
         {errorMessage && (
           <div className="mt-2">
             <Alert type="error" message={errorMessage} />
@@ -103,62 +112,57 @@ function JSONEditor({ item }) {
               <Link size={18} className="mr-2 text-blue-600" />
               Veri Eşleştirme
             </h3>
-            {/* You could add a re-map button here if needed */}
           </div>
           <p className="text-sm text-gray-500 mb-4">
             Tablo sütunlarınız ile JSON veri alanlarınızı eşleştirin.
           </p>
 
           <div className="bg-gray-50 p-3 rounded border border-gray-100 space-y-3">
-
             <div className="grid grid-cols-12 items-center gap-2 mb-1 px-1">
               <label className="col-span-5 text-xs font-bold text-gray-500 uppercase">TABLO SÜTUNU</label>
               <div className="col-span-1"></div>
               <label className="col-span-5 text-xs font-bold text-gray-500 uppercase">JSON ALANI</label>
               <div className="col-span-1"></div>
             </div>
-            {tableItem.columns.map((col) => (
+            {tableItem.columns.map((col) =>
               col.mappedField !== "RowNumber" && (
                 <div key={col.id} className="grid grid-cols-12 items-center gap-2">
-
                   <input
                     type="text"
                     value={col.name}
-                    onChange={(e) => storeUpdateColumnName(tableItem.id, col.id, e.target.value)}
+                    onChange={(e) => updateColumnName(tableItem.id, col.id, e.target.value)}
                     className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-green-500 outline-none"
                     placeholder="Rapor Sütun Adı"
                   />
-
                   <div className="col-span-1 text-center text-gray-400">
                     <Link size={14} />
                   </div>
-
                   <select
                     value={col.mappedField || ''}
-                    onChange={(e) => storeUpdateColumnMappedField(tableItem.id, col.id, e.target.value)}
+                    onChange={(e) => updateColumnMappedField(tableItem.id, col.id, e.target.value)}
                     className="col-span-5 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
                     disabled={col.mappedField === "RowNumber"}
                   >
                     <option value="">-- Eşleştir --</option>
-                    {item.jsonKeys.map(key => (
+                    {item.jsonKeys.map((key) => (
                       <option key={key} value={key}>{key}</option>
                     ))}
                   </select>
                   <button
-                    onClick={() => storeRemoveColumn(tableItem.id, col.id)}
+                    onClick={() => removeColumn(tableItem.id, col.id)}
                     className="col-span-1 text-gray-400 hover:text-red-500 justify-self-center"
                     title="Sütunu Sil"
                   >
                     <Trash2 size={16} />
                   </button>
-
-                </div>)
-            ))}
+                </div>
+              )
+            )}
           </div>
         </div>
       )}
     </div>
   );
-};
+}
 
 export default JSONEditor;
