@@ -1,32 +1,34 @@
-import { cloneDeep, keyBy, sumBy } from "lodash";
+import { sumBy } from "lodash";
 import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo.js";
 import getMaxCharWidth from "./getMaxCharWidth.js";
 import * as Layout from "../../constants/layoutConstants.js";
+import { ITEM_TYPES } from "../../constants/appConstants.js";
 import generateId from "../helpers/generateId.js";
 
+// ---------------------------------------------------------------------------
+// FIX: keyBy(items, "type") aynı tipten birden fazla öğe olduğunda son
+// öğeyi tutar, diğerlerini siler. Yerine find() kullanılıyor.
+// ---------------------------------------------------------------------------
 function getDataAndTableItems(items) {
-  const itemsByType = keyBy(items, "type");
   return {
-    dataItem: itemsByType.data,
-    tableItem: itemsByType.table,
-    chartItem: itemsByType.chart,
+    dataItem: items.find((i) => i.type === ITEM_TYPES.DATA),
+    tableItem: items.find((i) => i.type === ITEM_TYPES.TABLE),
+    chartItem: items.find((i) => i.type === ITEM_TYPES.CHART),
   };
 }
 
 function getRowCount(dataItem) {
-  if (!dataItem || !dataItem.value) return 0;
+  if (!dataItem?.value) return 0;
 
   const { parsedData, error } = parseAndExtractJsonInfo(dataItem.value);
-
   if (error) {
-    console.error("Error parsing dataItem.value in rdlGenerator:", error);
+    console.error("Error parsing dataItem.value in reportCalculations:", error);
     return 0;
   }
 
   if (parsedData?.Result && Array.isArray(parsedData.Result)) {
     return parsedData.Result.length;
   }
-
   return 0;
 }
 
@@ -36,7 +38,7 @@ function getNumberColumnWidth(rowCount) {
 
 function getMaxColumns(items) {
   return items.reduce((max, item) => {
-    if (item.type === "table" && item.columns) {
+    if (item.type === ITEM_TYPES.TABLE && item.columns) {
       return Math.max(max, item.columns.length);
     }
     return max;
@@ -51,38 +53,44 @@ function getTotalTableWidth(tableItem) {
     (col) => Number(col.width) || 72,
   );
   const groupsWidth = (tableItem.groups?.length || 0) * 72;
-
   return columnsWidth + groupsWidth;
 }
 
 function calculateReportValues(originalItems) {
-  const items = cloneDeep(originalItems);
+  // Immer sayesinde artık cloneDeep gerekmiyor;
+  // sadece okuma yaptığımız için spread ile sığ kopya yeterli
+  const items = [...originalItems];
   const { dataItem, tableItem, chartItem } = getDataAndTableItems(items);
   const rowCount = getRowCount(dataItem);
   const NUMBER_COLUMN_WIDTH = getNumberColumnWidth(rowCount);
 
-  if (tableItem) {
-    tableItem.columns = tableItem.columns.map((col) =>
-      col.mappedField === "RowNumber"
-        ? { ...col, width: NUMBER_COLUMN_WIDTH }
-        : col,
-    );
-  }
+  // RowNumber sütununu genişlik için güncelle (orijinal diziye dokunma)
+  const adjustedTableItem = tableItem
+    ? {
+        ...tableItem,
+        columns: tableItem.columns.map((col) =>
+          col.mappedField === "RowNumber"
+            ? { ...col, width: NUMBER_COLUMN_WIDTH }
+            : col,
+        ),
+      }
+    : tableItem;
 
   const maxColumns = getMaxColumns(items);
+  const tableWidth = getTotalTableWidth(adjustedTableItem);
+
   const TOTAL_REPORT_WIDTH = chartItem
-    ? Math.max(getTotalTableWidth(tableItem), Layout.CHART_WIDTH)
-    : getTotalTableWidth(tableItem);
+    ? Math.max(tableWidth, Layout.CHART_WIDTH)
+    : tableWidth;
 
-  const chartHeight = chartItem ? Layout.CHART_HEIGHT : 0;
-
-  const TOTAL_REPORT_HEIGHT = 375.75; //items.length > 0 ? (Layout.PAGE_HEIGHT + chartHeight) : 225;
+  // FIX: Sihirli sayı → isimlendirilmiş sabit
+  const TOTAL_REPORT_HEIGHT = Layout.DEFAULT_REPORT_HEIGHT;
 
   const dataSetName = generateId("dataset");
 
   return {
     dataItem,
-    tableItem,
+    tableItem: adjustedTableItem,
     rowCount,
     maxColumns,
     TOTAL_REPORT_WIDTH,

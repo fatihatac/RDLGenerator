@@ -1,7 +1,9 @@
-import { cloneDeep, remove } from "lodash";
 import { generateId } from "../../utils";
 import { ITEM_TYPES } from "../../constants/appConstants";
 
+// ---------------------------------------------------------------------------
+// Item fabrikaları — her tip için başlangıç değerleri
+// ---------------------------------------------------------------------------
 const ITEM_FACTORIES = {
   [ITEM_TYPES.TITLE]: () => ({
     id: generateId("title"),
@@ -20,6 +22,7 @@ const ITEM_FACTORIES = {
     type: ITEM_TYPES.DATA,
     value: "",
     jsonKeys: [],
+    filteredJsonKeys: [],
   }),
   [ITEM_TYPES.DATE_RANGE]: () => ({
     id: generateId("dateRange"),
@@ -36,6 +39,9 @@ const ITEM_FACTORIES = {
   }),
 };
 
+// ---------------------------------------------------------------------------
+// Slice — Immer ile yazıldı; cloneDeep ve lodash remove kaldırıldı
+// ---------------------------------------------------------------------------
 export const createReportSlice = (set, get) => ({
   reportItems: [],
 
@@ -48,31 +54,45 @@ export const createReportSlice = (set, get) => ({
       return;
     }
     const newItem = factory();
-    set((state) => ({ reportItems: [...state.reportItems, newItem] }));
+    set((state) => {
+      state.reportItems.push(newItem);
+    });
   },
 
   deleteItem: (id) => {
     const { reportItems } = get();
     const itemToDelete = reportItems.find((item) => item.id === id);
+
     set((state) => {
-      const newItems = cloneDeep(state.reportItems);
-      remove(newItems, (item) => item.id === id);
+      // Öğeyi sil
+      state.reportItems = state.reportItems.filter((item) => item.id !== id);
+
+      // Data item siliniyorsa bağlı chart gibi öğeleri de temizle
       if (itemToDelete?.type === ITEM_TYPES.DATA) {
-        remove(newItems, (item) => item.dataSourceId === id);
+        state.reportItems = state.reportItems.filter(
+          (item) => item.dataSourceId !== id,
+        );
       }
-      return { reportItems: newItems };
     });
   },
 
   updateItem: (id, updates) => {
-    set((state) => ({
-      reportItems: state.reportItems.map((item) =>
-        item.id === id ? { ...item, ...updates } : item,
-      ),
-    }));
+    set((state) => {
+      const item = state.reportItems.find((i) => i.id === id);
+      if (item) Object.assign(item, updates);
+    });
+  },
+
+  reorderItems: (startIndex, endIndex) => {
+    set((state) => {
+      const [moved] = state.reportItems.splice(startIndex, 1);
+      state.reportItems.splice(endIndex, 0, moved);
+    });
   },
 
   setReportItems: (newItems) => {
-    set({ reportItems: newItems });
+    set((state) => {
+      state.reportItems = newItems;
+    });
   },
 });

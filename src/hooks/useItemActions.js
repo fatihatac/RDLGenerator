@@ -2,23 +2,32 @@ import useReportStore from "../store/useReportStore";
 import { useShallow } from "zustand/react/shallow";
 import { useCallback } from "react";
 
+// ---------------------------------------------------------------------------
+// useItemActions
+// Her editor bileşeninin ortak ihtiyacı: updateItem + deleteItem.
+// pushHistory çağrısı Undo/Redo desteği için eklendi.
+// ---------------------------------------------------------------------------
 export function useItemActions(itemId) {
-  const { storeUpdateItem, storeDeleteItem } = useReportStore(
+  const { storeUpdateItem, storeDeleteItem, storePushHistory } = useReportStore(
     useShallow((state) => ({
       storeUpdateItem: state.updateItem,
       storeDeleteItem: state.deleteItem,
+      storePushHistory: state.pushHistory,
     })),
   );
 
   const updateItem = useCallback(
-    (updates) => storeUpdateItem(itemId, updates),
-    [itemId, storeUpdateItem],
+    (updates) => {
+      storePushHistory();
+      storeUpdateItem(itemId, updates);
+    },
+    [itemId, storeUpdateItem, storePushHistory],
   );
 
-  const deleteItem = useCallback(
-    () => storeDeleteItem(itemId),
-    [itemId, storeDeleteItem],
-  );
+  const deleteItem = useCallback(() => {
+    storePushHistory();
+    storeDeleteItem(itemId);
+  }, [itemId, storeDeleteItem, storePushHistory]);
 
   return { updateItem, deleteItem };
 }

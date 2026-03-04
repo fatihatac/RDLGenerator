@@ -2,19 +2,23 @@ import * as Layout from "../../constants/layoutConstants";
 
 const ICON_WIDTH_PX = 35;
 
-let sharedCanvasContext = null;
+// FIX: SSR/test ortamlarında document olmayabilir; guard eklendi.
+// Singleton canvas context lazy olarak başlatılıyor.
+let _sharedCtx = null;
 
 function getSharedContext() {
-  if (!sharedCanvasContext) {
+  if (typeof document === "undefined") return null; // SSR guard
+  if (!_sharedCtx) {
     const canvas = document.createElement("canvas");
-    sharedCanvasContext = canvas.getContext("2d");
-    sharedCanvasContext.font = "11px Trebuchet MS";
+    _sharedCtx = canvas.getContext("2d");
+    _sharedCtx.font = "11px Trebuchet MS";
   }
-  return sharedCanvasContext;
+  return _sharedCtx;
 }
 
 function getMaxCharWidth(data, key, headerText) {
   const ctx = getSharedContext();
+  if (!ctx) return Layout.COLUMN_WIDTH; // SSR fallback
 
   let maxWidth = 0;
 
@@ -24,21 +28,16 @@ function getMaxCharWidth(data, key, headerText) {
 
   if (data && key) {
     const limit = Math.min(data.length, 100);
-    let currentValue = "";
-
     for (let i = 0; i < limit; i++) {
-      currentValue = data[i][key];
+      const currentValue = data[i][key];
       if (currentValue !== null && currentValue !== undefined) {
-        const textMetrics = ctx.measureText(String(currentValue));
-        if (textMetrics.width > maxWidth) {
-          maxWidth = textMetrics.width;
-        }
+        const w = ctx.measureText(String(currentValue)).width;
+        if (w > maxWidth) maxWidth = w;
       }
     }
   }
 
-  let calculatedWidth = maxWidth * 0.75; // pt dönüşümü
-
+  const calculatedWidth = maxWidth * 0.75; // px → pt dönüşümü
   return Math.round(calculatedWidth + Layout.PADDING);
 }
 

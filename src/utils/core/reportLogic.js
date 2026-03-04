@@ -1,10 +1,14 @@
-import { difference, keyBy, merge, values } from "lodash";
+import { difference, keyBy } from "lodash";
 import getDataType from "../helpers/getDataType";
 import fixColumnNames from "../helpers/fixColumnNames";
 import getMaxCharWidth from "./getMaxCharWidth";
-import { EXCLUDED_KEYS } from "../../constants/appConstants";
+import { EXCLUDED_KEYS, ITEM_TYPES } from "../../constants/appConstants";
 import generateId from "../helpers/generateId";
 import parseAndExtractJsonInfo from "./parseAndExtractJsonInfo";
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
 
 const cleanupStaleItems = (updatedItem, allItems) => {
   const itemsToKeep = allItems.filter(
@@ -15,11 +19,11 @@ const cleanupStaleItems = (updatedItem, allItems) => {
 };
 
 const getOrCreateTitleItem = (allItems, updatedItem, itemsToAdd) => {
-  const titleExists = allItems.some((item) => item.type === "title");
+  const titleExists = allItems.some((item) => item.type === ITEM_TYPES.TITLE);
   if (!titleExists) {
     itemsToAdd.push({
       id: generateId("title"),
-      type: "title",
+      type: ITEM_TYPES.TITLE,
       value: "RAPOR_ADI",
       dataSourceId: updatedItem.id,
     });
@@ -50,14 +54,16 @@ const getOrCreateTableItem = (
   itemsToAdd,
   itemsToUpdate,
 ) => {
-  const existingTable = allItems.find((item) => item.type === "table");
+  const existingTable = allItems.find((item) => item.type === ITEM_TYPES.TABLE);
+
   if (!existingTable) {
     itemsToAdd.push({
       id: generateId("table"),
-      type: "table",
+      type: ITEM_TYPES.TABLE,
       columns: newColumns,
       dataSourceId: updatedItem.id,
       groups: [],
+      sums: [],
     });
   } else if (existingTable.columns.length === 0) {
     itemsToUpdate[existingTable.id] = {
@@ -65,9 +71,14 @@ const getOrCreateTableItem = (
       columns: newColumns,
       dataSourceId: updatedItem.id,
       groups: existingTable.groups || [],
+      sums: existingTable.sums || [],
     };
   }
 };
+
+// ---------------------------------------------------------------------------
+// Main export
+// ---------------------------------------------------------------------------
 
 export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
   const { parsedData, allKeys, error } = parseAndExtractJsonInfo(
@@ -82,8 +93,8 @@ export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
     return cleanupStaleItems(updatedItem, allItems);
   }
 
-  let itemsToAdd = [];
-  let itemsToUpdate = {};
+  const itemsToAdd = [];
+  const itemsToUpdate = {};
 
   getOrCreateTitleItem(allItems, updatedItem, itemsToAdd);
 
@@ -103,8 +114,11 @@ export const handleDataUpdateSideEffects = (updatedItem, allItems) => {
   };
 
   const allItemsById = keyBy(allItems, "id");
-  const mergedItems = merge(allItemsById, itemsToUpdate);
-  const finalReportItems = values(mergedItems).concat(itemsToAdd);
+  const mergedById = { ...allItemsById };
 
-  return finalReportItems;
+  Object.entries(itemsToUpdate).forEach(([id, updatedFields]) => {
+    mergedById[id] = { ...(mergedById[id] ?? {}), ...updatedFields };
+  });
+
+  return Object.values(mergedById).concat(itemsToAdd);
 };
