@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Download, Loader2 } from 'lucide-react';
+import { Download, Loader2, Undo2, Redo2 } from 'lucide-react';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
 import { downloadReportFile } from '../../services/reportService';
@@ -11,12 +11,12 @@ const DownloadActions = () => {
     useReportStore(
       useShallow((state) => ({
         reportItems: state.reportItems,
-        fileName:    state.fileName,
+        fileName: state.fileName,
         setFileName: state.setFileName,
-        undo:        state.undo,
-        redo:        state.redo,
-        canUndo:     state.canUndo,
-        canRedo:     state.canRedo,
+        undo: state.undo,
+        redo: state.redo,
+        canUndo: state.canUndo,
+        canRedo: state.canRedo,
       })),
     );
 
@@ -55,7 +55,7 @@ const DownloadActions = () => {
           title="Geri Al (Ctrl+Z)"
           className="p-1.5 rounded text-white/80 hover:text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-xs font-bold"
         >
-          ↩
+          <Undo2 size={20} />
         </button>
         <button
           onClick={redo}
@@ -63,7 +63,7 @@ const DownloadActions = () => {
           title="Yinele (Ctrl+Y)"
           className="p-1.5 rounded text-white/80 hover:text-white hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-xs font-bold"
         >
-          ↪
+          <Redo2 size={20} />
         </button>
       </div>
 

@@ -1,12 +1,15 @@
 import { BarChart, Trash2 } from 'lucide-react';
 import { useItemActions } from '../../hooks/useItemActions';
 import useReportStore from '../../store/useReportStore';
+import { useShallow } from 'zustand/shallow';
 
 function ChartEditor({ item }) {
 	const { updateItem, deleteItem } = useItemActions(item.id);
 
-	const dataItems = useReportStore((state) =>
-		state.reportItems.filter((i) => i.type === 'data' && i.jsonKeys?.length > 0)
+	const dataItems = useReportStore(
+		useShallow((state) =>
+			state.reportItems.filter((i) => i.type === 'data' && i.jsonKeys?.length > 0)
+		)
 	);
 
 	return (

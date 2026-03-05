@@ -2,10 +2,12 @@ import * as Layout from "../../constants/layoutConstants.js";
 
 function buildChart(item, totalHeight, dataSetMap, dataItem) {
   const jsonKeys = dataItem ? dataItem.jsonKeys : [];
+  //console.log(item);
+  console.log(dataItem);
 
   return {
     Chart: {
-      "@_Name": "Chart1",
+      "@_Name": `chart-${crypto.randomUUID()}`,
       Left: "0pt",
       Top: `${Layout.PAGE_HEIGHT}pt`,
       Height: "216pt",

@@ -95,4 +95,13 @@ export const createReportSlice = (set, get) => ({
       state.reportItems = newItems;
     });
   },
+
+  resetReport: () => {
+    set((state) => {
+      state.reportItems = [];
+      state._past = [];
+      state._future = [];
+      state.fileName = "";
+    });
+  },
 });

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Save, FolderOpen, Trash2, BookTemplate } from 'lucide-react';
+import { X, Save, ArrowUpToLine, Trash2, BookTemplate } from 'lucide-react';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
 
@@ -116,15 +116,16 @@ export default function TemplateModal({ onClose }) {
                       title="Yükle"
                       className="text-blue-500 hover:text-blue-700 p-1.5 rounded hover:bg-blue-50 transition-colors"
                     >
-                      <FolderOpen size={16} />
+                      <ArrowUpToLine size={16} />
+
                     </button>
 
                     <button
                       onClick={() => handleDelete(tpl.id)}
                       title={confirmDelete === tpl.id ? 'Onaylamak için tekrar tıkla' : 'Sil'}
                       className={`p-1.5 rounded transition-colors ${confirmDelete === tpl.id
-                          ? 'text-red-600 bg-red-50 animate-pulse'
-                          : 'text-gray-400 hover:text-red-500 hover:bg-red-50'
+                        ? 'text-red-600 bg-red-50 animate-pulse'
+                        : 'text-gray-400 hover:text-red-500 hover:bg-red-50'
                         }`}
                     >
                       <Trash2 size={16} />

@@ -239,7 +239,7 @@ const buildTable = (item, dataSetMap) => {
       "@_Name": `Header_${item.id}_${index}`,
       Left: "0pt",
       Top: "0pt",
-      Height: Layout.COLUMN_HEIGHT,
+      Height: `${Layout.COLUMN_HEIGHT}pt`,
       Width: `${col.width}pt`,
       Style: {
         VerticalAlign: Layout.COLUMN_TEXT_VERTICAL_ALIGN,
