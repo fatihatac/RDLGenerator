@@ -121,7 +121,7 @@ function generateRDL(items) {
   });
 
   const xmlOutput = builder.build(reportObj);
-  return `<?xml version="1.0"?>\n${xmlOutput}`;
+  return `<?xml version="1.0" encoding="utf-8"?>\n${xmlOutput}`;
 }
 
 export { generateRDL };
