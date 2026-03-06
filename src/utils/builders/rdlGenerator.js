@@ -1,102 +1,106 @@
-import * as Layout from "../../constants/layoutConstants.js";
-import { calculateReportValues } from "../core/reportCalculations.js";
-import { XMLBuilder } from "fast-xml-parser";
-import buildDataSection from "./buildDataSection.js";
-import { buildReportItems } from "./buildItems.js";
+import { calculateReportValues, computePositions } from '../core/reportCalculations.js';
+import { XMLBuilder } from 'fast-xml-parser';
+import buildDataSection from './buildDataSection.js';
+import { buildReportItems } from './buildItems.js';
+import useLayoutStore from '../../store/useLayoutStore.js';
 
 function generateRDL(items) {
+  // Zustand'ın getState() hook dışında da çalışır
+  const settings = useLayoutStore.getState().layoutSettings;
+
+  // 1. Boyut hesapları (settings'e duyarlı)
   const { TOTAL_REPORT_WIDTH, TOTAL_REPORT_HEIGHT } =
-    calculateReportValues(items);
+    calculateReportValues(items, settings);
 
-  const builder = new XMLBuilder({
-    ignoreAttributes: false,
-    format: true,
-    attributeNamePrefix: "@_",
-    suppressEmptyNode: true,
-  });
+  // 2. Her item'a _top (birikimli / override) ve _left (override ?? defaultLeft) ekle
+  const itemsWithPositions = computePositions(items, settings);
 
-  const allDataItems = items.filter((item) => item.type === "data");
-  const dataSetMap = {};
+  // 3. DataSet / DataSource haritaları
+  const allDataItems = items.filter((item) => item.type === 'data');
+  const dataSetMap    = {};
   const dataSourceMap = {};
-
   allDataItems.forEach((item, index) => {
-    dataSetMap[item.id] = `DataSet${index + 1}`;
+    dataSetMap[item.id]    = `DataSet${index + 1}`;
     dataSourceMap[item.id] = `DataSource${index + 1}`;
   });
 
+  // 4. RDL bileşenlerini oluştur (settings + _top + _left dahil)
   const reportItemsList = buildReportItems(
-    items,
+    itemsWithPositions,
     TOTAL_REPORT_WIDTH,
     TOTAL_REPORT_HEIGHT,
     dataSetMap,
+    settings,
   );
 
+  // 5. DataSources & DataSets
   let allDataSources = [];
-  let allDataSets = [];
-
+  let allDataSets    = [];
   allDataItems.forEach((dataItem) => {
-    const currentDataSetName = dataSetMap[dataItem.id];
+    const currentDataSetName    = dataSetMap[dataItem.id];
     const currentDataSourceName = dataSourceMap[dataItem.id];
     const { DataSources, DataSets } = buildDataSection(
       dataItem,
       currentDataSetName,
       currentDataSourceName,
     );
-
-    if (DataSources && DataSources.DataSource) {
-      allDataSources.push(DataSources.DataSource);
-    }
-    if (DataSets && DataSets.DataSet) {
-      allDataSets.push(DataSets.DataSet);
-    }
+    if (DataSources?.DataSource) allDataSources.push(DataSources.DataSource);
+    if (DataSets?.DataSet)       allDataSets.push(DataSets.DataSet);
   });
 
+  // 6. XML objesi
   const reportObj = {
     Report: {
-      "@_xmlns:df":
-        "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily",
-      "@_xmlns:rd":
-        "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner",
-      "@_xmlns":
-        "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition",
+      '@_xmlns:df':
+        'http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily',
+      '@_xmlns:rd':
+        'http://schemas.microsoft.com/SQLServer/reporting/reportdesigner',
+      '@_xmlns':
+        'http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition',
       ReportSections: {
         ReportSection: {
           Body: {
-            Style: { Border: { Style: "None" } },
+            Style: { Border: { Style: 'None' } },
             ReportItems: reportItemsList,
             Height: `${TOTAL_REPORT_HEIGHT}pt`,
           },
           Width: `${TOTAL_REPORT_WIDTH}pt`,
           Page: {
-            PageHeight: "841.68pt",
-            PageWidth: "595.44pt",
-            LeftMargin: "72.00021pt",
-            RightMargin: "72.00021pt",
-            TopMargin: "72.00021pt",
-            BottomMargin: "72.00021pt",
-            Style: { Border: { Style: "None" } },
+            PageHeight:    `${settings.pageHeight}pt`,
+            PageWidth:     `${settings.pageWidth}pt`,
+            LeftMargin:    `${settings.marginLeft}pt`,
+            RightMargin:   `${settings.marginRight}pt`,
+            TopMargin:     `${settings.marginTop}pt`,
+            BottomMargin:  `${settings.marginBottom}pt`,
+            Style: { Border: { Style: 'None' } },
           },
         },
       },
-      AutoRefresh: "0",
+      AutoRefresh: '0',
       ...(allDataSources.length > 0 && {
         DataSources: { DataSource: allDataSources },
       }),
       ...(allDataSets.length > 0 && { DataSets: { DataSet: allDataSets } }),
       ReportParametersLayout: {
         GridLayoutDefinition: {
-          NumberOfColumns: "4",
-          NumberOfRows: "2",
+          NumberOfColumns: '4',
+          NumberOfRows:    '2',
         },
       },
-      "rd:ReportUnitType": "Inch",
-      "rd:PageUnit": "Px",
-      "df:DefaultFontFamily": Layout.FONT_FAMILY,
+      'rd:ReportUnitType':     'Inch',
+      'rd:PageUnit':           'Px',
+      'df:DefaultFontFamily':  settings.fontFamily,
     },
   };
 
-  const xmlOutput = builder.build(reportObj);
+  const builder = new XMLBuilder({
+    ignoreAttributes:    false,
+    format:              true,
+    attributeNamePrefix: '@_',
+    suppressEmptyNode:   true,
+  });
 
+  const xmlOutput = builder.build(reportObj);
   return `<?xml version="1.0"?>\n${xmlOutput}`;
 }
 

@@ -6,6 +6,7 @@ import useTableData from '../../hooks/useTableData';
 import ColumnListEditor from './table/ColumnListEditor';
 import GroupListEditor from './table/GroupListEditor';
 import SumListEditor from './table/SumListEditor';
+import PositionEditor from './PositionEditor';
 
 // FIX: useItemActions + useTableActions hook'ları kullanıldı (store'a doğrudan erişim kaldırıldı)
 // FIX: React.memo ile gereksiz re-render önlendi
@@ -47,6 +48,7 @@ function TableEditor({ item }) {
           <Sigma size={16} className="mr-1" /> Toplam Ekle
         </button>
       </div>
+      <PositionEditor itemId={item.id} />
     </div>
   );
 }

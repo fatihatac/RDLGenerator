@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { BookTemplate, FilePlus } from 'lucide-react';
+import { BookTemplate, FilePlus, Settings2 } from 'lucide-react';
 import BrandLogo from '../ui/BrandLogo';
 import DownloadActions from '../actions/DownloadActions';
 import TemplateModal from '../actions/TemplateModal';
 import ConfirmModal from '../ui/ConfirmModal';
+import SettingsPanel from './SettingsPanel';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
 
 function Header() {
   const [showTemplates, setShowTemplates] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
+  const [showConfirm,   setShowConfirm]   = useState(false);
+  const [showSettings,  setShowSettings]  = useState(false);
 
   const { resetReport, reportItems } = useReportStore(
     useShallow((state) => ({
@@ -47,6 +49,20 @@ function Header() {
             Şablonlar
           </button>
 
+          {/* ── YENİ: Ayarlar butonu ── */}
+          <button
+            onClick={() => setShowSettings(true)}
+            title="Rapor ölçülerini ve ayarlarını düzenle"
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors
+              ${showSettings
+                ? 'bg-white text-[#e12f27]'
+                : 'bg-white/10 hover:bg-white/20 text-white'
+              }`}
+          >
+            <Settings2 size={16} />
+            Ayarlar
+          </button>
+
           <DownloadActions />
         </div>
       </header>
@@ -69,6 +85,10 @@ function Header() {
           onConfirm={handleConfirmReset}
           onCancel={() => setShowConfirm(false)}
         />
+      )}
+
+      {showSettings && (
+        <SettingsPanel onClose={() => setShowSettings(false)} />
       )}
     </>
   );

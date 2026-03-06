@@ -1,37 +1,37 @@
-import * as Layout from "../../constants/layoutConstants.js";
+import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
 
-const buildTitle = (item, totalWidth) => {
+const buildTitle = (item, totalWidth, settings = DEFAULT_LAYOUT_SETTINGS) => {
   return {
     Textbox: {
-      "@_Name": `${item.id}`,
-      Left: "0pt",
-      Top: "0pt",
-      Height: `${Layout.TITLE_HEIGHT}pt`,
-      Width: `${totalWidth}pt`,
+      '@_Name': `${item.id}`,
+      Left:     `${item._left ?? 0}pt`,
+      Top:      `${item._top ?? 0}pt`,
+      Height:   `${settings.titleHeight}pt`,
+      Width:    `${totalWidth}pt`,
       Style: {
-        VerticalAlign: Layout.TITLE_TEXT_VERTICAL_ALIGN,
-        PaddingLeft: "2pt",
-        PaddingRight: "2pt",
-        PaddingTop: "2pt",
-        PaddingBottom: "2pt",
-        Border: { Style: "None" },
+        VerticalAlign: settings.titleVAlign,
+        PaddingLeft:   '2pt',
+        PaddingRight:  '2pt',
+        PaddingTop:    '2pt',
+        PaddingBottom: '2pt',
+        Border: { Style: 'None' },
       },
-      CanGrow: true,
-      KeepTogether: true,
+      CanGrow:       true,
+      KeepTogether:  true,
       Paragraphs: {
         Paragraph: {
           TextRuns: {
             TextRun: {
-              Value: item.value.toLocaleUpperCase("tr"),
+              Value: item.value.toLocaleUpperCase('tr'),
               Style: {
-                FontFamily: Layout.FONT_FAMILY,
-                FontSize: `${Layout.TITLE_FONT_SIZE}pt`,
-                FontWeight: Layout.TITLE_FONT_WEIGHT,
-                Color: "Black",
+                FontFamily: settings.fontFamily,
+                FontSize:   `${settings.titleFontSize}pt`,
+                FontWeight: settings.titleFontWeight,
+                Color:      'Black',
               },
             },
           },
-          Style: { TextAlign: Layout.TITLE_TEXT_HORIZONTAL_ALIGN },
+          Style: { TextAlign: settings.titleHAlign },
         },
       },
     },

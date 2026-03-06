@@ -1,5 +1,7 @@
 import { Trash2, FileText } from 'lucide-react';
 import { useItemActions } from '../../hooks/useItemActions';
+import PositionEditor from './PositionEditor';
+
 function TextboxEditor({ item }) {
   const { updateItem, deleteItem } = useItemActions(item.id);
 
@@ -24,6 +26,7 @@ function TextboxEditor({ item }) {
           placeholder="Örn: Satış Raporu 2025"
         />
       </div>
+      <PositionEditor itemId={item.id} />
     </div>
   );
 };

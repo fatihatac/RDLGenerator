@@ -34,6 +34,7 @@ function DateRangeEditor({
           ))}
         </select>
       </div>
+      <PositionEditor itemId={item.id} />
     </div>
   );
 };

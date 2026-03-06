@@ -1,23 +1,24 @@
-import * as Layout from "../../constants/layoutConstants.js";
+import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
 
-const buildDateRange = (item, totalWidth) => {
+const buildDateRange = (item, totalWidth, settings = DEFAULT_LAYOUT_SETTINGS) => {
   const valueExpr = `=First(Fields!${item.mappedField}.Value)`;
+
   return {
     Textbox: {
-      "@_Name": `${item.id}`,
-      Left: "0pt",
-      Top: "0pt",
-      Height: `${Layout.TITLE_HEIGHT}pt`,
-      Width: `${totalWidth}pt`,
+      '@_Name': `${item.id}`,
+      Left:     `${item._left ?? 0}pt`,
+      Top:      `${item._top ?? 0}pt`,
+      Height:   `${settings.titleHeight}pt`,
+      Width:    `${totalWidth}pt`,
       Style: {
-        VerticalAlign: "Middle",
-        PaddingLeft: "2pt",
-        PaddingRight: "2pt",
-        PaddingTop: "2pt",
-        PaddingBottom: "2pt",
-        Border: { Style: "None" },
+        VerticalAlign: 'Middle',
+        PaddingLeft:   '2pt',
+        PaddingRight:  '2pt',
+        PaddingTop:    '2pt',
+        PaddingBottom: '2pt',
+        Border: { Style: 'None' },
       },
-      CanGrow: true,
+      CanGrow:      true,
       KeepTogether: true,
       Paragraphs: {
         Paragraph: {
@@ -25,13 +26,13 @@ const buildDateRange = (item, totalWidth) => {
             TextRun: {
               Value: valueExpr,
               Style: {
-                FontFamily: Layout.FONT_FAMILY,
-                FontSize: `${Layout.TITLE_FONT_SIZE - 1}pt`,
-                Color: "Black",
+                FontFamily: settings.fontFamily,
+                FontSize:   `${settings.titleFontSize - 1}pt`,
+                Color:      'Black',
               },
             },
           },
-          Style: { TextAlign: "Left" },
+          Style: { TextAlign: 'Left' },
         },
       },
     },

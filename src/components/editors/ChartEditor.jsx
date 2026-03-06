@@ -36,6 +36,7 @@ function ChartEditor({ item }) {
 					</option>
 				))}
 			</select>
+			<PositionEditor itemId={item.id} />
 		</div>
 	);
 }
