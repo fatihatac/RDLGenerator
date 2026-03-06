@@ -6,6 +6,8 @@ import GenerateReportButton from '../actions/GenerateReportButton';
 import { useState } from 'react';
 import Alert from '../ui/Alert';
 import { processDataSideEffects } from '../../services/reportService';
+import { useToast } from '../../hooks/useToast';
+import DeleteButton from '../ui/DeleteButton';
 
 const MAX_JSON_LENGTH = 100000;
 
@@ -30,21 +32,32 @@ function JSONEditor({ item }) {
     }))
   );
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const toast = useToast();
+  // YENİ: parse durumu — textarea border rengi için
+  const [parseStatus, setParseStatus] = useState('idle'); // 'idle' | 'valid' | 'error'
 
   const tableItem = reportItems.find((i) => i.type === 'table');
 
   const handleJsonChange = (e) => {
     const jsonString = e.target.value;
+
     if (jsonString.length > MAX_JSON_LENGTH) {
-      setErrorMessage(`JSON verisi ${MAX_JSON_LENGTH} karakteri aşamaz.`);
+      toast.error(`JSON verisi ${MAX_JSON_LENGTH} karakteri aşamaz.`);
       return;
     }
-    setErrorMessage('');
+
+    if (!jsonString.trim()) {
+      setParseStatus('idle');
+      updateItem(item.id, { value: jsonString, jsonKeys: [], filteredJsonKeys: [] });
+      return;
+    }
 
     const { allKeys, filteredKeys, error } = parseAndExtractJsonInfo(jsonString);
+
     if (error) {
-      console.error("JSON parsing error in JSONEditor:", error);
+      setParseStatus('error');
+    } else {
+      setParseStatus('valid');
     }
 
     updateItem(item.id, {
@@ -56,6 +69,12 @@ function JSONEditor({ item }) {
 
   const handleGenerateReport = () => {
     processDataSideEffects(item.id, reportItems, setReportItems);
+    toast.success('Rapor bileşenleri oluşturuldu.'); // YENİ
+  };
+
+  const handleDelete = () => {
+    deleteItem(item.id);
+    toast.info('Veri kaynağı silindi.'); // YENİ
   };
 
   const showMappingUI =
@@ -66,16 +85,29 @@ function JSONEditor({ item }) {
 
   const showGenerateButton = item.jsonKeys && item.jsonKeys.length > 0;
 
+  // YENİ: textarea border rengi parse durumuna göre
+  const textareaBorderClass =
+    parseStatus === 'error'
+      ? 'border-red-400 focus:ring-red-300'
+      : parseStatus === 'valid'
+      ? 'border-green-400 focus:ring-green-300'
+      : 'border-gray-300 focus:ring-blue-500';
+
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-4 transition-all hover:shadow-md">
       <div className="flex justify-between items-center mb-2">
         <div className="flex items-center text-yellow-600 font-semibold">
           <FileText size={18} className="mr-2" />
           <span>JSON Veri Kaynağı</span>
+          {/* YENİ: alan sayısı badge */}
+          {parseStatus === 'valid' && item.jsonKeys?.length > 0 && (
+            <span className="ml-2 text-xs font-medium bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
+              {item.jsonKeys.length} alan
+            </span>
+          )}
         </div>
-        <button onClick={() => deleteItem(item.id)} className="text-red-400 hover:text-red-600 p-1">
-          <Trash2 size={18} />
-        </button>
+        {/* YENİ: DeleteButton — orijinal Trash2 ikonunun yerini aldı */}
+        <DeleteButton onDelete={handleDelete} />
       </div>
 
       <div className="space-y-2">
@@ -83,13 +115,14 @@ function JSONEditor({ item }) {
         <textarea
           value={item.value}
           onChange={handleJsonChange}
-          className="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none font-mono text-sm"
+          className={`w-full p-2 border rounded focus:ring-2 outline-none font-mono text-sm ${textareaBorderClass}`}
           rows={5}
           placeholder='Örn: [{ "isim": "Ahmet", "yas": 30 }]'
         />
-        {errorMessage && (
+        {/* YENİ: inline hata mesajı */}
+        {parseStatus === 'error' && (
           <div className="mt-2">
-            <Alert type="error" message={errorMessage} />
+            <Alert type="error" message="Geçersiz JSON formatı — lütfen veriyi kontrol edin." />
           </div>
         )}
         {item.jsonKeys && item.jsonKeys.length > 0 && (

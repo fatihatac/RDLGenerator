@@ -9,9 +9,6 @@ import { useShallow } from 'zustand/react/shallow';
 import { LayoutTemplate, MonitorPlay, Code2 } from 'lucide-react';
 import { VIEW_MODES } from '../../constants/appConstants';
 
-// ---------------------------------------------------------------------------
-// Sekme tanımları — yeni sekme eklemek için sadece bu diziye satır ekle
-// ---------------------------------------------------------------------------
 const TABS = [
   { mode: VIEW_MODES.DESIGN,  label: 'Design',  Icon: LayoutTemplate, activeColor: 'text-red-600'   },
   { mode: VIEW_MODES.PREVIEW, label: 'Preview', Icon: MonitorPlay,    activeColor: 'text-green-600' },
@@ -29,7 +26,6 @@ function MainPanel() {
     })),
   );
 
-  // Item drag-drop sıralama
   const handleDragEnd = (result) => {
     if (!result.destination) return;
     if (result.destination.index === result.source.index) return;
@@ -71,14 +67,15 @@ function MainPanel() {
               {reportItems.length === 0 ? (
                 <EmptyReport />
               ) : (
-                // Sürükle-bırak ile item sıralama
                 <DragDropContext onDragEnd={handleDragEnd}>
                   <Droppable droppableId="report-items">
-                    {(provided) => (
+                    {(provided, snapshot) => (
                       <div
                         ref={provided.innerRef}
                         {...provided.droppableProps}
-                        className="space-y-4"
+                        className={`space-y-4 rounded-xl transition-colors duration-200 ${
+                          snapshot.isDraggingOver ? 'bg-blue-50/50' : ''
+                        }`}
                       >
                         {reportItems.map((item, index) => (
                           <Draggable key={item.id} draggableId={item.id} index={index}>
@@ -86,20 +83,28 @@ function MainPanel() {
                               <div
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
-                                className={`transition-shadow ${snapshot.isDragging ? 'shadow-2xl rotate-1' : ''}`}
+                                className={`transition-all duration-150 ${
+                                  snapshot.isDragging
+                                    ? 'shadow-2xl scale-[1.02] rotate-[0.5deg] opacity-95 z-50'
+                                    : 'shadow-none'
+                                }`}
                               >
-                                {/* Sürükleme tutacağı + içerik */}
-                                <div className="flex items-start gap-2">
+                                {/* Sürükleme tutacağı — sol kenar şeridi */}
+                                <div className="flex items-stretch gap-0">
                                   <div
                                     {...provided.dragHandleProps}
-                                    className="mt-4 p-1.5 text-gray-300 hover:text-gray-500 cursor-grab active:cursor-grabbing shrink-0"
+                                    className={`
+                                      w-2 rounded-l-lg cursor-grab active:cursor-grabbing
+                                      flex-shrink-0 transition-colors duration-150
+                                      ${snapshot.isDragging
+                                        ? 'bg-blue-400'
+                                        : 'bg-gray-200 hover:bg-blue-300'
+                                      }
+                                    `}
                                     title="Sürükleyerek sırala"
-                                  >
-                                    ⠿
-                                  </div>
-                                  <div className="flex-1">
-                                    {/* ErrorBoundary: her item izole — biri çökerse diğerleri etkilenmez */}
-                                    <ErrorBoundary key={item.id}>
+                                  />
+                                  <div className="flex-1 min-w-0">
+                                    <ErrorBoundary>
                                       <ReportItemRenderer item={item} />
                                     </ErrorBoundary>
                                   </div>
@@ -119,16 +124,14 @@ function MainPanel() {
 
           {/* ── PREVIEW ── */}
           {viewMode === VIEW_MODES.PREVIEW && (
-            <div className="max-w-5xl mx-auto pb-12">
-              <ErrorBoundary>
-                <ReportPreview />
-              </ErrorBoundary>
-            </div>
+            <ErrorBoundary>
+              <ReportPreview />
+            </ErrorBoundary>
           )}
 
           {/* ── XML ── */}
           {viewMode === VIEW_MODES.XML && (
-            <div className="max-w-5xl mx-auto pb-12">
+            <div className="max-w-5xl mx-auto">
               <ErrorBoundary>
                 <XmlPreview />
               </ErrorBoundary>

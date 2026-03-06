@@ -48,7 +48,13 @@ const parseAndExtractJsonInfo = (jsonString) => {
   }
 
   try {
-    parsedData = JSON.parse(jsonString);
+    const trimmed = jsonString.trim();
+    const normalizedString =
+      trimmed.startsWith("[") && trimmed.endsWith("]")
+        ? trimmed
+        : `[${trimmed}]`;
+
+    parsedData = JSON.parse(normalizedString);
   } catch (e) {
     processingError = "Invalid JSON string: " + e.message;
     console.error("JSON parse error:", e.message);
