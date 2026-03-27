@@ -28,6 +28,8 @@ function ReportPreview() {
 
     const currentLayout = isPortrait ? PAPER_DIMENSIONS.PORTRAIT : PAPER_DIMENSIONS.LANDSCAPE;
 
+    const visibleColumns = tableItem?.columns?.filter((col) => col.isVisible !== false) || [];
+
     return (
         <div className="flex flex-col items-center w-full">
 
@@ -76,15 +78,15 @@ function ReportPreview() {
                     </div>
                 )}
 
-                {/* Virtualized Table Area */}
-                {tableItem && tableItem.columns && tableItem.columns.length > 0 && parsedData.length > 0 && (
+                {/* Virtualized Table Area */}                
+                {tableItem && visibleColumns.length > 0 && parsedData.length > 0 && (
                     <div className="w-full flex-1 overflow-hidden">
                         <TableVirtuoso
                             style={{ height: '100%', width: '100%' }}
                             data={parsedData}
                             fixedHeaderContent={() => (
                                 <tr className="bg-gray-100 shadow-sm">
-                                    {tableItem.columns.map((column) => (
+                                    {visibleColumns.map((column) => (
                                         <th key={column.id} className="border border-gray-400 px-3 py-2 text-left font-bold text-gray-700 truncate bg-gray-100">
                                             {column.name}
                                         </th>
@@ -93,7 +95,7 @@ function ReportPreview() {
                             )}
                             itemContent={(rowIndex, row) => (
                                 <>
-                                    {tableItem.columns.map((column) => {
+                                    {visibleColumns.map((column) => {
                                         let cellValue = '';
                                         if (column.mappedField === 'RowNumber') {
                                             cellValue = rowIndex + 1;
@@ -117,7 +119,7 @@ function ReportPreview() {
                     </div>
                 )}
 
-                {(!tableItem || tableItem.columns.length === 0 || parsedData.length === 0) && (
+                {(!tableItem || visibleColumns.length === 0 || parsedData.length === 0) && (
                     <div className="flex items-center justify-center flex-1 border-2 border-dashed border-gray-300 text-gray-400">
                         Önizleme oluşturmak için veri kaynağı ve sütun ekleyin.
                     </div>

@@ -35,11 +35,12 @@ function getRowCount(dataItem) {
 function getNumberColumnWidth(rowCount) {
   return getMaxCharWidth(null, null, String(rowCount));
 }
-
 function getMaxColumns(items) {
   return items.reduce((max, item) => {
     if (item.type === ITEM_TYPES.TABLE && item.columns) {
-      return Math.max(max, item.columns.length);
+      // YENİ: Sadece görünür sütunların sayısını alıyoruz
+      const visibleColumns = item.columns.filter((col) => col.isVisible !== false);
+      return Math.max(max, visibleColumns.length);
     }
     return max;
   }, 0);
@@ -48,8 +49,11 @@ function getMaxColumns(items) {
 function getTotalTableWidth(tableItem, settings = DEFAULT_LAYOUT_SETTINGS) {
   if (!tableItem?.columns?.length) return 468;
 
+  // YENİ: Sadece görünür sütunları filtreliyoruz
+  const visibleColumns = tableItem.columns.filter((col) => col.isVisible !== false);
+
   const columnsWidth = sumBy(
-    tableItem.columns,
+    visibleColumns, // YENİ: tableItem.columns yerine visibleColumns kullanıyoruz
     (col) => Number(col.width) || settings.columnWidth,
   );
   const groupsWidth = (tableItem.groups?.length || 0) * settings.columnWidth;

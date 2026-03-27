@@ -182,7 +182,9 @@ const buildTableHierarchy = (groups, sums, settings) => {
 // Ana builder
 // ---------------------------------------------------------------------------
 const buildTable = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
-  const processedColumns = item.columns;
+  const visibleColumns = item.columns.filter(c => c.isVisible !== false);
+
+  const processedColumns = visibleColumns;
   const colH = settings.columnHeight;
 
   const tablixColumns = processedColumns.map((col) => ({

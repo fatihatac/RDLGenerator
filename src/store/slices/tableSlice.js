@@ -2,17 +2,9 @@ import { remove } from "lodash";
 import { generateId, fixColumnNames } from "../../utils";
 import { ITEM_TYPES } from "../../constants/appConstants";
 
-// ---------------------------------------------------------------------------
-// Helper — ITEM_TYPES.TABLE sabiti kullanılıyor, string literal yok
-// ---------------------------------------------------------------------------
 const findTable = (items, tableId) =>
   items.find((item) => item.id === tableId && item.type === ITEM_TYPES.TABLE);
 
-// ---------------------------------------------------------------------------
-// Slice — Immer (zustand/middleware/immer) ile yazıldı.
-// Her action artık doğrudan draft üzerinde mutasyon yapıyor;
-// cloneDeep kaldırıldı → performans ve okunabilirlik arttı.
-// ---------------------------------------------------------------------------
 export const createTableSlice = (set) => ({
   // ── Sütunlar ────────────────────────────────────────────────────────────
 
@@ -24,6 +16,7 @@ export const createTableSlice = (set) => ({
         id: generateId("column"),
         name: `Sütun ${table.columns.length + 1}`,
         mappedField: null,
+        isVisible:true,
       });
     }),
 
@@ -132,5 +125,19 @@ export const createTableSlice = (set) => ({
       const table = findTable(state.reportItems, tableId);
       const sum = table?.sums?.find((s) => s.id === sumId);
       if (sum) sum.mappedField = newMappedField;
+    }),
+
+
+  // ── Visibility ───────────────────────────────────────────────────────────
+
+  toggleColumnVisibility: (tableId, columnId) =>
+    set((state) => {
+      const table = findTable(state.reportItems, tableId);
+      const column = table?.columns.find((c) => c.id === columnId);
+      if (column) {
+        // Geriye dönük uyumluluk: isVisible undefined ise true kabul et
+        const currentVisibility = column.isVisible !== false;
+        column.isVisible = !currentVisibility;
+      }
     }),
 });
