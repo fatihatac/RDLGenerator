@@ -1,13 +1,11 @@
 import { isArray, isObject, isNil } from "lodash";
 
-// Refactored to use an iterative approach instead of recursion to prevent Call Stack Overflow
 function flattenData(data) {
   if (!isArray(data)) {
     return [];
   }
 
   const flattenedResult = [];
-  // Stack stores objects to process: { currentItem, parentContext }
   const processingStack = data.map((item) => ({
     currentItem: item,
     parentContext: {},
@@ -33,7 +31,6 @@ function flattenData(data) {
     }
 
     if (childArrays.length > 0) {
-      // Push children to stack to process them iteratively
       for (let i = childArrays.length - 1; i >= 0; i--) {
         processingStack.push({
           currentItem: childArrays[i],

@@ -3,7 +3,7 @@ const EXCLUDED_KEYS = ["TarihAralik"];
 const VIEW_MODES = {
   DESIGN: "design",
   PREVIEW: "preview",
-  XML: "xml", // Yeni: RDL XML çıktısı önizleme
+  XML: "xml", 
 };
 
 const ITEM_TYPES = {

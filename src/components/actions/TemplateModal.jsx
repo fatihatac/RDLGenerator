@@ -3,11 +3,6 @@ import { X, Save, ArrowUpToLine, Trash2, BookTemplate } from 'lucide-react';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
 
-// ---------------------------------------------------------------------------
-// TemplateModal
-// Şablon kaydetme ve yükleme arayüzü.
-// Header'daki "Şablonlar" butonuyla açılır.
-// ---------------------------------------------------------------------------
 export default function TemplateModal({ onClose }) {
   const [newName, setNewName] = useState('');
   const [confirmDelete, setConfirmDelete] = useState(null);

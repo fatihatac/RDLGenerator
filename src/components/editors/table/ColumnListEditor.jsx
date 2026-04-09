@@ -9,7 +9,6 @@ export default function ColumnListEditor({ tableId, columns }) {
             updateColumnName: state.updateColumnName,
             removeColumn: state.removeColumn,
             reorderColumn: state.reorderColumn,
-            // State'ten yeni eklediğimiz action'ı çekiyoruz
             toggleColumnVisibility: state.toggleColumnVisibility, 
         }))
     );
@@ -33,7 +32,6 @@ export default function ColumnListEditor({ tableId, columns }) {
                         >
                             {columns.length === 0 && <p className="text-xs text-gray-400 italic">Henüz sütun eklenmedi.</p>}
                             {columns.map((col, idx) => {
-                                // Geriye dönük uyumluluk için varsayılanı true kabul ediyoruz
                                 const isVisible = col.isVisible !== false;
 
                                 return (

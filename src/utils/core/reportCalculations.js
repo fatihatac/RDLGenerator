@@ -5,10 +5,6 @@ import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
 import { ITEM_TYPES } from '../../constants/appConstants.js';
 import generateId from '../helpers/generateId.js';
 
-// ---------------------------------------------------------------------------
-// FIX: keyBy(items, "type") aynı tipten birden fazla öğe olduğunda son
-// öğeyi tutar, diğerlerini siler. Yerine find() kullanılıyor.
-// ---------------------------------------------------------------------------
 function getDataAndTableItems(items) {
   return {
     dataItem:  items.find((i) => i.type === ITEM_TYPES.DATA),
@@ -100,14 +96,11 @@ export function computePositions(items, settings = DEFAULT_LAYOUT_SETTINGS) {
   return items.map((item) => {
     const height = getItemHeight(item, settings);
 
-    // topOverride varsa onu kullan, yoksa birikimli cursoru
     const _top = item.topOverride != null ? item.topOverride : cursor;
 
-    // _left: override varsa onu, yoksa global default
     const _left = item.leftOverride != null ? item.leftOverride : (settings.defaultLeft ?? 0);
 
-    // Cursor her zaman ilerler (override olsa bile sonraki item'ın auto-top'u
-    // bu item'ın geometrisini bilmeli)
+
     if (height > 0) cursor += height + settings.itemSpacing;
 
     return { ...item, _top, _left };

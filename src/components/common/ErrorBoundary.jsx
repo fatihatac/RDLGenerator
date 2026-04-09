@@ -1,13 +1,6 @@
 import { Component } from 'react';
 import { AlertTriangle, RefreshCw } from 'lucide-react';
 
-// ---------------------------------------------------------------------------
-// ErrorBoundary
-// Render hatalarını yakalar; tüm uygulamanın çökmesini engeller.
-// İki seviyede kullanılır:
-//   1. App.jsx sarmalayıcısı (uygulama geneli)
-//   2. ReportItemRenderer sarmalayıcısı (her item için izole)
-// ---------------------------------------------------------------------------
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +24,6 @@ class ErrorBoundary extends Component {
 
     const { fallback } = this.props;
 
-    // Özel fallback verilmişse onu kullan
     if (fallback) return fallback;
 
     return (

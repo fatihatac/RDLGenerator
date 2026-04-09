@@ -4,8 +4,6 @@ import MainPanel from './components/layout/MainPanel';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import ToastContainer from './components/ui/ToastContainer';
 
-// FIX: viewMode koşullu render kaldırıldı — SidePanel kendi içinde yönetiyor
-// FIX: Uygulama geneli ErrorBoundary eklendi
 function App() {
   return (
     <>

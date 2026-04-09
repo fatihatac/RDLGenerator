@@ -33,7 +33,6 @@ function JSONEditor({ item }) {
   );
 
   const toast = useToast();
-  // YENİ: parse durumu — textarea border rengi için
   const [parseStatus, setParseStatus] = useState('idle'); // 'idle' | 'valid' | 'error'
 
   const tableItem = reportItems.find((i) => i.type === 'table');
@@ -69,12 +68,12 @@ function JSONEditor({ item }) {
 
   const handleGenerateReport = () => {
     processDataSideEffects(item.id, reportItems, setReportItems);
-    toast.success('Rapor bileşenleri oluşturuldu.'); // YENİ
+    toast.success('Rapor bileşenleri oluşturuldu.'); 
   };
 
   const handleDelete = () => {
     deleteItem(item.id);
-    toast.info('Veri kaynağı silindi.'); // YENİ
+    toast.info('Veri kaynağı silindi.');
   };
 
   const showMappingUI =
@@ -85,7 +84,6 @@ function JSONEditor({ item }) {
 
   const showGenerateButton = item.jsonKeys && item.jsonKeys.length > 0;
 
-  // YENİ: textarea border rengi parse durumuna göre
   const textareaBorderClass =
     parseStatus === 'error'
       ? 'border-red-400 focus:ring-red-300'

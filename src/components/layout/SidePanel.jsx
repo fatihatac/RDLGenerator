@@ -5,9 +5,6 @@ import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
 import { ITEM_TYPES, VIEW_MODES } from '../../constants/appConstants';
 
-// FIX: icon alanı artık JSX değil, component referansı.
-// Render sırasında <btn.Icon size={20} /> ile kullanılıyor.
-// Bu, modül yüklenirken React elementleri oluşturulmasını engeller.
 const ACTION_BUTTONS = [
   {
     type: ITEM_TYPES.TITLE,
@@ -41,14 +38,14 @@ const ACTION_BUTTONS = [
     className: 'bg-gray-50 hover:bg-purple-50 hover:border-purple-300',
     iconClassName: 'bg-purple-100 text-purple-600 group-hover:bg-purple-200',
   },
-  {
-    type: ITEM_TYPES.CHART,
-    Icon: ChartArea,
-    title: 'Grafik',
-    description: 'Grafik eklemek için',
-    className: 'bg-gray-50 hover:bg-pink-50 hover:border-pink-300',
-    iconClassName: 'bg-pink-100 text-pink-600 group-hover:bg-pink-200',
-  },
+  // {
+  //   type: ITEM_TYPES.CHART,
+  //   Icon: ChartArea,
+  //   title: 'Grafik',
+  //   description: 'Grafik eklemek için',
+  //   className: 'bg-gray-50 hover:bg-pink-50 hover:border-pink-300',
+  //   iconClassName: 'bg-pink-100 text-pink-600 group-hover:bg-pink-200',
+  // },
 ];
 
 function SidePanel() {
@@ -59,7 +56,6 @@ function SidePanel() {
     })),
   );
 
-  // FIX: Tek yer koşullu render — App.jsx'teki koşul kaldırıldı
   if (viewMode === VIEW_MODES.PREVIEW || viewMode === VIEW_MODES.XML) return null;
 
   return (

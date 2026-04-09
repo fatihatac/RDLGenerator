@@ -4,7 +4,7 @@ function BaseAddItemButton({
     description,
     onClick,
     className,
-    iconClassName
+    iconClassName,
 }) {
 
     return (
