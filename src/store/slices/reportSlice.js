@@ -1,5 +1,6 @@
 import { generateId } from "../../utils";
 import { ITEM_TYPES } from "../../constants/appConstants";
+import { REPORT_TYPES } from "../../constants/reportTypes";
 
 // ---------------------------------------------------------------------------
 // Item fabrikaları — her tip için başlangıç değerleri
@@ -44,6 +45,13 @@ const ITEM_FACTORIES = {
 // ---------------------------------------------------------------------------
 export const createReportSlice = (set, get) => ({
   reportItems: [],
+  reportType: REPORT_TYPES.STANDARD,
+  
+  setReportType: (newReportType) => {
+    set((state) => {
+      state.reportType = newReportType;
+    });
+  },
 
   addItem: (type) => {
     const factory = ITEM_FACTORIES[type];
