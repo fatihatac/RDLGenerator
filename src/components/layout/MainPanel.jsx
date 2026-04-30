@@ -38,23 +38,21 @@ function MainPanel() {
       <div className="absolute inset-0 flex flex-col">
 
         {/* Sekme çubuğu */}
-        <div className="w-full flex justify-end px-8 py-3 backdrop-blur-md bg-transparent shadow-sm z-10 shrink-0">
-          <div className="bg-gray-100 p-1 rounded-lg flex items-center gap-0.5">
-            {TABS.map(({ mode, label, Icon, activeColor }) => (
-              <button
-                key={mode}
-                onClick={() => setViewMode(mode)}
-                className={`flex items-center px-4 py-1.5 rounded-md text-sm font-medium transition-all duration-200 ${
-                  viewMode === mode
-                    ? `bg-white ${activeColor} shadow-sm`
-                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200/50'
-                }`}
-              >
-                <Icon size={16} className="mr-2" />
-                {label}
-              </button>
-            ))}
-          </div>
+        <div className="w-full bg-white border-b border-gray-200 flex items-center px-6 shrink-0">
+          {TABS.map(({ mode, label, Icon }) => (
+            <button
+              key={mode}
+              onClick={() => setViewMode(mode)}
+              className={`flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all duration-200 border-b-2 -mb-px ${
+                viewMode === mode
+                  ? 'border-[#e12f27] text-[#e12f27]'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              <Icon size={16} />
+              {label}
+            </button>
+          ))}
         </div>
 
         {/* İçerik alanı */}

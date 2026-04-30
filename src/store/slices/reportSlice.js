@@ -3,6 +3,37 @@ import { ITEM_TYPES } from "../../constants/appConstants";
 import { REPORT_TYPES } from "../../constants/reportTypes";
 
 // ---------------------------------------------------------------------------
+// Form rapor tiplerinin varsayılan bileşenleri
+// Rapor tipi değiştiğinde ve mevcut bileşen listesi boşsa otomatik eklenir.
+// Yeni form tipi eklendiğinde buraya da eklenmeli.
+// ---------------------------------------------------------------------------
+const FORM_TYPE_DEFAULTS = {
+  [REPORT_TYPES.ACY000019]: () => [
+    {
+      id: generateId("title"),
+      type: ITEM_TYPES.TITLE,
+      value: "Mobil Giriş Çıkış Raporu",
+    },
+    {
+      id: generateId("datasource"),
+      type: ITEM_TYPES.DATA,
+      value: "",
+      jsonKeys: [],
+      filteredJsonKeys: [],
+    },
+  ],
+  [REPORT_TYPES.ARAC_FORM]: () => [
+    {
+      id: generateId("datasource"),
+      type: ITEM_TYPES.DATA,
+      value: "",
+      jsonKeys: [],
+      filteredJsonKeys: [],
+    },
+  ],
+};
+
+// ---------------------------------------------------------------------------
 // Item fabrikaları — her tip için başlangıç değerleri
 // ---------------------------------------------------------------------------
 const ITEM_FACTORIES = {
@@ -50,6 +81,11 @@ export const createReportSlice = (set, get) => ({
   setReportType: (newReportType) => {
     set((state) => {
       state.reportType = newReportType;
+      // Form tipine geçildiğinde bileşen listesi boşsa varsayılanları yükle
+      if (newReportType !== REPORT_TYPES.STANDARD && state.reportItems.length === 0) {
+        const defaults = FORM_TYPE_DEFAULTS[newReportType];
+        if (defaults) state.reportItems = defaults();
+      }
     });
   },
 

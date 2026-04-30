@@ -5,9 +5,9 @@ import DownloadActions from '../actions/DownloadActions';
 import TemplateModal from '../actions/TemplateModal';
 import ConfirmModal from '../ui/ConfirmModal';
 import SettingsPanel from './SettingsPanel';
+import ReportTypeSelector from '../ui/ReportTypeSelector';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
-import { REPORT_TYPE_OPTIONS } from '../../constants/reportTypes';
 
 function Header() {
   const [showTemplates, setShowTemplates] = useState(false);
@@ -23,10 +23,6 @@ function Header() {
     })),
   );
 
-  const handleReportTypeChange = (e) => {
-    setReportType(e.target.value);
-  };
-
   const handleConfirmReset = () => {
     resetReport();
     setShowConfirm(false);
@@ -34,22 +30,11 @@ function Header() {
 
   return (
     <>
-      <header className="bg-[#e12f27] text-white p-4 shadow-md flex justify-between items-center sticky top-0 z-10">
+      <header className="bg-[#e12f27] text-white p-4 shadow-md flex justify-between items-center sticky top-0 z-50">
         <div className="flex items-center gap-6">
           <BrandLogo />
           
-          <select 
-            value={reportType}
-            onChange={handleReportTypeChange}
-            className="bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-md px-3 py-1.5 outline-none cursor-pointer border border-transparent focus:border-white/30"
-          >
-            {/* Rapor tiplerini otomatik olarak dönüyoruz */}
-            {REPORT_TYPE_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value} className="text-black">
-                {option.label}
-              </option>
-            ))}
-          </select>
+          <ReportTypeSelector value={reportType} onChange={setReportType} />
         </div>
 
         <div className="flex items-center gap-4">

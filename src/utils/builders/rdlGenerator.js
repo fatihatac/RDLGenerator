@@ -1,27 +1,23 @@
-// src/utils/builders/rdlGenerator.js
-
 import useReportStore from "../../store/useReportStore.js";
 import { REPORT_TYPES } from "../../constants/reportTypes.js";
+import { REPORT_TEMPLATES } from "../../constants/reportTemplates.js";
 import { generateStandardRDL } from "./generators/standartRDL.js";
-// İleride buraya eklenecek:
-// import { generateCustomRDL } from "./generators/customRdlGenerator.js";
+import { generateFormRDL } from "./generators/formRDL.js";
 
 function generateRDL(items) {
-  // Store'dan güncel rapor tipini alıyoruz
   const currentReportType = useReportStore.getState().reportType;
 
-  switch (currentReportType) {
-    case REPORT_TYPES.STANDARD:
-      return generateStandardRDL(items);
-      
-    // Yeni rapor tipi eklendiğinde burası aktif edilecek
-    // case REPORT_TYPES.CUSTOM_TYPE_1:
-    //   return generateCustomRDL(items); 
-
-    default:
-      console.warn("Unknown report type selected. Falling back to STANDARD.");
-      return generateStandardRDL(items);
+  if (currentReportType === REPORT_TYPES.STANDARD) {
+    return generateStandardRDL(items);
   }
+
+  const templateConfig = REPORT_TEMPLATES[currentReportType];
+  if (templateConfig) {
+    return generateFormRDL(items, templateConfig);
+  }
+
+  console.warn(`Bilinmeyen rapor tipi: "${currentReportType}". Standart rapor kullanılıyor.`);
+  return generateStandardRDL(items);
 }
 
 export { generateRDL };
