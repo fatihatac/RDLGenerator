@@ -1,0 +1,3097 @@
+<?xml version="1.0"?>
+<Report xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition">
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <Left>4.5pt</Left>
+            <Top>3pt</Top>
+            <Height>717.75pt</Height>
+            <Width>540.668pt</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+            <DataSetName>DataSet1</DataSetName>
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>540pt</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>717.75pt</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle2">
+                          <Left>0in</Left>
+                          <Top>0in</Top>
+                          <Height>717.75pt</Height>
+                          <Width>540pt</Width>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                          </Style>
+                          <ReportItems>
+                            <Textbox Name="TextBox2">
+                              <Left>11.48438pt</Left>
+                              <Top>8.96484pt</Top>
+                              <Height>37.98047pt</Height>
+                              <Width>524.4375pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>﻿</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>11.25pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value>ARAÇ TALEP FORMU</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>11.25pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Line Name="Line1">
+                              <Left>7.21875pt</Left>
+                              <Top>48.1758pt</Top>
+                              <Height>0pt</Height>
+                              <Width>533.4609pt</Width>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Line>
+                            <Textbox Name="TextBox3">
+                              <Left>16.25391pt</Left>
+                              <Top>55.69922pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>104.4844pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Unvanı : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox5">
+                              <Left>16.47656pt</Left>
+                              <Top>78.19922pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>104.4844pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Adres : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Line Name="Line2">
+                              <Left>6.73829pt</Left>
+                              <Top>103.4183pt</Top>
+                              <Height>0pt</Height>
+                              <Width>533.0883pt</Width>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Line>
+                            <Line Name="Line3">
+                              <Left>5.75391pt</Left>
+                              <Top>141.1875pt</Top>
+                              <Height>0pt</Height>
+                              <Width>534.0844pt</Width>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Line>
+                            <Textbox Name="TextBox7">
+                              <Left>16.21875pt</Left>
+                              <Top>111.9375pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>519.1922pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Personel Araç Talebi</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>9.75pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value />
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>9.75pt</FontSize>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value />
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>9.75pt</FontSize>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox8">
+                              <Left>15.70312pt</Left>
+                              <Top>149.9297pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>61.16797pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Sicilno : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox9">
+                              <Left>15.42188pt</Left>
+                              <Top>172.4297pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>61.06641pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Ad Soyad : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox10">
+                              <Left>226.7344pt</Left>
+                              <Top>149.4375pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>95.895pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Bölüm  : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox11">
+                              <Left>227.25pt</Left>
+                              <Top>171.9375pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>93.38438pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Pozisyon  : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox12">
+                              <Left>227.25pt</Left>
+                              <Top>194.9414pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>93.38438pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Görev  : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Line Name="Line4">
+                              <Left>6.23438pt</Left>
+                              <Top>406.1955pt</Top>
+                              <Height>0pt</Height>
+                              <Width>533.5922pt</Width>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Line>
+                            <Textbox Name="TextBox15">
+                              <Left>16.5pt</Left>
+                              <Top>221.4375pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Araç Havuzu :</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                    <LineHeight>0.99750pt</LineHeight>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox16">
+                              <Left>16.5pt</Left>
+                              <Top>244.0078pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Başlangıç Tarihi : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                    <LineHeight>0.99750pt</LineHeight>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox17">
+                              <Left>16.5pt</Left>
+                              <Top>266.0039pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Bitiş Tarihi : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                    <LineHeight>0.99750pt</LineHeight>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox18">
+                              <Left>16.5pt</Left>
+                              <Top>288.8203pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Lokasyon :</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                    <LineHeight>0.99750pt</LineHeight>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox19">
+                              <Left>14.10938pt</Left>
+                              <Top>383.5664pt</Top>
+                              <Height>16.5pt</Height>
+                              <Width>420.9961pt</Width>
+                              <Style>
+                                <VerticalAlign>Top</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Yukarıda gerekli açıklamaları yaptığım zaman aralığında araç talebi yapmak istiyorum.</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="SicilNo2">
+                              <Left>81.98438pt</Left>
+                              <Top>149.9297pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>114.9922pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!SicilNo.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="Ad2">
+                              <Left>81.98438pt</Left>
+                              <Top>172.4414pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>114.99pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Ad.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="fad2">
+                              <Left>124.2656pt</Left>
+                              <Top>55.69922pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>402pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!fad.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="bad2">
+                              <Left>327pt</Left>
+                              <Top>149.4375pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>207pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!bad.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="pad2">
+                              <Left>327pt</Left>
+                              <Top>171.9375pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>207pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!pad.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="gad1">
+                              <Left>327pt</Left>
+                              <Top>195pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>207pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!gad.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox13">
+                              <Left>367.7461pt</Left>
+                              <Top>239.4375pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>97.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Tarih / İmza</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox14">
+                              <Left>16.5pt</Left>
+                              <Top>453.2461pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Marka : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox26">
+                              <Left>16.5pt</Left>
+                              <Top>476.2383pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Model :</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox27">
+                              <Left>16.5pt</Left>
+                              <Top>498.2461pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Model Yıl :</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Line Name="Line5">
+                              <Left>6.22266pt</Left>
+                              <Top>444.75pt</Top>
+                              <Height>0pt</Height>
+                              <Width>533.5922pt</Width>
+                              <Style>
+                                <Border>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Line>
+                            <Textbox Name="TextBox31">
+                              <Left>16.21875pt</Left>
+                              <Top>414.2344pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>519.1922pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Araç Bilgileri</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>9.75pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value />
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>9.75pt</FontSize>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value />
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>9.75pt</FontSize>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="fadres1">
+                              <Left>124.2656pt</Left>
+                              <Top>78.19922pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>402pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!fadres.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox4">
+                              <Left>16.5pt</Left>
+                              <Top>311.2031pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Kişi Sayısı :</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                    <LineHeight>0.99750pt</LineHeight>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox21">
+                              <Left>16.5pt</Left>
+                              <Top>333.7031pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Açıklama :</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                    <LineHeight>0.99750pt</LineHeight>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox24">
+                              <Left>16.5pt</Left>
+                              <Top>522.4922pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Plaka : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox25">
+                              <Left>16.5pt</Left>
+                              <Top>546.2344pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>82.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Araç Tipi :</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox29">
+                              <Left>270pt</Left>
+                              <Top>453.2475pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>94.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Yakıt Tipi :</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox30">
+                              <Left>270pt</Left>
+                              <Top>476.235pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>94.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Renk : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox32">
+                              <Left>270pt</Left>
+                              <Top>498.2475pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>94.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Kullanım Tipi :</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox33">
+                              <Left>270pt</Left>
+                              <Top>522.495pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>94.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Kapasite :</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox34">
+                              <Left>270pt</Left>
+                              <Top>546.2325pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>94.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Başlangıç KM : </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="TextBox37">
+                              <Left>18.75pt</Left>
+                              <Top>598.7109pt</Top>
+                              <Height>24.25pt</Height>
+                              <Width>97.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>Onaylayan </Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                    <TextRun>
+                                      <Value>Tarih / İmza</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>7.5pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                        <Color>black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="baslangic1">
+                              <Left>105pt</Left>
+                              <Top>244.005pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>195pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!baslangic.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="bitis1">
+                              <Left>105pt</Left>
+                              <Top>266.0025pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>195pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!bitis.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="lokasyon1">
+                              <Left>105pt</Left>
+                              <Top>288.8175pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>195pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!lokasyon.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="kisisayisi1">
+                              <Left>105pt</Left>
+                              <Top>311.205pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>195pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!kisisayisi.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="HavuzAdi2">
+                              <Left>105pt</Left>
+                              <Top>221.4375pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>195pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!HavuzAdi.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="aciklama3">
+                              <Left>105pt</Left>
+                              <Top>333.75pt</Top>
+                              <Height>42.25pt</Height>
+                              <Width>195pt</Width>
+                              <Style>
+                                <VerticalAlign>Top</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!aciklama.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="marka1">
+                              <Left>105pt</Left>
+                              <Top>453.2475pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>112.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!marka.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="Model1">
+                              <Left>105pt</Left>
+                              <Top>476.235pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>112.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Model.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="modelyil1">
+                              <Left>105pt</Left>
+                              <Top>498.2475pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>112.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!modelyil.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="plaka1">
+                              <Left>105pt</Left>
+                              <Top>522.495pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>112.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!plaka.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="aractipi1">
+                              <Left>105pt</Left>
+                              <Top>546.2325pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>112.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!aractipi.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="yakittipi1">
+                              <Left>371.25pt</Left>
+                              <Top>453pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>150pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!yakittipi.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="renk1">
+                              <Left>371.25pt</Left>
+                              <Top>476.235pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>150pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!renk.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="KullanimTipi1">
+                              <Left>371.25pt</Left>
+                              <Top>498.2475pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>150pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!KullanimTipi.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="kapasite2">
+                              <Left>371.25pt</Left>
+                              <Top>522.495pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>150pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!kapasite.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="tKm1">
+                              <Left>371.25pt</Left>
+                              <Top>546.2325pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>150pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!tKm.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6.75pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="taleptarih2">
+                              <Left>367.5pt</Left>
+                              <Top>257.25pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>97.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!taleptarih.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6pt</FontSize>
+                                        <Format>dd/M/yyyy hh:mm</Format>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="onaytarih2">
+                              <Left>18.75pt</Left>
+                              <Top>621.4453pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>97.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!onaytarih.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6pt</FontSize>
+                                        <Format>dd/M/yyyy hh:mm</Format>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                            <Textbox Name="OnayAdSoyad1">
+                              <Left>18.75pt</Left>
+                              <Top>644.8477pt</Top>
+                              <Height>18.75pt</Height>
+                              <Width>97.5pt</Width>
+                              <Style>
+                                <VerticalAlign>Middle</VerticalAlign>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!OnayAdSoyad.Value</Value>
+                                      <Style>
+                                        <FontFamily>Segoe UI</FontFamily>
+                                        <FontSize>6pt</FontSize>
+                                        <Color>Black</Color>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                        </Rectangle>
+                        <ColSpan>1</ColSpan>
+                        <RowSpan>1</RowSpan>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Details" />
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+          </Tablix>
+        </ReportItems>
+        <Height>723pt</Height>
+      </Body>
+      <Width>547.5pt</Width>
+      <Page>
+        <PageHeight>841.68pt</PageHeight>
+        <PageWidth>595.44pt</PageWidth>
+        <LeftMargin>18.75pt</LeftMargin>
+        <RightMargin>18.75pt</RightMargin>
+        <TopMargin>18.75pt</TopMargin>
+        <BottomMargin>18.75pt</BottomMargin>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource1">
+      <ConnectionProperties>
+        <DataProvider>JSON</DataProvider>
+        <ConnectString>{"Data":"[{\"id\":46,\"baslangic\":\"2026-02-16T11:00:00\",\"bitis\":\"2026-02-16T14:55:00\",\"sicilid\":659,\"kademe\":4,\"taleptarih\":\"2026-02-16T14:55:50.970\",\"onaytarih\":\"2026-02-16T15:29:03.310\",\"onaylayan\":\"3284\",\"durum\":1,\"islemaciklama\":null,\"aciklama\":\"dffwd\",\"xsicilid\":659,\"havuzid\":3,\"aracid\":1,\"kisisayisi\":5,\"km\":null,\"teslimsicilid\":233,\"teslimtarihi\":\"2026-02-16T15:29:33.710\",\"teslimkm\":55,\"redaciklama\":null,\"teslimalansicilid\":null,\"teslimalantarihi\":null,\"teslimalankm\":null,\"lokasyon\":\"fvgaefgf\",\"TenantId\":1,\"xsicilID\":659,\"UserID\":\"00000698\",\"Firma\":1,\"Bolum\":14,\"Pozisyon\":6,\"sLokasyon\":0,\"TerminalGrubu\":0,\"Ad\":\"Mert Tatar\",\"Soyad\":\"Tatar\",\"PersonelNo\":\"00000698\",\"GirisTarih\":\"2023-03-07T00:00:00\",\"CikisTarih\":null,\"SicilNo\":\"00000698\",\"Telefon1\":\"\",\"Telefon2\":\"0\",\"CepTelefon\":\"\",\"Adres\":\"                  \",\"IL\":\"\",\"Ilce\":\"\",\"KanGrubu\":0,\"MesaiPeriyodu\":1,\"PeriyodBaslangici\":null,\"SonDurum\":false,\"ExpireDate\":\"2000-03-01T00:00:00\",\"FazlaMesai\":1,\"EksikMesai\":1,\"EksikMesai_FM\":0,\"ErkenMesai\":1,\"EksikGun\":1,\"MaasTipi\":4,\"AylikCalismaSaati\":225,\"SonTasnifID\":0,\"SicilKilit\":null,\"DogumTarih\":null,\"okod1\":\"\",\"okod2\":\"\",\"okod3\":\"\",\"okod4\":\"\",\"okod5\":\"\",\"okod6\":\"\",\"okod7\":\"\",\"okod8\":\"\",\"okod9\":\"\",\"okod10\":\"\",\"okod11\":\"\",\"okod12\":\"\",\"okod13\":\"\",\"okod14\":\"\",\"okod15\":\"\",\"okod16\":\"\",\"okod17\":\"undefined\",\"okod18\":\"undefined\",\"okod19\":\"undefined\",\"okod20\":\"undefined\",\"okod99\":\"\",\"GeceZammi\":0,\"FM_EM\":0,\"Gorev\":11,\"BitisTarih\":null,\"AltFirma\":19,\"Cinsiyet\":0,\"Email\":\"\",\"Yaka\":3,\"Puantaj\":0,\"KidemTarih\":\"2023-03-07T00:00:00\",\"OzelYetki\":\"\",\"YetkiStr\":\"1\",\"FromSap\":false,\"AyrilikNedeni\":null,\"Degistiren\":\"233\",\"Yasakli\":false,\"YetkiStrAd\":\"\",\"yetkirolleri\":\"0\",\"GUNCELLEME\":\"2023-05-04T08:21:56.857\",\"GeciciKart\":0,\"credit\":\"\",\"indirimorani\":0,\"kilo\":0.00,\"boy\":0.00,\"iban\":\"\",\"maas\":0.00,\"maasturu\":\"0\",\"hesapnumarasi\":\"\",\"SubeAdi\":\"\",\"mezuniyet\":\"0\",\"okul\":\"\",\"fakulte\":\"\",\"egitimbolum\":\"\",\"mezuniyetderecesi\":\"\",\"akademikunvan\":\"0\",\"diller\":\"0\",\"uyruk\":0,\"medenidurum\":0,\"evlenmetarihi\":null,\"cocuksayisi\":0,\"pirlantacocuksayisi\":0,\"sabittelefon\":\"\",\"telefonulkekodu\":\"0\",\"dahilikodu\":\"\",\"acildurumtelefonu\":\"112\",\"acildurumadsoyad\":\"acil durum kişisii\",\"servishatti\":\"\",\"binecegidurak\":\"\",\"aylikprim\":\"\",\"yillikprim\":\"\",\"yemekkartino\":\"\",\"yemekkartifirmasi\":\"\",\"referanskodu\":\"\",\"maaliyetmerkezi\":\"\",\"sgkno\":\"\",\"sgkisegiristarihi\":null,\"sgkisyeri_kodu\":\"\",\"sosyalguvenliktipi\":\"0\",\"sagliksigortasibaslangicdonemi\":null,\"sagliksigortaturu\":\"0\",\"askerlikdurumu\":0,\"teciltarihi\":null,\"engelderecesi\":0,\"ehliyetsinifi\":0,\"sehitakrabasi\":false,\"kiracimi\":false,\"sabikali\":false,\"aktif\":1,\"offboarding\":0,\"pasaportnumarasi\":\"\",\"isealimkaynak\":0,\"gomlekbedeni\":\"\",\"pantolonbedeni\":\"\",\"ayakkabinumara\":\"0\",\"yelek\":\"\",\"mont\":\"\",\"linkedin\":null,\"instagram\":null,\"facebook\":null,\"youtube\":null,\"website\":null,\"github\":null,\"x\":null,\"fad\":\"Meyer\",\"fadres\":\"Tem Yanyol\",\"bad\":\"YAZILIM GELİŞTİRME OFİSİ\",\"gad\":\"YAZILIM GELİŞTİRME UZMANI\",\"pad\":\"Yazılım Geliştirme Uzmanı\",\"OnayAdSoyad\":null,\"HavuzAdi\":\"Karaköy\",\"marka\":\"Toyota\",\"Model\":\"Proace\",\"modelyil\":1990,\"plaka\":\"34 TTR 61\",\"aractipi\":\"Pickup\",\"yakittipi\":\"Hybrid\",\"renk\":\"Lacivert\",\"KullanimTipi\":\"Şahsi\",\"kapasite\":4,\"tKm\":55}]","DataMode":"inline","URL":""}</ConnectString>
+      </ConnectionProperties>
+      <rd:ImpersonateUser>false</rd:ImpersonateUser>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Fields>
+        <Field Name="id">
+          <DataField>id</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="baslangic">
+          <DataField>baslangic</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="bitis">
+          <DataField>bitis</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="sicilid">
+          <DataField>sicilid</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="kademe">
+          <DataField>kademe</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="taleptarih">
+          <DataField>taleptarih</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="onaytarih">
+          <DataField>onaytarih</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="onaylayan">
+          <DataField>onaylayan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="durum">
+          <DataField>durum</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="islemaciklama">
+          <DataField>islemaciklama</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="aciklama">
+          <DataField>aciklama</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="xsicilid">
+          <DataField>xsicilid</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="havuzid">
+          <DataField>havuzid</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="aracid">
+          <DataField>aracid</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="kisisayisi">
+          <DataField>kisisayisi</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="km">
+          <DataField>km</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="teslimsicilid">
+          <DataField>teslimsicilid</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="teslimtarihi">
+          <DataField>teslimtarihi</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="teslimkm">
+          <DataField>teslimkm</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="redaciklama">
+          <DataField>redaciklama</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="teslimalansicilid">
+          <DataField>teslimalansicilid</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="teslimalantarihi">
+          <DataField>teslimalantarihi</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="teslimalankm">
+          <DataField>teslimalankm</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="lokasyon">
+          <DataField>lokasyon</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TenantId">
+          <DataField>TenantId</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="xsicilID">
+          <DataField>xsicilID</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="UserID">
+          <DataField>UserID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Firma">
+          <DataField>Firma</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Bolum">
+          <DataField>Bolum</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Pozisyon">
+          <DataField>Pozisyon</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="sLokasyon">
+          <DataField>sLokasyon</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="TerminalGrubu">
+          <DataField>TerminalGrubu</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Ad">
+          <DataField>Ad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Soyad">
+          <DataField>Soyad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PersonelNo">
+          <DataField>PersonelNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GirisTarih">
+          <DataField>GirisTarih</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CikisTarih">
+          <DataField>CikisTarih</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="SicilNo">
+          <DataField>SicilNo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Telefon1">
+          <DataField>Telefon1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Telefon2">
+          <DataField>Telefon2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CepTelefon">
+          <DataField>CepTelefon</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Adres">
+          <DataField>Adres</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="IL">
+          <DataField>IL</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Ilce">
+          <DataField>Ilce</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KanGrubu">
+          <DataField>KanGrubu</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="MesaiPeriyodu">
+          <DataField>MesaiPeriyodu</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="PeriyodBaslangici">
+          <DataField>PeriyodBaslangici</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="SonDurum">
+          <DataField>SonDurum</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="ExpireDate">
+          <DataField>ExpireDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FazlaMesai">
+          <DataField>FazlaMesai</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="EksikMesai">
+          <DataField>EksikMesai</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="EksikMesai_FM">
+          <DataField>EksikMesai_FM</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ErkenMesai">
+          <DataField>ErkenMesai</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="EksikGun">
+          <DataField>EksikGun</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="MaasTipi">
+          <DataField>MaasTipi</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="AylikCalismaSaati">
+          <DataField>AylikCalismaSaati</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="SonTasnifID">
+          <DataField>SonTasnifID</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="SicilKilit">
+          <DataField>SicilKilit</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="DogumTarih">
+          <DataField>DogumTarih</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="okod1">
+          <DataField>okod1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod2">
+          <DataField>okod2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod3">
+          <DataField>okod3</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod4">
+          <DataField>okod4</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod5">
+          <DataField>okod5</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod6">
+          <DataField>okod6</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod7">
+          <DataField>okod7</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod8">
+          <DataField>okod8</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod9">
+          <DataField>okod9</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod10">
+          <DataField>okod10</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod11">
+          <DataField>okod11</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod12">
+          <DataField>okod12</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod13">
+          <DataField>okod13</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod14">
+          <DataField>okod14</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod15">
+          <DataField>okod15</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod16">
+          <DataField>okod16</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod17">
+          <DataField>okod17</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod18">
+          <DataField>okod18</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod19">
+          <DataField>okod19</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod20">
+          <DataField>okod20</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okod99">
+          <DataField>okod99</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GeceZammi">
+          <DataField>GeceZammi</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="FM_EM">
+          <DataField>FM_EM</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Gorev">
+          <DataField>Gorev</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="BitisTarih">
+          <DataField>BitisTarih</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="AltFirma">
+          <DataField>AltFirma</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Cinsiyet">
+          <DataField>Cinsiyet</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Email">
+          <DataField>Email</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Yaka">
+          <DataField>Yaka</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="Puantaj">
+          <DataField>Puantaj</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="KidemTarih">
+          <DataField>KidemTarih</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="OzelYetki">
+          <DataField>OzelYetki</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="YetkiStr">
+          <DataField>YetkiStr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FromSap">
+          <DataField>FromSap</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="AyrilikNedeni">
+          <DataField>AyrilikNedeni</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="Degistiren">
+          <DataField>Degistiren</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Yasakli">
+          <DataField>Yasakli</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="YetkiStrAd">
+          <DataField>YetkiStrAd</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="yetkirolleri">
+          <DataField>yetkirolleri</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GUNCELLEME">
+          <DataField>GUNCELLEME</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="GeciciKart">
+          <DataField>GeciciKart</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="credit">
+          <DataField>credit</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="indirimorani">
+          <DataField>indirimorani</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="kilo">
+          <DataField>kilo</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="boy">
+          <DataField>boy</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="iban">
+          <DataField>iban</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="maas">
+          <DataField>maas</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="maasturu">
+          <DataField>maasturu</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="hesapnumarasi">
+          <DataField>hesapnumarasi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SubeAdi">
+          <DataField>SubeAdi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="mezuniyet">
+          <DataField>mezuniyet</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="okul">
+          <DataField>okul</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="fakulte">
+          <DataField>fakulte</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="egitimbolum">
+          <DataField>egitimbolum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="mezuniyetderecesi">
+          <DataField>mezuniyetderecesi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="akademikunvan">
+          <DataField>akademikunvan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="diller">
+          <DataField>diller</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="uyruk">
+          <DataField>uyruk</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="medenidurum">
+          <DataField>medenidurum</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="evlenmetarihi">
+          <DataField>evlenmetarihi</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="cocuksayisi">
+          <DataField>cocuksayisi</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="pirlantacocuksayisi">
+          <DataField>pirlantacocuksayisi</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="sabittelefon">
+          <DataField>sabittelefon</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="telefonulkekodu">
+          <DataField>telefonulkekodu</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dahilikodu">
+          <DataField>dahilikodu</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="acildurumtelefonu">
+          <DataField>acildurumtelefonu</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="acildurumadsoyad">
+          <DataField>acildurumadsoyad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="servishatti">
+          <DataField>servishatti</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="binecegidurak">
+          <DataField>binecegidurak</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="aylikprim">
+          <DataField>aylikprim</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="yillikprim">
+          <DataField>yillikprim</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="yemekkartino">
+          <DataField>yemekkartino</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="yemekkartifirmasi">
+          <DataField>yemekkartifirmasi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="referanskodu">
+          <DataField>referanskodu</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="maaliyetmerkezi">
+          <DataField>maaliyetmerkezi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="sgkno">
+          <DataField>sgkno</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="sgkisegiristarihi">
+          <DataField>sgkisegiristarihi</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="sgkisyeri_kodu">
+          <DataField>sgkisyeri_kodu</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="sosyalguvenliktipi">
+          <DataField>sosyalguvenliktipi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="sagliksigortasibaslangicdonemi">
+          <DataField>sagliksigortasibaslangicdonemi</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="sagliksigortaturu">
+          <DataField>sagliksigortaturu</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="askerlikdurumu">
+          <DataField>askerlikdurumu</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="teciltarihi">
+          <DataField>teciltarihi</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="engelderecesi">
+          <DataField>engelderecesi</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ehliyetsinifi">
+          <DataField>ehliyetsinifi</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="sehitakrabasi">
+          <DataField>sehitakrabasi</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="kiracimi">
+          <DataField>kiracimi</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="sabikali">
+          <DataField>sabikali</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="aktif">
+          <DataField>aktif</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="offboarding">
+          <DataField>offboarding</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="pasaportnumarasi">
+          <DataField>pasaportnumarasi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="isealimkaynak">
+          <DataField>isealimkaynak</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="gomlekbedeni">
+          <DataField>gomlekbedeni</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="pantolonbedeni">
+          <DataField>pantolonbedeni</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ayakkabinumara">
+          <DataField>ayakkabinumara</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="yelek">
+          <DataField>yelek</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="mont">
+          <DataField>mont</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="linkedin">
+          <DataField>linkedin</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="instagram">
+          <DataField>instagram</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="facebook">
+          <DataField>facebook</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="youtube">
+          <DataField>youtube</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="website">
+          <DataField>website</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="github">
+          <DataField>github</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="x">
+          <DataField>x</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="fad">
+          <DataField>fad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="fadres">
+          <DataField>fadres</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="bad">
+          <DataField>bad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="gad">
+          <DataField>gad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="pad">
+          <DataField>pad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OnayAdSoyad">
+          <DataField>OnayAdSoyad</DataField>
+          <rd:TypeName>System.Object</rd:TypeName>
+        </Field>
+        <Field Name="HavuzAdi">
+          <DataField>HavuzAdi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="marka">
+          <DataField>marka</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Model">
+          <DataField>Model</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="modelyil">
+          <DataField>modelyil</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="plaka">
+          <DataField>plaka</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="aractipi">
+          <DataField>aractipi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="yakittipi">
+          <DataField>yakittipi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="renk">
+          <DataField>renk</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="KullanimTipi">
+          <DataField>KullanimTipi</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="kapasite">
+          <DataField>kapasite</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="tKm">
+          <DataField>tKm</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource1</DataSourceName>
+        <CommandType>Text</CommandType>
+        <CommandText>{"Name":"Result","Columns":[]}</CommandText>
+        <QueryDesignerState xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational">
+          <Tables>
+            <Table Name="Result" Schema="">
+              <Columns>
+                <Column Name="id" IsDuplicate="False" IsSelected="True" />
+                <Column Name="baslangic" IsDuplicate="False" IsSelected="True" />
+                <Column Name="bitis" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sicilid" IsDuplicate="False" IsSelected="True" />
+                <Column Name="kademe" IsDuplicate="False" IsSelected="True" />
+                <Column Name="taleptarih" IsDuplicate="False" IsSelected="True" />
+                <Column Name="onaytarih" IsDuplicate="False" IsSelected="True" />
+                <Column Name="onaylayan" IsDuplicate="False" IsSelected="True" />
+                <Column Name="durum" IsDuplicate="False" IsSelected="True" />
+                <Column Name="islemaciklama" IsDuplicate="False" IsSelected="True" />
+                <Column Name="aciklama" IsDuplicate="False" IsSelected="True" />
+                <Column Name="xsicilid" IsDuplicate="False" IsSelected="True" />
+                <Column Name="havuzid" IsDuplicate="False" IsSelected="True" />
+                <Column Name="aracid" IsDuplicate="False" IsSelected="True" />
+                <Column Name="kisisayisi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="km" IsDuplicate="False" IsSelected="True" />
+                <Column Name="teslimsicilid" IsDuplicate="False" IsSelected="True" />
+                <Column Name="teslimtarihi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="teslimkm" IsDuplicate="False" IsSelected="True" />
+                <Column Name="redaciklama" IsDuplicate="False" IsSelected="True" />
+                <Column Name="teslimalansicilid" IsDuplicate="False" IsSelected="True" />
+                <Column Name="teslimalantarihi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="teslimalankm" IsDuplicate="False" IsSelected="True" />
+                <Column Name="lokasyon" IsDuplicate="False" IsSelected="True" />
+                <Column Name="TenantId" IsDuplicate="False" IsSelected="True" />
+                <Column Name="xsicilID" IsDuplicate="False" IsSelected="True" />
+                <Column Name="UserID" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Firma" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Bolum" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Pozisyon" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sLokasyon" IsDuplicate="False" IsSelected="True" />
+                <Column Name="TerminalGrubu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Ad" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Soyad" IsDuplicate="False" IsSelected="True" />
+                <Column Name="PersonelNo" IsDuplicate="False" IsSelected="True" />
+                <Column Name="GirisTarih" IsDuplicate="False" IsSelected="True" />
+                <Column Name="CikisTarih" IsDuplicate="False" IsSelected="True" />
+                <Column Name="SicilNo" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Telefon1" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Telefon2" IsDuplicate="False" IsSelected="True" />
+                <Column Name="CepTelefon" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Adres" IsDuplicate="False" IsSelected="True" />
+                <Column Name="IL" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Ilce" IsDuplicate="False" IsSelected="True" />
+                <Column Name="KanGrubu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="MesaiPeriyodu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="PeriyodBaslangici" IsDuplicate="False" IsSelected="True" />
+                <Column Name="SonDurum" IsDuplicate="False" IsSelected="True" />
+                <Column Name="ExpireDate" IsDuplicate="False" IsSelected="True" />
+                <Column Name="FazlaMesai" IsDuplicate="False" IsSelected="True" />
+                <Column Name="EksikMesai" IsDuplicate="False" IsSelected="True" />
+                <Column Name="EksikMesai_FM" IsDuplicate="False" IsSelected="True" />
+                <Column Name="ErkenMesai" IsDuplicate="False" IsSelected="True" />
+                <Column Name="EksikGun" IsDuplicate="False" IsSelected="True" />
+                <Column Name="MaasTipi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="AylikCalismaSaati" IsDuplicate="False" IsSelected="True" />
+                <Column Name="SonTasnifID" IsDuplicate="False" IsSelected="True" />
+                <Column Name="SicilKilit" IsDuplicate="False" IsSelected="True" />
+                <Column Name="DogumTarih" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod1" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod2" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod3" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod4" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod5" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod6" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod7" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod8" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod9" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod10" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod11" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod12" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod13" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod14" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod15" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod16" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod17" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod18" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod19" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod20" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okod99" IsDuplicate="False" IsSelected="True" />
+                <Column Name="GeceZammi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="FM_EM" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Gorev" IsDuplicate="False" IsSelected="True" />
+                <Column Name="BitisTarih" IsDuplicate="False" IsSelected="True" />
+                <Column Name="AltFirma" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Cinsiyet" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Email" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Yaka" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Puantaj" IsDuplicate="False" IsSelected="True" />
+                <Column Name="KidemTarih" IsDuplicate="False" IsSelected="True" />
+                <Column Name="OzelYetki" IsDuplicate="False" IsSelected="True" />
+                <Column Name="YetkiStr" IsDuplicate="False" IsSelected="True" />
+                <Column Name="FromSap" IsDuplicate="False" IsSelected="True" />
+                <Column Name="AyrilikNedeni" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Degistiren" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Yasakli" IsDuplicate="False" IsSelected="True" />
+                <Column Name="YetkiStrAd" IsDuplicate="False" IsSelected="True" />
+                <Column Name="yetkirolleri" IsDuplicate="False" IsSelected="True" />
+                <Column Name="GUNCELLEME" IsDuplicate="False" IsSelected="True" />
+                <Column Name="GeciciKart" IsDuplicate="False" IsSelected="True" />
+                <Column Name="credit" IsDuplicate="False" IsSelected="True" />
+                <Column Name="indirimorani" IsDuplicate="False" IsSelected="True" />
+                <Column Name="kilo" IsDuplicate="False" IsSelected="True" />
+                <Column Name="boy" IsDuplicate="False" IsSelected="True" />
+                <Column Name="iban" IsDuplicate="False" IsSelected="True" />
+                <Column Name="maas" IsDuplicate="False" IsSelected="True" />
+                <Column Name="maasturu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="hesapnumarasi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="SubeAdi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="mezuniyet" IsDuplicate="False" IsSelected="True" />
+                <Column Name="okul" IsDuplicate="False" IsSelected="True" />
+                <Column Name="fakulte" IsDuplicate="False" IsSelected="True" />
+                <Column Name="egitimbolum" IsDuplicate="False" IsSelected="True" />
+                <Column Name="mezuniyetderecesi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="akademikunvan" IsDuplicate="False" IsSelected="True" />
+                <Column Name="diller" IsDuplicate="False" IsSelected="True" />
+                <Column Name="uyruk" IsDuplicate="False" IsSelected="True" />
+                <Column Name="medenidurum" IsDuplicate="False" IsSelected="True" />
+                <Column Name="evlenmetarihi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="cocuksayisi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="pirlantacocuksayisi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sabittelefon" IsDuplicate="False" IsSelected="True" />
+                <Column Name="telefonulkekodu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="dahilikodu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="acildurumtelefonu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="acildurumadsoyad" IsDuplicate="False" IsSelected="True" />
+                <Column Name="servishatti" IsDuplicate="False" IsSelected="True" />
+                <Column Name="binecegidurak" IsDuplicate="False" IsSelected="True" />
+                <Column Name="aylikprim" IsDuplicate="False" IsSelected="True" />
+                <Column Name="yillikprim" IsDuplicate="False" IsSelected="True" />
+                <Column Name="yemekkartino" IsDuplicate="False" IsSelected="True" />
+                <Column Name="yemekkartifirmasi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="referanskodu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="maaliyetmerkezi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sgkno" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sgkisegiristarihi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sgkisyeri_kodu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sosyalguvenliktipi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sagliksigortasibaslangicdonemi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sagliksigortaturu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="askerlikdurumu" IsDuplicate="False" IsSelected="True" />
+                <Column Name="teciltarihi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="engelderecesi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="ehliyetsinifi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sehitakrabasi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="kiracimi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="sabikali" IsDuplicate="False" IsSelected="True" />
+                <Column Name="aktif" IsDuplicate="False" IsSelected="True" />
+                <Column Name="offboarding" IsDuplicate="False" IsSelected="True" />
+                <Column Name="pasaportnumarasi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="isealimkaynak" IsDuplicate="False" IsSelected="True" />
+                <Column Name="gomlekbedeni" IsDuplicate="False" IsSelected="True" />
+                <Column Name="pantolonbedeni" IsDuplicate="False" IsSelected="True" />
+                <Column Name="ayakkabinumara" IsDuplicate="False" IsSelected="True" />
+                <Column Name="yelek" IsDuplicate="False" IsSelected="True" />
+                <Column Name="mont" IsDuplicate="False" IsSelected="True" />
+                <Column Name="linkedin" IsDuplicate="False" IsSelected="True" />
+                <Column Name="instagram" IsDuplicate="False" IsSelected="True" />
+                <Column Name="facebook" IsDuplicate="False" IsSelected="True" />
+                <Column Name="youtube" IsDuplicate="False" IsSelected="True" />
+                <Column Name="website" IsDuplicate="False" IsSelected="True" />
+                <Column Name="github" IsDuplicate="False" IsSelected="True" />
+                <Column Name="x" IsDuplicate="False" IsSelected="True" />
+                <Column Name="fad" IsDuplicate="False" IsSelected="True" />
+                <Column Name="fadres" IsDuplicate="False" IsSelected="True" />
+                <Column Name="bad" IsDuplicate="False" IsSelected="True" />
+                <Column Name="gad" IsDuplicate="False" IsSelected="True" />
+                <Column Name="pad" IsDuplicate="False" IsSelected="True" />
+                <Column Name="OnayAdSoyad" IsDuplicate="False" IsSelected="True" />
+                <Column Name="HavuzAdi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="marka" IsDuplicate="False" IsSelected="True" />
+                <Column Name="Model" IsDuplicate="False" IsSelected="True" />
+                <Column Name="modelyil" IsDuplicate="False" IsSelected="True" />
+                <Column Name="plaka" IsDuplicate="False" IsSelected="True" />
+                <Column Name="aractipi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="yakittipi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="renk" IsDuplicate="False" IsSelected="True" />
+                <Column Name="KullanimTipi" IsDuplicate="False" IsSelected="True" />
+                <Column Name="kapasite" IsDuplicate="False" IsSelected="True" />
+                <Column Name="tKm" IsDuplicate="False" IsSelected="True" />
+              </Columns>
+              <SchemaLevels>
+                <SchemaInfo Name="Result" SchemaType="Table" />
+              </SchemaLevels>
+            </Table>
+          </Tables>
+        </QueryDesignerState>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:PageUnit>Px</rd:PageUnit>
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+</Report>
