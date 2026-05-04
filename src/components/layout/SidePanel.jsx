@@ -38,14 +38,14 @@ const ACTION_BUTTONS = [
     className: 'bg-gray-50 hover:bg-purple-50 hover:border-purple-300',
     iconClassName: 'bg-purple-100 text-purple-600 group-hover:bg-purple-200',
   },
-  // {
-  //   type: ITEM_TYPES.CHART,
-  //   Icon: ChartArea,
-  //   title: 'Grafik',
-  //   description: 'Grafik eklemek için',
-  //   className: 'bg-gray-50 hover:bg-pink-50 hover:border-pink-300',
-  //   iconClassName: 'bg-pink-100 text-pink-600 group-hover:bg-pink-200',
-  // },
+  {
+    type: ITEM_TYPES.CHART,
+    Icon: ChartArea,
+    title: 'Grafik',
+    description: 'Grafik eklemek için',
+    className: 'bg-gray-50 hover:bg-pink-50 hover:border-pink-300',
+    iconClassName: 'bg-pink-100 text-pink-600 group-hover:bg-pink-200',
+  },
 ];
 
 function SidePanel() {

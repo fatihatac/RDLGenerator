@@ -2,7 +2,7 @@ import useReportStore from "../../store/useReportStore.js";
 import { REPORT_TYPES } from "../../constants/reportTypes.js";
 import { REPORT_TEMPLATES } from "../../constants/reportTemplates.js";
 import { generateStandardRDL } from "./generators/standartRDL.js";
-import { generateFormRDL } from "./generators/formRDL.js";
+import { generateAdvancedRDL } from "./generators/advancedRDL.js";
 
 function generateRDL(items) {
   const currentReportType = useReportStore.getState().reportType;
@@ -13,7 +13,7 @@ function generateRDL(items) {
 
   const templateConfig = REPORT_TEMPLATES[currentReportType];
   if (templateConfig) {
-    return generateFormRDL(items, templateConfig);
+    return generateAdvancedRDL(items, templateConfig);
   }
 
   console.warn(`Bilinmeyen rapor tipi: "${currentReportType}". Standart rapor kullanılıyor.`);

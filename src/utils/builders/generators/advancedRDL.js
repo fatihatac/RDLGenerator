@@ -9,6 +9,7 @@ import { ITEM_TYPES } from "../../../constants/appConstants";
 import parseAndExtractJsonInfo from "../../core/parseAndExtractJsonInfo";
 import { flattenData } from "../../helpers/flattenData";
 import getDataType from "../../helpers/getDataType";
+import format from 'xml-formatter'
 
 const xmlBuilder = new XMLBuilder({
   ignoreAttributes: false,
@@ -62,7 +63,7 @@ function applyDataItem(report, dataItem) {
 }
 
 // templateConfig: { parsed: <XMLParser çıktısı>, paramMappings: { title?: string, ... } }
-export function generateFormRDL(items, templateConfig) {
+export function generateAdvancedRDL(items, templateConfig) {
   try {
     const { parsed, paramMappings = {} } = templateConfig;
 
@@ -87,7 +88,21 @@ export function generateFormRDL(items, templateConfig) {
     }
 
     const xmlOutput = xmlBuilder.build(reportObj);
-    return `<?xml version="1.0" encoding="utf-8"?>\n${xmlOutput}`;
+    const advancedXml = `<?xml version="1.0" encoding="utf-8"?>\n${xmlOutput}`;
+
+    try {
+      const formattedXml = format(advancedXml, {
+        indentation: '  ', // 2 spaces for each level
+        collapseContent: true, // Keep short text nodes on a single line (e.g. <Height>15cm</Height>)
+        lineSeparator: '\n', // Standard line breaks
+        whiteSpaceAtEndOfSelfclosingTag: true // <Element /> instead of <Element/>
+      });
+
+      return formattedXml
+    } catch (error) {
+      console.error("Form RDL formatlama başarısız:", error);
+      return formXml.replace(/^\s*[\r\n]/gm, '');
+    }
   } catch (err) {
     console.error("Form RDL üretimi başarısız:", err);
     return null;
