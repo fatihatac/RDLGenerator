@@ -1,7 +1,8 @@
 export const REPORT_TYPES = {
   STANDARD: "standard",
   ARAC_FORM: "arac_form",
-  ACY000019:'acy000019'
+  ACY000019:'acy000019',
+  MAV00001:"mav00001"
 };
 
 export const REPORT_TYPE_OPTIONS = [
@@ -20,4 +21,10 @@ export const REPORT_TYPE_OPTIONS = [
     label: "Mobil Giriş Çıkış Raporu",
     description: "Personel mobil giriş çıkış kayıtları",
   },
+  {
+    value: REPORT_TYPES.MAV00001,
+    label: "Kritik Avans Raporu",
+    description: "Kritik avans raporu",
+  },
+  
 ];

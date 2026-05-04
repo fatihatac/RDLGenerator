@@ -2,6 +2,7 @@ import { XMLParser } from "fast-xml-parser";
 import { REPORT_TYPES } from "./reportTypes";
 import acy000019Xml from "../assets/ACY000019.xml?raw";
 import aracFormXml from "../assets/ARACFORM.xml?raw";
+import mav00001Xml from "../assets/MAV00001.xml?raw";
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -30,5 +31,11 @@ export const REPORT_TEMPLATES = {
   [REPORT_TYPES.ARAC_FORM]: {
     parsed: parser.parse(aracFormXml),
     paramMappings: {},
+  },
+  [REPORT_TYPES.MAV00001]: {
+    parsed: parser.parse(mav00001Xml),
+    paramMappings: {
+      title: "ReportHeader", // TITLE bileşeni → ReportHeader param default'u
+    },
   },
 };
