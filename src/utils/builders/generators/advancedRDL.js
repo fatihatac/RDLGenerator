@@ -90,19 +90,19 @@ export function generateAdvancedRDL(items, templateConfig) {
     const xmlOutput = xmlBuilder.build(reportObj);
     const advancedXml = `<?xml version="1.0" encoding="utf-8"?>\n${xmlOutput}`;
 
-    try {
-      const formattedXml = format(advancedXml, {
-        indentation: '  ', // 2 spaces for each level
-        collapseContent: true, // Keep short text nodes on a single line (e.g. <Height>15cm</Height>)
-        lineSeparator: '\n', // Standard line breaks
-        whiteSpaceAtEndOfSelfclosingTag: true // <Element /> instead of <Element/>
-      });
+     try {
+       const formattedXml = format(advancedXml, {
+         indentation: '  ', // 2 spaces for each level
+         collapseContent: true, // Keep short text nodes on a single line (e.g. <Height>15cm</Height>)
+         lineSeparator: '\n', // Standard line breaks
+         whiteSpaceAtEndOfSelfclosingTag: true // <Element /> instead of <Element/>
+       });
 
-      return formattedXml
-    } catch (error) {
-      console.error("Form RDL formatlama başarısız:", error);
-      return formXml.replace(/^\s*[\r\n]/gm, '');
-    }
+       return formattedXml
+     } catch (error) {
+       console.error("Form RDL formatlama başarısız:", error);
+       return advancedXml.replace(/^\s*[\r\n]/gm, '');
+     }
   } catch (err) {
     console.error("Form RDL üretimi başarısız:", err);
     return null;

@@ -39,20 +39,23 @@ function MainPanel() {
 
         {/* Sekme çubuğu */}
         <div className="w-full bg-white border-b border-gray-200 flex items-center px-6 shrink-0">
-          {TABS.map(({ mode, label, Icon }) => (
-            <button
-              key={mode}
-              onClick={() => setViewMode(mode)}
-              className={`flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all duration-200 border-b-2 -mb-px ${
-                viewMode === mode
-                  ? 'border-[#e12f27] text-[#e12f27]'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
-            >
-              <Icon size={16} />
-              {label}
-            </button>
-          ))}
+           {TABS.map((tab) => {
+             const { mode, label, Icon } = tab;
+             return (
+               <button
+                 key={mode}
+                 onClick={() => setViewMode(mode)}
+                 className={`flex items-center gap-2 px-4 py-3 text-sm font-medium transition-all duration-200 border-b-2 -mb-px ${
+                   viewMode === mode
+                     ? 'border-[#e12f27] text-[#e12f27]'
+                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                 }`}
+               >
+                 <Icon size={16} />
+                 {label}
+               </button>
+             );
+           })}
         </div>
 
         {/* İçerik alanı */}
@@ -75,42 +78,55 @@ function MainPanel() {
                           snapshot.isDraggingOver ? 'bg-blue-50/50' : ''
                         }`}
                       >
-                        {reportItems.map((item, index) => (
-                          <Draggable key={item.id} draggableId={item.id} index={index}>
-                            {(provided, snapshot) => (
-                              <div
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                className={`transition-all duration-150 ${
-                                  snapshot.isDragging
-                                    ? 'shadow-2xl scale-[1.02] rotate-[0.5deg] opacity-95 z-50'
-                                    : 'shadow-none'
-                                }`}
-                              >
-                                {/* Sürükleme tutacağı — sol kenar şeridi */}
-                                <div className="flex items-stretch gap-0">
-                                  <div
-                                    {...provided.dragHandleProps}
-                                    className={`
-                                      w-2 rounded-l-lg cursor-grab active:cursor-grabbing
-                                      flex-shrink-0 transition-colors duration-150
-                                      ${snapshot.isDragging
-                                        ? 'bg-blue-400'
-                                        : 'bg-gray-200 hover:bg-blue-300'
-                                      }
-                                    `}
-                                    title="Sürükleyerek sırala"
-                                  />
-                                  <div className="flex-1 min-w-0">
-                                    <ErrorBoundary>
-                                      <ReportItemRenderer item={item} />
-                                    </ErrorBoundary>
-                                  </div>
-                                </div>
-                              </div>
-                            )}
-                          </Draggable>
-                        ))}
+{reportItems.map((item, index) => (
+                           <Draggable key={item.id} draggableId={item.id} index={index}>
+                             {(provided, snapshot) => (
+                               <div
+                                 ref={provided.innerRef}
+                                 {...provided.draggableProps}
+                                 {...provided.dragHandleProps}
+                                 tabIndex={0}
+                                 aria-grabbed={snapshot.isDragging}
+                                 role="button"
+                                 onKeyDown={(e) => {
+                                   if (e.key === 'Enter' || e.key === ' ') {
+                                     e.preventDefault();
+                                     // Trigger drag start on Enter/Space
+                                     // Note: react-beautiful-dnd doesn't expose a direct way to trigger drag via keyboard
+                                     // This is a limitation - we'd need to implement custom drag handling for full keyboard support
+                                     // For now, we'll at least make it focusable and announce its draggable nature
+                                   }
+                                 }}
+                                 className={`transition-all duration-150 ${
+                                   snapshot.isDragging
+                                     ? 'shadow-2xl scale-[1.02] rotate-[0.5deg] opacity-95 z-50'
+                                     : 'shadow-none'
+                                 }`}
+                               >
+                                 {/* Sürükleme tutacağı — sol kenar şeridi */}
+                                 <div className="flex items-stretch gap-0">
+                                   <div
+                                     {...provided.dragHandleProps}
+                                     className={`
+                                       w-2 rounded-l-lg cursor-grab active:cursor-grabbing
+                                       flex-shrink-0 transition-colors duration-150
+                                       ${snapshot.isDragging
+                                         ? 'bg-blue-400'
+                                         : 'bg-gray-200 hover:bg-blue-300'
+                                       }
+                                     `}
+                                     title="Sürükleyerek sırala"
+                                   />
+                                   <div className="flex-1 min-w-0">
+                                     <ErrorBoundary>
+                                       <ReportItemRenderer item={item} />
+                                     </ErrorBoundary>
+                                   </div>
+                                 </div>
+                               </div>
+                             )}
+                           </Draggable>
+                         ))}
                         {provided.placeholder}
                       </div>
                     )}

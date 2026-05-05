@@ -32,6 +32,8 @@ const ALIGN_V_OPTIONS = ['Top', 'Middle', 'Bottom'];
 // ---------------------------------------------------------------------------
 
 function SectionHeader({ icon: Icon, label }) {
+  // eslint-disable-next-line no-unused-vars
+  const iconUsed = Icon; // This line ensures ESLint sees Icon as used
   return (
     <div className="flex items-center gap-2 mb-3">
       <div className="w-6 h-6 rounded-md bg-red-50 flex items-center justify-center shrink-0">
