@@ -7,11 +7,13 @@ const ICON_WIDTH_PX = 35;
 let _sharedCtx = null;
 
 function getSharedContext() {
-  if (typeof document === "undefined") return null; // SSR guard
+  if (typeof document === 'undefined') return null; // SSR guard
   if (!_sharedCtx) {
-    const canvas = document.createElement("canvas");
-    _sharedCtx = canvas.getContext("2d");
-    _sharedCtx.font = "11px Trebuchet MS";
+    const canvas = document.createElement('canvas');
+    _sharedCtx = canvas.getContext('2d') ?? null; // getContext can return null in sandboxed envs
+    if (_sharedCtx) {
+      _sharedCtx.font = '11px Trebuchet MS';
+    }
   }
   return _sharedCtx;
 }

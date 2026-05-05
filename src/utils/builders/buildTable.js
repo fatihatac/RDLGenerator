@@ -1,5 +1,6 @@
 import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
 import convertTitleCase from '../helpers/convertTitleCase.js';
+import { escapeXml } from '../helpers/escapeXml.js';
 
 // ---------------------------------------------------------------------------
 // Satır hiyerarşisi (grup + toplam) — settings bağımsız (yapısal)
@@ -42,7 +43,7 @@ const buildTableHierarchy = (groups, sums, settings) => {
                 Paragraph: {
                   TextRuns: {
                     TextRun: {
-                      Value: convertTitleCase(group.name || `Grup ${index + 1}`),
+                      Value: escapeXml(convertTitleCase(group.name || `Grup ${index + 1}`)),
                       Style: {
                         FontFamily: settings.fontFamily,
                         FontSize:   `${settings.columnDataFontSize}pt`,
@@ -56,7 +57,7 @@ const buildTableHierarchy = (groups, sums, settings) => {
               },
               UserSort: {
                 SortExpression:      `=Fields!${group.mappedField}.Value`,
-                SortExpressionScope: `Group_${(group.name || `Group${index}`).replace(/\s+/g, '')}_${group.id || index}`,
+                SortExpressionScope: `Group_${escapeXml((group.name || `Group${index}`).replace(/\s+/g, ''))}_${group.id || index}`,
               },
             },
           },
@@ -210,7 +211,7 @@ const buildTable = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
         Paragraph: {
           TextRuns: {
             TextRun: {
-              Value: convertTitleCase(col.name),
+              Value: escapeXml(convertTitleCase(col.name)),
               Style: {
                 FontFamily: settings.fontFamily,
                 FontSize:   `${settings.columnHeaderFontSize}pt`,

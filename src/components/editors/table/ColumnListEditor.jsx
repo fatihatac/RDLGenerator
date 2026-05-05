@@ -42,7 +42,7 @@ export default function ColumnListEditor({ tableId, columns }) {
                                                 {...provided.draggableProps}
                                                 className={`flex items-center gap-2 p-1 rounded transition-colors 
                                                     ${snapshot.isDragging ? 'bg-white shadow-md border border-gray-200' : ''} 
-                                                    ${!isVisible ? 'opacity-60 bg-gray-200' : ''}`}
+                                                    ${!isVisible && !snapshot.isDragging ? 'opacity-60 bg-gray-200' : ''}`}
                                             >
                                                 <div {...provided.dragHandleProps} className="text-gray-400 hover:text-gray-600 cursor-grab active:cursor-grabbing">
                                                     <GripVertical size={16} />

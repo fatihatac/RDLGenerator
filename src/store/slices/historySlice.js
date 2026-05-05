@@ -14,7 +14,7 @@ export const createHistorySlice = (set, get) => ({
   // Dışarıdan çağrılır: bir action öncesi snapshot al
   pushHistory: () => {
     const { reportItems, _past } = get();
-    const snapshot = JSON.parse(JSON.stringify(reportItems)); // derin kopya
+    const snapshot = structuredClone(reportItems); // native deep-clone: handles Date/undefined correctly
     const newPast = [..._past, snapshot];
 
     set({
@@ -35,7 +35,7 @@ export const createHistorySlice = (set, get) => ({
     set({
       reportItems: previous,
       _past: newPast,
-      _future: [JSON.parse(JSON.stringify(reportItems)), ..._future],
+      _future: [structuredClone(reportItems), ..._future],
     });
   },
 
@@ -48,7 +48,7 @@ export const createHistorySlice = (set, get) => ({
 
     set({
       reportItems: next,
-      _past: [..._past, JSON.parse(JSON.stringify(reportItems))],
+      _past: [..._past, structuredClone(reportItems)],
       _future: newFuture,
     });
   },

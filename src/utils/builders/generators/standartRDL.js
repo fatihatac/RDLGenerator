@@ -53,13 +53,14 @@ function generateStandardRDL(items) {
   allDataItems.forEach((dataItem) => {
     const currentDataSetName = dataSetMap[dataItem.id];
     const currentDataSourceName = dataSourceMap[dataItem.id];
-    const { DataSources, DataSets } = buildDataSection(
+    const dataSection = buildDataSection(
       dataItem,
       currentDataSetName,
       currentDataSourceName,
     );
-    if (DataSources?.DataSource) allDataSources.push(DataSources.DataSource);
-    if (DataSets?.DataSet) allDataSets.push(DataSets.DataSet);
+    if (dataSection._isEmpty) return; // empty array — skip broken DataSource/DataSet
+    if (dataSection.DataSources?.DataSource) allDataSources.push(dataSection.DataSources.DataSource);
+    if (dataSection.DataSets?.DataSet) allDataSets.push(dataSection.DataSets.DataSet);
   });
 
   const reportObj = {

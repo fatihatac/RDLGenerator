@@ -1,4 +1,5 @@
 import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
+import { escapeXml } from '../helpers/escapeXml.js';
 
 const buildTitle = (item, totalWidth, settings = DEFAULT_LAYOUT_SETTINGS) => {
   return {
@@ -22,7 +23,7 @@ const buildTitle = (item, totalWidth, settings = DEFAULT_LAYOUT_SETTINGS) => {
         Paragraph: {
           TextRuns: {
             TextRun: {
-              Value: item.value.toLocaleUpperCase('tr'),
+              Value: escapeXml(item.value.toLocaleUpperCase('tr')),
               Style: {
                 FontFamily: settings.fontFamily,
                 FontSize:   `${settings.titleFontSize}pt`,

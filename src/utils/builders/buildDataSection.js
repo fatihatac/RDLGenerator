@@ -17,7 +17,7 @@ const buildDataSection = (dataItem, dataSetName, dataSourceName) => {
   const flattenedData = flattenData(parsedData);
 
   if (flattenedData.length === 0) {
-    return {};
+    return { _isEmpty: true };
   }
 
   const allKeys = Object.keys(flattenedData[0]);
