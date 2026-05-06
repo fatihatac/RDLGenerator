@@ -22,8 +22,10 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-virtuoso": "^4.18.3",
+    "simple-xml-to-json": "^1.2.7",
     "tailwindcss": "^4.1.17",
     "xml-formatter": "^3.7.0",
+    "xml2json": "^0.12.0",
     "zustand": "^5.0.8"
   },
   "devDependencies": {

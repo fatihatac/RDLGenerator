@@ -1,0 +1,4089 @@
+{
+  "Report": {
+    "xmlns:df": "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily",
+    "xmlns:rd": "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner",
+    "xmlns": "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition",
+    "ReportSections": {
+      "ReportSection": {
+        "Body": {
+          "Style": {
+            "Border": {
+              "Style": "None"
+            }
+          },
+          "ReportItems": {
+            "Tablix": {
+              "Name": "Tablix1",
+              "Left": "4.5pt",
+              "Top": "3pt",
+              "Height": "717.75pt",
+              "Width": "540.668pt",
+              "Style": {
+                "Border": {
+                  "Style": "None"
+                }
+              },
+              "DataSetName": "DataSet1",
+              "TablixBody": {
+                "TablixColumns": {
+                  "TablixColumn": {
+                    "Width": "540pt"
+                  }
+                },
+                "TablixRows": {
+                  "TablixRow": {
+                    "Height": "717.75pt",
+                    "TablixCells": {
+                      "TablixCell": {
+                        "CellContents": {
+                          "Rectangle": {
+                            "Name": "Rectangle2",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "717.75pt",
+                            "Width": "540pt",
+                            "Style": {
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "ReportItems": {
+                              "Textbox": [
+                                {
+                                  "Name": "TextBox2",
+                                  "Left": "11.48438pt",
+                                  "Top": "8.96484pt",
+                                  "Height": "37.98047pt",
+                                  "Width": "524.4375pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": [
+                                          {
+                                            "Value": "",
+                                            "Style": {
+                                              "FontFamily": "Segoe UI",
+                                              "FontSize": "11.25pt",
+                                              "FontWeight": "Bold",
+                                              "Color": "black"
+                                            }
+                                          },
+                                          {
+                                            "Value": "ARAÇ TALEP FORMU",
+                                            "Style": {
+                                              "FontFamily": "Segoe UI",
+                                              "FontSize": "11.25pt",
+                                              "FontWeight": "Bold",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Center"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox3",
+                                  "Left": "16.25391pt",
+                                  "Top": "55.69922pt",
+                                  "Height": "18.75pt",
+                                  "Width": "104.4844pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Unvanı :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox5",
+                                  "Left": "16.47656pt",
+                                  "Top": "78.19922pt",
+                                  "Height": "18.75pt",
+                                  "Width": "104.4844pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Adres :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox7",
+                                  "Left": "16.21875pt",
+                                  "Top": "111.9375pt",
+                                  "Height": "18.75pt",
+                                  "Width": "519.1922pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": [
+                                          {
+                                            "Value": "Personel Araç Talebi",
+                                            "Style": {
+                                              "FontFamily": "Segoe UI",
+                                              "FontSize": "9.75pt",
+                                              "FontWeight": "Bold",
+                                              "Color": "black"
+                                            }
+                                          },
+                                          {
+                                            "Value": {},
+                                            "Style": {
+                                              "FontFamily": "Segoe UI",
+                                              "FontSize": "9.75pt",
+                                              "Color": "black"
+                                            }
+                                          },
+                                          {
+                                            "Value": {},
+                                            "Style": {
+                                              "FontFamily": "Segoe UI",
+                                              "FontSize": "9.75pt",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Center"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox8",
+                                  "Left": "15.70312pt",
+                                  "Top": "149.9297pt",
+                                  "Height": "18.75pt",
+                                  "Width": "61.16797pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Sicilno :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox9",
+                                  "Left": "15.42188pt",
+                                  "Top": "172.4297pt",
+                                  "Height": "18.75pt",
+                                  "Width": "61.06641pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Ad Soyad :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox10",
+                                  "Left": "226.7344pt",
+                                  "Top": "149.4375pt",
+                                  "Height": "18.75pt",
+                                  "Width": "95.895pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Bölüm  :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox11",
+                                  "Left": "227.25pt",
+                                  "Top": "171.9375pt",
+                                  "Height": "18.75pt",
+                                  "Width": "93.38438pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Pozisyon  :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox12",
+                                  "Left": "227.25pt",
+                                  "Top": "194.9414pt",
+                                  "Height": "18.75pt",
+                                  "Width": "93.38438pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Görev  :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox15",
+                                  "Left": "16.5pt",
+                                  "Top": "221.4375pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Araç Havuzu :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left",
+                                        "LineHeight": "0.99750pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox16",
+                                  "Left": "16.5pt",
+                                  "Top": "244.0078pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Başlangıç Tarihi :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left",
+                                        "LineHeight": "0.99750pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox17",
+                                  "Left": "16.5pt",
+                                  "Top": "266.0039pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Bitiş Tarihi :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left",
+                                        "LineHeight": "0.99750pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox18",
+                                  "Left": "16.5pt",
+                                  "Top": "288.8203pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Lokasyon :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left",
+                                        "LineHeight": "0.99750pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox19",
+                                  "Left": "14.10938pt",
+                                  "Top": "383.5664pt",
+                                  "Height": "16.5pt",
+                                  "Width": "420.9961pt",
+                                  "Style": {
+                                    "VerticalAlign": "Top",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Yukarıda gerekli açıklamaları yaptığım zaman aralığında araç talebi yapmak istiyorum.",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "SicilNo2",
+                                  "Left": "81.98438pt",
+                                  "Top": "149.9297pt",
+                                  "Height": "18.75pt",
+                                  "Width": "114.9922pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!SicilNo.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Ad2",
+                                  "Left": "81.98438pt",
+                                  "Top": "172.4414pt",
+                                  "Height": "18.75pt",
+                                  "Width": "114.99pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!Ad.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "fad2",
+                                  "Left": "124.2656pt",
+                                  "Top": "55.69922pt",
+                                  "Height": "18.75pt",
+                                  "Width": "402pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!fad.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "bad2",
+                                  "Left": "327pt",
+                                  "Top": "149.4375pt",
+                                  "Height": "18.75pt",
+                                  "Width": "207pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!bad.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "pad2",
+                                  "Left": "327pt",
+                                  "Top": "171.9375pt",
+                                  "Height": "18.75pt",
+                                  "Width": "207pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!pad.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "gad1",
+                                  "Left": "327pt",
+                                  "Top": "195pt",
+                                  "Height": "18.75pt",
+                                  "Width": "207pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!gad.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox13",
+                                  "Left": "367.7461pt",
+                                  "Top": "239.4375pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Tarih / İmza",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox14",
+                                  "Left": "16.5pt",
+                                  "Top": "453.2461pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Marka :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox26",
+                                  "Left": "16.5pt",
+                                  "Top": "476.2383pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Model :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox27",
+                                  "Left": "16.5pt",
+                                  "Top": "498.2461pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Model Yıl :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox31",
+                                  "Left": "16.21875pt",
+                                  "Top": "414.2344pt",
+                                  "Height": "18.75pt",
+                                  "Width": "519.1922pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": [
+                                          {
+                                            "Value": "Araç Bilgileri",
+                                            "Style": {
+                                              "FontFamily": "Segoe UI",
+                                              "FontSize": "9.75pt",
+                                              "FontWeight": "Bold",
+                                              "Color": "black"
+                                            }
+                                          },
+                                          {
+                                            "Value": {},
+                                            "Style": {
+                                              "FontFamily": "Segoe UI",
+                                              "FontSize": "9.75pt",
+                                              "Color": "black"
+                                            }
+                                          },
+                                          {
+                                            "Value": {},
+                                            "Style": {
+                                              "FontFamily": "Segoe UI",
+                                              "FontSize": "9.75pt",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Center"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "fadres1",
+                                  "Left": "124.2656pt",
+                                  "Top": "78.19922pt",
+                                  "Height": "18.75pt",
+                                  "Width": "402pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!fadres.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox4",
+                                  "Left": "16.5pt",
+                                  "Top": "311.2031pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Kişi Sayısı :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left",
+                                        "LineHeight": "0.99750pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox21",
+                                  "Left": "16.5pt",
+                                  "Top": "333.7031pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Açıklama :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left",
+                                        "LineHeight": "0.99750pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox24",
+                                  "Left": "16.5pt",
+                                  "Top": "522.4922pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Plaka :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox25",
+                                  "Left": "16.5pt",
+                                  "Top": "546.2344pt",
+                                  "Height": "18.75pt",
+                                  "Width": "82.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Araç Tipi :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox29",
+                                  "Left": "270pt",
+                                  "Top": "453.2475pt",
+                                  "Height": "18.75pt",
+                                  "Width": "94.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Yakıt Tipi :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox30",
+                                  "Left": "270pt",
+                                  "Top": "476.235pt",
+                                  "Height": "18.75pt",
+                                  "Width": "94.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Renk :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox32",
+                                  "Left": "270pt",
+                                  "Top": "498.2475pt",
+                                  "Height": "18.75pt",
+                                  "Width": "94.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Kullanım Tipi :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox33",
+                                  "Left": "270pt",
+                                  "Top": "522.495pt",
+                                  "Height": "18.75pt",
+                                  "Width": "94.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Kapasite :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox34",
+                                  "Left": "270pt",
+                                  "Top": "546.2325pt",
+                                  "Height": "18.75pt",
+                                  "Width": "94.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "Başlangıç KM :",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "7.5pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox37",
+                                  "Left": "18.75pt",
+                                  "Top": "598.7109pt",
+                                  "Height": "24.25pt",
+                                  "Width": "97.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": [
+                                          {
+                                            "Value": "Onaylayan",
+                                            "Style": {
+                                              "FontFamily": "Segoe UI",
+                                              "FontSize": "7.5pt",
+                                              "FontWeight": "Bold",
+                                              "Color": "black"
+                                            }
+                                          },
+                                          {
+                                            "Value": "Tarih / İmza",
+                                            "Style": {
+                                              "FontFamily": "Segoe UI",
+                                              "FontSize": "7.5pt",
+                                              "FontWeight": "Bold",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "baslangic1",
+                                  "Left": "105pt",
+                                  "Top": "244.005pt",
+                                  "Height": "18.75pt",
+                                  "Width": "195pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!baslangic.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "bitis1",
+                                  "Left": "105pt",
+                                  "Top": "266.0025pt",
+                                  "Height": "18.75pt",
+                                  "Width": "195pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!bitis.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "lokasyon1",
+                                  "Left": "105pt",
+                                  "Top": "288.8175pt",
+                                  "Height": "18.75pt",
+                                  "Width": "195pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!lokasyon.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "kisisayisi1",
+                                  "Left": "105pt",
+                                  "Top": "311.205pt",
+                                  "Height": "18.75pt",
+                                  "Width": "195pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!kisisayisi.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "HavuzAdi2",
+                                  "Left": "105pt",
+                                  "Top": "221.4375pt",
+                                  "Height": "18.75pt",
+                                  "Width": "195pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!HavuzAdi.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "aciklama3",
+                                  "Left": "105pt",
+                                  "Top": "333.75pt",
+                                  "Height": "42.25pt",
+                                  "Width": "195pt",
+                                  "Style": {
+                                    "VerticalAlign": "Top",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!aciklama.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "marka1",
+                                  "Left": "105pt",
+                                  "Top": "453.2475pt",
+                                  "Height": "18.75pt",
+                                  "Width": "112.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!marka.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Model1",
+                                  "Left": "105pt",
+                                  "Top": "476.235pt",
+                                  "Height": "18.75pt",
+                                  "Width": "112.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!Model.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "modelyil1",
+                                  "Left": "105pt",
+                                  "Top": "498.2475pt",
+                                  "Height": "18.75pt",
+                                  "Width": "112.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!modelyil.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "plaka1",
+                                  "Left": "105pt",
+                                  "Top": "522.495pt",
+                                  "Height": "18.75pt",
+                                  "Width": "112.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!plaka.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "aractipi1",
+                                  "Left": "105pt",
+                                  "Top": "546.2325pt",
+                                  "Height": "18.75pt",
+                                  "Width": "112.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!aractipi.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "yakittipi1",
+                                  "Left": "371.25pt",
+                                  "Top": "453pt",
+                                  "Height": "18.75pt",
+                                  "Width": "150pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!yakittipi.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "renk1",
+                                  "Left": "371.25pt",
+                                  "Top": "476.235pt",
+                                  "Height": "18.75pt",
+                                  "Width": "150pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!renk.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "KullanimTipi1",
+                                  "Left": "371.25pt",
+                                  "Top": "498.2475pt",
+                                  "Height": "18.75pt",
+                                  "Width": "150pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!KullanimTipi.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "kapasite2",
+                                  "Left": "371.25pt",
+                                  "Top": "522.495pt",
+                                  "Height": "18.75pt",
+                                  "Width": "150pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!kapasite.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "tKm1",
+                                  "Left": "371.25pt",
+                                  "Top": "546.2325pt",
+                                  "Height": "18.75pt",
+                                  "Width": "150pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!tKm.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6.75pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "taleptarih2",
+                                  "Left": "367.5pt",
+                                  "Top": "257.25pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!taleptarih.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6pt",
+                                            "Format": "dd/M/yyyy hh:mm",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "onaytarih2",
+                                  "Left": "18.75pt",
+                                  "Top": "621.4453pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!onaytarih.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6pt",
+                                            "Format": "dd/M/yyyy hh:mm",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "OnayAdSoyad1",
+                                  "Left": "18.75pt",
+                                  "Top": "644.8477pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Style": {
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!OnayAdSoyad.Value",
+                                          "Style": {
+                                            "FontFamily": "Segoe UI",
+                                            "FontSize": "6pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "TextAlign": "Left"
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "Line": [
+                                {
+                                  "Name": "Line1",
+                                  "Left": "7.21875pt",
+                                  "Top": "48.1758pt",
+                                  "Height": "0pt",
+                                  "Width": "533.4609pt",
+                                  "Style": {
+                                    "Border": {
+                                      "Style": "Solid"
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Line2",
+                                  "Left": "6.73829pt",
+                                  "Top": "103.4183pt",
+                                  "Height": "0pt",
+                                  "Width": "533.0883pt",
+                                  "Style": {
+                                    "Border": {
+                                      "Style": "Solid"
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Line3",
+                                  "Left": "5.75391pt",
+                                  "Top": "141.1875pt",
+                                  "Height": "0pt",
+                                  "Width": "534.0844pt",
+                                  "Style": {
+                                    "Border": {
+                                      "Style": "Solid"
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Line4",
+                                  "Left": "6.23438pt",
+                                  "Top": "406.1955pt",
+                                  "Height": "0pt",
+                                  "Width": "533.5922pt",
+                                  "Style": {
+                                    "Border": {
+                                      "Style": "Solid"
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Line5",
+                                  "Left": "6.22266pt",
+                                  "Top": "444.75pt",
+                                  "Height": "0pt",
+                                  "Width": "533.5922pt",
+                                  "Style": {
+                                    "Border": {
+                                      "Style": "Solid"
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            "KeepTogether": "true"
+                          },
+                          "ColSpan": "1",
+                          "RowSpan": "1"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "TablixColumnHierarchy": {
+                "TablixMembers": {
+                  "TablixMember": {}
+                }
+              },
+              "TablixRowHierarchy": {
+                "TablixMembers": {
+                  "TablixMember": {
+                    "Group": {
+                      "Name": "Details"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Height": "723pt"
+        },
+        "Width": "547.5pt",
+        "Page": {
+          "PageHeight": "841.68pt",
+          "PageWidth": "595.44pt",
+          "LeftMargin": "18.75pt",
+          "RightMargin": "18.75pt",
+          "TopMargin": "18.75pt",
+          "BottomMargin": "18.75pt",
+          "Style": {
+            "Border": {
+              "Style": "None"
+            }
+          }
+        }
+      }
+    },
+    "AutoRefresh": "0",
+    "DataSources": {
+      "DataSource": {
+        "Name": "DataSource1",
+        "ConnectionProperties": {
+          "DataProvider": "JSON",
+          "ConnectString": "{\"Data\":\"[{\\\"id\\\":46,\\\"baslangic\\\":\\\"2026-02-16T11:00:00\\\",\\\"bitis\\\":\\\"2026-02-16T14:55:00\\\",\\\"sicilid\\\":659,\\\"kademe\\\":4,\\\"taleptarih\\\":\\\"2026-02-16T14:55:50.970\\\",\\\"onaytarih\\\":\\\"2026-02-16T15:29:03.310\\\",\\\"onaylayan\\\":\\\"3284\\\",\\\"durum\\\":1,\\\"islemaciklama\\\":null,\\\"aciklama\\\":\\\"dffwd\\\",\\\"xsicilid\\\":659,\\\"havuzid\\\":3,\\\"aracid\\\":1,\\\"kisisayisi\\\":5,\\\"km\\\":null,\\\"teslimsicilid\\\":233,\\\"teslimtarihi\\\":\\\"2026-02-16T15:29:33.710\\\",\\\"teslimkm\\\":55,\\\"redaciklama\\\":null,\\\"teslimalansicilid\\\":null,\\\"teslimalantarihi\\\":null,\\\"teslimalankm\\\":null,\\\"lokasyon\\\":\\\"fvgaefgf\\\",\\\"TenantId\\\":1,\\\"xsicilID\\\":659,\\\"UserID\\\":\\\"00000698\\\",\\\"Firma\\\":1,\\\"Bolum\\\":14,\\\"Pozisyon\\\":6,\\\"sLokasyon\\\":0,\\\"TerminalGrubu\\\":0,\\\"Ad\\\":\\\"Mert Tatar\\\",\\\"Soyad\\\":\\\"Tatar\\\",\\\"PersonelNo\\\":\\\"00000698\\\",\\\"GirisTarih\\\":\\\"2023-03-07T00:00:00\\\",\\\"CikisTarih\\\":null,\\\"SicilNo\\\":\\\"00000698\\\",\\\"Telefon1\\\":\\\"\\\",\\\"Telefon2\\\":\\\"0\\\",\\\"CepTelefon\\\":\\\"\\\",\\\"Adres\\\":\\\"                  \\\",\\\"IL\\\":\\\"\\\",\\\"Ilce\\\":\\\"\\\",\\\"KanGrubu\\\":0,\\\"MesaiPeriyodu\\\":1,\\\"PeriyodBaslangici\\\":null,\\\"SonDurum\\\":false,\\\"ExpireDate\\\":\\\"2000-03-01T00:00:00\\\",\\\"FazlaMesai\\\":1,\\\"EksikMesai\\\":1,\\\"EksikMesai_FM\\\":0,\\\"ErkenMesai\\\":1,\\\"EksikGun\\\":1,\\\"MaasTipi\\\":4,\\\"AylikCalismaSaati\\\":225,\\\"SonTasnifID\\\":0,\\\"SicilKilit\\\":null,\\\"DogumTarih\\\":null,\\\"okod1\\\":\\\"\\\",\\\"okod2\\\":\\\"\\\",\\\"okod3\\\":\\\"\\\",\\\"okod4\\\":\\\"\\\",\\\"okod5\\\":\\\"\\\",\\\"okod6\\\":\\\"\\\",\\\"okod7\\\":\\\"\\\",\\\"okod8\\\":\\\"\\\",\\\"okod9\\\":\\\"\\\",\\\"okod10\\\":\\\"\\\",\\\"okod11\\\":\\\"\\\",\\\"okod12\\\":\\\"\\\",\\\"okod13\\\":\\\"\\\",\\\"okod14\\\":\\\"\\\",\\\"okod15\\\":\\\"\\\",\\\"okod16\\\":\\\"\\\",\\\"okod17\\\":\\\"undefined\\\",\\\"okod18\\\":\\\"undefined\\\",\\\"okod19\\\":\\\"undefined\\\",\\\"okod20\\\":\\\"undefined\\\",\\\"okod99\\\":\\\"\\\",\\\"GeceZammi\\\":0,\\\"FM_EM\\\":0,\\\"Gorev\\\":11,\\\"BitisTarih\\\":null,\\\"AltFirma\\\":19,\\\"Cinsiyet\\\":0,\\\"Email\\\":\\\"\\\",\\\"Yaka\\\":3,\\\"Puantaj\\\":0,\\\"KidemTarih\\\":\\\"2023-03-07T00:00:00\\\",\\\"OzelYetki\\\":\\\"\\\",\\\"YetkiStr\\\":\\\"1\\\",\\\"FromSap\\\":false,\\\"AyrilikNedeni\\\":null,\\\"Degistiren\\\":\\\"233\\\",\\\"Yasakli\\\":false,\\\"YetkiStrAd\\\":\\\"\\\",\\\"yetkirolleri\\\":\\\"0\\\",\\\"GUNCELLEME\\\":\\\"2023-05-04T08:21:56.857\\\",\\\"GeciciKart\\\":0,\\\"credit\\\":\\\"\\\",\\\"indirimorani\\\":0,\\\"kilo\\\":0.00,\\\"boy\\\":0.00,\\\"iban\\\":\\\"\\\",\\\"maas\\\":0.00,\\\"maasturu\\\":\\\"0\\\",\\\"hesapnumarasi\\\":\\\"\\\",\\\"SubeAdi\\\":\\\"\\\",\\\"mezuniyet\\\":\\\"0\\\",\\\"okul\\\":\\\"\\\",\\\"fakulte\\\":\\\"\\\",\\\"egitimbolum\\\":\\\"\\\",\\\"mezuniyetderecesi\\\":\\\"\\\",\\\"akademikunvan\\\":\\\"0\\\",\\\"diller\\\":\\\"0\\\",\\\"uyruk\\\":0,\\\"medenidurum\\\":0,\\\"evlenmetarihi\\\":null,\\\"cocuksayisi\\\":0,\\\"pirlantacocuksayisi\\\":0,\\\"sabittelefon\\\":\\\"\\\",\\\"telefonulkekodu\\\":\\\"0\\\",\\\"dahilikodu\\\":\\\"\\\",\\\"acildurumtelefonu\\\":\\\"112\\\",\\\"acildurumadsoyad\\\":\\\"acil durum kişisii\\\",\\\"servishatti\\\":\\\"\\\",\\\"binecegidurak\\\":\\\"\\\",\\\"aylikprim\\\":\\\"\\\",\\\"yillikprim\\\":\\\"\\\",\\\"yemekkartino\\\":\\\"\\\",\\\"yemekkartifirmasi\\\":\\\"\\\",\\\"referanskodu\\\":\\\"\\\",\\\"maaliyetmerkezi\\\":\\\"\\\",\\\"sgkno\\\":\\\"\\\",\\\"sgkisegiristarihi\\\":null,\\\"sgkisyeri_kodu\\\":\\\"\\\",\\\"sosyalguvenliktipi\\\":\\\"0\\\",\\\"sagliksigortasibaslangicdonemi\\\":null,\\\"sagliksigortaturu\\\":\\\"0\\\",\\\"askerlikdurumu\\\":0,\\\"teciltarihi\\\":null,\\\"engelderecesi\\\":0,\\\"ehliyetsinifi\\\":0,\\\"sehitakrabasi\\\":false,\\\"kiracimi\\\":false,\\\"sabikali\\\":false,\\\"aktif\\\":1,\\\"offboarding\\\":0,\\\"pasaportnumarasi\\\":\\\"\\\",\\\"isealimkaynak\\\":0,\\\"gomlekbedeni\\\":\\\"\\\",\\\"pantolonbedeni\\\":\\\"\\\",\\\"ayakkabinumara\\\":\\\"0\\\",\\\"yelek\\\":\\\"\\\",\\\"mont\\\":\\\"\\\",\\\"linkedin\\\":null,\\\"instagram\\\":null,\\\"facebook\\\":null,\\\"youtube\\\":null,\\\"website\\\":null,\\\"github\\\":null,\\\"x\\\":null,\\\"fad\\\":\\\"Meyer\\\",\\\"fadres\\\":\\\"Tem Yanyol\\\",\\\"bad\\\":\\\"YAZILIM GELİŞTİRME OFİSİ\\\",\\\"gad\\\":\\\"YAZILIM GELİŞTİRME UZMANI\\\",\\\"pad\\\":\\\"Yazılım Geliştirme Uzmanı\\\",\\\"OnayAdSoyad\\\":null,\\\"HavuzAdi\\\":\\\"Karaköy\\\",\\\"marka\\\":\\\"Toyota\\\",\\\"Model\\\":\\\"Proace\\\",\\\"modelyil\\\":1990,\\\"plaka\\\":\\\"34 TTR 61\\\",\\\"aractipi\\\":\\\"Pickup\\\",\\\"yakittipi\\\":\\\"Hybrid\\\",\\\"renk\\\":\\\"Lacivert\\\",\\\"KullanimTipi\\\":\\\"Şahsi\\\",\\\"kapasite\\\":4,\\\"tKm\\\":55}]\",\"DataMode\":\"inline\",\"URL\":\"\"}"
+        },
+        "rd:ImpersonateUser": "false"
+      }
+    },
+    "DataSets": {
+      "DataSet": {
+        "Name": "DataSet1",
+        "Fields": {
+          "Field": [
+            {
+              "Name": "id",
+              "DataField": "id",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "baslangic",
+              "DataField": "baslangic",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "bitis",
+              "DataField": "bitis",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "sicilid",
+              "DataField": "sicilid",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "kademe",
+              "DataField": "kademe",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "taleptarih",
+              "DataField": "taleptarih",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "onaytarih",
+              "DataField": "onaytarih",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "onaylayan",
+              "DataField": "onaylayan",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "durum",
+              "DataField": "durum",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "islemaciklama",
+              "DataField": "islemaciklama",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "aciklama",
+              "DataField": "aciklama",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "xsicilid",
+              "DataField": "xsicilid",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "havuzid",
+              "DataField": "havuzid",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "aracid",
+              "DataField": "aracid",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "kisisayisi",
+              "DataField": "kisisayisi",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "km",
+              "DataField": "km",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "teslimsicilid",
+              "DataField": "teslimsicilid",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "teslimtarihi",
+              "DataField": "teslimtarihi",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "teslimkm",
+              "DataField": "teslimkm",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "redaciklama",
+              "DataField": "redaciklama",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "teslimalansicilid",
+              "DataField": "teslimalansicilid",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "teslimalantarihi",
+              "DataField": "teslimalantarihi",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "teslimalankm",
+              "DataField": "teslimalankm",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "lokasyon",
+              "DataField": "lokasyon",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "TenantId",
+              "DataField": "TenantId",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "xsicilID",
+              "DataField": "xsicilID",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "UserID",
+              "DataField": "UserID",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Firma",
+              "DataField": "Firma",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Bolum",
+              "DataField": "Bolum",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Pozisyon",
+              "DataField": "Pozisyon",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "sLokasyon",
+              "DataField": "sLokasyon",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "TerminalGrubu",
+              "DataField": "TerminalGrubu",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Ad",
+              "DataField": "Ad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Soyad",
+              "DataField": "Soyad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "PersonelNo",
+              "DataField": "PersonelNo",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "GirisTarih",
+              "DataField": "GirisTarih",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "CikisTarih",
+              "DataField": "CikisTarih",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "SicilNo",
+              "DataField": "SicilNo",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Telefon1",
+              "DataField": "Telefon1",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Telefon2",
+              "DataField": "Telefon2",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "CepTelefon",
+              "DataField": "CepTelefon",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Adres",
+              "DataField": "Adres",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "IL",
+              "DataField": "IL",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Ilce",
+              "DataField": "Ilce",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "KanGrubu",
+              "DataField": "KanGrubu",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "MesaiPeriyodu",
+              "DataField": "MesaiPeriyodu",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "PeriyodBaslangici",
+              "DataField": "PeriyodBaslangici",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "SonDurum",
+              "DataField": "SonDurum",
+              "rd:TypeName": "System.Boolean"
+            },
+            {
+              "Name": "ExpireDate",
+              "DataField": "ExpireDate",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "FazlaMesai",
+              "DataField": "FazlaMesai",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "EksikMesai",
+              "DataField": "EksikMesai",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "EksikMesai_FM",
+              "DataField": "EksikMesai_FM",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "ErkenMesai",
+              "DataField": "ErkenMesai",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "EksikGun",
+              "DataField": "EksikGun",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "MaasTipi",
+              "DataField": "MaasTipi",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "AylikCalismaSaati",
+              "DataField": "AylikCalismaSaati",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "SonTasnifID",
+              "DataField": "SonTasnifID",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "SicilKilit",
+              "DataField": "SicilKilit",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "DogumTarih",
+              "DataField": "DogumTarih",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "okod1",
+              "DataField": "okod1",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod2",
+              "DataField": "okod2",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod3",
+              "DataField": "okod3",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod4",
+              "DataField": "okod4",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod5",
+              "DataField": "okod5",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod6",
+              "DataField": "okod6",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod7",
+              "DataField": "okod7",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod8",
+              "DataField": "okod8",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod9",
+              "DataField": "okod9",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod10",
+              "DataField": "okod10",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod11",
+              "DataField": "okod11",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod12",
+              "DataField": "okod12",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod13",
+              "DataField": "okod13",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod14",
+              "DataField": "okod14",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod15",
+              "DataField": "okod15",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod16",
+              "DataField": "okod16",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod17",
+              "DataField": "okod17",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod18",
+              "DataField": "okod18",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod19",
+              "DataField": "okod19",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod20",
+              "DataField": "okod20",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okod99",
+              "DataField": "okod99",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "GeceZammi",
+              "DataField": "GeceZammi",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "FM_EM",
+              "DataField": "FM_EM",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Gorev",
+              "DataField": "Gorev",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "BitisTarih",
+              "DataField": "BitisTarih",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "AltFirma",
+              "DataField": "AltFirma",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Cinsiyet",
+              "DataField": "Cinsiyet",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Email",
+              "DataField": "Email",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Yaka",
+              "DataField": "Yaka",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Puantaj",
+              "DataField": "Puantaj",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "KidemTarih",
+              "DataField": "KidemTarih",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "OzelYetki",
+              "DataField": "OzelYetki",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "YetkiStr",
+              "DataField": "YetkiStr",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "FromSap",
+              "DataField": "FromSap",
+              "rd:TypeName": "System.Boolean"
+            },
+            {
+              "Name": "AyrilikNedeni",
+              "DataField": "AyrilikNedeni",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "Degistiren",
+              "DataField": "Degistiren",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Yasakli",
+              "DataField": "Yasakli",
+              "rd:TypeName": "System.Boolean"
+            },
+            {
+              "Name": "YetkiStrAd",
+              "DataField": "YetkiStrAd",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "yetkirolleri",
+              "DataField": "yetkirolleri",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "GUNCELLEME",
+              "DataField": "GUNCELLEME",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "GeciciKart",
+              "DataField": "GeciciKart",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "credit",
+              "DataField": "credit",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "indirimorani",
+              "DataField": "indirimorani",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "kilo",
+              "DataField": "kilo",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "boy",
+              "DataField": "boy",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "iban",
+              "DataField": "iban",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "maas",
+              "DataField": "maas",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "maasturu",
+              "DataField": "maasturu",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "hesapnumarasi",
+              "DataField": "hesapnumarasi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "SubeAdi",
+              "DataField": "SubeAdi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "mezuniyet",
+              "DataField": "mezuniyet",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "okul",
+              "DataField": "okul",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "fakulte",
+              "DataField": "fakulte",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "egitimbolum",
+              "DataField": "egitimbolum",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "mezuniyetderecesi",
+              "DataField": "mezuniyetderecesi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "akademikunvan",
+              "DataField": "akademikunvan",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "diller",
+              "DataField": "diller",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "uyruk",
+              "DataField": "uyruk",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "medenidurum",
+              "DataField": "medenidurum",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "evlenmetarihi",
+              "DataField": "evlenmetarihi",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "cocuksayisi",
+              "DataField": "cocuksayisi",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "pirlantacocuksayisi",
+              "DataField": "pirlantacocuksayisi",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "sabittelefon",
+              "DataField": "sabittelefon",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "telefonulkekodu",
+              "DataField": "telefonulkekodu",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "dahilikodu",
+              "DataField": "dahilikodu",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "acildurumtelefonu",
+              "DataField": "acildurumtelefonu",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "acildurumadsoyad",
+              "DataField": "acildurumadsoyad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "servishatti",
+              "DataField": "servishatti",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "binecegidurak",
+              "DataField": "binecegidurak",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "aylikprim",
+              "DataField": "aylikprim",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "yillikprim",
+              "DataField": "yillikprim",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "yemekkartino",
+              "DataField": "yemekkartino",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "yemekkartifirmasi",
+              "DataField": "yemekkartifirmasi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "referanskodu",
+              "DataField": "referanskodu",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "maaliyetmerkezi",
+              "DataField": "maaliyetmerkezi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "sgkno",
+              "DataField": "sgkno",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "sgkisegiristarihi",
+              "DataField": "sgkisegiristarihi",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "sgkisyeri_kodu",
+              "DataField": "sgkisyeri_kodu",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "sosyalguvenliktipi",
+              "DataField": "sosyalguvenliktipi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "sagliksigortasibaslangicdonemi",
+              "DataField": "sagliksigortasibaslangicdonemi",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "sagliksigortaturu",
+              "DataField": "sagliksigortaturu",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "askerlikdurumu",
+              "DataField": "askerlikdurumu",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "teciltarihi",
+              "DataField": "teciltarihi",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "engelderecesi",
+              "DataField": "engelderecesi",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "ehliyetsinifi",
+              "DataField": "ehliyetsinifi",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "sehitakrabasi",
+              "DataField": "sehitakrabasi",
+              "rd:TypeName": "System.Boolean"
+            },
+            {
+              "Name": "kiracimi",
+              "DataField": "kiracimi",
+              "rd:TypeName": "System.Boolean"
+            },
+            {
+              "Name": "sabikali",
+              "DataField": "sabikali",
+              "rd:TypeName": "System.Boolean"
+            },
+            {
+              "Name": "aktif",
+              "DataField": "aktif",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "offboarding",
+              "DataField": "offboarding",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "pasaportnumarasi",
+              "DataField": "pasaportnumarasi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "isealimkaynak",
+              "DataField": "isealimkaynak",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "gomlekbedeni",
+              "DataField": "gomlekbedeni",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "pantolonbedeni",
+              "DataField": "pantolonbedeni",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ayakkabinumara",
+              "DataField": "ayakkabinumara",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "yelek",
+              "DataField": "yelek",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "mont",
+              "DataField": "mont",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "linkedin",
+              "DataField": "linkedin",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "instagram",
+              "DataField": "instagram",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "facebook",
+              "DataField": "facebook",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "youtube",
+              "DataField": "youtube",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "website",
+              "DataField": "website",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "github",
+              "DataField": "github",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "x",
+              "DataField": "x",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "fad",
+              "DataField": "fad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "fadres",
+              "DataField": "fadres",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "bad",
+              "DataField": "bad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "gad",
+              "DataField": "gad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "pad",
+              "DataField": "pad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "OnayAdSoyad",
+              "DataField": "OnayAdSoyad",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "HavuzAdi",
+              "DataField": "HavuzAdi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "marka",
+              "DataField": "marka",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Model",
+              "DataField": "Model",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "modelyil",
+              "DataField": "modelyil",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "plaka",
+              "DataField": "plaka",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "aractipi",
+              "DataField": "aractipi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "yakittipi",
+              "DataField": "yakittipi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "renk",
+              "DataField": "renk",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "KullanimTipi",
+              "DataField": "KullanimTipi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "kapasite",
+              "DataField": "kapasite",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "tKm",
+              "DataField": "tKm",
+              "rd:TypeName": "System.Double"
+            }
+          ]
+        },
+        "Query": {
+          "DataSourceName": "DataSource1",
+          "CommandType": "Text",
+          "CommandText": "{\"Name\":\"Result\",\"Columns\":[]}",
+          "QueryDesignerState": {
+            "xmlns": "http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational",
+            "Tables": {
+              "Table": {
+                "Name": "Result",
+                "Schema": "",
+                "Columns": {
+                  "Column": [
+                    {
+                      "Name": "id",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "baslangic",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "bitis",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sicilid",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "kademe",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "taleptarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "onaytarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "onaylayan",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "durum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "islemaciklama",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "aciklama",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "xsicilid",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "havuzid",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "aracid",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "kisisayisi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "km",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "teslimsicilid",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "teslimtarihi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "teslimkm",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "redaciklama",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "teslimalansicilid",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "teslimalantarihi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "teslimalankm",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "lokasyon",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "TenantId",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "xsicilID",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "UserID",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Firma",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Bolum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Pozisyon",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sLokasyon",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "TerminalGrubu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Ad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Soyad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "PersonelNo",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "GirisTarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "CikisTarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SicilNo",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Telefon1",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Telefon2",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "CepTelefon",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Adres",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "IL",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Ilce",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "KanGrubu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "MesaiPeriyodu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "PeriyodBaslangici",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SonDurum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "ExpireDate",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "FazlaMesai",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "EksikMesai",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "EksikMesai_FM",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "ErkenMesai",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "EksikGun",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "MaasTipi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "AylikCalismaSaati",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SonTasnifID",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SicilKilit",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "DogumTarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod1",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod2",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod3",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod4",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod5",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod6",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod7",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod8",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod9",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod10",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod11",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod12",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod13",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod14",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod15",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod16",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod17",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod18",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod19",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod20",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okod99",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "GeceZammi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "FM_EM",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Gorev",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "BitisTarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "AltFirma",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Cinsiyet",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Email",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Yaka",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Puantaj",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "KidemTarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "OzelYetki",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "YetkiStr",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "FromSap",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "AyrilikNedeni",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Degistiren",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Yasakli",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "YetkiStrAd",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "yetkirolleri",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "GUNCELLEME",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "GeciciKart",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "credit",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "indirimorani",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "kilo",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "boy",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "iban",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "maas",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "maasturu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "hesapnumarasi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SubeAdi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "mezuniyet",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "okul",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "fakulte",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "egitimbolum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "mezuniyetderecesi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "akademikunvan",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "diller",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "uyruk",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "medenidurum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "evlenmetarihi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "cocuksayisi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "pirlantacocuksayisi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sabittelefon",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "telefonulkekodu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "dahilikodu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "acildurumtelefonu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "acildurumadsoyad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "servishatti",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "binecegidurak",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "aylikprim",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "yillikprim",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "yemekkartino",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "yemekkartifirmasi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "referanskodu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "maaliyetmerkezi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sgkno",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sgkisegiristarihi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sgkisyeri_kodu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sosyalguvenliktipi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sagliksigortasibaslangicdonemi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sagliksigortaturu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "askerlikdurumu",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "teciltarihi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "engelderecesi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "ehliyetsinifi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sehitakrabasi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "kiracimi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sabikali",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "aktif",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "offboarding",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "pasaportnumarasi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "isealimkaynak",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "gomlekbedeni",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "pantolonbedeni",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "ayakkabinumara",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "yelek",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "mont",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "linkedin",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "instagram",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "facebook",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "youtube",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "website",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "github",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "x",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "fad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "fadres",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "bad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "gad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "pad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "OnayAdSoyad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "HavuzAdi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "marka",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Model",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "modelyil",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "plaka",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "aractipi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "yakittipi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "renk",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "KullanimTipi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "kapasite",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "tKm",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    }
+                  ]
+                },
+                "SchemaLevels": {
+                  "SchemaInfo": {
+                    "Name": "Result",
+                    "SchemaType": "Table"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ReportParametersLayout": {
+      "GridLayoutDefinition": {
+        "NumberOfColumns": "4",
+        "NumberOfRows": "2"
+      }
+    },
+    "rd:ReportUnitType": "Inch",
+    "rd:PageUnit": "Px",
+    "df:DefaultFontFamily": "Segoe UI"
+  }
+}

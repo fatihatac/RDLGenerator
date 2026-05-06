@@ -13,14 +13,24 @@ export { default as convertTitleCase } from "./helpers/convertTitleCase";
 
 export { flattenData } from "./helpers/flattenData";
 export { escapeXml } from "./helpers/escapeXml";
+export { handleDataUpdateSideEffects } from "./core/reportLogic";
 
 export { generateRDL } from "./builders/rdlGenerator";
-export { handleDataUpdateSideEffects } from "./core/reportLogic";
-export { calculateReportValues } from "./core/reportCalculations";
+
 export { buildReportItems } from "./builders/buildItems";
+
 export { buildTable } from "./builders/buildTable";
+
 export { buildTitle } from "./builders/buildTitle";
+
 export { buildGroupHierarchy } from "./builders/buildGroupHierarchy";
+
 export { default as buildDataSection } from "./builders/buildDataSection";
+
 export { default as buildDateRange } from "./builders/buildDateRange";
+
 export { default as buildChart } from "./builders/buildChart";
+
+export { buildTextbox } from "./builders/buildTextbox";
+
+export { buildRectangle } from "./builders/buildRectangle";

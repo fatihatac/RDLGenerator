@@ -12,6 +12,8 @@ const ITEM_TYPES = {
   DATA: "data",
   DATE_RANGE: "dateRange",
   CHART: "chart",
+  TEXTBOX: "textbox",
+  RECTANGLE: "rectangle",
 };
 
 export { EXCLUDED_KEYS, VIEW_MODES, ITEM_TYPES };

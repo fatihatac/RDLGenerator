@@ -2,6 +2,8 @@ import { buildTitle }    from './buildTitle.js';
 import { buildTable }    from './buildTable.js';
 import buildDateRange    from './buildDateRange.js';
 import buildChart        from './buildChart.js';
+import { buildTextbox }  from './buildTextbox.js';
+import { buildRectangle } from './buildRectangle.js';
 import { ITEM_TYPES }   from '../../constants/appConstants.js';
 import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
 
@@ -26,6 +28,12 @@ const BUILDER_MAP = {
     );
     return buildChart(item, totalHeight, dataSetMap, dataItem, settings);
   },
+
+  [ITEM_TYPES.TEXTBOX]: (item, _tw, _th, _dsm, _all, settings) =>
+    buildTextbox(item, _tw, _th, _dsm, _all, settings),
+
+  [ITEM_TYPES.RECTANGLE]: (item, totalWidth, totalHeight, dataSetMap, allItems, settings) =>
+    buildRectangle(item, totalWidth, totalHeight, dataSetMap, allItems, settings, buildReportItems),
 };
 
 function buildReportItems(items, totalWidth, totalHeight, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) {
