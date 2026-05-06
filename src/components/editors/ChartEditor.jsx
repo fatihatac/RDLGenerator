@@ -16,6 +16,11 @@ function ChartEditor({ item }) {
     )
   );
 
+  // Get selected data item for field lists
+  const selectedDataItem = dataItems.find(
+    (dataItem) => dataItem.id === item.dataSourceId
+  );
+
   const handleDelete = () => {
     deleteItem();
     toast.info('Grafik bileşeni silindi.');
@@ -53,6 +58,42 @@ function ChartEditor({ item }) {
           </p>
         )}
       </div>
+
+      {selectedDataItem && selectedDataItem.jsonKeys && selectedDataItem.jsonKeys.length > 0 && (
+        <>
+          <div className="mt-4">
+            <label className="block text-sm font-medium text-gray-700 mb-1">X Ekseni</label>
+            <select
+              value={item.xAxis || ''}
+              onChange={(e) => updateItem({ xAxis: e.target.value })}
+              className="w-full p-2 text-sm border border-gray-300 rounded-lg focus:border-pink-400 focus:ring-1 focus:ring-pink-300 outline-none transition-colors"
+            >
+              <option value="">— X Ekseni Seçin —</option>
+              {selectedDataItem.jsonKeys.map((key) => (
+                <option key={key} value={key}>
+                  {key}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mt-4">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Y Ekseni</label>
+            <select
+              value={item.yAxis || ''}
+              onChange={(e) => updateItem({ yAxis: e.target.value })}
+              className="w-full p-2 text-sm border border-gray-300 rounded-lg focus:border-pink-400 focus:ring-1 focus:ring-pink-300 outline-none transition-colors"
+            >
+              <option value="">— Y Ekseni Seçin —</option>
+              {selectedDataItem.jsonKeys.map((key) => (
+                <option key={key} value={key}>
+                  {key}
+                </option>
+              ))}
+            </select>
+          </div>
+        </>
+      )}
 
       <PositionEditor itemId={item.id} />
     </div>
