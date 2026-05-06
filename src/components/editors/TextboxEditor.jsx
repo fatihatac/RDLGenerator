@@ -3,45 +3,14 @@ import { useItemActions } from '../../hooks/useItemActions';
 import PositionEditor from './PositionEditor';
 import DeleteButton from '../ui/DeleteButton';
 import { useToast } from '../../hooks/useToast';
-import { useState } from 'react';
 
 function TextboxEditor({ item }) {
   const { updateItem, deleteItem } = useItemActions(item.id);
   const toast = useToast();
-  const [isValid, setIsValid] = useState(true);
-  const [validationMessage, setValidationMessage] = useState('');
 
   const handleDelete = () => {
     deleteItem();
     toast.info('Metin kutusu silindi.');
-  };
-
-  // Validate the input value
-  const validateInput = (value) => {
-    // Require at least 1 character and max 200 characters
-    if (!value || value.trim() === '') {
-      setIsValid(false);
-      setValidationMessage('Bu alan boş bırakılamaz');
-      return false;
-    }
-    
-    if (value.length > 200) {
-      setIsValid(false);
-      setValidationMessage('Maksimum 200 karakter girilebilir');
-      return false;
-    }
-    
-    setIsValid(true);
-    setValidationMessage('');
-    return true;
-  };
-
-  const handleChange = (e) => {
-    const value = e.target.value;
-    const isValid = validateInput(value);
-    if (isValid) {
-      updateItem({ value });
-    }
   };
 
   return (
@@ -58,15 +27,10 @@ function TextboxEditor({ item }) {
         <input
           type="text"
           value={item.value}
-          onChange={handleChange}
-          className={`w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition-colors ${
-            !isValid ? 'border-red-400 focus:ring-red-300' : 'border-gray-300 focus:ring-blue-400'
-          }`}
+          onChange={(e) => updateItem({ value: e.target.value })}
+          className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition-colors"
           placeholder="Örn: Satış Raporu 2025"
         />
-        {!isValid && validationMessage && (
-          <p className="text-xs text-red-500 mt-1">{validationMessage}</p>
-        )}
       </div>
       <PositionEditor itemId={item.id} />
     </div>

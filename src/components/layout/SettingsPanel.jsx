@@ -5,21 +5,33 @@ import {
 } from 'lucide-react';
 import useLayoutStore, { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore';
 import { useShallow } from 'zustand/react/shallow';
-import { 
-  PAGE_PRESETS, 
-  FONT_FAMILIES, 
-  FONT_WEIGHTS, 
-  ALIGN_H_OPTIONS, 
-  ALIGN_V_OPTIONS 
-} from '../../constants/layoutConstants';
+
+// ---------------------------------------------------------------------------
+// Sayfa boyutu presetleri
+// ---------------------------------------------------------------------------
+const PAGE_PRESETS = [
+  { label: 'A4 Dikey', pageWidth: 595.44, pageHeight: 841.68 },
+  { label: 'A4 Yatay', pageWidth: 841.68, pageHeight: 595.44 },
+  { label: 'A3 Dikey', pageWidth: 841.89, pageHeight: 1190.55 },
+  { label: 'Letter Dikey', pageWidth: 612, pageHeight: 792 },
+  { label: 'Letter Yatay', pageWidth: 792, pageHeight: 612 },
+];
+
+const FONT_FAMILIES = [
+  'Segoe UI', 'Arial', 'Calibri', 'Tahoma', 'Verdana',
+  'Times New Roman', 'Georgia', 'Trebuchet MS', 'Courier New',
+];
+
+const FONT_WEIGHTS = ['Normal', 'Bold'];
+
+const ALIGN_H_OPTIONS = ['Left', 'Center', 'Right', 'Justify'];
+const ALIGN_V_OPTIONS = ['Top', 'Middle', 'Bottom'];
 
 // ---------------------------------------------------------------------------
 // Küçük yardımcı bileşenler
 // ---------------------------------------------------------------------------
 
 function SectionHeader({ icon: Icon, label }) {
-  // eslint-disable-next-line no-unused-vars
-  const iconUsed = Icon; // This line ensures ESLint sees Icon as used
   return (
     <div className="flex items-center gap-2 mb-3">
       <div className="w-6 h-6 rounded-md bg-red-50 flex items-center justify-center shrink-0">
@@ -184,28 +196,23 @@ function SettingsPanel({ onClose }) {
           {/* ── 1. SAYFA ─────────────────────────────────────────────────── */}
           <SectionHeader icon={FileText} label="Sayfa" />
 
-           {/* Preset seçici */}
-           <FieldRow label="Kağıt boyutu">
-             <SelectInput
-               value={activePreset?.label ?? 'Özel'}
-               onChange={(label) => {
-                 if (label === 'Özel') {
-                   // Do nothing - let user adjust width/height manually
-                   return;
-                 }
-                 
-                 const preset = PAGE_PRESETS.find((p) => p.label === label);
-                 if (preset) {
-                   set('pageWidth', preset.pageWidth);
-                   set('pageHeight', preset.pageHeight);
-                 }
-               }}
-               options={[
-                 ...PAGE_PRESETS.map((p) => ({ value: p.label, label: p.label })),
-                 { value: 'Özel', label: 'Özel' },
-               ]}
-             />
-           </FieldRow>
+          {/* Preset seçici */}
+          <FieldRow label="Kağıt boyutu">
+            <SelectInput
+              value={activePreset?.label ?? 'Özel'}
+              onChange={(label) => {
+                const preset = PAGE_PRESETS.find((p) => p.label === label);
+                if (preset) {
+                  set('pageWidth', preset.pageWidth);
+                  set('pageHeight', preset.pageHeight);
+                }
+              }}
+              options={[
+                ...PAGE_PRESETS.map((p) => ({ value: p.label, label: p.label })),
+                { value: 'Özel', label: 'Özel' },
+              ]}
+            />
+          </FieldRow>
 
           <FieldRow label="Sayfa genişliği">
             <NumberInput value={s.pageWidth} onChange={(v) => set('pageWidth', v)} min={200} max={2000} />
@@ -320,7 +327,3 @@ function SettingsPanel({ onClose }) {
 }
 
 export default SettingsPanel;
-
-// Export constants and helper components for use in sub-components
-export { PAGE_PRESETS, FONT_FAMILIES, FONT_WEIGHTS, ALIGN_H_OPTIONS, ALIGN_V_OPTIONS };
-export { SectionHeader, FieldRow, NumberInput, SelectInput, AlignPicker, Divider };

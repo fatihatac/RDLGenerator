@@ -34,7 +34,6 @@ function JSONEditor({ item }) {
   );
 
   const toast = useToast();
-  const [isGenerating, setIsGenerating] = useState(false);
   // 'idle' | 'valid' | 'error' | 'empty'
   const [parseStatus, setParseStatus] = useState('idle');
   // Separate raw input state so the textarea is always controlled and responsive
@@ -95,15 +94,10 @@ function JSONEditor({ item }) {
     setRawJsonInput(jsonString);
   };
 
-const handleGenerateReport = async () => {
-    setIsGenerating(true);
-    try {
-        processDataSideEffects(item.id, reportItems, setReportItems);
-        toast.success('Rapor bileşenleri oluşturuldu.'); 
-    } finally {
-        setIsGenerating(false);
-    }
-};
+  const handleGenerateReport = () => {
+    processDataSideEffects(item.id, reportItems, setReportItems);
+    toast.success('Rapor bileşenleri oluşturuldu.'); 
+  };
 
   const handleDelete = () => {
     deleteItem(item.id);
@@ -173,11 +167,7 @@ const handleGenerateReport = async () => {
 
       {showGenerateButton && !showMappingUI && (
         <div className="mt-4 flex justify-center">
-          <GenerateReportButton 
-            onClick={handleGenerateReport} 
-            disabled={isGenerating}
-            loading={isGenerating}
-          />
+          <GenerateReportButton onClick={handleGenerateReport} />
         </div>
       )}
 

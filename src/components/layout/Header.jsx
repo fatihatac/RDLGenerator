@@ -1,27 +1,18 @@
-import { BookTemplate, FilePlus, Settings2, Upload } from 'lucide-react';
+import { useState } from 'react';
+import { BookTemplate, FilePlus, Settings2 } from 'lucide-react';
 import BrandLogo from '../ui/BrandLogo';
 import DownloadActions from '../actions/DownloadActions';
 import TemplateModal from '../actions/TemplateModal';
 import ConfirmModal from '../ui/ConfirmModal';
 import SettingsPanel from './SettingsPanel';
 import ReportTypeSelector from '../ui/ReportTypeSelector';
-import XmlAnalysisModal from './XmlAnalysisModal';
-import Button from '../ui/Button';
-import useModalState from '../../hooks/useModalState';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
 
 function Header() {
-  const { 
-    modals, 
-    openModal, 
-    closeModal
-  } = useModalState({
-    showTemplates: false,
-    showConfirm: false,
-    showSettings: false,
-    showXmlAnalysis: false
-  });
+  const [showTemplates, setShowTemplates] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   const { resetReport, reportItems, reportType, setReportType } = useReportStore(
     useShallow((state) => ({
@@ -29,12 +20,12 @@ function Header() {
       reportItems: state.reportItems,
       reportType: state.reportType,
       setReportType: state.setReportType,
-    }))
+    })),
   );
 
   const handleConfirmReset = () => {
     resetReport();
-    closeModal('showConfirm');
+    setShowConfirm(false);
   };
 
   return (
@@ -48,55 +39,47 @@ function Header() {
 
         <div className="flex items-center gap-4">
 
-          <Button
-            onClick={() => openModal('showConfirm')}
+          <button
+            onClick={() => setShowConfirm(true)}
             disabled={reportItems.length === 0}
             title="Tüm bileşenleri temizle ve yeni rapor başlat"
-            variant="default"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <FilePlus size={16} />
             Yeni Rapor
-          </Button>
+          </button>
 
-          <Button
-            onClick={() => openModal('showTemplates')}
-            variant="default"
+          <button
+            onClick={() => setShowTemplates(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors"
           >
             <BookTemplate size={16} />
             Şablonlar
-          </Button>
+          </button>
 
-           {/* ── YENİ: Ayarlar butonu ── */}
-            <Button
-              onClick={() => openModal('showSettings')}
-              title="Rapor ölçülerini ve ayarlarını düzenle"
-              variant="default"
-              isActive={modals.showSettings}
-            >
-              <Settings2 size={16} />
-              Ayarlar
-            </Button>
-
-             {/* ── YENİ: XML Analizi butonu ── */}
-             <Button
-               onClick={() => openModal('showXmlAnalysis')}
-               title="XML dosyası yükle ve analiz et"
-               variant="default"
-               isActive={modals.showXmlAnalysis}
-             >
-               <Upload size={16} />
-               XML Analiz
-             </Button>
+          {/* ── YENİ: Ayarlar butonu ── */}
+          <button
+            onClick={() => setShowSettings(true)}
+            title="Rapor ölçülerini ve ayarlarını düzenle"
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors
+              ${showSettings
+                ? 'bg-white text-[#e12f27]'
+                : 'bg-white/10 hover:bg-white/20 text-white'
+              }`}
+          >
+            <Settings2 size={16} />
+            Ayarlar
+          </button>
 
           <DownloadActions />
         </div>
       </header>
 
-      {modals.showTemplates && (
-        <TemplateModal onClose={() => closeModal('showTemplates')} />
+      {showTemplates && (
+        <TemplateModal onClose={() => setShowTemplates(false)} />
       )}
 
-      {modals.showConfirm && (
+      {showConfirm && (
         <ConfirmModal
           title="Raporu Sıfırla"
           description={
@@ -108,19 +91,15 @@ function Header() {
           }
           confirmLabel="Evet, Sıfırla"
           onConfirm={handleConfirmReset}
-          onCancel={() => closeModal('showConfirm')}
+          onCancel={() => setShowConfirm(false)}
         />
       )}
 
-       {modals.showSettings && (
-         <SettingsPanel onClose={() => closeModal('showSettings')} />
-       )}
-
-       {modals.showXmlAnalysis && (
-         <XmlAnalysisModal onClose={() => closeModal('showXmlAnalysis')} />
-       )}
-     </>
-   );
+      {showSettings && (
+        <SettingsPanel onClose={() => setShowSettings(false)} />
+      )}
+    </>
+  );
 }
 
 export default Header;

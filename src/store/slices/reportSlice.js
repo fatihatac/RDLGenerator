@@ -31,15 +31,6 @@ const FORM_TYPE_DEFAULTS = {
       filteredJsonKeys: [],
     },
   ],
-  [REPORT_TYPES.MAV00001]: () => [
-    {
-      id: generateId("datasource"),
-      type: ITEM_TYPES.DATA,
-      value: "",
-      jsonKeys: [],
-      filteredJsonKeys: [],
-    },
-  ],
 };
 
 // ---------------------------------------------------------------------------
@@ -129,12 +120,12 @@ export const createReportSlice = (set, get) => ({
     });
   },
 
-   updateItem: (id, updates) => {
-     set((state) => {
-       const item = state.reportItems.find((i) => i.id === id);
-       if (item) Object.assign(item, updates);
-     });
-   },
+  updateItem: (id, updates) => {
+    set((state) => {
+      const item = state.reportItems.find((i) => i.id === id);
+      if (item) Object.assign(item, updates);
+    });
+  },
 
   reorderItems: (startIndex, endIndex) => {
     set((state) => {

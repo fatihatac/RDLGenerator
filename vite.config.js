@@ -30,7 +30,7 @@ import { execSync } from "child_process";
 let activeBranch = "main";
 try {
   activeBranch = execSync("git rev-parse --abbrev-ref HEAD").toString().trim();
-} catch {
+} catch (e) {
   console.warn("Could not get branch name, defaulting to main.");
 }
 
