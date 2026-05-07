@@ -14,6 +14,7 @@ const ITEM_TYPES = {
   CHART: "chart",
   TEXTBOX: "textbox",
   RECTANGLE: "rectangle",
+  MATRIX: "matrix",
 };
 
 export { EXCLUDED_KEYS, VIEW_MODES, ITEM_TYPES };

@@ -12,6 +12,7 @@ import {
   ChartPlaceholder,
   GenericDataTableBlock,
   EmptyState,
+  MatrixBlock,
 } from './blocks';
 
 function ReportPreview() {
@@ -91,6 +92,8 @@ function ReportPreview() {
               return <DataTableBlock key={item.id} tableItem={item} rows={firstDataRows} />;
             if (item.type === ITEM_TYPES.CHART)
               return <ChartPlaceholder key={item.id} item={item} />;
+            if (item.type === ITEM_TYPES.MATRIX)
+              return <MatrixBlock key={item.id} item={item} />;
             return null;
           })
         )}

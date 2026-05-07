@@ -4,6 +4,7 @@ import { immer } from "zustand/middleware/immer";
 import { createUISlice } from "./slices/uiSlice";
 import { createReportSlice } from "./slices/reportSlice";
 import { createTableSlice } from "./slices/tableSlice";
+import { createMatrixSlice } from "./slices/matrixSlice";
 import { createHistorySlice } from "./slices/historySlice";
 import { createTemplateSlice } from "./slices/templateSlice";
 
@@ -18,6 +19,7 @@ const storeCreator = immer((set, get) => ({
   ...createUISlice(set, get),
   ...createReportSlice(set, get),
   ...createTableSlice(set, get),
+  ...createMatrixSlice(set, get),
   ...createHistorySlice(set, get),
   ...createTemplateSlice(set, get),
 }));

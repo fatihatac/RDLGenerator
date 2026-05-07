@@ -1,5 +1,6 @@
 import { buildTitle }    from './buildTitle.js';
 import { buildTable }    from './buildTable.js';
+import { buildMatrix }   from './buildMatrix.js';
 import buildDateRange    from './buildDateRange.js';
 import buildChart        from './buildChart.js';
 import { buildTextbox }  from './buildTextbox.js';
@@ -34,6 +35,9 @@ const BUILDER_MAP = {
 
   [ITEM_TYPES.RECTANGLE]: (item, totalWidth, totalHeight, dataSetMap, allItems, settings) =>
     buildRectangle(item, totalWidth, totalHeight, dataSetMap, allItems, settings, buildReportItems),
+
+  [ITEM_TYPES.MATRIX]: (item, _tw, _th, dataSetMap, _all, settings) =>
+    buildMatrix(item, dataSetMap, settings),
 };
 
 function buildReportItems(items, totalWidth, totalHeight, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) {

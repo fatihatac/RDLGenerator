@@ -1,11 +1,10 @@
-// src/utils/builders/generators/standardRdlGenerator.js
-
 import {
   calculateReportValues,
   computePositions,
 } from "../../core/reportCalculations.js";
 import buildDataSection from "../buildDataSection.js";
 import { buildReportItems } from "../buildItems.js";
+import { buildPageSection } from "../buildPageSection.js";
 import useLayoutStore from "../../../store/useLayoutStore.js";
 import { buildRDLXml } from "../rdlXmlBuilder";
 
@@ -19,6 +18,10 @@ function generateStandardRDL(items) {
 
   const itemsWithPositions = computePositions(items, settings);
 
+  const bodyItems = itemsWithPositions.filter(
+    (item) => !item.section || item.section === "body"
+  );
+
   const allDataItems = items.filter((item) => item.type === "data");
   const dataSetMap = {};
   const dataSourceMap = {};
@@ -28,7 +31,7 @@ function generateStandardRDL(items) {
   });
 
   const reportItemsList = buildReportItems(
-    itemsWithPositions,
+    bodyItems,
     TOTAL_REPORT_WIDTH,
     TOTAL_REPORT_HEIGHT,
     dataSetMap,
@@ -58,10 +61,25 @@ function generateStandardRDL(items) {
       currentDataSetName,
       currentDataSourceName,
     );
-    if (dataSection._isEmpty) return; // empty array — skip broken DataSource/DataSet
+    if (dataSection._isEmpty) return;
     if (dataSection.DataSources?.DataSource) allDataSources.push(dataSection.DataSources.DataSource);
     if (dataSection.DataSets?.DataSet) allDataSets.push(dataSection.DataSets.DataSet);
   });
+
+  const pageConfig = {
+    PageHeight: `${settings.pageHeight}pt`,
+    PageWidth: `${settings.pageWidth}pt`,
+    LeftMargin: `${settings.marginLeft}pt`,
+    RightMargin: `${settings.marginRight}pt`,
+    TopMargin: `${settings.marginTop}pt`,
+    BottomMargin: `${settings.marginBottom}pt`,
+    Style: { Border: { Style: "None" } },
+  };
+
+  const pageHeader = buildPageSection(itemsWithPositions, "header", TOTAL_REPORT_WIDTH, settings);
+  const pageFooter = buildPageSection(itemsWithPositions, "footer", TOTAL_REPORT_WIDTH, settings);
+  if (pageHeader) pageConfig.PageHeader = pageHeader;
+  if (pageFooter) pageConfig.PageFooter = pageFooter;
 
   const reportObj = {
     Report: {
@@ -79,15 +97,7 @@ function generateStandardRDL(items) {
             Height: `${TOTAL_REPORT_HEIGHT}pt`,
           },
           Width: `${TOTAL_REPORT_WIDTH}pt`,
-          Page: {
-            PageHeight: `${settings.pageHeight}pt`,
-            PageWidth: `${settings.pageWidth}pt`,
-            LeftMargin: `${settings.marginLeft}pt`,
-            RightMargin: `${settings.marginRight}pt`,
-            TopMargin: `${settings.marginTop}pt`,
-            BottomMargin: `${settings.marginBottom}pt`,
-            Style: { Border: { Style: "None" } },
-          },
+          Page: pageConfig,
         },
       },
       AutoRefresh: "0",

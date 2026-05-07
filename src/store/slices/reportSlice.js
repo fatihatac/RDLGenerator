@@ -39,6 +39,15 @@ const ITEM_FACTORIES = {
     xAxis: null,
     yAxis: null,
   }),
+  [ITEM_TYPES.MATRIX]: () => ({
+    id: generateId("matrix"),
+    type: ITEM_TYPES.MATRIX,
+    section: "body",
+    dataSourceId: null,
+    rowGroups: [],
+    columnGroups: [],
+    staticColumns: [],
+  }),
 };
 
 // ---------------------------------------------------------------------------

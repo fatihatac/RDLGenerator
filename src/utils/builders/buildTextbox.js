@@ -10,12 +10,13 @@ const buildTextbox = (item, _tw, _th, _dsm, _all, settings = DEFAULT_LAYOUT_SETT
       Height:   `${item.height ?? 20}pt`,
       Width:    `${item.width ?? 100}pt`,
       Style: {
-        VerticalAlign: item.style?.verticalAlign ?? 'Middle',
-        PaddingLeft:   '2pt',
-        PaddingRight:  '2pt',
-        PaddingTop:    '2pt',
-        PaddingBottom: '2pt',
-        Border: { Style: item.style?.borderStyle ?? 'None' },
+        VerticalAlign:   item.style?.verticalAlign ?? 'Middle',
+        PaddingLeft:     '2pt',
+        PaddingRight:    '2pt',
+        PaddingTop:      '2pt',
+        PaddingBottom:   '2pt',
+        Border:          { Style: item.style?.borderStyle ?? 'None' },
+        BackgroundColor: item.expressionValue ? item.expressionValue : (item.style?.backgroundColor ?? undefined),
       },
       CanGrow:       item.canGrow ?? true,
       KeepTogether:  item.keepTogether ?? true,
@@ -23,7 +24,7 @@ const buildTextbox = (item, _tw, _th, _dsm, _all, settings = DEFAULT_LAYOUT_SETT
         Paragraph: {
           TextRuns: {
             TextRun: {
-              Value: escapeXml(item.value ?? ''),
+              Value: item.expressionValue ? item.expressionValue : escapeXml(item.value ?? ''),
               Style: {
                 FontFamily: item.style?.fontFamily ?? settings.fontFamily,
                 FontSize:   item.style?.fontSize ? `${item.style.fontSize}pt` : `${settings.fontSize}pt`,

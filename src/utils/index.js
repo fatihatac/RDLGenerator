@@ -34,3 +34,7 @@ export { default as buildChart } from "./builders/buildChart";
 export { buildTextbox } from "./builders/buildTextbox";
 
 export { buildRectangle } from "./builders/buildRectangle";
+
+export { buildMatrix } from "./builders/buildMatrix";
+
+export { buildPageSection } from "./builders/buildPageSection";

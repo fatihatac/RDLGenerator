@@ -238,9 +238,11 @@ const buildTable = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
   // ── Data row ──────────────────────────────────────────────────────────────
   const dataCells = processedColumns.map((col, index) => {
     const valueExpr =
-      col.mappedField === 'RowNumber'
-        ? '=RowNumber(nothing)'
-        : `=Fields!${col.mappedField}.Value`;
+      col.expressionValue || (
+        col.mappedField === 'RowNumber'
+          ? '=RowNumber(nothing)'
+          : `=Fields!${col.mappedField}.Value`
+      );
 
     return {
       TablixCell: {
@@ -256,6 +258,9 @@ const buildTable = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
               PaddingLeft: '2pt', PaddingRight: '2pt',
               PaddingTop:  '2pt', PaddingBottom: '2pt',
               Border: { Color: 'LightGrey', Style: 'Solid' },
+              ...(col.expressionValue && {
+                BackgroundColor: col.expressionValue,
+              }),
             },
             CanGrow: true, KeepTogether: true,
             Paragraphs: {
