@@ -1,0 +1,2050 @@
+{
+  "Report": {
+    "xmlns:df": "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily",
+    "xmlns:rd": "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner",
+    "xmlns": "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition",
+    "ReportSections": {
+      "ReportSection": {
+        "Body": {
+          "Style": {
+            "Border": {
+              "Style": "None"
+            }
+          },
+          "ReportItems": {
+            "Tablix": {
+              "Name": "Tablix2",
+              "Left": "0.75000pt",
+              "Top": "5.25pt",
+              "Height": "50.25pt",
+              "Width": "512.25pt",
+              "Style": {
+                "Border": {
+                  "Style": "None"
+                }
+              },
+              "DataSetName": "DataSet1",
+              "TablixCorner": {
+                "TablixCornerRows": {
+                  "TablixCornerRow": {
+                    "TablixCornerCell": [
+                      {
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox1",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "72pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "Sicil No",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Left"
+                                }
+                              }
+                            }
+                          },
+                          "ColSpan": "1",
+                          "RowSpan": "1"
+                        }
+                      },
+                      {
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox5",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "72pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "Ad Soyad",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Left"
+                                }
+                              }
+                            }
+                          },
+                          "ColSpan": "1",
+                          "RowSpan": "1"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "TablixBody": {
+                "TablixColumns": {
+                  "TablixColumn": [
+                    {
+                      "Width": "23.25pt"
+                    },
+                    {
+                      "Width": "20.25pt"
+                    },
+                    {
+                      "Width": "21.75pt"
+                    },
+                    {
+                      "Width": "25.5pt"
+                    },
+                    {
+                      "Width": "24.75pt"
+                    },
+                    {
+                      "Width": "21.75pt"
+                    },
+                    {
+                      "Width": "25.5pt"
+                    },
+                    {
+                      "Width": "20.25pt"
+                    },
+                    {
+                      "Width": "23.25pt"
+                    },
+                    {
+                      "Width": "27.75pt"
+                    },
+                    {
+                      "Width": "34.5pt"
+                    },
+                    {
+                      "Width": "21.75pt"
+                    },
+                    {
+                      "Width": "31.5pt"
+                    },
+                    {
+                      "Width": "46.5pt"
+                    }
+                  ]
+                },
+                "TablixRows": {
+                  "TablixRow": {
+                    "Height": "18pt",
+                    "TablixCells": {
+                      "TablixCell": [
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox6",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "23.25pt",
+                              "Style": {
+                                "BackgroundColor": "=Switch(Fields!Durum.Value =\"NÇ\", “Transparent”\n              , Fields!Durum.Value =\"OFF\",\"Green\"\n              , Fields!Durum.Value =\"B\",\"Orange\")",
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!Durum.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox22",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "20.25pt",
+                              "Style": {
+                                "BackgroundColor": "=Switch(Fields!Durum.Value =\"NÇ\", “Transparent”\n              , Fields!Durum.Value =\"OFF\",\"Green\"\n              , Fields!Durum.Value =\"B\",\"Orange\")",
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!NormalGunToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox141",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "21.75pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!HaftaTatiliToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox171",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "25.5pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!ResmiTatilGunToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox391",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "24.75pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!ResmiTatilCalismasiToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox3",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "21.75pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!PaidLeaveGunToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox271",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "25.5pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!UnpaidLeaveToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox35111",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "20.25pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!SickLeaveToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox331",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "23.25pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!PaidSickLeaveToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox31111",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "27.75pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!VacationGunToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox2911",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "34.5pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!AbsentGunToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox26",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "21.75pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!FreeTimeGunToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox60",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "31.5pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!SGKGunToplam.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        },
+                        {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox12",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "46.5pt",
+                              "Style": {
+                                "BackgroundColor": "=Switch(Fields!Durum.Value =\"NÇ\", “Transparent”\n              , Fields!Durum.Value =\"OFF\",\"Green\"\n              , Fields!Durum.Value =\"B\",\"Orange\")",
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": {},
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              },
+              "TablixColumnHierarchy": {
+                "TablixMembers": {
+                  "TablixMember": [
+                    {
+                      "Group": {
+                        "Name": "Gun1",
+                        "GroupExpressions": {
+                          "GroupExpression": "=Fields!Gun.Value"
+                        }
+                      },
+                      "SortExpressions": {
+                        "SortExpression": {
+                          "Value": "=Fields!Gun.Value"
+                        }
+                      },
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "Gun11",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "23.25pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "=Fields!Gun.Value",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox19",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "20.25pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "W",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox13",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "21.75pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "O",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox42",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "25.5pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "B",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox44",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "24.75pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "BW",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox611",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "21.75pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "P",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox51",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "25.5pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "U",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox6511",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "20.25pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "S",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox61",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "23.25pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "PS",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox4611",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "27.75pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "V",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox551",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "34.5pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "A",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox25",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "21.75pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "FT",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox59",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "31.5pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "DAY",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "TablixHeader": {
+                        "Size": "32.25pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "TextBox11",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "32.25pt",
+                            "Width": "46.5pt",
+                            "Style": {
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "İMZA",
+                                    "Style": {
+                                      "FontFamily": "Trebuchet MS",
+                                      "FontSize": "7.74975pt",
+                                      "Color": "#339898"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Center"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "TablixRowHierarchy": {
+                "TablixMembers": {
+                  "TablixMember": {
+                    "Group": {
+                      "Name": "SicilNo1",
+                      "GroupExpressions": {
+                        "GroupExpression": "=Fields!SicilNo.Value"
+                      }
+                    },
+                    "SortExpressions": {
+                      "SortExpression": {
+                        "Value": "=Fields!SicilNo.Value"
+                      }
+                    },
+                    "TablixHeader": {
+                      "Size": "72pt",
+                      "CellContents": {
+                        "Textbox": {
+                          "Name": "SicilNo12",
+                          "Left": "0in",
+                          "Top": "0in",
+                          "Height": "18pt",
+                          "Width": "72pt",
+                          "Style": {
+                            "VerticalAlign": "Middle",
+                            "PaddingLeft": "2pt",
+                            "PaddingRight": "2pt",
+                            "PaddingTop": "2pt",
+                            "PaddingBottom": "2pt",
+                            "Border": {
+                              "Color": "LightGrey",
+                              "Style": "Solid"
+                            }
+                          },
+                          "CanGrow": "true",
+                          "KeepTogether": "true",
+                          "Paragraphs": {
+                            "Paragraph": {
+                              "TextRuns": {
+                                "TextRun": {
+                                  "Value": "=Fields!SicilNo.Value",
+                                  "Style": {
+                                    "FontFamily": "Trebuchet MS",
+                                    "FontSize": "6.99975pt",
+                                    "Color": "black"
+                                  }
+                                }
+                              },
+                              "Style": {
+                                "TextAlign": "Left"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "TablixMembers": {
+                      "TablixMember": {
+                        "TablixHeader": {
+                          "Size": "72pt",
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "SicilNo11",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "18pt",
+                              "Width": "72pt",
+                              "Style": {
+                                "VerticalAlign": "Middle",
+                                "PaddingLeft": "2pt",
+                                "PaddingRight": "2pt",
+                                "PaddingTop": "2pt",
+                                "PaddingBottom": "2pt",
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!AdSoyad.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "6.99975pt",
+                                        "Color": "black"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Left"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "TablixMembers": {
+                          "TablixMember": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Height": "487.5pt"
+        },
+        "Width": "1081.5pt",
+        "Page": {
+          "PageHeight": "595.44pt",
+          "PageWidth": "841.68pt",
+          "PageHeader": {
+            "Style": {
+              "Border": {
+                "Style": "None"
+              }
+            },
+            "Height": "99.75pt",
+            "PrintOnFirstPage": "true",
+            "PrintOnLastPage": "true",
+            "ReportItems": {
+              "Textbox": [
+                {
+                  "Name": "TextBox4",
+                  "Left": "2.25pt",
+                  "Top": "4.5pt",
+                  "Height": "37.5pt",
+                  "Width": "926.25pt",
+                  "Style": {
+                    "VerticalAlign": "Middle",
+                    "PaddingLeft": "2pt",
+                    "PaddingRight": "2pt",
+                    "PaddingTop": "2pt",
+                    "PaddingBottom": "2pt",
+                    "Border": {
+                      "Style": "None"
+                    }
+                  },
+                  "CanGrow": "true",
+                  "KeepTogether": "true",
+                  "Paragraphs": {
+                    "Paragraph": {
+                      "TextRuns": {
+                        "TextRun": {
+                          "Value": "Puantaj Detay Raporu",
+                          "Style": {
+                            "FontFamily": "Trebuchet MS",
+                            "FontSize": "9.99975pt",
+                            "FontWeight": "Heavy",
+                            "Color": "#173d80"
+                          }
+                        }
+                      },
+                      "Style": {
+                        "TextAlign": "Center",
+                        "LineHeight": "4.74975pt"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Name": "TextBox27",
+                  "Left": "-2.25000pt",
+                  "Top": "45.75pt",
+                  "Height": "43.5pt",
+                  "Width": "1062.75pt",
+                  "Style": {
+                    "BackgroundColor": "#cccbcb",
+                    "PaddingLeft": "2pt",
+                    "PaddingRight": "2pt",
+                    "PaddingTop": "2pt",
+                    "PaddingBottom": "2pt",
+                    "Border": {
+                      "Style": "None"
+                    }
+                  },
+                  "CanGrow": "true",
+                  "KeepTogether": "true",
+                  "Paragraphs": {
+                    "Paragraph": [
+                      {
+                        "TextRuns": {
+                          "TextRun": [
+                            {
+                              "Value": {},
+                              "Style": {
+                                "Color": "Black"
+                              }
+                            },
+                            {
+                              "Value": "W = Worked Days                O = OFF                       P = Paid Leave            UL = Unpaid Leave          S = Sick Leave                 PS = Paid Sick Leave                                V = Vacation        A = Absent                 FT = Free Time",
+                              "Style": {
+                                "FontFamily": "Trebuchet MS",
+                                "Color": "Black"
+                              }
+                            }
+                          ]
+                        },
+                        "Style": {}
+                      },
+                      {
+                        "TextRuns": {
+                          "TextRun": {
+                            "Value": {},
+                            "Style": {
+                              "FontSize": "8.25pt",
+                              "Color": "Black"
+                            }
+                          }
+                        },
+                        "Style": {}
+                      },
+                      {
+                        "TextRuns": {
+                          "TextRun": {
+                            "Value": "W = Normal Mesai               O = Hafta Tatili            P = Ücretli Izin            UL=Ücretsiz Izin             S=SGK Raporlu Ucretsiz    PS = SGK Raporlu Ucretli (Vizite)             V = Yıllık İzin       A = Devamsızlık          FT = Denkleştirme Izni",
+                            "Style": {
+                              "FontFamily": "Trebuchet MS",
+                              "Color": "Black"
+                            }
+                          }
+                        },
+                        "Style": {}
+                      },
+                      {
+                        "TextRuns": {
+                          "TextRun": {
+                            "Value": {},
+                            "Style": {
+                              "FontFamily": "Trebuchet MS",
+                              "FontSize": "9.75pt",
+                              "Color": "Black"
+                            }
+                          }
+                        },
+                        "Style": {}
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          "LeftMargin": "18.75pt",
+          "RightMargin": "18.75pt",
+          "TopMargin": "18.75pt",
+          "BottomMargin": "18.75pt",
+          "Style": {
+            "Border": {
+              "Style": "None"
+            }
+          }
+        }
+      }
+    },
+    "AutoRefresh": "0",
+    "DataSources": {
+      "DataSource": [
+        {
+          "Name": "DataSource1",
+          "ConnectionProperties": {
+            "DataProvider": "JSON",
+            "ConnectString": "{\"Data\":\"[{\\\"sicilID\\\":599,\\\"SicilNo\\\":\\\"00000633\\\",\\\"AdSoyad\\\":\\\"BETÜL ÇAĞLAR\\\",\\\"Donem\\\":\\\"May 2023\\\",\\\"Firma\\\":\\\"- - - - - - - - - - -\\\",\\\"Bolum\\\":\\\"- - - - - - - - - - -\\\",\\\"Gorev\\\":\\\"- - - - - - - - - - -\\\",\\\"Pozisyon\\\":\\\"- - - - - - - - - - -\\\",\\\"Yaka\\\":0,\\\"Direktorluk\\\":\\\"- - - - - - -\\\",\\\"Tarih\\\":\\\"2023-05-01T00:00:00\\\",\\\"Gun\\\":1,\\\"GunAdi\\\":\\\"Monday\\\",\\\"Durum\\\":\\\"NÇ\\\",\\\"t\\\":[{\\\"Ay\\\":5,\\\"Yıl\\\":2023,\\\"ToplamGunSayi\\\":31,\\\"Takvim\\\":31,\\\"NormalGunToplam\\\":\\\"27.0\\\",\\\"HaftaTatiliToplam\\\":\\\"4.0\\\",\\\"ResmiTatilGunToplam\\\":\\\"\\\",\\\"ResmiTatilCalismasiToplam\\\":\\\"\\\",\\\"PaidLeaveGunToplam\\\":\\\"\\\",\\\"UnpaidLeaveToplam\\\":\\\"\\\",\\\"SickLeaveToplam\\\":\\\"\\\",\\\"PaidSickLeaveToplam\\\":\\\"\\\",\\\"VacationGunToplam\\\":\\\"\\\",\\\"AbsentGunToplam\\\":\\\"\\\",\\\"FreeTimeGunToplam\\\":\\\"\\\",\\\"SGKGunToplam\\\":\\\"30\\\",\\\"SGKGun\\\":30}]}]\",\"DataMode\":\"inline\",\"URL\":\"\"}"
+          },
+          "rd:ImpersonateUser": "false"
+        },
+        {
+          "Name": "DataSource2",
+          "ConnectionProperties": {
+            "DataProvider": "JSON",
+            "ConnectString": "{\"Data\":\"[{\\\"sicilID\\\":599,\\\"SicilNo\\\":\\\"00000633\\\",\\\"AdSoyad\\\":\\\"BETÜL ÇAĞLAR\\\",\\\"Donem\\\":\\\"May 2023\\\",\\\"Firma\\\":\\\"- - - - - - - - - - -\\\",\\\"Bolum\\\":\\\"- - - - - - - - - - -\\\",\\\"Gorev\\\":\\\"- - - - - - - - - - -\\\",\\\"Pozisyon\\\":\\\"- - - - - - - - - - -\\\",\\\"Yaka\\\":0,\\\"Direktorluk\\\":\\\"- - - - - - -\\\",\\\"Tarih\\\":\\\"2023-05-01T00:00:00\\\",\\\"Gun\\\":1,\\\"GunAdi\\\":\\\"Monday\\\",\\\"Durum\\\":\\\"NÇ\\\",\\\"t\\\":[{\\\"Ay\\\":5,\\\"Yıl\\\":2023,\\\"ToplamGunSayi\\\":31,\\\"Takvim\\\":31,\\\"NormalGunToplam\\\":\\\"27.0\\\",\\\"HaftaTatiliToplam\\\":\\\"4.0\\\",\\\"ResmiTatilGunToplam\\\":\\\"\\\",\\\"ResmiTatilCalismasiToplam\\\":\\\"\\\",\\\"PaidLeaveGunToplam\\\":\\\"\\\",\\\"UnpaidLeaveToplam\\\":\\\"\\\",\\\"SickLeaveToplam\\\":\\\"\\\",\\\"PaidSickLeaveToplam\\\":\\\"\\\",\\\"VacationGunToplam\\\":\\\"\\\",\\\"AbsentGunToplam\\\":\\\"\\\",\\\"FreeTimeGunToplam\\\":\\\"\\\",\\\"SGKGunToplam\\\":\\\"30\\\",\\\"SGKGun\\\":30}]},{\\\"sicilID\\\":599,\\\"SicilNo\\\":\\\"00000633\\\",\\\"AdSoyad\\\":\\\"BETÜL ÇAĞLAR\\\",\\\"Donem\\\":\\\"May 2023\\\",\\\"Firma\\\":\\\"- - - - - - - - - - -\\\",\\\"Bolum\\\":\\\"- - - - - - - - - - -\\\",\\\"Gorev\\\":\\\"- - - - - - - - - - -\\\",\\\"Pozisyon\\\":\\\"- - - - - - - - - - -\\\",\\\"Yaka\\\":0,\\\"Direktorluk\\\":\\\"- - - - - - -\\\",\\\"Tarih\\\":\\\"2023-05-02T00:00:00\\\",\\\"Gun\\\":2,\\\"GunAdi\\\":\\\"Tuesday\\\",\\\"Durum\\\":\\\"B\\\",\\\"t\\\":[{\\\"Ay\\\":5,\\\"Yıl\\\":2023,\\\"ToplamGunSayi\\\":31,\\\"Takvim\\\":31,\\\"NormalGunToplam\\\":\\\"27.0\\\",\\\"HaftaTatiliToplam\\\":\\\"4.0\\\",\\\"ResmiTatilGunToplam\\\":\\\"\\\",\\\"ResmiTatilCalismasiToplam\\\":\\\"\\\",\\\"PaidLeaveGunToplam\\\":\\\"\\\",\\\"UnpaidLeaveToplam\\\":\\\"\\\",\\\"SickLeaveToplam\\\":\\\"\\\",\\\"PaidSickLeaveToplam\\\":\\\"\\\",\\\"VacationGunToplam\\\":\\\"\\\",\\\"AbsentGunToplam\\\":\\\"\\\",\\\"FreeTimeGunToplam\\\":\\\"\\\",\\\"SGKGunToplam\\\":\\\"30\\\",\\\"SGKGun\\\":30}]}]\",\"DataMode\":\"inline\",\"URL\":\"\"}"
+          },
+          "rd:ImpersonateUser": "false"
+        }
+      ]
+    },
+    "DataSets": {
+      "DataSet": {
+        "Name": "DataSet1",
+        "Fields": {
+          "Field": [
+            {
+              "Name": "sicilID",
+              "DataField": "sicilID",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "SicilNo",
+              "DataField": "SicilNo",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "AdSoyad",
+              "DataField": "AdSoyad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Donem",
+              "DataField": "Donem",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Firma",
+              "DataField": "Firma",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Bolum",
+              "DataField": "Bolum",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Gorev",
+              "DataField": "Gorev",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Pozisyon",
+              "DataField": "Pozisyon",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Yaka",
+              "DataField": "Yaka",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Direktorluk",
+              "DataField": "Direktorluk",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Tarih",
+              "DataField": "Tarih",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "Gun",
+              "DataField": "Gun",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "GunAdi",
+              "DataField": "GunAdi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Durum",
+              "DataField": "Durum",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Ay",
+              "DataField": "Ay",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Yıl",
+              "DataField": "Yıl",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "ToplamGunSayi",
+              "DataField": "ToplamGunSayi",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Takvim",
+              "DataField": "Takvim",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "NormalGunToplam",
+              "DataField": "NormalGunToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "HaftaTatiliToplam",
+              "DataField": "HaftaTatiliToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ResmiTatilGunToplam",
+              "DataField": "ResmiTatilGunToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ResmiTatilCalismasiToplam",
+              "DataField": "ResmiTatilCalismasiToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "PaidLeaveGunToplam",
+              "DataField": "PaidLeaveGunToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "UnpaidLeaveToplam",
+              "DataField": "UnpaidLeaveToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "SickLeaveToplam",
+              "DataField": "SickLeaveToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "PaidSickLeaveToplam",
+              "DataField": "PaidSickLeaveToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "VacationGunToplam",
+              "DataField": "VacationGunToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "AbsentGunToplam",
+              "DataField": "AbsentGunToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "FreeTimeGunToplam",
+              "DataField": "FreeTimeGunToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "SGKGunToplam",
+              "DataField": "SGKGunToplam",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "SGKGun",
+              "DataField": "SGKGun",
+              "rd:TypeName": "System.Double"
+            }
+          ]
+        },
+        "Query": {
+          "DataSourceName": "DataSource2",
+          "CommandType": "Text",
+          "CommandText": "{\"Name\":\"Result\",\"Columns\":[]}",
+          "QueryDesignerState": {
+            "xmlns": "http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational",
+            "Tables": {
+              "Table": {
+                "Name": "Result",
+                "Schema": "",
+                "Columns": {
+                  "Column": [
+                    {
+                      "Name": "sicilID",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SicilNo",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "AdSoyad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Donem",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Firma",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Bolum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Gorev",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Pozisyon",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Yaka",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Direktorluk",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Tarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Gun",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "GunAdi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Durum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Ay",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Yıl",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "ToplamGunSayi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Takvim",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "NormalGunToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "HaftaTatiliToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "ResmiTatilGunToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "ResmiTatilCalismasiToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "PaidLeaveGunToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "UnpaidLeaveToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SickLeaveToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "PaidSickLeaveToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "VacationGunToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "AbsentGunToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "FreeTimeGunToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SGKGunToplam",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SGKGun",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    }
+                  ]
+                },
+                "SchemaLevels": {
+                  "SchemaInfo": {
+                    "Name": "Result",
+                    "SchemaType": "Table"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ReportParametersLayout": {
+      "GridLayoutDefinition": {
+        "NumberOfColumns": "4",
+        "NumberOfRows": "2"
+      }
+    },
+    "rd:ReportUnitType": "Inch",
+    "rd:PageUnit": "Px",
+    "df:DefaultFontFamily": "Segoe UI"
+  }
+}

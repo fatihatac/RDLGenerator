@@ -1,0 +1,2117 @@
+{
+  "Report": {
+    "xmlns:df": "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily",
+    "xmlns:rd": "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner",
+    "xmlns": "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition",
+    "ReportSections": {
+      "ReportSection": {
+        "Body": {
+          "Style": {
+            "FontFamily": "Arial",
+            "Border": {
+              "Width": "0.75000pt",
+              "Style": "None"
+            }
+          },
+          "ReportItems": {
+            "Tablix": {
+              "Name": "Tablix5",
+              "Left": "18.25312pt",
+              "Top": "2.18438pt",
+              "Height": "200.25pt",
+              "Width": "536.25pt",
+              "Style": {
+                "FontFamily": "Arial",
+                "Border": {
+                  "Style": "None"
+                }
+              },
+              "DataSetName": "DataSet1",
+              "TablixBody": {
+                "TablixColumns": {
+                  "TablixColumn": {
+                    "Width": "535.8pt"
+                  }
+                },
+                "TablixRows": {
+                  "TablixRow": {
+                    "Height": "200.4pt",
+                    "TablixCells": {
+                      "TablixCell": {
+                        "CellContents": {
+                          "Rectangle": {
+                            "Name": "Rectangle3",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "200.4pt",
+                            "Width": "535.8pt",
+                            "Style": {
+                              "FontFamily": "Arial",
+                              "Border": {
+                                "Width": "0.75000pt",
+                                "Color": "#676767",
+                                "Style": "Solid"
+                              }
+                            },
+                            "ReportItems": {
+                              "Textbox": [
+                                {
+                                  "Name": "TextBox69",
+                                  "Left": "18.375pt",
+                                  "Top": "36.00001pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!AdSoyad.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "LineHeight": "2.12475pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "sicilno3",
+                                  "Left": "18.375pt",
+                                  "Top": "53.43751pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Visibility": {
+                                    "Hidden": "= iif(Parameters!Visiblesicilno.Value == \"1\",false,true)"
+                                  },
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!sicilno.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "LineHeight": "2.1225pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Firma2",
+                                  "Left": "18.375pt",
+                                  "Top": "70.8375pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Visibility": {
+                                    "Hidden": "= iif(Parameters!VisibleFirma.Value == \"1\",false,true)"
+                                  },
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!Firma.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "LineHeight": "2.1225pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Altfirma2",
+                                  "Left": "18.375pt",
+                                  "Top": "88.30312pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Visibility": {
+                                    "Hidden": "= iif(Parameters!VisibleAltfirma.Value == \"1\",false,true)"
+                                  },
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!Altfirma.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "LineHeight": "2.1225pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Bolum1",
+                                  "Left": "18.375pt",
+                                  "Top": "105.7406pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Visibility": {
+                                    "Hidden": "= iif(Parameters!VisibleBolum.Value == \"1\",false,true)"
+                                  },
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!Bolum.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "LineHeight": "2.1225pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Pozisyon1",
+                                  "Left": "18.375pt",
+                                  "Top": "123.1781pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Visibility": {
+                                    "Hidden": "= iif(Parameters!VisiblePozisyon.Value == \"1\",false,true)"
+                                  },
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!Pozisyon.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "LineHeight": "2.1225pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Gorev1",
+                                  "Left": "18.375pt",
+                                  "Top": "140.5969pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Visibility": {
+                                    "Hidden": "= iif(Parameters!VisibleGorev.Value == \"1\",false,true)"
+                                  },
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!Gorev.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "LineHeight": "2.1225pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Direktorluk1",
+                                  "Left": "18.375pt",
+                                  "Top": "158.0344pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Visibility": {
+                                    "Hidden": "= iif(Parameters!VisibleDirektorluk.Value == \"1\",false,true)"
+                                  },
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!Direktorluk.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "LineHeight": "2.1225pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "Yaka2",
+                                  "Left": "18.375pt",
+                                  "Top": "175.4812pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Visibility": {
+                                    "Hidden": "= iif(Parameters!VisibleYaka.Value == \"1\",false,true)"
+                                  },
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!Yaka.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "LineHeight": "2.1225pt"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox8",
+                                  "Left": "121.0219pt",
+                                  "Top": "55.55625pt",
+                                  "Height": "138.375pt",
+                                  "Width": "87pt",
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!gadres.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "Black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox7",
+                                  "Left": "121.0219pt",
+                                  "Top": "36.00001pt",
+                                  "Height": "18.75pt",
+                                  "Width": "87pt",
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!giris.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "TextAlign": "Center"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox90",
+                                  "Left": "322.5094pt",
+                                  "Top": "56.025pt",
+                                  "Height": "138.375pt",
+                                  "Width": "97.5pt",
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!cadres.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox89",
+                                  "Left": "322.5094pt",
+                                  "Top": "36.00001pt",
+                                  "Height": "18.75pt",
+                                  "Width": "97.5pt",
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Fields!cikis.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6pt",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "TextAlign": "Center"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox10",
+                                  "Left": "18pt",
+                                  "Top": "8.15625pt",
+                                  "Height": "19.5pt",
+                                  "Width": "97.5pt",
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": [
+                                          {
+                                            "Value": "=Parameters!HeaderAdSoyad.Value",
+                                            "Style": {
+                                              "FontFamily": "Trebuchet MS",
+                                              "FontSize": "6.75pt",
+                                              "FontWeight": "Bold",
+                                              "Color": "black"
+                                            }
+                                          },
+                                          {
+                                            "Value": "",
+                                            "Style": {
+                                              "FontFamily": "Trebuchet MS",
+                                              "FontSize": "6.75pt",
+                                              "FontWeight": "Bold",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox11",
+                                  "Left": "120.75pt",
+                                  "Top": "8.15625pt",
+                                  "Height": "19.5pt",
+                                  "Width": "87pt",
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Parameters!Headergiris.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6.75pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "TextAlign": "Center"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox12",
+                                  "Left": "214.0875pt",
+                                  "Top": "8.15625pt",
+                                  "Height": "19.5pt",
+                                  "Width": "101.25pt",
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Parameters!Headergmap.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6.75pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "TextAlign": "Center"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox13",
+                                  "Left": "322.875pt",
+                                  "Top": "8.15625pt",
+                                  "Height": "19.5pt",
+                                  "Width": "97.5pt",
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Parameters!Headercikis.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6.75pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "TextAlign": "Center"
+                                      }
+                                    }
+                                  }
+                                },
+                                {
+                                  "Name": "TextBox16",
+                                  "Left": "425.25pt",
+                                  "Top": "8.15625pt",
+                                  "Height": "19.5pt",
+                                  "Width": "101.25pt",
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "VerticalAlign": "Middle",
+                                    "PaddingLeft": "2pt",
+                                    "PaddingRight": "2pt",
+                                    "PaddingTop": "2pt",
+                                    "PaddingBottom": "2pt",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "CanGrow": "true",
+                                  "KeepTogether": "true",
+                                  "Paragraphs": {
+                                    "Paragraph": {
+                                      "TextRuns": {
+                                        "TextRun": {
+                                          "Value": "=Parameters!Headercmap.Value",
+                                          "Style": {
+                                            "FontFamily": "Trebuchet MS",
+                                            "FontSize": "6.75pt",
+                                            "FontWeight": "Bold",
+                                            "Color": "black"
+                                          }
+                                        }
+                                      },
+                                      "Style": {
+                                        "FontFamily": "Arial",
+                                        "TextAlign": "Center"
+                                      }
+                                    }
+                                  }
+                                }
+                              ],
+                              "Image": [
+                                {
+                                  "Name": "Image3",
+                                  "Left": "213.7406pt",
+                                  "Top": "36.00001pt",
+                                  "Value": "=First(Fields!gmap.Value, \"DataSet1\")",
+                                  "Height": "101.25pt",
+                                  "Width": "101.25pt",
+                                  "Visibility": {},
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "Source": "Database",
+                                  "MIMEType": "image/jpeg",
+                                  "Sizing": "FitProportional"
+                                },
+                                {
+                                  "Name": "Image4",
+                                  "Left": "425.25pt",
+                                  "Top": "36.00001pt",
+                                  "Value": "=First(Fields!cmap.Value, \"DataSet1\")",
+                                  "Height": "101.25pt",
+                                  "Width": "101.25pt",
+                                  "Visibility": {},
+                                  "Style": {
+                                    "FontFamily": "Arial",
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "Source": "Database",
+                                  "MIMEType": "image/jpeg",
+                                  "Sizing": "FitProportional"
+                                }
+                              ],
+                              "Rectangle": {
+                                "Name": "Rectangle1",
+                                "Left": "10.05pt",
+                                "Top": "8.01562pt",
+                                "Height": "19.5pt",
+                                "Width": "515.7pt",
+                                "Style": {
+                                  "FontFamily": "Arial",
+                                  "Border": {
+                                    "Color": "#676767",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "KeepTogether": "true"
+                              }
+                            },
+                            "KeepTogether": "true"
+                          },
+                          "ColSpan": "1",
+                          "RowSpan": "1"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "TablixColumnHierarchy": {
+                "TablixMembers": {
+                  "TablixMember": {}
+                }
+              },
+              "TablixRowHierarchy": {
+                "TablixMembers": {
+                  "TablixMember": {
+                    "Group": {
+                      "Name": "Details2"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Height": "210.75pt"
+        },
+        "Width": "572.7562pt",
+        "Page": {
+          "PageHeight": "841.68pt",
+          "PageWidth": "595.44pt",
+          "PageHeader": {
+            "Style": {
+              "FontFamily": "Arial",
+              "Border": {
+                "Style": "None"
+              }
+            },
+            "Height": "64.5pt",
+            "PrintOnFirstPage": "true",
+            "PrintOnLastPage": "true",
+            "ReportItems": {
+              "Textbox": [
+                {
+                  "Name": "TextBox32",
+                  "Left": "0.15000pt",
+                  "Top": "30.65625pt",
+                  "Height": "15.75pt",
+                  "Width": "90.45pt",
+                  "Style": {
+                    "FontFamily": "Arial",
+                    "PaddingLeft": "2pt",
+                    "PaddingRight": "2pt",
+                    "PaddingTop": "2pt",
+                    "PaddingBottom": "2pt",
+                    "Border": {
+                      "Style": "None"
+                    }
+                  },
+                  "CanGrow": "true",
+                  "KeepTogether": "true",
+                  "Paragraphs": {
+                    "Paragraph": {
+                      "TextRuns": {
+                        "TextRun": {
+                          "Value": "Rapor Bitis:",
+                          "Style": {
+                            "FontFamily": "Arial",
+                            "FontSize": "7.5pt",
+                            "Color": "black"
+                          }
+                        }
+                      },
+                      "Style": {
+                        "FontFamily": "Arial"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Name": "TextBox33",
+                  "Left": "89.775pt",
+                  "Top": "30.20625pt",
+                  "Height": "15.75pt",
+                  "Width": "150pt",
+                  "Style": {
+                    "FontFamily": "Arial",
+                    "PaddingLeft": "2pt",
+                    "PaddingRight": "2pt",
+                    "PaddingTop": "2pt",
+                    "PaddingBottom": "2pt",
+                    "Border": {
+                      "Style": "None"
+                    }
+                  },
+                  "CanGrow": "true",
+                  "KeepTogether": "true",
+                  "Paragraphs": {
+                    "Paragraph": {
+                      "TextRuns": {
+                        "TextRun": {
+                          "Value": "=Parameters!ReportEnd.Value",
+                          "Style": {
+                            "FontFamily": "Arial",
+                            "FontSize": "6pt",
+                            "Color": "black"
+                          }
+                        }
+                      },
+                      "Style": {
+                        "FontFamily": "Arial"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Name": "TextBox34",
+                  "Left": "0.15000pt",
+                  "Top": "14.7pt",
+                  "Height": "15.75pt",
+                  "Width": "90.45pt",
+                  "Style": {
+                    "FontFamily": "Arial",
+                    "PaddingLeft": "2pt",
+                    "PaddingRight": "2pt",
+                    "PaddingTop": "2pt",
+                    "PaddingBottom": "2pt",
+                    "Border": {
+                      "Style": "None"
+                    }
+                  },
+                  "CanGrow": "true",
+                  "KeepTogether": "true",
+                  "Paragraphs": {
+                    "Paragraph": {
+                      "TextRuns": {
+                        "TextRun": {
+                          "Value": "Rapor Baslangici:",
+                          "Style": {
+                            "FontFamily": "Arial",
+                            "FontSize": "7.5pt",
+                            "Color": "black"
+                          }
+                        }
+                      },
+                      "Style": {
+                        "FontFamily": "Arial"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Name": "TextBox35",
+                  "Left": "0pt",
+                  "Top": "0.50625pt",
+                  "Height": "15.75pt",
+                  "Width": "90.45pt",
+                  "Style": {
+                    "FontFamily": "Arial",
+                    "PaddingLeft": "2pt",
+                    "PaddingRight": "2pt",
+                    "PaddingTop": "2pt",
+                    "PaddingBottom": "2pt",
+                    "Border": {
+                      "Style": "None"
+                    }
+                  },
+                  "CanGrow": "true",
+                  "KeepTogether": "true",
+                  "Paragraphs": {
+                    "Paragraph": {
+                      "TextRuns": {
+                        "TextRun": {
+                          "Value": "Rapor Sahibi:",
+                          "Style": {
+                            "FontFamily": "Arial",
+                            "FontSize": "7.5pt",
+                            "Color": "black"
+                          }
+                        }
+                      },
+                      "Style": {
+                        "FontFamily": "Arial"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Name": "TextBox36",
+                  "Left": "89.775pt",
+                  "Top": "15.20625pt",
+                  "Height": "15.75pt",
+                  "Width": "150pt",
+                  "Style": {
+                    "FontFamily": "Arial",
+                    "PaddingLeft": "2pt",
+                    "PaddingRight": "2pt",
+                    "PaddingTop": "2pt",
+                    "PaddingBottom": "2pt",
+                    "Border": {
+                      "Style": "None"
+                    }
+                  },
+                  "CanGrow": "true",
+                  "KeepTogether": "true",
+                  "Paragraphs": {
+                    "Paragraph": {
+                      "TextRuns": {
+                        "TextRun": {
+                          "Value": "=Parameters!ReportStart.Value",
+                          "Style": {
+                            "FontFamily": "Arial",
+                            "FontSize": "6pt",
+                            "Color": "black"
+                          }
+                        }
+                      },
+                      "Style": {
+                        "FontFamily": "Arial"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Name": "TextBox37",
+                  "Left": "89.775pt",
+                  "Top": "0pt",
+                  "Height": "15.75pt",
+                  "Width": "150pt",
+                  "Style": {
+                    "FontFamily": "Arial",
+                    "PaddingLeft": "2pt",
+                    "PaddingRight": "2pt",
+                    "PaddingTop": "2pt",
+                    "PaddingBottom": "2pt",
+                    "Border": {
+                      "Style": "None"
+                    }
+                  },
+                  "CanGrow": "true",
+                  "KeepTogether": "true",
+                  "Paragraphs": {
+                    "Paragraph": {
+                      "TextRuns": {
+                        "TextRun": {
+                          "Value": "=Parameters!ReportOwner.Value",
+                          "Style": {
+                            "FontFamily": "Arial",
+                            "FontSize": "6pt",
+                            "Color": "black"
+                          }
+                        }
+                      },
+                      "Style": {
+                        "FontFamily": "Arial"
+                      }
+                    }
+                  }
+                },
+                {
+                  "Name": "TextBox38",
+                  "Left": "246pt",
+                  "Top": "6pt",
+                  "Height": "37.5pt",
+                  "Width": "325.5pt",
+                  "Style": {
+                    "FontFamily": "Arial",
+                    "VerticalAlign": "Middle",
+                    "PaddingLeft": "2pt",
+                    "PaddingRight": "2pt",
+                    "PaddingTop": "2pt",
+                    "PaddingBottom": "2pt",
+                    "Border": {
+                      "Style": "None"
+                    }
+                  },
+                  "CanGrow": "true",
+                  "KeepTogether": "true",
+                  "Paragraphs": {
+                    "Paragraph": {
+                      "TextRuns": {
+                        "TextRun": {
+                          "Value": "=Parameters!ReportHeader.Value",
+                          "Style": {
+                            "FontFamily": "Trebuchet MS",
+                            "FontSize": "9.75pt",
+                            "FontWeight": "Bold",
+                            "Color": "black"
+                          }
+                        }
+                      },
+                      "Style": {
+                        "FontFamily": "Arial",
+                        "TextAlign": "Left"
+                      }
+                    }
+                  }
+                }
+              ],
+              "Line": {
+                "Name": "Line1",
+                "Left": "0.12187pt",
+                "Top": "58.49062pt",
+                "Height": "0pt",
+                "Width": "564.625pt",
+                "Style": {
+                  "FontFamily": "Arial",
+                  "Border": {
+                    "Style": "Solid"
+                  }
+                }
+              }
+            }
+          },
+          "PageFooter": {
+            "Style": {
+              "FontFamily": "Arial",
+              "Border": {
+                "Style": "None"
+              }
+            },
+            "Height": "0pt"
+          },
+          "LeftMargin": "0pt",
+          "RightMargin": "0pt",
+          "TopMargin": "0pt",
+          "BottomMargin": "0pt",
+          "Style": {
+            "FontFamily": "Arial",
+            "Border": {
+              "Style": "None"
+            }
+          }
+        }
+      }
+    },
+    "AutoRefresh": "0",
+    "DataSources": {
+      "DataSource": {
+        "Name": "DataSource1",
+        "ConnectionProperties": {
+          "DataProvider": "JSON",
+          "ConnectString": "{\"Data\":\"[{\\\"AdSoyad\\\":\\\"Bosch Bilgin Bey TEST\\\",\\\"sicilno\\\":\\\"\\\",\\\"Firma\\\":\\\"- - - - - - - - - - -\\\",\\\"Altfirma\\\":\\\"- - - - - - -\\\",\\\"Bolum\\\":\\\"- - - - - - - - - - -\\\",\\\"Pozisyon\\\":\\\"- - - - - - - - - - -\\\",\\\"Gorev\\\":\\\"- - - - - - - - - - -\\\",\\\"Yaka\\\":\\\"- - - - - - -\\\",\\\"Direktorluk\\\":\\\"- - - - - - -\\\",\\\"giris\\\":\\\"2022-11-28T14:05:38\\\",\\\"gadres\\\":\\\"\\\",\\\"TarihAralik\\\":\\\"01.11.2022-20.12.2022\\\",\\\"cikis\\\":\\\"2022-11-28T14:06:20\\\",\\\"cadres\\\":\\\"\\\",\\\"cmap\\\":\\\"\\\",\\\"gmap\\\":\\\"\\\"},\\n{\\\"AdSoyad\\\":\\\"ladd Bilgin Bey TEST\\\",\\\"sicilno\\\":\\\"\\\",\\\"Firma\\\":\\\"- - - - - - - - - - -\\\",\\\"Altfirma\\\":\\\"- - - - - - -\\\",\\\"Bolum\\\":\\\"- - - - - - - - - - -\\\",\\\"Pozisyon\\\":\\\"- - - - - - - - - - -\\\",\\\"Gorev\\\":\\\"- - - - - - - - - - -\\\",\\\"Yaka\\\":\\\"- - - - - - -\\\",\\\"Direktorluk\\\":\\\"- - - - - - -\\\",\\\"giris\\\":\\\"2022-11-28T14:05:38\\\",\\\"gadres\\\":\\\"\\\",\\\"TarihAralik\\\":\\\"01.11.2022-20.12.2022\\\",\\\"cikis\\\":\\\"2022-11-28T14:06:20\\\",\\\"cadres\\\":\\\"\\\",\\\"cmap\\\":\\\"\\\",\\\"gmap\\\":\\\"\\\"}]\\n\",\"DataMode\":\"inline\",\"URL\":\"\"}"
+        },
+        "rd:ImpersonateUser": "false"
+      }
+    },
+    "DataSets": {
+      "DataSet": {
+        "Name": "DataSet1",
+        "Fields": {
+          "Field": [
+            {
+              "Name": "AdSoyad",
+              "DataField": "AdSoyad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "sicilno",
+              "DataField": "sicilno",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Firma",
+              "DataField": "Firma",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Altfirma",
+              "DataField": "Altfirma",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Bolum",
+              "DataField": "Bolum",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Pozisyon",
+              "DataField": "Pozisyon",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Gorev",
+              "DataField": "Gorev",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Yaka",
+              "DataField": "Yaka",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Direktorluk",
+              "DataField": "Direktorluk",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "giris",
+              "DataField": "giris",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "gadres",
+              "DataField": "gadres",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "TarihAralik",
+              "DataField": "TarihAralik",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "cikis",
+              "DataField": "cikis",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "cadres",
+              "DataField": "cadres",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "cmap",
+              "DataField": "cmap",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "gmap",
+              "DataField": "gmap",
+              "rd:TypeName": "System.String"
+            }
+          ]
+        },
+        "Query": {
+          "DataSourceName": "DataSource1",
+          "CommandType": "Text",
+          "CommandText": "{\"Name\":\"Result\",\"Columns\":[]}",
+          "QueryDesignerState": {
+            "xmlns": "http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational",
+            "Tables": {
+              "Table": {
+                "Name": "Result",
+                "Schema": "",
+                "Columns": {
+                  "Column": [
+                    {
+                      "Name": "AdSoyad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sicilno",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Firma",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Altfirma",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Bolum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Pozisyon",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Gorev",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Yaka",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Direktorluk",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "giris",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "gadres",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "TarihAralik",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "cikis",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "cadres",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "cmap",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "gmap",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    }
+                  ]
+                },
+                "SchemaLevels": {
+                  "SchemaInfo": {
+                    "Name": "Result",
+                    "SchemaType": "Table"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ReportParameters": {
+      "ReportParameter": [
+        {
+          "Name": "ReportOwner",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Meyer Angel"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "ReportOwner",
+          "Hidden": "true"
+        },
+        {
+          "Name": "ReportStart",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "2022-01-01"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "ReportStart",
+          "Hidden": "true"
+        },
+        {
+          "Name": "ReportEnd",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "2022-01-01"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "ReportEnd",
+          "Hidden": "true"
+        },
+        {
+          "Name": "ReportHeader",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Mobil Giriş Çıkış Raporu"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "ReportHeader",
+          "Hidden": "true"
+        },
+        {
+          "Name": "Headersicilno",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Sicil No"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Headersicilno",
+          "Hidden": "true"
+        },
+        {
+          "Name": "Visiblesicilno",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Visiblesicilno"
+        },
+        {
+          "Name": "HeaderAdSoyad",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Ad Soyad"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderAdSoyad",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisibleAdSoyad",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisibleAdSoyad"
+        },
+        {
+          "Name": "HeaderFirma",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Firma"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderFirma",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisibleFirma",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisibleFirma"
+        },
+        {
+          "Name": "HeaderBolum",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Bolum"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderBolum",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisibleBolum",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisibleBolum"
+        },
+        {
+          "Name": "HeaderGorev",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Gorev"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderGorev",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisibleGorev",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisibleGorev"
+        },
+        {
+          "Name": "HeaderAltfirma",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Alt Firma"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderAltfirma",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisibleAltfirma",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisibleAltfirma"
+        },
+        {
+          "Name": "HeaderPozisyon",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Pozisyon"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderPozisyon",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisiblePozisyon",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisiblePozisyon"
+        },
+        {
+          "Name": "HeaderDirektorluk",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Direktorluk"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderDirektorluk",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisibleDirektorluk",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisibleDirektorluk"
+        },
+        {
+          "Name": "HeaderYaka",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Yaka"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderYaka",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisibleYaka",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisibleYaka"
+        },
+        {
+          "Name": "HeaderuserId",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Kullanıcı No"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderuserId",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisibleuserId",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisibleuserId"
+        },
+        {
+          "Name": "Headertip",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Kart Tipi"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Headertip",
+          "Hidden": "true"
+        },
+        {
+          "Name": "Visibletip",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Visibletip"
+        },
+        {
+          "Name": "Headerterminal",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Giris Terminali"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Headerterminal",
+          "Hidden": "true"
+        },
+        {
+          "Name": "Visibleterminal",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Visibleterminal"
+        },
+        {
+          "Name": "Headertimezone",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Yetki"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Headertimezone",
+          "Hidden": "true"
+        },
+        {
+          "Name": "Visibletimezone",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Visibletimezone"
+        },
+        {
+          "Name": "HeaderTarih",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Tarih"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderTarih",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisibleTarih",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisibleTarih"
+        },
+        {
+          "Name": "Headergiris",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Giris"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Headergiris",
+          "Hidden": "true"
+        },
+        {
+          "Name": "Visiblegiris",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Visiblegiris"
+        },
+        {
+          "Name": "Headercikis",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Cikis"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Headercikis",
+          "Hidden": "true"
+        },
+        {
+          "Name": "Visiblecikis",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Visiblecikis"
+        },
+        {
+          "Name": "HeaderSure",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Sure"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "HeaderSure",
+          "Hidden": "true"
+        },
+        {
+          "Name": "VisibleSure",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "VisibleSure"
+        },
+        {
+          "Name": "Headergmap",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Harita"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Headergmap",
+          "Hidden": "true"
+        },
+        {
+          "Name": "Visiblegmap",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Visiblegmap"
+        },
+        {
+          "Name": "Headercmap",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "Harita"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Headercmap",
+          "Hidden": "true"
+        },
+        {
+          "Name": "Visiblecmap",
+          "DataType": "String",
+          "Nullable": "true",
+          "DefaultValue": {
+            "Values": {
+              "Value": "1"
+            }
+          },
+          "AllowBlank": "true",
+          "Prompt": "Visiblecmap"
+        }
+      ]
+    },
+    "ReportParametersLayout": {
+      "GridLayoutDefinition": {
+        "NumberOfColumns": "4",
+        "NumberOfRows": "11",
+        "CellDefinitions": {
+          "CellDefinition": [
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "0",
+              "ParameterName": "ReportOwner"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "0",
+              "ParameterName": "ReportStart"
+            },
+            {
+              "ColumnIndex": "2",
+              "RowIndex": "0",
+              "ParameterName": "ReportEnd"
+            },
+            {
+              "ColumnIndex": "3",
+              "RowIndex": "0",
+              "ParameterName": "ReportHeader"
+            },
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "1",
+              "ParameterName": "Headersicilno"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "1",
+              "ParameterName": "Visiblesicilno"
+            },
+            {
+              "ColumnIndex": "2",
+              "RowIndex": "1",
+              "ParameterName": "HeaderAdSoyad"
+            },
+            {
+              "ColumnIndex": "3",
+              "RowIndex": "1",
+              "ParameterName": "VisibleAdSoyad"
+            },
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "2",
+              "ParameterName": "HeaderFirma"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "2",
+              "ParameterName": "VisibleFirma"
+            },
+            {
+              "ColumnIndex": "2",
+              "RowIndex": "2",
+              "ParameterName": "HeaderBolum"
+            },
+            {
+              "ColumnIndex": "3",
+              "RowIndex": "2",
+              "ParameterName": "VisibleBolum"
+            },
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "3",
+              "ParameterName": "HeaderGorev"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "3",
+              "ParameterName": "VisibleGorev"
+            },
+            {
+              "ColumnIndex": "2",
+              "RowIndex": "3",
+              "ParameterName": "HeaderAltfirma"
+            },
+            {
+              "ColumnIndex": "3",
+              "RowIndex": "3",
+              "ParameterName": "VisibleAltfirma"
+            },
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "4",
+              "ParameterName": "HeaderPozisyon"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "4",
+              "ParameterName": "VisiblePozisyon"
+            },
+            {
+              "ColumnIndex": "2",
+              "RowIndex": "4",
+              "ParameterName": "HeaderDirektorluk"
+            },
+            {
+              "ColumnIndex": "3",
+              "RowIndex": "4",
+              "ParameterName": "VisibleDirektorluk"
+            },
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "5",
+              "ParameterName": "HeaderYaka"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "5",
+              "ParameterName": "VisibleYaka"
+            },
+            {
+              "ColumnIndex": "2",
+              "RowIndex": "5",
+              "ParameterName": "HeaderuserId"
+            },
+            {
+              "ColumnIndex": "3",
+              "RowIndex": "5",
+              "ParameterName": "VisibleuserId"
+            },
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "6",
+              "ParameterName": "Headertip"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "6",
+              "ParameterName": "Visibletip"
+            },
+            {
+              "ColumnIndex": "2",
+              "RowIndex": "6",
+              "ParameterName": "Headerterminal"
+            },
+            {
+              "ColumnIndex": "3",
+              "RowIndex": "6",
+              "ParameterName": "Visibleterminal"
+            },
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "7",
+              "ParameterName": "Headertimezone"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "7",
+              "ParameterName": "Visibletimezone"
+            },
+            {
+              "ColumnIndex": "2",
+              "RowIndex": "7",
+              "ParameterName": "HeaderTarih"
+            },
+            {
+              "ColumnIndex": "3",
+              "RowIndex": "7",
+              "ParameterName": "VisibleTarih"
+            },
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "8",
+              "ParameterName": "Headergiris"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "8",
+              "ParameterName": "Visiblegiris"
+            },
+            {
+              "ColumnIndex": "2",
+              "RowIndex": "8",
+              "ParameterName": "Headercikis"
+            },
+            {
+              "ColumnIndex": "3",
+              "RowIndex": "8",
+              "ParameterName": "Visiblecikis"
+            },
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "9",
+              "ParameterName": "HeaderSure"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "9",
+              "ParameterName": "VisibleSure"
+            },
+            {
+              "ColumnIndex": "2",
+              "RowIndex": "9",
+              "ParameterName": "Headergmap"
+            },
+            {
+              "ColumnIndex": "3",
+              "RowIndex": "9",
+              "ParameterName": "Visiblegmap"
+            },
+            {
+              "ColumnIndex": "0",
+              "RowIndex": "10",
+              "ParameterName": "Headercmap"
+            },
+            {
+              "ColumnIndex": "1",
+              "RowIndex": "10",
+              "ParameterName": "Visiblecmap"
+            }
+          ]
+        }
+      }
+    },
+    "rd:ReportUnitType": "Inch",
+    "rd:PageUnit": "Px",
+    "df:DefaultFontFamily": "Segoe UI"
+  }
+}

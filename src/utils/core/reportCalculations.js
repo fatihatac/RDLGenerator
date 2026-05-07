@@ -60,7 +60,7 @@ function getTotalTableWidth(tableItem, settings = DEFAULT_LAYOUT_SETTINGS) {
 // Her item tipinin RDL'deki tahmini yüksekliği (pt)
 // Top birikimli hesabında kullanılır.
 // ---------------------------------------------------------------------------
-export function getItemHeight(item, settings = DEFAULT_LAYOUT_SETTINGS) {
+function getItemHeight(item, settings = DEFAULT_LAYOUT_SETTINGS) {
   switch (item.type) {
     case ITEM_TYPES.TITLE:
     case ITEM_TYPES.DATE_RANGE:
@@ -91,7 +91,7 @@ export function getItemHeight(item, settings = DEFAULT_LAYOUT_SETTINGS) {
 // Birikimli Top hesabı override olan itemları atlamaz ama cursor'ı yine
 // o itemın yüksekliği kadar ilerletir (layout bütünlüğü için).
 // ---------------------------------------------------------------------------
-export function computePositions(items, settings = DEFAULT_LAYOUT_SETTINGS) {
+function computePositions(items, settings = DEFAULT_LAYOUT_SETTINGS) {
   let cursor = 0;
   return items.map((item) => {
     const height = getItemHeight(item, settings);
@@ -105,11 +105,6 @@ export function computePositions(items, settings = DEFAULT_LAYOUT_SETTINGS) {
 
     return { ...item, _top, _left };
   });
-}
-
-/** @deprecated computePositions kullanın */
-export function computeTopPositions(items, settings = DEFAULT_LAYOUT_SETTINGS) {
-  return computePositions(items, settings);
 }
 
 function calculateReportValues(originalItems, settings = DEFAULT_LAYOUT_SETTINGS) {
@@ -136,7 +131,6 @@ function calculateReportValues(originalItems, settings = DEFAULT_LAYOUT_SETTINGS
     ? Math.max(tableWidth, settings.chartWidth)
     : tableWidth;
 
-  // Dinamik yükseklik: tüm itemların tahmini yüksekliklerinin toplamı
   const TOTAL_REPORT_HEIGHT = items.reduce((sum, item) => {
     const h = getItemHeight(item, settings);
     return h > 0 ? sum + h + settings.itemSpacing : sum;
@@ -155,11 +149,4 @@ function calculateReportValues(originalItems, settings = DEFAULT_LAYOUT_SETTINGS
   };
 }
 
-export {
-  getDataAndTableItems,
-  getRowCount,
-  getNumberColumnWidth,
-  getMaxColumns,
-  getTotalTableWidth,
-  calculateReportValues,
-};
+export { computePositions, getItemHeight, calculateReportValues };

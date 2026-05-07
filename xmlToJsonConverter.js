@@ -7,7 +7,13 @@ const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = path.dirname(__filename);
 
-const xmlPath = path.join(__dirname, 'src', 'assets', 'ARACFORM.xml');
+const assetsDir = path.join(__dirname, 'src', 'assets');
+const outputDir = path.join(__dirname, 'src', 'templates');
+
+// Create output directory if it doesn't exist
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir, { recursive: true });
+}
 
 const cleanXmlJson = (obj) => {
   if (typeof obj !== 'object' || obj === null) {
@@ -20,13 +26,13 @@ const cleanXmlJson = (obj) => {
 
   const cleaned = {};
   for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
       cleaned[key] = cleanXmlJson(obj[key]);
     }
   }
 
   // Boş olan $t değerlerini temizle
-  if (cleaned.hasOwnProperty('$t') && cleaned['$t'] === '') {
+  if (Object.prototype.hasOwnProperty.call(cleaned, '$t') && cleaned['$t'] === '') {
     delete cleaned['$t'];
   }
 
@@ -40,13 +46,23 @@ const cleanXmlJson = (obj) => {
 };
 
 try {
-   const xmlContent = fs.readFileSync(xmlPath, 'utf8');
-   const rawJson = xml2json.toJson(xmlContent, { object: true, alternateTextNode: false });
-   const myJson = cleanXmlJson(rawJson);
-  const outputDir = path.join(__dirname, 'src', 'templates');
-  const outputPath = path.join(outputDir, 'ARACFORM.json');
-  fs.writeFileSync(outputPath, JSON.stringify(myJson, null, 2), 'utf8');
-  console.log(`JSON saved to ${outputPath}`);
+    const xmlFiles = fs.readdirSync(assetsDir).filter(file => file.endsWith('.xml'));
+
+    xmlFiles.forEach(file => {
+        const xmlPath = path.join(assetsDir, file);
+        const jsonFile = file.replace('.xml', '.json');
+        const outputPath = path.join(outputDir, jsonFile);
+
+        try {
+            const xmlContent = fs.readFileSync(xmlPath, 'utf8');
+            const rawJson = xml2json.toJson(xmlContent, { object: true, alternateTextNode: false });
+            const myJson = cleanXmlJson(rawJson);
+            fs.writeFileSync(outputPath, JSON.stringify(myJson, null, 2), 'utf8');
+            console.log(`JSON saved to ${outputPath}`);
+        } catch (err) {
+            console.error(`Error converting ${file}:`, err.message);
+        }
+    });
 } catch (error) {
-  console.error('Error converting XML to JSON:', error);
+    console.error('Error reading assets directory:', error);
 }

@@ -4,10 +4,10 @@ import {
   calculateReportValues,
   computePositions,
 } from "../../core/reportCalculations.js";
-import { XMLBuilder } from "fast-xml-parser";
 import buildDataSection from "../buildDataSection.js";
 import { buildReportItems } from "../buildItems.js";
 import useLayoutStore from "../../../store/useLayoutStore.js";
+import { buildRDLXml } from "../rdlXmlBuilder";
 
 function generateStandardRDL(items) {
   const settings = useLayoutStore.getState().layoutSettings;
@@ -107,15 +107,7 @@ function generateStandardRDL(items) {
     },
   };
 
-  const builder = new XMLBuilder({
-    ignoreAttributes: false,
-    format: true,
-    attributeNamePrefix: "@_",
-    suppressEmptyNode: true,
-  });
-
-  const xmlOutput = builder.build(reportObj);
-  return `<?xml version="1.0" encoding="utf-8"?>\n${xmlOutput}`;
+   return buildRDLXml(reportObj);
 }
 
 export { generateStandardRDL };

@@ -1,0 +1,2651 @@
+{
+  "Report": {
+    "xmlns:df": "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily",
+    "xmlns:rd": "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner",
+    "xmlns": "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition",
+    "ReportSections": {
+      "ReportSection": {
+        "Body": {
+          "Style": {
+            "Border": {
+              "Style": "None"
+            }
+          },
+          "ReportItems": {
+            "Tablix": {
+              "Name": "Tablix2",
+              "Left": "0pt",
+              "Top": "0pt",
+              "Height": "226.5pt",
+              "Width": "522.0187pt",
+              "Style": {
+                "Border": {
+                  "Style": "None"
+                }
+              },
+              "DataSetName": "DataSet1",
+              "PageBreak": {
+                "BreakLocation": "StartAndEnd"
+              },
+              "TablixBody": {
+                "TablixColumns": {
+                  "TablixColumn": {
+                    "Width": "521.25pt"
+                  }
+                },
+                "TablixRows": {
+                  "TablixRow": [
+                    {
+                      "Height": "1.5pt",
+                      "TablixCells": {
+                        "TablixCell": {
+                          "CellContents": {
+                            "Textbox": {
+                              "Name": "TextBox74",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "1.5pt",
+                              "Width": "521.25pt",
+                              "Style": {
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "CanGrow": "true",
+                              "KeepTogether": "true",
+                              "Paragraphs": {
+                                "Paragraph": {
+                                  "TextRuns": {
+                                    "TextRun": {
+                                      "Value": "=Fields!AdSoyad.Value",
+                                      "Style": {
+                                        "FontFamily": "Trebuchet MS",
+                                        "FontSize": "9.75pt",
+                                        "FontWeight": "Bold",
+                                        "Color": "#22205f"
+                                      }
+                                    }
+                                  },
+                                  "Style": {
+                                    "TextAlign": "Center"
+                                  }
+                                }
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "Height": "225pt",
+                      "TablixCells": {
+                        "TablixCell": {
+                          "CellContents": {
+                            "Rectangle": {
+                              "Name": "Rectangle1",
+                              "Left": "0in",
+                              "Top": "0in",
+                              "Height": "225pt",
+                              "Width": "521.25pt",
+                              "ToolTip": {},
+                              "Style": {
+                                "Border": {
+                                  "Color": "LightGrey",
+                                  "Style": "Solid"
+                                }
+                              },
+                              "ReportItems": {
+                                "Tablix": {
+                                  "Name": "Tablix1",
+                                  "Left": "0.77344pt",
+                                  "Top": "0pt",
+                                  "Height": "63.6pt",
+                                  "Width": "507.75pt",
+                                  "Style": {
+                                    "Border": {
+                                      "Style": "None"
+                                    }
+                                  },
+                                  "DataSetName": "DataSet1",
+                                  "TablixBody": {
+                                    "TablixColumns": {
+                                      "TablixColumn": [
+                                        {
+                                          "Width": "37.5pt"
+                                        },
+                                        {
+                                          "Width": "21pt"
+                                        },
+                                        {
+                                          "Width": "25.5pt"
+                                        },
+                                        {
+                                          "Width": "24pt"
+                                        },
+                                        {
+                                          "Width": "21pt"
+                                        },
+                                        {
+                                          "Width": "36pt"
+                                        },
+                                        {
+                                          "Width": "25.5pt"
+                                        },
+                                        {
+                                          "Width": "25.5pt"
+                                        },
+                                        {
+                                          "Width": "19.5pt"
+                                        },
+                                        {
+                                          "Width": "20.25pt"
+                                        },
+                                        {
+                                          "Width": "21pt"
+                                        },
+                                        {
+                                          "Width": "23.25pt"
+                                        },
+                                        {
+                                          "Width": "48pt"
+                                        },
+                                        {
+                                          "Width": "63.75pt"
+                                        },
+                                        {
+                                          "Width": "92.25pt"
+                                        }
+                                      ]
+                                    },
+                                    "TablixRows": {
+                                      "TablixRow": [
+                                        {
+                                          "Height": "49.5pt",
+                                          "TablixCells": {
+                                            "TablixCell": [
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox52",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "37.5pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Tarih",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox53",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "21pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Giriş",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox54",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "25.5pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Ara Çıkış",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox55",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "24pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Ara Giriş",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox56",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "21pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Çıkış",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox57",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "36pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Mesai Açıklama",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox58",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "25.5pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Mesai Süresi",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox59",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "25.5pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Normal Mesai",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox60",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "19.5pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Hafta Tatili",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox61",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "20.25pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Fazla Mesai",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox62",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "21pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "HT Fazla Mesai",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox63",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "23.25pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "RT Fazla Mesai",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox64",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "48pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Devamsız",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox65",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "63.75pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "Ücretli İzin Saat",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox67",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "49.5pt",
+                                                    "Width": "92.25pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Bottom",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "İzin Durumu",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "6.75pt",
+                                                              "FontWeight": "Bold",
+                                                              "Color": "#339898"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "Height": "13.5pt",
+                                          "TablixCells": {
+                                            "TablixCell": [
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox38",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "37.5pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!Tarih.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "dd/MM/yyyy",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox39",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "21pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!GirisSaati.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "rd:FormatType": {
+                                                                "rd:Format": "time",
+                                                                "rd:Representation": {},
+                                                                "rd:NegativeValue": {},
+                                                                "rd:Culture": {}
+                                                              },
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox40",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "25.5pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!AraCikisSaati.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox41",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "24pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!AraGirisSaati.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox42",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "21pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!CikisSaati.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox43",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "36pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!MesaiAciklama.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox44",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "25.5pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!HIMesaiSuresi.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox66",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "25.5pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!NormalMesai.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox451",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "19.5pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!HaftaTatiliSure.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox47",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "20.25pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!HIFazlaMesai.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox48",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "21pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!HTFazlaMesai.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox49",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "23.25pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!ResmiTatiliFM.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox50",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "48pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!EksikMesai.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox51",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "63.75pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!UcretliIzinSure.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Format": "HH:mm",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              },
+                                              {
+                                                "CellContents": {
+                                                  "Textbox": {
+                                                    "Name": "TextBox68",
+                                                    "Left": "0in",
+                                                    "Top": "0in",
+                                                    "Height": "13.5pt",
+                                                    "Width": "92.25pt",
+                                                    "Style": {
+                                                      "VerticalAlign": "Middle",
+                                                      "PaddingLeft": "2pt",
+                                                      "PaddingRight": "2pt",
+                                                      "PaddingTop": "2pt",
+                                                      "PaddingBottom": "2pt",
+                                                      "Border": {
+                                                        "Color": "LightGrey",
+                                                        "Style": "Solid"
+                                                      }
+                                                    },
+                                                    "CanGrow": "true",
+                                                    "KeepTogether": "true",
+                                                    "Paragraphs": {
+                                                      "Paragraph": {
+                                                        "TextRuns": {
+                                                          "TextRun": {
+                                                            "Value": "=Fields!IzinAd.Value",
+                                                            "Style": {
+                                                              "FontFamily": "Trebuchet MS",
+                                                              "FontSize": "5.25pt",
+                                                              "Color": "black"
+                                                            }
+                                                          }
+                                                        },
+                                                        "Style": {}
+                                                      }
+                                                    }
+                                                  },
+                                                  "ColSpan": "1",
+                                                  "RowSpan": "1"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "TablixColumnHierarchy": {
+                                    "TablixMembers": {
+                                      "TablixMember": [
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {},
+                                        {}
+                                      ]
+                                    }
+                                  },
+                                  "TablixRowHierarchy": {
+                                    "TablixMembers": {
+                                      "TablixMember": [
+                                        {
+                                          "KeepWithGroup": "After"
+                                        },
+                                        {
+                                          "Group": {
+                                            "Name": "Details"
+                                          },
+                                          "TablixMembers": {
+                                            "TablixMember": {}
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                "Textbox": [
+                                  {
+                                    "Name": "TextBox1",
+                                    "Left": "269.0625pt",
+                                    "Top": "96.375pt",
+                                    "Height": "16.5pt",
+                                    "Width": "67.5pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Color": "LightGrey",
+                                        "Style": "Solid"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "Mesai Süresi",
+                                            "Style": {
+                                              "FontFamily": "Trebuchet MS",
+                                              "FontSize": "6pt",
+                                              "Format": "HH:mm",
+                                              "rd:FormatType": {
+                                                "rd:Format": "time",
+                                                "rd:Representation": {},
+                                                "rd:NegativeValue": {},
+                                                "rd:Culture": {}
+                                              },
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "TextBox87",
+                                    "Left": "269.0625pt",
+                                    "Top": "112.5pt",
+                                    "Height": "16.5pt",
+                                    "Width": "67.5pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Color": "LightGrey",
+                                        "Style": "Solid"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "Normal Mesai",
+                                            "Style": {
+                                              "FontFamily": "Trebuchet MS",
+                                              "FontSize": "6pt",
+                                              "Format": "HH:mm",
+                                              "rd:FormatType": {
+                                                "rd:Format": "time",
+                                                "rd:Representation": {},
+                                                "rd:NegativeValue": {},
+                                                "rd:Culture": {}
+                                              },
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "TextBox91",
+                                    "Left": "269.0625pt",
+                                    "Top": "128.25pt",
+                                    "Height": "15.75pt",
+                                    "Width": "67.5pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Color": "LightGrey",
+                                        "Style": "Solid"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "Hafta Tatil",
+                                            "Style": {
+                                              "FontFamily": "Trebuchet MS",
+                                              "FontSize": "6pt",
+                                              "Format": "HH:mm",
+                                              "rd:FormatType": {
+                                                "rd:Format": "time",
+                                                "rd:Representation": {},
+                                                "rd:NegativeValue": {},
+                                                "rd:Culture": {}
+                                              },
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "TextBox92",
+                                    "Left": "269.0625pt",
+                                    "Top": "143.25pt",
+                                    "Height": "15.75pt",
+                                    "Width": "67.5pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Color": "LightGrey",
+                                        "Style": "Solid"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "Fazla Mesai",
+                                            "Style": {
+                                              "FontFamily": "Trebuchet MS",
+                                              "FontSize": "6pt",
+                                              "Format": "HH:mm",
+                                              "rd:FormatType": {
+                                                "rd:Format": "time",
+                                                "rd:Representation": {},
+                                                "rd:NegativeValue": {},
+                                                "rd:Culture": {}
+                                              },
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "TextBox93",
+                                    "Left": "269.0625pt",
+                                    "Top": "158.25pt",
+                                    "Height": "15.75pt",
+                                    "Width": "67.5pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Color": "LightGrey",
+                                        "Style": "Solid"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "HT Fazla Mesai",
+                                            "Style": {
+                                              "FontFamily": "Trebuchet MS",
+                                              "FontSize": "6pt",
+                                              "Format": "HH:mm",
+                                              "rd:FormatType": {
+                                                "rd:Format": "time",
+                                                "rd:Representation": {},
+                                                "rd:NegativeValue": {},
+                                                "rd:Culture": {}
+                                              },
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "TextBox94",
+                                    "Left": "269.0625pt",
+                                    "Top": "173.25pt",
+                                    "Height": "15.75pt",
+                                    "Width": "67.5pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Color": "LightGrey",
+                                        "Style": "Solid"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "Resmi Tatil Fazla Mesai",
+                                            "Style": {
+                                              "FontFamily": "Trebuchet MS",
+                                              "FontSize": "6pt",
+                                              "Format": "HH:mm",
+                                              "rd:FormatType": {
+                                                "rd:Format": "time",
+                                                "rd:Representation": {},
+                                                "rd:NegativeValue": {},
+                                                "rd:Culture": {}
+                                              },
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "TextBox96",
+                                    "Left": "269.0625pt",
+                                    "Top": "188.625pt",
+                                    "Height": "15.75pt",
+                                    "Width": "67.5pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Color": "LightGrey",
+                                        "Style": "Solid"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": [
+                                            {
+                                              "Value": "Toplam Devamsızlık",
+                                              "Style": {
+                                                "FontFamily": "Trebuchet MS",
+                                                "FontSize": "6pt",
+                                                "Format": "HH:mm",
+                                                "rd:FormatType": {
+                                                  "rd:Format": "time",
+                                                  "rd:Representation": {},
+                                                  "rd:NegativeValue": {},
+                                                  "rd:Culture": {}
+                                                },
+                                                "Color": "black"
+                                              }
+                                            },
+                                            {
+                                              "Value": {},
+                                              "Style": {
+                                                "FontFamily": "Trebuchet MS",
+                                                "FontSize": "6pt",
+                                                "Color": "black"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "TextBox97",
+                                    "Left": "269.0625pt",
+                                    "Top": "203.25pt",
+                                    "Height": "15.75pt",
+                                    "Width": "67.5pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Color": "LightGrey",
+                                        "Style": "Solid"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "Ücretli İzin Süresi",
+                                            "Style": {
+                                              "FontFamily": "Trebuchet MS",
+                                              "FontSize": "6pt",
+                                              "Format": "HH:mm",
+                                              "rd:FormatType": {
+                                                "rd:Format": "time",
+                                                "rd:Representation": {},
+                                                "rd:NegativeValue": {},
+                                                "rd:Culture": {}
+                                              },
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "TextBox99",
+                                    "Left": "269.625pt",
+                                    "Top": "80.25pt",
+                                    "Height": "16.5pt",
+                                    "Width": "240pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Color": "LightGrey",
+                                        "Style": "Solid"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": [
+                                            {
+                                              "Value": "TOPLAM SÜRELER:",
+                                              "Style": {
+                                                "FontFamily": "Trebuchet MS",
+                                                "FontSize": "6.75pt",
+                                                "Format": "HH:mm",
+                                                "rd:FormatType": {
+                                                  "rd:Format": "time",
+                                                  "rd:Representation": {},
+                                                  "rd:NegativeValue": {},
+                                                  "rd:Culture": {}
+                                                },
+                                                "Color": "black"
+                                              }
+                                            },
+                                            {
+                                              "Value": "",
+                                              "Style": {
+                                                "FontFamily": "Trebuchet MS",
+                                                "FontSize": "6.75pt",
+                                                "FontWeight": "Bold",
+                                                "Format": "HH:mm",
+                                                "rd:FormatType": {
+                                                  "rd:Format": "time",
+                                                  "rd:Representation": {},
+                                                  "rd:NegativeValue": {},
+                                                  "rd:Culture": {}
+                                                },
+                                                "Color": "black"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "ToplamHIMesaiSuresi1",
+                                    "Left": "340.5pt",
+                                    "Top": "96pt",
+                                    "Height": "16.5pt",
+                                    "Width": "135pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Style": "None"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "=Fields!ToplamHIMesaiSuresi.Value",
+                                            "Style": {
+                                              "FontSize": "6.24975pt",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "ToplamNormalMesai1",
+                                    "Left": "340.5pt",
+                                    "Top": "111.75pt",
+                                    "Height": "16.5pt",
+                                    "Width": "135pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Style": "None"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "=Fields!ToplamNormalMesai.Value",
+                                            "Style": {
+                                              "FontSize": "6.24975pt",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "ToplamHaftaTatiliSure1",
+                                    "Left": "340.5pt",
+                                    "Top": "128.25pt",
+                                    "Height": "16.5pt",
+                                    "Width": "135pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Style": "None"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "=Fields!ToplamHaftaTatiliSure.Value",
+                                            "Style": {
+                                              "FontSize": "6.24975pt",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "ToplamHIFazlaMesai1",
+                                    "Left": "340.5pt",
+                                    "Top": "142.875pt",
+                                    "Height": "16.5pt",
+                                    "Width": "135pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Style": "None"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "=Fields!ToplamHIFazlaMesai.Value",
+                                            "Style": {
+                                              "FontSize": "6.24975pt",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "ToplamHTFazlaMesai1",
+                                    "Left": "340.5pt",
+                                    "Top": "158.625pt",
+                                    "Height": "16.5pt",
+                                    "Width": "135pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Style": "None"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "=Fields!ToplamHTFazlaMesai.Value",
+                                            "Style": {
+                                              "FontSize": "6.24975pt",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "ToplamResmiTatilFazlaMesai1",
+                                    "Left": "340.5pt",
+                                    "Top": "173.625pt",
+                                    "Height": "16.5pt",
+                                    "Width": "135pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Style": "None"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "=Fields!ToplamResmiTatilFazlaMesai.Value",
+                                            "Style": {
+                                              "FontSize": "6.24975pt",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "ToplamDevamsızlık1",
+                                    "Left": "340.5pt",
+                                    "Top": "188.25pt",
+                                    "Height": "16.5pt",
+                                    "Width": "135pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Style": "None"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "=Fields!ToplamDevamsızlık.Value",
+                                            "Style": {
+                                              "FontSize": "6.24975pt",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "Name": "ToplamUcretliIzinSure1",
+                                    "Left": "340.5pt",
+                                    "Top": "203.625pt",
+                                    "Height": "16.5pt",
+                                    "Width": "135pt",
+                                    "Style": {
+                                      "PaddingLeft": "2pt",
+                                      "PaddingRight": "2pt",
+                                      "PaddingTop": "2pt",
+                                      "PaddingBottom": "2pt",
+                                      "Border": {
+                                        "Style": "None"
+                                      }
+                                    },
+                                    "CanGrow": "true",
+                                    "KeepTogether": "true",
+                                    "Paragraphs": {
+                                      "Paragraph": {
+                                        "TextRuns": {
+                                          "TextRun": {
+                                            "Value": "=Fields!ToplamUcretliIzinSure.Value",
+                                            "Style": {
+                                              "FontSize": "6.24975pt",
+                                              "Color": "black"
+                                            }
+                                          }
+                                        },
+                                        "Style": {}
+                                      }
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "ColSpan": "1",
+                            "RowSpan": "1"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "TablixColumnHierarchy": {
+                "TablixMembers": {
+                  "TablixMember": {}
+                }
+              },
+              "TablixRowHierarchy": {
+                "TablixMembers": {
+                  "TablixMember": {
+                    "Group": {
+                      "Name": "AdSoyad1",
+                      "GroupExpressions": {
+                        "GroupExpression": "=Fields!AdSoyad.Value"
+                      },
+                      "PageBreak": {
+                        "BreakLocation": "End"
+                      }
+                    },
+                    "SortExpressions": {
+                      "SortExpression": {
+                        "Value": "=Fields!AdSoyad.Value"
+                      }
+                    },
+                    "TablixHeader": {
+                      "Size": "0.75000pt",
+                      "CellContents": {
+                        "Textbox": {
+                          "Name": "AdSoyad11",
+                          "Left": "0in",
+                          "Top": "0in",
+                          "Height": "1.5pt",
+                          "Width": "0.75000pt",
+                          "Visibility": {
+                            "Hidden": "true"
+                          },
+                          "Style": {
+                            "Border": {
+                              "Color": "LightGrey",
+                              "Style": "Solid"
+                            }
+                          },
+                          "CanGrow": "true",
+                          "KeepTogether": "true",
+                          "Paragraphs": {
+                            "Paragraph": {
+                              "TextRuns": {
+                                "TextRun": {
+                                  "Value": "=Fields!AdSoyad.Value",
+                                  "Style": {
+                                    "Color": "black"
+                                  }
+                                }
+                              },
+                              "Style": {}
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "TablixMembers": {
+                      "TablixMember": [
+                        {},
+                        {}
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "Height": "702.75pt"
+        },
+        "Width": "555.75pt",
+        "Page": {
+          "PageHeight": "841.68pt",
+          "PageWidth": "595.44pt",
+          "PageHeader": {
+            "Style": {
+              "Border": {
+                "Style": "None"
+              }
+            },
+            "Height": "42pt",
+            "PrintOnFirstPage": "true",
+            "PrintOnLastPage": "true",
+            "ReportItems": {
+              "Textbox": {
+                "Name": "TextBox31",
+                "Left": "0pt",
+                "Top": "3.75pt",
+                "Height": "37.5pt",
+                "Width": "523.2148pt",
+                "Style": {
+                  "VerticalAlign": "Middle",
+                  "PaddingLeft": "2pt",
+                  "PaddingRight": "2pt",
+                  "PaddingTop": "2pt",
+                  "PaddingBottom": "2pt",
+                  "Border": {
+                    "Style": "None"
+                  }
+                },
+                "CanGrow": "true",
+                "KeepTogether": "true",
+                "Paragraphs": {
+                  "Paragraph": {
+                    "TextRuns": {
+                      "TextRun": [
+                        {
+                          "Value": "Puantaj Kartı Raporu",
+                          "Style": {
+                            "FontWeight": "Bold",
+                            "Color": "black"
+                          }
+                        },
+                        {
+                          "Value": "",
+                          "Style": {
+                            "FontWeight": "Bold",
+                            "TextDecoration": "Underline",
+                            "Color": "black"
+                          }
+                        }
+                      ]
+                    },
+                    "Style": {
+                      "TextAlign": "Center"
+                    }
+                  }
+                }
+              },
+              "Line": {
+                "Name": "Line1",
+                "Left": "0pt",
+                "Top": "40.5pt",
+                "Height": "0pt",
+                "Width": "523.4883pt",
+                "Style": {
+                  "Border": {
+                    "Style": "Solid"
+                  }
+                }
+              }
+            }
+          },
+          "LeftMargin": "18.75pt",
+          "RightMargin": "18.75pt",
+          "TopMargin": "18.75pt",
+          "BottomMargin": "18.75pt",
+          "Style": {
+            "Border": {
+              "Style": "None"
+            }
+          }
+        }
+      }
+    },
+    "AutoRefresh": "0",
+    "DataSources": {
+      "DataSource": {
+        "Name": "DataSource1",
+        "ConnectionProperties": {
+          "DataProvider": "JSON",
+          "ConnectString": "{\"Data\":\"[{\\\"Sicilno\\\":\\\"00000155\\\",\\\"SicilID\\\":288,\\\"AdSoyad\\\":\\\"MUSTAFA KOÇ\\\",\\\"Firma\\\":\\\"MEYER GROUP\\\",\\\"Bolum\\\":\\\"İŞ GELİŞTİRME ve OPERASYON DİREKTÖRLÜĞÜ\\\",\\\"Pozisyon\\\":\\\"Kıdemli Yazılım Uygulama Danışmanı\\\",\\\"Tarih\\\":\\\"2022-04-09T00:00:00\\\",\\\"GirisTarihi\\\":\\\"\\\",\\\"GirisSaati\\\":\\\"\\\",\\\"AraCikisSaati\\\":\\\"\\\",\\\"AraGirisSaati\\\":\\\"\\\",\\\"CikisTarihi\\\":\\\"\\\",\\\"CikisSaati\\\":\\\"\\\",\\\"MesaiAciklama\\\":\\\"08:00 08:00\\\",\\\"HIMesaiSuresi\\\":\\\"07:30\\\",\\\"NormalMesai\\\":\\\"07:30\\\",\\\"HaftaTatiliSure\\\":\\\"\\\",\\\"ResmiTatilSure\\\":\\\"\\\",\\\"HIFazlaMesai\\\":\\\"\\\",\\\"HTFazlaMesai\\\":\\\"\\\",\\\"ResmiTatiliFM\\\":\\\"\\\",\\\"ResmiTatil\\\":\\\"\\\",\\\"EksikMesai\\\":\\\"\\\",\\\"UcretliIzinSure\\\":\\\"\\\",\\\"UcretsizIzinSure\\\":\\\"\\\",\\\"OnaylananFazlaMesai\\\":\\\"\\\",\\\"IzinAd\\\":\\\"\\\",\\\"ToplamHIMesaiSuresi\\\":\\\"256:30\\\",\\\"ToplamHaftaTatiliSure\\\":\\\"00:00\\\",\\\"ResmiTatilSure\\\":\\\"00:00\\\",\\\"ToplamNormalMesai\\\":\\\"256:30\\\",\\\"ToplamHIFazlaMesai\\\":\\\"00:00\\\",\\\"ToplamHTFazlaMesai\\\":\\\"00:00\\\",\\\"ToplamResmiTatilFazlaMesai\\\":\\\"00:00\\\",\\\"ToplamDevamsızlık\\\":\\\"00:00\\\",\\\"ToplamUcretliIzinSure\\\":\\\"00:00\\\",\\\"ToplamUcretsizIzinSure\\\":\\\"00:00\\\",\\\"ToplamOnaylananFazlaMesai\\\":\\\"00:00\\\",\\\"TarihAralik\\\":\\\"01.04.2022-30.04.2022\\\"},{\\\"Sicilno\\\":\\\"\\\",\\\"SicilID\\\":456,\\\"AdSoyad\\\":\\\"MİNE KILINÇKAYA\\\",\\\"Firma\\\":\\\"MEYER GROUP\\\",\\\"Bolum\\\":\\\"İŞ GELİŞTİRME ve OPERASYON DİREKTÖRLÜĞÜ\\\",\\\"Pozisyon\\\":\\\"Yazılım Uygulama Danışmanı\\\",\\\"Tarih\\\":\\\"2022-04-09T00:00:00\\\",\\\"GirisTarihi\\\":\\\"\\\",\\\"GirisSaati\\\":\\\"\\\",\\\"AraCikisSaati\\\":\\\"\\\",\\\"AraGirisSaati\\\":\\\"\\\",\\\"CikisTarihi\\\":\\\"\\\",\\\"CikisSaati\\\":\\\"\\\",\\\"MesaiAciklama\\\":\\\"08:00 08:00\\\",\\\"HIMesaiSuresi\\\":\\\"07:30\\\",\\\"NormalMesai\\\":\\\"07:30\\\",\\\"HaftaTatiliSure\\\":\\\"\\\",\\\"ResmiTatilSure\\\":\\\"\\\",\\\"HIFazlaMesai\\\":\\\"\\\",\\\"HTFazlaMesai\\\":\\\"\\\",\\\"ResmiTatiliFM\\\":\\\"\\\",\\\"ResmiTatil\\\":\\\"\\\",\\\"EksikMesai\\\":\\\"\\\",\\\"UcretliIzinSure\\\":\\\"\\\",\\\"UcretsizIzinSure\\\":\\\"\\\",\\\"OnaylananFazlaMesai\\\":\\\"\\\",\\\"IzinAd\\\":\\\"\\\",\\\"ToplamHIMesaiSuresi\\\":\\\"256:30\\\",\\\"ToplamHaftaTatiliSure\\\":\\\"00:00\\\",\\\"ResmiTatilSure\\\":\\\"00:00\\\",\\\"ToplamNormalMesai\\\":\\\"256:30\\\",\\\"ToplamHIFazlaMesai\\\":\\\"00:00\\\",\\\"ToplamHTFazlaMesai\\\":\\\"00:00\\\",\\\"ToplamResmiTatilFazlaMesai\\\":\\\"00:00\\\",\\\"ToplamDevamsızlık\\\":\\\"00:00\\\",\\\"ToplamUcretliIzinSure\\\":\\\"00:00\\\",\\\"ToplamUcretsizIzinSure\\\":\\\"00:00\\\",\\\"ToplamOnaylananFazlaMesai\\\":\\\"00:00\\\",\\\"TarihAralik\\\":\\\"01.04.2022-30.04.2022\\\"}]\",\"DataMode\":\"inline\",\"URL\":\"\"}"
+        },
+        "rd:ImpersonateUser": "false"
+      }
+    },
+    "DataSets": {
+      "DataSet": {
+        "Name": "DataSet1",
+        "Fields": {
+          "Field": [
+            {
+              "Name": "Sicilno",
+              "DataField": "Sicilno",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "SicilID",
+              "DataField": "SicilID",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "AdSoyad",
+              "DataField": "AdSoyad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Firma",
+              "DataField": "Firma",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Bolum",
+              "DataField": "Bolum",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Pozisyon",
+              "DataField": "Pozisyon",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Tarih",
+              "DataField": "Tarih",
+              "rd:TypeName": "System.DateTime"
+            },
+            {
+              "Name": "GirisTarihi",
+              "DataField": "GirisTarihi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "GirisSaati",
+              "DataField": "GirisSaati",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "AraCikisSaati",
+              "DataField": "AraCikisSaati",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "AraGirisSaati",
+              "DataField": "AraGirisSaati",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "CikisTarihi",
+              "DataField": "CikisTarihi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "CikisSaati",
+              "DataField": "CikisSaati",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "MesaiAciklama",
+              "DataField": "MesaiAciklama",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "HIMesaiSuresi",
+              "DataField": "HIMesaiSuresi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "NormalMesai",
+              "DataField": "NormalMesai",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "HaftaTatiliSure",
+              "DataField": "HaftaTatiliSure",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "HIFazlaMesai",
+              "DataField": "HIFazlaMesai",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "HTFazlaMesai",
+              "DataField": "HTFazlaMesai",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ResmiTatiliFM",
+              "DataField": "ResmiTatiliFM",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ResmiTatil",
+              "DataField": "ResmiTatil",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "EksikMesai",
+              "DataField": "EksikMesai",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "UcretliIzinSure",
+              "DataField": "UcretliIzinSure",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "UcretsizIzinSure",
+              "DataField": "UcretsizIzinSure",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "OnaylananFazlaMesai",
+              "DataField": "OnaylananFazlaMesai",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "IzinAd",
+              "DataField": "IzinAd",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ToplamHIMesaiSuresi",
+              "DataField": "ToplamHIMesaiSuresi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ToplamHaftaTatiliSure",
+              "DataField": "ToplamHaftaTatiliSure",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ResmiTatilSure",
+              "DataField": "ResmiTatilSure",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ToplamNormalMesai",
+              "DataField": "ToplamNormalMesai",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ToplamHIFazlaMesai",
+              "DataField": "ToplamHIFazlaMesai",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ToplamHTFazlaMesai",
+              "DataField": "ToplamHTFazlaMesai",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ToplamResmiTatilFazlaMesai",
+              "DataField": "ToplamResmiTatilFazlaMesai",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ToplamDevamsızlık",
+              "DataField": "ToplamDevamsızlık",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ToplamUcretliIzinSure",
+              "DataField": "ToplamUcretliIzinSure",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ToplamUcretsizIzinSure",
+              "DataField": "ToplamUcretsizIzinSure",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "ToplamOnaylananFazlaMesai",
+              "DataField": "ToplamOnaylananFazlaMesai",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "TarihAralik",
+              "DataField": "TarihAralik",
+              "rd:TypeName": "System.String"
+            }
+          ]
+        },
+        "Query": {
+          "DataSourceName": "DataSource1",
+          "CommandType": "Text",
+          "CommandText": "{\"Name\":\"Result\",\"Columns\":[]}",
+          "QueryDesignerState": {
+            "xmlns": "http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational",
+            "Tables": {
+              "Table": {
+                "Name": "Result",
+                "Schema": "",
+                "Columns": {
+                  "Column": [
+                    {
+                      "Name": "Sicilno",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SicilID",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "AdSoyad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Firma",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Bolum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Gorev",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Pozisyon",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Direktorluk",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Mesai",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Tarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "FazlaMesai",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "OnaylananFM",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "ResmiTatilFM",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "OnaylananRTFM",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Durum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "TarihAralik",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "ggiris",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "GirisSaat",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "gcikis",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "CikisSaat",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    }
+                  ]
+                },
+                "SchemaLevels": {
+                  "SchemaInfo": {
+                    "Name": "Result",
+                    "SchemaType": "Table"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ReportParametersLayout": {
+      "GridLayoutDefinition": {
+        "NumberOfColumns": "4",
+        "NumberOfRows": "2"
+      }
+    },
+    "rd:ReportUnitType": "Inch",
+    "rd:PageUnit": "Px",
+    "df:DefaultFontFamily": "Segoe UI"
+  }
+}

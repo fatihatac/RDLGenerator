@@ -2,47 +2,36 @@ import useReportStore from "../store/useReportStore";
 import { useShallow } from "zustand/react/shallow";
 import { useCallback } from "react";
 
-// ---------------------------------------------------------------------------
-// useTableActions
-// TableEditor için tablo-spesifik action'ları kapsüller.
-// useItemActions'a tamamlayıcı olarak tasarlandı.
-// ---------------------------------------------------------------------------
 export function useTableActions(tableId) {
-  const {
-    storeAddColumn,
-    storeAddRowNumberColumn,
-    storeAddGroup,
-    storeAddSum,
-    storePushHistory,
-  } = useReportStore(
+  const actions = useReportStore(
     useShallow((state) => ({
-      storeAddColumn:          state.addColumn,
-      storeAddRowNumberColumn: state.addRowNumberColumn,
-      storeAddGroup:           state.addGroup,
-      storeAddSum:             state.addSum,
-      storePushHistory:        state.pushHistory,
+      addColumn: state.addColumn,
+      addRowNumberColumn: state.addRowNumberColumn,
+      addGroup: state.addGroup,
+      addSum: state.addSum,
+      pushHistory: state.pushHistory,
     })),
   );
 
   const addColumn = useCallback(() => {
-    storePushHistory();
-    storeAddColumn(tableId);
-  }, [tableId, storeAddColumn, storePushHistory]);
+    actions.pushHistory();
+    actions.addColumn(tableId);
+  }, [tableId, actions]);
 
   const addRowNumberColumn = useCallback(() => {
-    storePushHistory();
-    storeAddRowNumberColumn(tableId);
-  }, [tableId, storeAddRowNumberColumn, storePushHistory]);
+    actions.pushHistory();
+    actions.addRowNumberColumn(tableId);
+  }, [tableId, actions]);
 
   const addGroup = useCallback(() => {
-    storePushHistory();
-    storeAddGroup(tableId);
-  }, [tableId, storeAddGroup, storePushHistory]);
+    actions.pushHistory();
+    actions.addGroup(tableId);
+  }, [tableId, actions]);
 
   const addSum = useCallback(() => {
-    storePushHistory();
-    storeAddSum(tableId);
-  }, [tableId, storeAddSum, storePushHistory]);
+    actions.pushHistory();
+    actions.addSum(tableId);
+  }, [tableId, actions]);
 
   return { addColumn, addRowNumberColumn, addGroup, addSum };
 }

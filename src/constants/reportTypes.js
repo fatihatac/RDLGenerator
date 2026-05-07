@@ -1,9 +1,11 @@
 export const REPORT_TYPES = {
   STANDARD: "standard",
   ARAC_FORM: "arac_form",
-  ACY000019:'acy000019',
-  MAV00001:"mav00001"
-};
+  ACY000019: 'acy000019',
+  MAV00001: "mav00001",
+  PDY00146: 'pdy00146',
+  PDY00107: 'pdy00107'
+};  
 
 export const REPORT_TYPE_OPTIONS = [
   {
@@ -12,19 +14,13 @@ export const REPORT_TYPE_OPTIONS = [
     description: "Tablo, grafik ve başlık bileşenleriyle özel rapor",
   },
   {
-    value: REPORT_TYPES.ARAC_FORM,
-    label: "Araç Talep Formu",
-    description: "Araç talep formu şablonu",
+    value: REPORT_TYPES.PDY00146,
+    label: "Puantaj Detay Raporu",
+    description: "PDY00146",
   },
   {
-    value: REPORT_TYPES.ACY000019,
-    label: "Mobil Giriş Çıkış Raporu",
-    description: "Personel mobil giriş çıkış kayıtları",
-  },
-  {
-    value: REPORT_TYPES.MAV00001,
-    label: "Kritik Avans Raporu",
-    description: "Kritik avans raporu",
-  },
-  
+    value: REPORT_TYPES.PDY00107,
+    label: "Puantaj Kartı Raporu",
+    description: "PDY00107",
+  }
 ];

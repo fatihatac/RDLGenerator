@@ -1,0 +1,2275 @@
+{
+  "Report": {
+    "xmlns:df": "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily",
+    "xmlns:rd": "http://schemas.microsoft.com/SQLServer/reporting/reportdesigner",
+    "xmlns": "http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition",
+    "ReportSections": {
+      "ReportSection": {
+        "Body": {
+          "Style": {
+            "Border": {
+              "Style": "None"
+            }
+          },
+          "ReportItems": {
+            "Textbox": {
+              "Name": "Title1",
+              "Left": "0pt",
+              "Top": "0pt",
+              "Height": "49.5pt",
+              "Width": "682.9968pt",
+              "Style": {
+                "VerticalAlign": "Middle",
+                "PaddingLeft": "2pt",
+                "PaddingRight": "2pt",
+                "PaddingTop": "2pt",
+                "PaddingBottom": "2pt",
+                "Border": {
+                  "Style": "None"
+                }
+              },
+              "CanGrow": "true",
+              "KeepTogether": "true",
+              "Paragraphs": {
+                "Paragraph": {
+                  "TextRuns": {
+                    "TextRun": {
+                      "Value": "KRİTİK AVANS RAPORU",
+                      "Style": {
+                        "FontFamily": "Segoe UI",
+                        "FontSize": "10.5pt",
+                        "FontWeight": "Bold",
+                        "Color": "Black"
+                      }
+                    }
+                  },
+                  "Style": {
+                    "TextAlign": "Center"
+                  }
+                }
+              }
+            },
+            "Tablix": {
+              "Name": "Tablix_Table1",
+              "Left": "0pt",
+              "Top": "49.5pt",
+              "Height": "65.10001pt",
+              "Width": "701.25pt",
+              "Style": {
+                "Border": {
+                  "Style": "None"
+                }
+              },
+              "DataSetName": "DataSet1",
+              "TablixBody": {
+                "TablixColumns": {
+                  "TablixColumn": [
+                    {
+                      "Width": "22.8pt"
+                    },
+                    {
+                      "Width": "51pt"
+                    },
+                    {
+                      "Width": "69.60001pt"
+                    },
+                    {
+                      "Width": "73.2pt"
+                    },
+                    {
+                      "Width": "67.2pt"
+                    },
+                    {
+                      "Width": "51pt"
+                    },
+                    {
+                      "Width": "34.2pt"
+                    },
+                    {
+                      "Width": "55.2pt"
+                    },
+                    {
+                      "Width": "75.60001pt"
+                    },
+                    {
+                      "Width": "52.8pt"
+                    },
+                    {
+                      "Width": "61.8pt"
+                    },
+                    {
+                      "Width": "59.4pt"
+                    }
+                  ]
+                },
+                "TablixRows": {
+                  "TablixRow": [
+                    {
+                      "Height": "28.8pt",
+                      "TablixCells": {
+                        "TablixCell": [
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox1",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "22.8pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "No",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_0",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "51pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Sicil No",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!SicilNo.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_1",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "69.6pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Ad Soyad",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!AdSoyad.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_2",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "73.2pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Bolum",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!BolumAd.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_3",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "67.2pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Gorev",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!GorevAd.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_5",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "51pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Tarih",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!Tarih.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_6",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "34.2pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Taksit",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!Taksit.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_7",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "55.2pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Tutar",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!Tutar.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_9",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "75.6pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Talep Aciklama",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!TalepAciklama.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_10",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "52.8pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Onaylayan",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!Onaylayan.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_12",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "61.8pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Masraf Tipi",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!MasrafTipi.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Header_Table1_13",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "28.8pt",
+                                "Width": "59.4pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "Durum",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "7.5pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                },
+                                "UserSort": {
+                                  "SortExpression": "=Fields!Durum.Value",
+                                  "SortExpressionScope": "Details"
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "Height": "18.6pt",
+                      "TablixCells": {
+                        "TablixCell": [
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox2",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "22.8pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!No.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_0",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "51pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!SicilNo.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_1",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "69.6pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!AdSoyad.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_2",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "73.2pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!Bolum.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_3",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "67.2pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!Gorev.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_5",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "51pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!Tarih.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_6",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "34.2pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!Taksit.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_7",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "55.2pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!Tutar.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_9",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "75.6pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!TalepAciklama.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_10",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "52.8pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!OnaylayanAdSoyad.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_12",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "61.8pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!MasrafTipi.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "Data_Table1_13",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18.6pt",
+                                "Width": "59.4pt",
+                                "Style": {
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Fields!Durum.Value",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75pt",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "Height": "18pt",
+                      "TablixCells": {
+                        "TablixCell": [
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox3",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "22.8pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": {},
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_EMPTY_Column2",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "51pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "TOPLAM",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_EMPTY_Column3",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "69.6pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": {},
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_EMPTY_Column5",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "73.2pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": {},
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_EMPTY_Column6",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "67.2pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": {},
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_EMPTY_Column11",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "51pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": {},
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_EMPTY_Column13",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "34.2pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": {},
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_Sum1",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "55.2pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": "=Sum(Fields!Tutar.Value)",
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_EMPTY_Column16",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "75.6pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": {},
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_EMPTY_Column19",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "52.8pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": {},
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_EMPTY_Column21",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "61.8pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": {},
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          },
+                          {
+                            "CellContents": {
+                              "Textbox": {
+                                "Name": "TextBox_SUM_EMPTY_Column27",
+                                "Left": "0in",
+                                "Top": "0in",
+                                "Height": "18pt",
+                                "Width": "59.4pt",
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "VerticalAlign": "Middle",
+                                  "PaddingLeft": "2pt",
+                                  "PaddingRight": "2pt",
+                                  "PaddingTop": "2pt",
+                                  "PaddingBottom": "2pt",
+                                  "Border": {
+                                    "Color": "LightGrey",
+                                    "Style": "Solid"
+                                  }
+                                },
+                                "CanGrow": "true",
+                                "KeepTogether": "true",
+                                "Paragraphs": {
+                                  "Paragraph": {
+                                    "TextRuns": {
+                                      "TextRun": {
+                                        "Value": {},
+                                        "Style": {
+                                          "FontFamily": "Segoe UI",
+                                          "FontSize": "6.75002pt",
+                                          "FontWeight": "Bold",
+                                          "Color": "black"
+                                        }
+                                      }
+                                    },
+                                    "Style": {
+                                      "FontSize": "10.00003pt",
+                                      "TextAlign": "Left"
+                                    }
+                                  }
+                                }
+                              },
+                              "ColSpan": "1",
+                              "RowSpan": "1"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              "TablixColumnHierarchy": {
+                "TablixMembers": {
+                  "TablixMember": [
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {},
+                    {}
+                  ]
+                }
+              },
+              "TablixRowHierarchy": {
+                "TablixMembers": {
+                  "TablixMember": [
+                    {
+                      "TablixHeader": {
+                        "Size": "27pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "GroupHeaderLabel_Group1_0.jzxzr6mqqz",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "28.8pt",
+                            "Width": "27pt",
+                            "Style": {
+                              "FontSize": "10.00003pt",
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "Para Birimi",
+                                    "Style": {
+                                      "FontFamily": "Segoe UI",
+                                      "FontSize": "7.5pt",
+                                      "FontWeight": "Bold",
+                                      "Color": "black"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "TextAlign": "Left"
+                                }
+                              }
+                            },
+                            "UserSort": {
+                              "SortExpression": "=Fields!ParaBirimi.Value",
+                              "SortExpressionScope": "Group_ParaBirimi_Group1"
+                            }
+                          }
+                        }
+                      },
+                      "TablixMembers": {
+                        "TablixMember": {
+                          "KeepWithGroup": "After"
+                        }
+                      },
+                      "KeepWithGroup": "After"
+                    },
+                    {
+                      "Group": {
+                        "Name": "Group_ParaBirimi_Group1",
+                        "GroupExpressions": {
+                          "GroupExpression": "=Fields!ParaBirimi.Value"
+                        }
+                      },
+                      "SortExpressions": {
+                        "SortExpression": {
+                          "Value": "=Fields!ParaBirimi.Value"
+                        }
+                      },
+                      "TablixHeader": {
+                        "Size": "27pt",
+                        "CellContents": {
+                          "Textbox": {
+                            "Name": "GroupHeaderValue_Group_ParaBirimi_Group1",
+                            "Left": "0in",
+                            "Top": "0in",
+                            "Height": "18.6pt",
+                            "Width": "27pt",
+                            "Style": {
+                              "FontSize": "10.00003pt",
+                              "VerticalAlign": "Middle",
+                              "PaddingLeft": "2pt",
+                              "PaddingRight": "2pt",
+                              "PaddingTop": "2pt",
+                              "PaddingBottom": "2pt",
+                              "Border": {
+                                "Color": "LightGrey",
+                                "Style": "Solid"
+                              }
+                            },
+                            "CanGrow": "true",
+                            "KeepTogether": "true",
+                            "Paragraphs": {
+                              "Paragraph": {
+                                "TextRuns": {
+                                  "TextRun": {
+                                    "Value": "=Fields!ParaBirimi.Value",
+                                    "Style": {
+                                      "FontFamily": "Segoe UI",
+                                      "FontSize": "6.75002pt",
+                                      "FontWeight": "Bold",
+                                      "Color": "black"
+                                    }
+                                  }
+                                },
+                                "Style": {
+                                  "FontSize": "10.00003pt",
+                                  "TextAlign": "Left"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "TablixMembers": {
+                        "TablixMember": [
+                          {
+                            "Group": {
+                              "Name": "Details"
+                            }
+                          },
+                          {
+                            "KeepWithGroup": "Before"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "Height": "555.75pt"
+        },
+        "Width": "702.75pt",
+        "Page": {
+          "PageHeight": "595.44pt",
+          "PageWidth": "841.68pt",
+          "LeftMargin": "18.75pt",
+          "RightMargin": "18.75pt",
+          "TopMargin": "18.75pt",
+          "BottomMargin": "18.75pt",
+          "Style": {
+            "Border": {
+              "Style": "None"
+            }
+          }
+        }
+      }
+    },
+    "AutoRefresh": "0",
+    "DataSources": {
+      "DataSource": {
+        "Name": "DataSource1",
+        "ConnectionProperties": {
+          "DataProvider": "JSON",
+          "ConnectString": "{\"Data\":\"[{\\\"No\\\":1,\\\"sicilId\\\":572,\\\"SicilNo\\\":\\\"00000606\\\",\\\"AdSoyad\\\":\\\"Yasin Gündoğdu\\\",\\\"Firma\\\":\\\"Meyer\\\",\\\"Bolum\\\":\\\"YAZILIM GELİŞTİRME OFİSİ\\\",\\\"Gorev\\\":\\\"YAZILIM GELİŞTİRME UZMANI\\\",\\\"Pozisyon\\\":\\\"Yazılım Geliştirme Uzmanı\\\",\\\"Direktorluk\\\":\\\"ANALİTİK ÇÖZÜMLER OFİSİ\\\",\\\"Altfirma\\\":\\\"Burcu TOKUR\\\",\\\"Yaka\\\":\\\"Beyaz\\\",\\\"Tarih\\\":\\\"13.11.2025\\\",\\\"OnayTarih\\\":\\\"\\\",\\\"Taksit\\\":\\\"1\\\",\\\"Tutar\\\":324132,\\\"ParaBirimi\\\":\\\"TRY\\\",\\\"TalepAciklama\\\":\\\"ewrwerewrew\\\",\\\"Teslim\\\":0,\\\"TeslimEdenID\\\":0,\\\"Onaylayan\\\":\\\"\\\",\\\"OnaylayanSicilId\\\":0,\\\"MasrafTipi\\\":\\\"\\\",\\\"OnayTarihx\\\":null,\\\"OnaylayanAdSoyad\\\":\\\"\\\",\\\"islemaciklama\\\":\\\"\\\",\\\"OnaySure\\\":0,\\\"DurumID\\\":0,\\\"Durum\\\":\\\"Beklemede\\\"},{\\\"No\\\":2,\\\"sicilId\\\":572,\\\"SicilNo\\\":\\\"00000606\\\",\\\"AdSoyad\\\":\\\"Yasin Gündoğdu\\\",\\\"Firma\\\":\\\"Meyer\\\",\\\"Bolum\\\":\\\"YAZILIM GELİŞTİRME OFİSİ\\\",\\\"Gorev\\\":\\\"YAZILIM GELİŞTİRME UZMANI\\\",\\\"Pozisyon\\\":\\\"Yazılım Geliştirme Uzmanı\\\",\\\"Direktorluk\\\":\\\"ANALİTİK ÇÖZÜMLER OFİSİ\\\",\\\"Altfirma\\\":\\\"Burcu TOKUR\\\",\\\"Yaka\\\":\\\"Beyaz\\\",\\\"Tarih\\\":\\\"09.01.2026\\\",\\\"OnayTarih\\\":\\\"\\\",\\\"Taksit\\\":\\\"1\\\",\\\"Tutar\\\":43234,\\\"ParaBirimi\\\":\\\"TRY\\\",\\\"TalepAciklama\\\":\\\"fsdfsdf\\\",\\\"Teslim\\\":0,\\\"TeslimEdenID\\\":0,\\\"Onaylayan\\\":\\\"\\\",\\\"OnaylayanSicilId\\\":0,\\\"MasrafTipi\\\":\\\"\\\",\\\"OnayTarihx\\\":null,\\\"OnaylayanAdSoyad\\\":\\\"\\\",\\\"islemaciklama\\\":\\\"\\\",\\\"OnaySure\\\":0,\\\"DurumID\\\":0,\\\"Durum\\\":\\\"Beklemede\\\"}]\",\"DataMode\":\"inline\",\"URL\":\"\"}"
+        },
+        "rd:ImpersonateUser": "false"
+      }
+    },
+    "DataSets": {
+      "DataSet": {
+        "Name": "DataSet1",
+        "Fields": {
+          "Field": [
+            {
+              "Name": "No",
+              "DataField": "No",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "sicilId",
+              "DataField": "sicilId",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "SicilNo",
+              "DataField": "SicilNo",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "AdSoyad",
+              "DataField": "AdSoyad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Firma",
+              "DataField": "Firma",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Bolum",
+              "DataField": "Bolum",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Gorev",
+              "DataField": "Gorev",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Pozisyon",
+              "DataField": "Pozisyon",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Direktorluk",
+              "DataField": "Direktorluk",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Altfirma",
+              "DataField": "Altfirma",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Yaka",
+              "DataField": "Yaka",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Tarih",
+              "DataField": "Tarih",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "OnayTarih",
+              "DataField": "OnayTarih",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Taksit",
+              "DataField": "Taksit",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Tutar",
+              "DataField": "Tutar",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "ParaBirimi",
+              "DataField": "ParaBirimi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "TalepAciklama",
+              "DataField": "TalepAciklama",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "Teslim",
+              "DataField": "Teslim",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "TeslimEdenID",
+              "DataField": "TeslimEdenID",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Onaylayan",
+              "DataField": "Onaylayan",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "OnaylayanSicilId",
+              "DataField": "OnaylayanSicilId",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "MasrafTipi",
+              "DataField": "MasrafTipi",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "OnayTarihx",
+              "DataField": "OnayTarihx",
+              "rd:TypeName": "System.Object"
+            },
+            {
+              "Name": "OnaylayanAdSoyad",
+              "DataField": "OnaylayanAdSoyad",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "islemaciklama",
+              "DataField": "islemaciklama",
+              "rd:TypeName": "System.String"
+            },
+            {
+              "Name": "OnaySure",
+              "DataField": "OnaySure",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "DurumID",
+              "DataField": "DurumID",
+              "rd:TypeName": "System.Double"
+            },
+            {
+              "Name": "Durum",
+              "DataField": "Durum",
+              "rd:TypeName": "System.String"
+            }
+          ]
+        },
+        "Query": {
+          "DataSourceName": "DataSource1",
+          "CommandType": "Text",
+          "CommandText": "{\"Name\":\"Result\",\"Columns\":[]}",
+          "QueryDesignerState": {
+            "xmlns": "http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational",
+            "Tables": {
+              "Table": {
+                "Name": "Result",
+                "Schema": "",
+                "Columns": {
+                  "Column": [
+                    {
+                      "Name": "No",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "sicilId",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "SicilNo",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "AdSoyad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Firma",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Bolum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Gorev",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Pozisyon",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Direktorluk",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Altfirma",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Yaka",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Tarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "OnayTarih",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Taksit",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Tutar",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "ParaBirimi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "TalepAciklama",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Teslim",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "TeslimEdenID",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Onaylayan",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "OnaylayanSicilId",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "MasrafTipi",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "OnayTarihx",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "OnaylayanAdSoyad",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "islemaciklama",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "OnaySure",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "DurumID",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    },
+                    {
+                      "Name": "Durum",
+                      "IsDuplicate": "False",
+                      "IsSelected": "True"
+                    }
+                  ]
+                },
+                "SchemaLevels": {
+                  "SchemaInfo": {
+                    "Name": "Result",
+                    "SchemaType": "Table"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ReportParametersLayout": {
+      "GridLayoutDefinition": {
+        "NumberOfColumns": "4",
+        "NumberOfRows": "2"
+      }
+    },
+    "rd:ReportUnitType": "Inch",
+    "rd:PageUnit": "Px",
+    "df:DefaultFontFamily": "Segoe UI"
+  }
+}
