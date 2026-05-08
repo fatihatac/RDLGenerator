@@ -1,7 +1,6 @@
 import { generateId } from "../../utils";
 import { ITEM_TYPES } from "../../constants/appConstants";
 import { REPORT_TYPES } from "../../constants/reportTypes";
-import { REPORT_TEMPLATE_CONFIGS } from "../../constants/reportTemplates";
 
 // ---------------------------------------------------------------------------
 // Item fabrikaları — her tip için başlangıç değerleri
