@@ -8,7 +8,7 @@ export const REPORT_TEMPLATE_CONFIGS = {
       {
         id: generateId("title"),
         type: ITEM_TYPES.TITLE,
-        value: "pauntaj detay raporu",
+        value: "Puantaj Detay Raporu",
       },
     ],
   },

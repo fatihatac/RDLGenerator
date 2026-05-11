@@ -1,11 +1,11 @@
-function buildLegend() {
+function buildLegend({ top, width, left } = {}) {
   return {
     Textbox: {
       '@_Name': 'legend',
-      Left: '-2.25000pt',
-      Top: '45.75pt',
+      Left: `${left ?? 0}pt`,
+      Top: `${top ?? 0}pt`,
       Height: '43.5pt',
-      Width: '1062.75pt',
+      Width: `${width ?? 400}pt`,
       Style: {
         BackgroundColor: '#cccbcb',
         PaddingLeft: '2pt',
@@ -27,7 +27,7 @@ function buildLegend() {
                   Style: { FontFamily: 'Trebuchet MS', Color: 'Black' },
                 },
                 {
-                  Value: 'W: Working | O: Overtime | P: Paid Leave | UL: Unpaid Leave | S: Sick Leave',
+                  Value: 'W = Worked Days                O = OFF                       P = Paid Leave            UL = Unpaid Leave          S = Sick Leave                 PS = Paid Sick Leave                                V = Vacation        A = Absent                 FT = Free Time',
                   Style: { FontFamily: 'Trebuchet MS', Color: 'Black' },
                 },
               ],
@@ -48,7 +48,7 @@ function buildLegend() {
           {
             TextRuns: {
               TextRun: {
-                Value: 'PS: Puantaj Sorumlusu | V: Vizeli | A: Aylıklı | FT: Full Time',
+                Value: 'W = Normal Mesai               O = Hafta Tatili            P = Ücretli Izin            UL=Ücretsiz Izin             S=SGK Raporlu Ucretsiz    PS = SGK Raporlu Ucretli (Vizite)             V = Yıllık İzin       A = Devamsızlık          FT = Denkleştirme Izni',
                 Style: { FontFamily: 'Trebuchet MS', Color: 'Black' },
               },
             },

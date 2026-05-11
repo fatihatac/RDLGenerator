@@ -1,7 +1,9 @@
 import {
   calculateReportValues,
   computePositions,
+  getItemHeight,
 } from "../../core/reportCalculations.js";
+import { ITEM_TYPES } from "../../../constants/appConstants.js";
 import buildDataSection from "../buildDataSection.js";
 import { buildReportItems } from "../buildItems.js";
 import { buildPageSection } from "../buildPageSection.js";
@@ -16,6 +18,10 @@ function generatePDY00146(items) {
     items,
     settings,
   );
+
+  // Content width: legend width (1062.75) dahil en geniş elemente göre
+  const LEGEND_WIDTH = 1062.75;
+  const ACTUAL_CONTENT_WIDTH = Math.max(TOTAL_REPORT_WIDTH, LEGEND_WIDTH);
 
   const itemsWithPositions = computePositions(items, settings);
 
@@ -33,7 +39,7 @@ function generatePDY00146(items) {
 
   const reportItemsList = buildReportItems(
     bodyItems,
-    TOTAL_REPORT_WIDTH,
+    ACTUAL_CONTENT_WIDTH,
     TOTAL_REPORT_HEIGHT,
     dataSetMap,
     settings,
@@ -52,8 +58,13 @@ function generatePDY00146(items) {
     }
   });
 
-  // Inject legend textbox into report items
-  const legendTextbox = buildLegend();
+  // Calculate legend position: title'dan hemen sonra başlasın
+  const titleItem = itemsWithPositions.find(i => i.type === ITEM_TYPES.TITLE);
+  const titleHeight = titleItem ? getItemHeight(titleItem, settings) : 0;
+  const legendTop = (titleItem?._top ?? 0) + titleHeight + (settings.itemSpacing ?? 5);
+
+  // Inject legend textbox into report items (dynamic width & position)
+  const legendTextbox = buildLegend({ top: legendTop, width: ACTUAL_CONTENT_WIDTH });
   if (reportItemsObj.Textbox) {
     if (!Array.isArray(reportItemsObj.Textbox)) {
       reportItemsObj.Textbox = [reportItemsObj.Textbox];
@@ -85,7 +96,7 @@ function generatePDY00146(items) {
 
   const pageConfig = {
     PageHeight: `${settings.pageHeight}pt`,
-    PageWidth: `${settings.pageWidth}pt`,
+    PageWidth: `${ACTUAL_CONTENT_WIDTH + settings.marginLeft + settings.marginRight}pt`,
     LeftMargin: `${settings.marginLeft}pt`,
     RightMargin: `${settings.marginRight}pt`,
     TopMargin: `${settings.marginTop}pt`,
@@ -113,7 +124,7 @@ function generatePDY00146(items) {
             ReportItems: reportItemsObj,
             Height: `${TOTAL_REPORT_HEIGHT_WITH_LEGEND}pt`,
           },
-          Width: `${TOTAL_REPORT_WIDTH}pt`,
+          Width: `${ACTUAL_CONTENT_WIDTH}pt`,
           Page: pageConfig,
         },
       },
