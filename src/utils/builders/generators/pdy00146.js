@@ -1,15 +1,13 @@
 import {
   calculateReportValues,
   computePositions,
-  getItemHeight,
 } from "../../core/reportCalculations.js";
-import { ITEM_TYPES } from "../../../constants/appConstants.js";
 import buildDataSection from "../buildDataSection.js";
 import { buildReportItems } from "../buildItems.js";
 import { buildPageSection } from "../buildPageSection.js";
 import useLayoutStore from "../../../store/useLayoutStore.js";
 import { buildRDLXml } from "../rdlXmlBuilder";
-import { buildLegend } from "../buildLegend.js";
+
 
 function generatePDY00146(items) {
   const settings = useLayoutStore.getState().layoutSettings;
@@ -58,26 +56,7 @@ function generatePDY00146(items) {
     }
   });
 
-  // Calculate legend position: title'dan hemen sonra başlasın
-  const titleItem = itemsWithPositions.find(i => i.type === ITEM_TYPES.TITLE);
-  const titleHeight = titleItem ? getItemHeight(titleItem, settings) : 0;
-  const legendTop = (titleItem?._top ?? 0) + titleHeight + (settings.itemSpacing ?? 5);
-
-  // Inject legend textbox into report items (dynamic width & position)
-  const legendTextbox = buildLegend({ top: legendTop, width: ACTUAL_CONTENT_WIDTH });
-  if (reportItemsObj.Textbox) {
-    if (!Array.isArray(reportItemsObj.Textbox)) {
-      reportItemsObj.Textbox = [reportItemsObj.Textbox];
-    }
-    reportItemsObj.Textbox.push(legendTextbox.Textbox);
-  } else {
-    reportItemsObj.Textbox = legendTextbox.Textbox;
-  }
-
-  // Adjust total height to account for legend
-  const LEGEND_HEIGHT = 43.5;
-  const LEGEND_SPACING = settings.itemSpacing ?? 5;
-  const TOTAL_REPORT_HEIGHT_WITH_LEGEND = TOTAL_REPORT_HEIGHT + LEGEND_HEIGHT + LEGEND_SPACING;
+  // Legend is handled by the pipeline (BUILDER_MAP → buildLegend via TEXTBOX item)
 
   let allDataSources = [];
   let allDataSets = [];
@@ -122,7 +101,7 @@ function generatePDY00146(items) {
           Body: {
             Style: { Border: { Style: "None" } },
             ReportItems: reportItemsObj,
-            Height: `${TOTAL_REPORT_HEIGHT_WITH_LEGEND}pt`,
+            Height: `${TOTAL_REPORT_HEIGHT}pt`,
           },
           Width: `${ACTUAL_CONTENT_WIDTH}pt`,
           Page: pageConfig,

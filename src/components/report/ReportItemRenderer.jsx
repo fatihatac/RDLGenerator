@@ -9,6 +9,7 @@ const EDITOR_MAP = {
   [ITEM_TYPES.DATA]:       JSONEditor,
   [ITEM_TYPES.DATE_RANGE]: DateRangeEditor,
   [ITEM_TYPES.CHART]:      ChartEditor,
+  [ITEM_TYPES.TEXTBOX]:    TextboxEditor,
 };
 
 // FIX: React.memo — yalnızca item prop'u değişince yeniden render edilir

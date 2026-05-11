@@ -36,6 +36,7 @@ export const DEFAULT_LAYOUT_SETTINGS = {
   columnHeight:  18.6,   // pt  (her tablo satırı yüksekliği)
   chartHeight:   216,    // pt
   chartWidth:    288,    // pt
+  legendHeight:  43.5,   // pt
 
   // ── Hizalama ──────────────────────────────────────────────────────────────
   titleHAlign:  'Center',

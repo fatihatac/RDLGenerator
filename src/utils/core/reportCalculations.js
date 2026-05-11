@@ -76,6 +76,9 @@ function getItemHeight(item, settings = DEFAULT_LAYOUT_SETTINGS) {
     case ITEM_TYPES.CHART:
       return settings.chartHeight;
 
+    case ITEM_TYPES.TEXTBOX:
+      return settings.legendHeight ?? 43.5;
+
     default:
       return 0;
   }

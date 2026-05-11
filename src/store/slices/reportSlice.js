@@ -48,6 +48,18 @@ const ITEM_FACTORIES = {
     columnGroups: [],
     staticColumns: [],
   }),
+  [ITEM_TYPES.TEXTBOX]: (overrides = {}) => ({
+    id: generateId("textbox"),
+    type: ITEM_TYPES.TEXTBOX,
+    value: "",
+    valueTr: "",
+    isLegend: false,
+    left: 0,
+    top: 0,
+    width: 400,
+    height: 43.5,
+    ...overrides,
+  }),
 };
 
 // ---------------------------------------------------------------------------
@@ -57,18 +69,21 @@ export const createReportSlice = (set, get) => ({
   reportItems: [],
   reportType: REPORT_TYPES.STANDARD,
   
-    setReportType: (newReportType) => {
-     set((state) => {
-       state.reportType = newReportType;
-       // Form tipine geçildiğinde bileşen listesi boşsa varsayılanları yükle
-       if (newReportType !== REPORT_TYPES.STANDARD && state.reportItems.length === 0) {
-         const config = REPORT_TEMPLATE_CONFIGS[newReportType];
-         if (config && config.getDefaultItems) {
-           state.reportItems = config.getDefaultItems();
-         }
-       }
-     });
-   },
+     setReportType: (newReportType) => {
+      set((state) => {
+        state.reportType = newReportType;
+        if (newReportType === REPORT_TYPES.STANDARD) {
+          // STANDART tipine geçildiğinde bileşenleri temizle
+          state.reportItems = [];
+        } else {
+          // Şablon bazlı rapor tiplerinde varsayılan bileşenleri yükle
+          const config = REPORT_TEMPLATE_CONFIGS[newReportType];
+          if (config && config.getDefaultItems) {
+            state.reportItems = config.getDefaultItems();
+          }
+        }
+      });
+    },
 
   addItem: (type) => {
     const factory = ITEM_FACTORIES[type];

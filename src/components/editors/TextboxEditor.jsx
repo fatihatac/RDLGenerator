@@ -23,14 +23,41 @@ function TextboxEditor({ item }) {
         <DeleteButton onDelete={handleDelete} />
       </div>
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">Görüntülenecek Metin</label>
-        <input
-          type="text"
-          value={item.value}
-          onChange={(e) => updateItem({ value: e.target.value })}
-          className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition-colors"
-          placeholder="Örn: Satış Raporu 2025"
-        />
+        {item.isLegend ? (
+          <>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Legend (EN)</label>
+              <input
+                type="text"
+                value={item.value ?? ''}
+                onChange={(e) => updateItem({ value: e.target.value })}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition-colors"
+                placeholder="W: Working Day, O: Overtime..."
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Legend (TR)</label>
+              <input
+                type="text"
+                value={item.valueTr ?? ''}
+                onChange={(e) => updateItem({ valueTr: e.target.value })}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition-colors"
+                placeholder="PS: Puantaj Saati, V: Vardiya..."
+              />
+            </div>
+          </>
+        ) : (
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Görüntülenecek Metin</label>
+            <input
+              type="text"
+              value={item.value}
+              onChange={(e) => updateItem({ value: e.target.value })}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none transition-colors"
+              placeholder="Örn: Satış Raporu 2025"
+            />
+          </div>
+        )}
       </div>
       <PositionEditor itemId={item.id} />
     </div>

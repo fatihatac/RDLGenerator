@@ -5,6 +5,7 @@ import buildDateRange    from './buildDateRange.js';
 import buildChart        from './buildChart.js';
 import { buildTextbox }  from './buildTextbox.js';
 import { buildRectangle } from './buildRectangle.js';
+import { buildLegend }   from './buildLegend.js';
 import { ITEM_TYPES }   from '../../constants/appConstants.js';
 import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
 
@@ -31,7 +32,9 @@ const BUILDER_MAP = {
   },
 
   [ITEM_TYPES.TEXTBOX]: (item, _tw, _th, _dsm, _all, settings) =>
-    buildTextbox(item, _tw, _th, _dsm, _all, settings),
+    item.isLegend
+      ? buildLegend(item, settings, _tw)
+      : buildTextbox(item, _tw, _th, _dsm, _all, settings),
 
   [ITEM_TYPES.RECTANGLE]: (item, totalWidth, totalHeight, dataSetMap, allItems, settings) =>
     buildRectangle(item, totalWidth, totalHeight, dataSetMap, allItems, settings, buildReportItems),
