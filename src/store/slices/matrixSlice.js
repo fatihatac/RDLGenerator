@@ -87,6 +87,7 @@ export const createMatrixSlice = (set) => ({
         name: `Column ${matrix.staticColumns.length + 1}`,
         mappedField: null,
         width: 25,
+        backgroundColorExpr: "",
       });
     }),
 

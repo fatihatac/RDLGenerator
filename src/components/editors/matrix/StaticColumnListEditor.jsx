@@ -46,6 +46,13 @@ export default function StaticColumnListEditor({ matrixId, staticColumns, jsonKe
               min={10}
             />
             <span className="text-[10px] text-gray-400">pt</span>
+            <input
+              type="text"
+              value={col.backgroundColorExpr || ''}
+              onChange={(e) => updateStaticColumnField(matrixId, col.id, 'backgroundColorExpr', e.target.value)}
+              className="flex-1 p-1.5 text-sm border border-gray-300 rounded focus:border-blue-500 outline-none"
+              placeholder="Switch expr (optional)"
+            />
             <button onClick={() => removeStaticColumn(matrixId, col.id)} className="text-gray-400 hover:text-red-500">
               <X size={16} />
             </button>
