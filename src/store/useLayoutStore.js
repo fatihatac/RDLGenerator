@@ -24,11 +24,12 @@ export const DEFAULT_LAYOUT_SETTINGS = {
   itemSpacing:  5,        // pt
 
   // ── Yazı tipi ─────────────────────────────────────────────────────────────
-  fontFamily:            'Segoe UI',
-  titleFontSize:         10.5,   // pt
+  fontFamily:            'Cambria',
+  titleFontSize:         14,     // pt
   titleFontWeight:       'Bold',
   columnHeaderFontSize:  10,     // pt
-  columnDataFontSize:    7.5,    // pt
+  columnHeaderFontWeight: '600', // yarı kalın (SemiBold)
+  columnDataFontSize:    9,      // pt
 
   // ── Boyutlar ──────────────────────────────────────────────────────────────
   titleHeight:   49.5,   // pt
