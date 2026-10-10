@@ -25,11 +25,11 @@ export const DEFAULT_LAYOUT_SETTINGS = {
 
   // ── Yazı tipi ─────────────────────────────────────────────────────────────
   fontFamily:            'Cambria',
-  titleFontSize:         14,     // pt
+  titleFontSize:         10.5,     // pt (14px)
   titleFontWeight:       'Bold',
-  columnHeaderFontSize:  10,     // pt
+  columnHeaderFontSize:  7.5,     // pt (10px)
   columnHeaderFontWeight: '600', // yarı kalın (SemiBold)
-  columnDataFontSize:    9,      // pt
+  columnDataFontSize:    6.75,      // pt (9px)
 
   // ── Boyutlar ──────────────────────────────────────────────────────────────
   titleHeight:   49.5,   // pt
