@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { X, RotateCcw } from 'lucide-react';
 import useLayoutStore from '../../store/useLayoutStore';
 import { useShallow } from 'zustand/react/shallow';
-import { PageSection, FontSection, DimensionsSection, AlignmentSection, Divider } from './settings';
+import { PageSection, LayoutSection, FontSection, DimensionsSection, AlignmentSection, Divider } from './settings';
 
 function SettingsPanel({ onClose }) {
   const { layoutSettings, updateLayoutSetting, resetLayoutSettings } = useLayoutStore(
@@ -66,6 +66,8 @@ function SettingsPanel({ onClose }) {
 
         <div className="flex-1 overflow-y-auto px-5 py-4 space-y-1">
           <PageSection settings={layoutSettings} onChange={set} />
+          <Divider />
+          <LayoutSection settings={layoutSettings} onChange={set} />
           <Divider />
           <FontSection settings={layoutSettings} onChange={set} />
           <Divider />

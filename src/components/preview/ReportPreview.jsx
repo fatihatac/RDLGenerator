@@ -13,17 +13,19 @@ import {
   GenericDataTableBlock,
   EmptyState,
   MatrixBlock,
+  PositionedCanvas,
 } from './blocks';
+import useLayoutStore from '../../store/useLayoutStore';
+import useItemPositions from '../../hooks/useItemPositions';
 
 function ReportPreview() {
-  const { reportItems, isPortrait, setIsPortrait, reportType } = useReportStore(
+  const { reportItems, reportType } = useReportStore(
     useShallow((state) => ({
       reportItems: state.reportItems,
-      isPortrait: state.isPortrait,
-      setIsPortrait: state.setIsPortrait,
       reportType: state.reportType,
     })),
   );
+  const updateLayoutSetting = useLayoutStore((s) => s.updateLayoutSetting);
 
   const dataMap = useMemo(() => {
     const map = {};
@@ -38,8 +40,40 @@ function ReportPreview() {
   const firstDataItem = reportItems.find((i) => i.type === ITEM_TYPES.DATA);
   const firstDataRows = firstDataItem ? (dataMap[firstDataItem.id] ?? []) : [];
 
+  const { byId, contentWidth, overlaps, settings, pageWidth, pageHeight } = useItemPositions();
+
+  // Yön, RDL'deki gerçek sayfa ölçüsünden türetilir; değiştirmek ölçüleri yer değiştirir.
+  const isPortrait = settings.pageHeight >= settings.pageWidth;
+  const setIsPortrait = (portrait) => {
+    if (portrait === isPortrait) return;
+    updateLayoutSetting('pageWidth', settings.pageHeight);
+    updateLayoutSetting('pageHeight', settings.pageWidth);
+  };
+
   const isEmpty = reportItems.length === 0;
   const isFormType = reportType !== REPORT_TYPES.STANDARD;
+
+  const renderBlock = (item) => {
+    switch (item.type) {
+      case ITEM_TYPES.TITLE:
+        return <TitleBlock value={item.value} />;
+      case ITEM_TYPES.DATE_RANGE:
+        return <DateRangeBlock />;
+      case ITEM_TYPES.TABLE:
+        return <DataTableBlock tableItem={item} rows={firstDataRows} />;
+      case ITEM_TYPES.CHART:
+        return <ChartPlaceholder item={item} height={byId[item.id]?._height} />;
+      case ITEM_TYPES.MATRIX:
+        return <MatrixBlock item={item} />;
+      default:
+        return null;
+    }
+  };
+
+  const positionedBlocks = reportItems
+    .map((item) => ({ pos: byId[item.id], node: renderBlock(item) }))
+    .filter(({ pos, node }) => pos && node);
+  const pagePadding = `${settings.marginTop}pt ${settings.marginRight}pt ${settings.marginBottom}pt ${settings.marginLeft}pt`;
 
   return (
     <div className="flex flex-col items-center w-full gap-6 pb-12">
@@ -65,7 +99,7 @@ function ReportPreview() {
         </div>
       </div>
 
-      <Page isPortrait={isPortrait}>
+      <Page width={pageWidth} height={pageHeight} padding={pagePadding}>
         {isEmpty ? (
           <EmptyState />
         ) : isFormType ? (
@@ -82,20 +116,15 @@ function ReportPreview() {
               ))}
           </>
         ) : (
-          reportItems.map((item) => {
-            if (item.type === ITEM_TYPES.DATA) return null;
-            if (item.type === ITEM_TYPES.TITLE)
-              return <TitleBlock key={item.id} value={item.value} />;
-            if (item.type === ITEM_TYPES.DATE_RANGE)
-              return <DateRangeBlock key={item.id} />;
-            if (item.type === ITEM_TYPES.TABLE)
-              return <DataTableBlock key={item.id} tableItem={item} rows={firstDataRows} />;
-            if (item.type === ITEM_TYPES.CHART)
-              return <ChartPlaceholder key={item.id} item={item} />;
-            if (item.type === ITEM_TYPES.MATRIX)
-              return <MatrixBlock key={item.id} item={item} />;
-            return null;
-          })
+          <PositionedCanvas
+            contentWidth={contentWidth}
+            items={positionedBlocks.map(({ pos }) => pos)}
+            overlaps={overlaps}
+            marginLeft={settings.marginLeft}
+            marginTop={settings.marginTop}
+          >
+            {positionedBlocks}
+          </PositionedCanvas>
         )}
       </Page>
     </div>

@@ -6,3 +6,4 @@ export { default as ChartPlaceholder } from './ChartPlaceholder';
 export { default as GenericDataTableBlock } from './GenericDataTableBlock';
 export { default as EmptyState } from './EmptyState';
 export { default as MatrixBlock } from './MatrixBlock';
+export { default as PositionedCanvas } from './PositionedCanvas';

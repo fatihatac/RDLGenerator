@@ -5,10 +5,10 @@ const buildTextbox = (item, _tw, _th, _dsm, _all, settings = DEFAULT_LAYOUT_SETT
   return {
     Textbox: {
       '@_Name': item.id,
-      Left:     `${item.left ?? 0}pt`,
-      Top:      `${item.top ?? 0}pt`,
-      Height:   `${item.height ?? 20}pt`,
-      Width:    `${item.width ?? 100}pt`,
+      Left:     `${item._left ?? item.left ?? 0}pt`,
+      Top:      `${item._top ?? item.top ?? 0}pt`,
+      Height:   `${item._height ?? item.height ?? 20}pt`,
+      Width:    `${item._width ?? item.width ?? 100}pt`,
       Style: {
         VerticalAlign:   item.style?.verticalAlign ?? 'Middle',
         PaddingLeft:     '2pt',

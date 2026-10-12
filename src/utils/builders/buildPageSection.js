@@ -6,12 +6,18 @@ const buildPageSection = (items, sectionType, totalWidth, settings) => {
   );
   if (sectionItems.length === 0) return null;
 
+  // Sayfa margin'i RDL'de 0 yazıldığı için (bkz. applyPageMargins) header/footer
+  // öğeleri margin kadar içeriden başlatılır.
+  const offsetLeft = settings.marginLeft ?? 0;
+  const offsetTop = sectionType === 'header' ? (settings.marginTop ?? 0) : 0;
+  const extraHeight = sectionType === 'footer' ? (settings.marginBottom ?? 0) : 0;
+
   const reportItems = {};
   sectionItems.forEach((item, index) => {
     const textbox = {
       '@_Name': `Page${sectionType.charAt(0).toUpperCase() + sectionType.slice(1)}_${item.id || index}`,
-      Left: `${item.left ?? 0}pt`,
-      Top: `${item.top ?? 0}pt`,
+      Left: `${(item.left ?? 0) + offsetLeft}pt`,
+      Top: `${(item.top ?? 0) + offsetTop}pt`,
       Height: `${item.height ?? 20}pt`,
       Width: `${item.width ?? totalWidth}pt`,
       Style: {
@@ -45,7 +51,7 @@ const buildPageSection = (items, sectionType, totalWidth, settings) => {
 
   return {
     Style: { Border: { Style: 'None' } },
-    Height: `${sectionItems.reduce((max, item) => Math.max(max, (item.top || 0) + (item.height || 20)), 0)}pt`,
+    Height: `${offsetTop + extraHeight + sectionItems.reduce((max, item) => Math.max(max, (item.top || 0) + (item.height || 20)), 0)}pt`,
     PrintOnFirstPage: "true",
     PrintOnLastPage: "true",
     ReportItems: reportItems,

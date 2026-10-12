@@ -9,8 +9,8 @@ function buildLegend(item, settings, totalWidth) {
       '@_Name': item.id ?? 'legend',
       Left:    `${item._left ?? item.left ?? 0}pt`,
       Top:     `${item._top  ?? item.top  ?? 0}pt`,
-      Height:  `${settings.legendHeight ?? 43.5}pt`,
-      Width:   `${item.width ?? totalWidth ?? 400}pt`,
+      Height:  `${item._height ?? settings.legendHeight ?? 43.5}pt`,
+      Width:   `${item._width ?? item.width ?? totalWidth ?? 400}pt`,
       Style: {
         BackgroundColor: item.style?.backgroundColor ?? '#cccbcb',
         PaddingLeft:     '2pt',

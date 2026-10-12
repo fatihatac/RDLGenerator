@@ -4,10 +4,10 @@ const buildRectangle = (item, totalWidth, totalHeight, dataSetMap, allItems, set
   return {
     Rectangle: {
       '@_Name': item.id,
-      Left:     `${item.left ?? 0}pt`,
-      Top:      `${item.top ?? 0}pt`,
-      Height:   `${item.height ?? 100}pt`,
-      Width:    `${item.width ?? 100}pt`,
+      Left:     `${item._left ?? item.left ?? 0}pt`,
+      Top:      `${item._top ?? item.top ?? 0}pt`,
+      Height:   `${item._height ?? item.height ?? 100}pt`,
+      Width:    `${item._width ?? item.width ?? 100}pt`,
       Style: {
         Border: { 
           Style: item.style?.borderStyle ?? 'None',

@@ -1,6 +1,7 @@
 import {
   calculateReportValues,
   computePositions,
+  applyPageMargins,
 } from "../../core/reportCalculations.js";
 import buildDataSection from "../buildDataSection.js";
 import { buildReportItems } from "../buildItems.js";
@@ -21,7 +22,12 @@ function generatePDY00146(items) {
   const LEGEND_WIDTH = 1062.75;
   const ACTUAL_CONTENT_WIDTH = Math.max(TOTAL_REPORT_WIDTH, LEGEND_WIDTH);
 
-  const itemsWithPositions = computePositions(items, settings);
+  const itemsWithPositions = applyPageMargins(
+    computePositions(items, settings, ACTUAL_CONTENT_WIDTH),
+    settings,
+  );
+  const BODY_WIDTH = ACTUAL_CONTENT_WIDTH + settings.marginLeft + settings.marginRight;
+  const BODY_HEIGHT = TOTAL_REPORT_HEIGHT + settings.marginTop + settings.marginBottom;
 
   const bodyItems = itemsWithPositions.filter(
     (item) => !item.section || item.section === "body"
@@ -73,20 +79,22 @@ function generatePDY00146(items) {
     if (dataSection.DataSets?.DataSet) allDataSets.push(dataSection.DataSets.DataSet);
   });
 
+  const pageHeader = buildPageSection(itemsWithPositions, "header", TOTAL_REPORT_WIDTH, settings);
+  const pageFooter = buildPageSection(itemsWithPositions, "footer", TOTAL_REPORT_WIDTH, settings);
+
   const pageConfig = {
+    // RDL şeması: PageHeader/PageFooter, PageHeight'tan önce gelmeli
+    ...(pageHeader && { PageHeader: pageHeader }),
+    ...(pageFooter && { PageFooter: pageFooter }),
     PageHeight: `${settings.pageHeight}pt`,
-    PageWidth: `${ACTUAL_CONTENT_WIDTH + settings.marginLeft + settings.marginRight}pt`,
-    LeftMargin: `${settings.marginLeft}pt`,
-    RightMargin: `${settings.marginRight}pt`,
-    TopMargin: `${settings.marginTop}pt`,
-    BottomMargin: `${settings.marginBottom}pt`,
+    PageWidth: `${BODY_WIDTH}pt`,
+    LeftMargin: "0pt",
+    RightMargin: "0pt",
+    TopMargin: "0pt",
+    BottomMargin: "0pt",
     Style: { Border: { Style: "None" } },
   };
 
-  const pageHeader = buildPageSection(itemsWithPositions, "header", TOTAL_REPORT_WIDTH, settings);
-  const pageFooter = buildPageSection(itemsWithPositions, "footer", TOTAL_REPORT_WIDTH, settings);
-  if (pageHeader) pageConfig.PageHeader = pageHeader;
-  if (pageFooter) pageConfig.PageFooter = pageFooter;
 
   const reportObj = {
     Report: {
@@ -101,9 +109,9 @@ function generatePDY00146(items) {
           Body: {
             Style: { Border: { Style: "None" } },
             ReportItems: reportItemsObj,
-            Height: `${TOTAL_REPORT_HEIGHT}pt`,
+            Height: `${BODY_HEIGHT}pt`,
           },
-          Width: `${ACTUAL_CONTENT_WIDTH}pt`,
+          Width: `${BODY_WIDTH}pt`,
           Page: pageConfig,
         },
       },

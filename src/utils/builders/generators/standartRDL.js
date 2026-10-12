@@ -1,6 +1,7 @@
 import {
   calculateReportValues,
   computePositions,
+  applyPageMargins,
 } from "../../core/reportCalculations.js";
 import buildDataSection from "../buildDataSection.js";
 import { buildReportItems } from "../buildItems.js";
@@ -16,7 +17,12 @@ function generateStandardRDL(items) {
     settings,
   );
 
-  const itemsWithPositions = computePositions(items, settings);
+  const itemsWithPositions = applyPageMargins(
+    computePositions(items, settings, TOTAL_REPORT_WIDTH),
+    settings,
+  );
+  const BODY_WIDTH = TOTAL_REPORT_WIDTH + settings.marginLeft + settings.marginRight;
+  const BODY_HEIGHT = TOTAL_REPORT_HEIGHT + settings.marginTop + settings.marginBottom;
 
   const bodyItems = itemsWithPositions.filter(
     (item) => !item.section || item.section === "body"
@@ -66,20 +72,22 @@ function generateStandardRDL(items) {
     if (dataSection.DataSets?.DataSet) allDataSets.push(dataSection.DataSets.DataSet);
   });
 
+  const pageHeader = buildPageSection(itemsWithPositions, "header", TOTAL_REPORT_WIDTH, settings);
+  const pageFooter = buildPageSection(itemsWithPositions, "footer", TOTAL_REPORT_WIDTH, settings);
+
   const pageConfig = {
+    // RDL şeması: PageHeader/PageFooter, PageHeight'tan önce gelmeli
+    ...(pageHeader && { PageHeader: pageHeader }),
+    ...(pageFooter && { PageFooter: pageFooter }),
     PageHeight: `${settings.pageHeight}pt`,
     PageWidth: `${settings.pageWidth}pt`,
-    LeftMargin: `${settings.marginLeft}pt`,
-    RightMargin: `${settings.marginRight}pt`,
-    TopMargin: `${settings.marginTop}pt`,
-    BottomMargin: `${settings.marginBottom}pt`,
+    LeftMargin: "0pt",
+    RightMargin: "0pt",
+    TopMargin: "0pt",
+    BottomMargin: "0pt",
     Style: { Border: { Style: "None" } },
   };
 
-  const pageHeader = buildPageSection(itemsWithPositions, "header", TOTAL_REPORT_WIDTH, settings);
-  const pageFooter = buildPageSection(itemsWithPositions, "footer", TOTAL_REPORT_WIDTH, settings);
-  if (pageHeader) pageConfig.PageHeader = pageHeader;
-  if (pageFooter) pageConfig.PageFooter = pageFooter;
 
   const reportObj = {
     Report: {
@@ -94,9 +102,9 @@ function generateStandardRDL(items) {
           Body: {
             Style: { Border: { Style: "None" } },
             ReportItems: reportItemsObj,
-            Height: `${TOTAL_REPORT_HEIGHT}pt`,
+            Height: `${BODY_HEIGHT}pt`,
           },
-          Width: `${TOTAL_REPORT_WIDTH}pt`,
+          Width: `${BODY_WIDTH}pt`,
           Page: pageConfig,
         },
       },

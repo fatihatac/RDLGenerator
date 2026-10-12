@@ -42,27 +42,6 @@ export default function PageSection({ settings, onChange }) {
         <NumberInput value={settings.pageHeight} onChange={(v) => onChange('pageHeight', v)} min={200} max={2000} />
       </FieldRow>
 
-      <div className="grid grid-cols-1 gap-x-2">
-        <FieldRow label="Sol boşluk">
-          <NumberInput value={settings.marginLeft} onChange={(v) => onChange('marginLeft', v)} min={0} max={200} />
-        </FieldRow>
-        <FieldRow label="Sağ boşluk">
-          <NumberInput value={settings.marginRight} onChange={(v) => onChange('marginRight', v)} min={0} max={200} />
-        </FieldRow>
-        <FieldRow label="Üst boşluk">
-          <NumberInput value={settings.marginTop} onChange={(v) => onChange('marginTop', v)} min={0} max={200} />
-        </FieldRow>
-        <FieldRow label="Alt boşluk">
-          <NumberInput value={settings.marginBottom} onChange={(v) => onChange('marginBottom', v)} min={0} max={200} />
-        </FieldRow>
-      </div>
-
-      <FieldRow label="Bileşen aralığı">
-        <NumberInput value={settings.itemSpacing} onChange={(v) => onChange('itemSpacing', v)} min={0} max={50} step={1} />
-      </FieldRow>
-      <FieldRow label="Varsayılan Left">
-        <NumberInput value={settings.defaultLeft} onChange={(v) => onChange('defaultLeft', v)} min={0} max={500} />
-      </FieldRow>
     </>
   );
 }

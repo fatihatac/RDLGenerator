@@ -3,6 +3,7 @@ import parseAndExtractJsonInfo from './parseAndExtractJsonInfo.js';
 import getMaxCharWidth from './getMaxCharWidth.js';
 import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
 import { ITEM_TYPES } from '../../constants/appConstants.js';
+import { pxToPt } from './units.js';
 import generateId from '../helpers/generateId.js';
 
 function getDataAndTableItems(items) {
@@ -60,7 +61,15 @@ function getTotalTableWidth(tableItem, settings = DEFAULT_LAYOUT_SETTINGS) {
 // Her item tipinin RDL'deki tahmini yüksekliği (pt)
 // Top birikimli hesabında kullanılır.
 // ---------------------------------------------------------------------------
+// Boyutu kullanıcının girebildiği bileşenler (tablo/matrix boyutu sütunlardan gelir).
+const SIZABLE_TYPES = new Set([
+  ITEM_TYPES.TITLE, ITEM_TYPES.DATE_RANGE, ITEM_TYPES.CHART,
+  ITEM_TYPES.TEXTBOX, ITEM_TYPES.RECTANGLE,
+]);
+
 function getItemHeight(item, settings = DEFAULT_LAYOUT_SETTINGS) {
+  if (SIZABLE_TYPES.has(item.type) && item.heightPx != null) return pxToPt(item.heightPx);
+
   switch (item.type) {
     case ITEM_TYPES.TITLE:
     case ITEM_TYPES.DATE_RANGE:
@@ -77,7 +86,10 @@ function getItemHeight(item, settings = DEFAULT_LAYOUT_SETTINGS) {
       return settings.chartHeight;
 
     case ITEM_TYPES.TEXTBOX:
-      return settings.legendHeight ?? 43.5;
+      return item.isLegend ? (settings.legendHeight ?? 43.5) : (item.height ?? 20);
+
+    case ITEM_TYPES.RECTANGLE:
+      return item.height ?? 100;
 
     default:
       return 0;
@@ -85,29 +97,162 @@ function getItemHeight(item, settings = DEFAULT_LAYOUT_SETTINGS) {
 }
 
 // ---------------------------------------------------------------------------
-// Tüm itemlar için birikimli Top + Left değerlerini hesaplar.
-// Kural:
-//   _top  = item.topOverride  ?? birikimli hesap
-//   _left = item.leftOverride ?? settings.defaultLeft
+// Tüm itemlar için Left / Top (pt) hesaplar. Ölçüler içerik alanına (marjinlerin
+// içi) göredir.
 //
-// Her item objesine `_top` ve `_left` alanları eklenerek yeni dizi döner.
-// Birikimli Top hesabı override olan itemları atlamaz ama cursor'ı yine
-// o itemın yüksekliği kadar ilerletir (layout bütünlüğü için).
+// Item'daki kullanıcı değerleri px'tir: leftPx, rightPx, topPx, bottomPx.
+// (Eski kayıtlardaki leftOverride / topOverride pt değerleri de okunur.)
+//   Yatay: leftPx  → _left = leftPx
+//          rightPx → _left = içerikGenişliği − itemGenişliği − rightPx
+//          ikisi de boşsa settings.defaultLeft (sol öncelikli)
+//   Dikey: topPx   → _top = topPx
+//          bottomPx→ _top = içerikYüksekliği − itemYüksekliği − bottomPx
+//          ikisi de boşsa birikimli Top
+//
+// Birikimli Top hesabında override olan itemlar atlanmaz; cursor yine o itemın
+// yüksekliği kadar ilerler (layout bütünlüğü için).
 // ---------------------------------------------------------------------------
-function computePositions(items, settings = DEFAULT_LAYOUT_SETTINGS) {
+const FLEXIBLE_WIDTH_TYPES = new Set([ITEM_TYPES.TITLE, ITEM_TYPES.DATE_RANGE]);
+
+function resolveAxis({ near, far, legacyNearPt, size, contentSize, fallback }) {
+  if (near != null) return pxToPt(near);
+  if (legacyNearPt != null) return legacyNearPt;
+  if (far != null) return Math.round((contentSize - size - pxToPt(far)) * 100) / 100;
+  return fallback;
+}
+
+function computePositions(items, settings = DEFAULT_LAYOUT_SETTINGS, contentWidth, contentHeight) {
+  const bodyWidth =
+    contentWidth ?? settings.pageWidth - settings.marginLeft - settings.marginRight;
+  const bodyHeight =
+    contentHeight ?? settings.pageHeight - settings.marginTop - settings.marginBottom;
+  // relativeTo === 'page' olan bileşenler marjini yok sayar: uzaklıklar kağıt kenarından ölçülür.
+  const pageWidth = bodyWidth + settings.marginLeft + settings.marginRight;
+  const pageHeight = bodyHeight + settings.marginTop + settings.marginBottom;
   let cursor = 0;
+
   return items.map((item) => {
+    const page = item.relativeTo === 'page';
+    const boxW = page ? pageWidth : bodyWidth;
+    const boxH = page ? pageHeight : bodyHeight;
+    const offL = page ? settings.marginLeft : 0; // otomatik değerlerde marjini koru
+    const offT = page ? settings.marginTop : 0;
+
     const height = getItemHeight(item, settings);
+    const width = getItemWidth(item, boxW, settings);
 
-    const _top = item.topOverride != null ? item.topOverride : cursor;
+    const _top = resolveAxis({
+      near: item.topPx, far: item.bottomPx, legacyNearPt: item.topOverride,
+      size: height, contentSize: boxH, fallback: cursor + offT,
+    });
 
-    const _left = item.leftOverride != null ? item.leftOverride : (settings.defaultLeft ?? 0);
-
+    let _left;
+    let _width = width;
+    // Başlık / tarih gibi esnek genişlikli öğelerde, genişlik girilmediyse
+    // Sol ve Sağ uzaklık genişliği daraltır.
+    if (FLEXIBLE_WIDTH_TYPES.has(item.type) && item.widthPx == null) {
+      _left = resolveAxis({
+        near: item.leftPx, far: null, legacyNearPt: item.leftOverride,
+        size: 0, contentSize: 0, fallback: (settings.defaultLeft ?? 0) + offL,
+      });
+      const r = item.rightPx != null ? pxToPt(item.rightPx) : 0;
+      _width = Math.max(0, boxW - _left - r);
+    } else {
+      _left = resolveAxis({
+        near: item.leftPx, far: item.rightPx, legacyNearPt: item.leftOverride,
+        size: width, contentSize: boxW, fallback: (settings.defaultLeft ?? 0) + offL,
+      });
+    }
 
     if (height > 0) cursor += height + settings.itemSpacing;
 
-    return { ...item, _top, _left };
+    return { ...item, _top, _left, _width, _height: height, _rel: page ? 'page' : 'margin' };
   });
+}
+
+// ---------------------------------------------------------------------------
+// Bir itemın RDL'deki tahmini genişliği (pt).
+// Başlık / tarih / metin gibi öğeler body genişliğini (contentWidth) kullanır.
+// ---------------------------------------------------------------------------
+function getItemWidth(item, contentWidth, settings = DEFAULT_LAYOUT_SETTINGS) {
+  if (SIZABLE_TYPES.has(item.type) && item.widthPx != null) return pxToPt(item.widthPx);
+
+  switch (item.type) {
+    case ITEM_TYPES.TABLE:
+      return getTotalTableWidth(item, settings);
+
+    case ITEM_TYPES.MATRIX:
+      return sumBy(item.staticColumns || [], (c) => Number(c.width) || settings.columnWidth);
+
+    case ITEM_TYPES.CHART:
+      return settings.chartWidth;
+
+    case ITEM_TYPES.TEXTBOX:
+      return item.width ?? (item.isLegend ? contentWidth : 100);
+
+    case ITEM_TYPES.RECTANGLE:
+      return item.width ?? 100;
+
+    default:
+      return contentWidth;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Hızlı hizalama: 'left' | 'center' | 'right' → Left değeri (pt)
+// Sonuç 0'ın altına düşmez (item içerikten genişse 0).
+// ---------------------------------------------------------------------------
+function computeAlignedLeft(item, mode, contentWidth, settings = DEFAULT_LAYOUT_SETTINGS) {
+  const boxW = item.relativeTo === 'page'
+    ? contentWidth + settings.marginLeft + settings.marginRight
+    : contentWidth;
+  const free = Math.max(0, boxW - getItemWidth(item, boxW, settings));
+  if (mode === 'center') return Math.round((free / 2) * 100) / 100;
+  if (mode === 'right') return Math.round(free * 100) / 100;
+  return 0;
+}
+
+// ---------------------------------------------------------------------------
+// Konumlanmış itemların dikdörtgenlerini kıyaslar, kesişenleri döner.
+// Dönen: { [itemId]: [kesiştiği itemId, ...] }
+// ---------------------------------------------------------------------------
+function detectOverlaps(positionedItems) {
+  const rects = positionedItems
+    .filter((i) => i._height > 0 && i._width > 0)
+    .map((i) => ({
+      id: i.id,
+      l: i._left, t: i._top,
+      r: i._left + i._width, b: i._top + i._height,
+    }));
+
+  const result = {};
+  for (let a = 0; a < rects.length; a++) {
+    for (let b = a + 1; b < rects.length; b++) {
+      const A = rects[a];
+      const B = rects[b];
+      const intersects = A.l < B.r && B.l < A.r && A.t < B.b && B.t < A.b;
+      if (!intersects) continue;
+      (result[A.id] ||= []).push(B.id);
+      (result[B.id] ||= []).push(A.id);
+    }
+  }
+  return result;
+}
+
+// ---------------------------------------------------------------------------
+// RDL'de kenar boşluğunu gövdenin içine taşır.
+// Tasarım ekranları (Bold Reports / Report Builder) sayfa margin'ini çizmez ve
+// gövdeyi 0,0'dan başlatır. Bu yüzden body bileşenlerinin Left/Top değerine
+// marginLeft/marginTop eklenir; RDL'deki sayfa margin'i ise 0 yazılır ki
+// çalıştırılan çıktıda boşluk iki kat olmasın.
+// Header/footer öğelerine dokunulmaz (kendi alanları vardır).
+// ---------------------------------------------------------------------------
+function applyPageMargins(positionedItems, settings = DEFAULT_LAYOUT_SETTINGS) {
+  return positionedItems.map((item) =>
+    (!item.section || item.section === 'body') && item._rel !== 'page'
+      ? { ...item, _left: item._left + settings.marginLeft, _top: item._top + settings.marginTop }
+      : item,
+  );
 }
 
 function calculateReportValues(originalItems, settings = DEFAULT_LAYOUT_SETTINGS) {
@@ -152,4 +297,14 @@ function calculateReportValues(originalItems, settings = DEFAULT_LAYOUT_SETTINGS
   };
 }
 
-export { computePositions, getItemHeight, calculateReportValues };
+export {
+  FLEXIBLE_WIDTH_TYPES,
+  SIZABLE_TYPES,
+  computePositions,
+  getItemHeight,
+  getItemWidth,
+  computeAlignedLeft,
+  applyPageMargins,
+  detectOverlaps,
+  calculateReportValues,
+};

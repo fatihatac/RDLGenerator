@@ -1,8 +1,9 @@
-export default function ChartPlaceholder({ item }) {
+export default function ChartPlaceholder({ item, height }) {
   return (
     <div
       style={{
-        height: 160,
+        height: height ? `${height}pt` : 160,
+        boxSizing: 'border-box',
         border: '2px dashed #e0e0e0',
         borderRadius: 6,
         display: 'flex',

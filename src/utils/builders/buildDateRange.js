@@ -8,8 +8,8 @@ const buildDateRange = (item, totalWidth, settings = DEFAULT_LAYOUT_SETTINGS) =>
       '@_Name': `${item.id}`,
       Left:     `${item._left ?? 0}pt`,
       Top:      `${item._top ?? 0}pt`,
-      Height:   `${settings.titleHeight}pt`,
-      Width:    `${totalWidth}pt`,
+      Height:   `${item._height ?? settings.titleHeight}pt`,
+      Width:    `${item._width ?? totalWidth}pt`,
       Style: {
         VerticalAlign: 'Middle',
         PaddingLeft:   '2pt',

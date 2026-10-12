@@ -8,8 +8,8 @@ function buildChart(item, totalHeight, dataSetMap, dataItem, settings = DEFAULT_
       '@_Name': `chart-${crypto.randomUUID()}`,
       Left:   `${item._left ?? 0}pt`,
       Top:    `${item._top ?? 0}pt`,
-      Height: `${settings.chartHeight}pt`,
-      Width:  `${settings.chartWidth}pt`,
+      Height: `${item._height ?? settings.chartHeight}pt`,
+      Width:  `${item._width ?? settings.chartWidth}pt`,
       Style: {
         BackgroundColor:           'White',
         FontFamily:                settings.fontFamily,
