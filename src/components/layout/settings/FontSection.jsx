@@ -2,7 +2,7 @@ import { Type } from 'lucide-react';
 import { SectionHeader, SelectInput, NumberInput, FieldRow } from './FormInputs';
 
 const FONT_FAMILIES = [
-  'Segoe UI', 'Arial', 'Calibri', 'Tahoma', 'Verdana',
+  'Cambria', 'Segoe UI', 'Arial', 'Calibri', 'Tahoma', 'Verdana',
   'Times New Roman', 'Georgia', 'Trebuchet MS', 'Courier New',
 ];
 

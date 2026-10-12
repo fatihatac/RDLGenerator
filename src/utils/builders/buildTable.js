@@ -215,7 +215,7 @@ const buildTable = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
               Style: {
                 FontFamily: settings.fontFamily,
                 FontSize:   `${settings.columnHeaderFontSize}pt`,
-                FontWeight: settings.titleFontWeight,
+                FontWeight: settings.columnHeaderFontWeight ?? '600',
                 Color: 'black',
               },
             },
