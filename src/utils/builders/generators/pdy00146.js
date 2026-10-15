@@ -1,7 +1,6 @@
 import {
   calculateReportValues,
   computePositions,
-  applyPageMargins,
 } from "../../core/reportCalculations.js";
 import buildDataSection from "../buildDataSection.js";
 import { buildReportItems } from "../buildItems.js";
@@ -22,12 +21,7 @@ function generatePDY00146(items) {
   const LEGEND_WIDTH = 1062.75;
   const ACTUAL_CONTENT_WIDTH = Math.max(TOTAL_REPORT_WIDTH, LEGEND_WIDTH);
 
-  const itemsWithPositions = applyPageMargins(
-    computePositions(items, settings, ACTUAL_CONTENT_WIDTH),
-    settings,
-  );
-  const BODY_WIDTH = ACTUAL_CONTENT_WIDTH + settings.marginLeft + settings.marginRight;
-  const BODY_HEIGHT = TOTAL_REPORT_HEIGHT + settings.marginTop + settings.marginBottom;
+  const itemsWithPositions = computePositions(items, settings, ACTUAL_CONTENT_WIDTH);
 
   const bodyItems = itemsWithPositions.filter(
     (item) => !item.section || item.section === "body"
@@ -87,11 +81,11 @@ function generatePDY00146(items) {
     ...(pageHeader && { PageHeader: pageHeader }),
     ...(pageFooter && { PageFooter: pageFooter }),
     PageHeight: `${settings.pageHeight}pt`,
-    PageWidth: `${BODY_WIDTH}pt`,
-    LeftMargin: "0pt",
-    RightMargin: "0pt",
-    TopMargin: "0pt",
-    BottomMargin: "0pt",
+    PageWidth: `${ACTUAL_CONTENT_WIDTH}pt`,
+    LeftMargin: `${settings.marginLeft}pt`,
+    RightMargin: `${settings.marginRight}pt`,
+    TopMargin: `${settings.marginTop}pt`,
+    BottomMargin: `${settings.marginBottom}pt`,
     Style: { Border: { Style: "None" } },
   };
 
@@ -109,9 +103,9 @@ function generatePDY00146(items) {
           Body: {
             Style: { Border: { Style: "None" } },
             ReportItems: reportItemsObj,
-            Height: `${BODY_HEIGHT}pt`,
+            Height: `${TOTAL_REPORT_HEIGHT}pt`,
           },
-          Width: `${BODY_WIDTH}pt`,
+          Width: `${ACTUAL_CONTENT_WIDTH}pt`,
           Page: pageConfig,
         },
       },

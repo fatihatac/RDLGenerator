@@ -5,7 +5,6 @@ import {
   computePositions,
   computeAlignedLeft,
   detectOverlaps,
-  applyPageMargins,
 } from '../reportCalculations.js';
 import { pxToPt, ptToPx } from '../units.js';
 import { DEFAULT_LAYOUT_SETTINGS } from '../../../store/useLayoutStore.js';
@@ -59,13 +58,13 @@ console.log('detectOverlaps');
   assert(Object.keys(detectOverlaps(side)).length === 0, 'side by side does not overlap');
 }
 
-console.log('applyPageMargins');
+console.log('page margins do not move items');
 {
-  const base = computePositions([{ id: 't', type: 'title' }, { id: 'h', type: 'title', section: 'header' }], S, 468);
-  const m = applyPageMargins(base, { ...S, marginLeft: 72, marginTop: 72 });
-  assert(m[0]._left === 72 && m[0]._top === 72, 'body item shifted by margins');
-  assert(m[1]._left === base[1]._left && m[1]._top === base[1]._top, 'header item untouched');
-  assert(base[0]._left === 0, 'input not mutated');
+  const M = { ...S, marginLeft: 72, marginTop: 72, marginRight: 72, marginBottom: 72 };
+  const it = computePositions([{ id: 't', type: 'title' }, table('a', [100])], M, 468);
+  assert(it[0]._left === 0 && it[0]._top === 0, 'marjin 72 iken ilk öğe hâlâ 0,0');
+  const o = computePositions([{ id: 'c', type: 'chart', leftPx: 10, topPx: 10 }], M, 468)[0];
+  assert(o._left === 7.5 && o._top === 7.5, 'öğe ofseti marjinden bağımsız');
 }
 
 console.log('px units & four-sided distances');
@@ -86,7 +85,7 @@ console.log('px units & four-sided distances');
   assert(legacy._left === 12 && legacy._top === 9, 'eski pt alanları hâlâ okunur');
 }
 
-console.log('per-item size & page-edge reference');
+console.log('per-item size');
 {
   const chart = { id: 'c', type: 'chart' };
   const c1 = computePositions([{ ...chart, widthPx: 200, heightPx: 100 }], S, 468)[0];
@@ -104,14 +103,6 @@ console.log('per-item size & page-edge reference');
   const w = computePositions([t], S, 468)[0];
   assert(w._width === 150 && w._left === 468 - 150 - 30, 'başlık: Genişlik verilince Sağ çıpalar');
 
-  const M = { ...S, marginLeft: 72, marginTop: 72, marginRight: 72, marginBottom: 72 };
-  const pg = computePositions([{ ...chart, relativeTo: 'page', leftPx: 10, topPx: 10 }], M, 468)[0];
-  assert(pg._left === 7.5 && pg._top === 7.5, 'kağıt kenarı: marjin eklenmez');
-  assert(applyPageMargins([pg], M)[0]._left === 7.5, 'applyPageMargins kağıt-kenarı öğesine dokunmaz');
-  const mg = computePositions([{ ...chart, leftPx: 10, topPx: 10 }], M, 468)[0];
-  assert(applyPageMargins([mg], M)[0]._left === 7.5 + 72, 'marjin içi: marjin eklenir');
-  const pr = computePositions([{ ...chart, relativeTo: 'page', widthPx: 100, rightPx: 0 }], M, 468)[0];
-  assert(pr._left === 468 + 144 - 75, 'kağıt kenarı: Sağ=0 kağıdın sağ kenarına yaslar');
 }
 
 console.log(`\n${passed} passed, ${failed} failed`);

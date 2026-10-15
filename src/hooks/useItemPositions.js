@@ -7,7 +7,6 @@ import {
   calculateReportValues,
   computePositions,
   detectOverlaps,
-  applyPageMargins,
 } from '../utils/core/reportCalculations';
 
 // pdy00146 generator'ındaki LEGEND_WIDTH ile aynı olmalı
@@ -33,10 +32,7 @@ export default function useItemPositions() {
 
     const positioned = computePositions(reportItems, settings, contentWidth);
     const byId = Object.fromEntries(positioned.map((p) => [p.id, p]));
-    // Çakışma, marjin dahil mutlak sayfa koordinatlarında bakılır (kağıt-kenarı öğeleri dahil).
-    const overlaps = detectOverlaps(
-      applyPageMargins(positioned, settings).filter((p) => !p.section || p.section === 'body'),
-    );
+    const overlaps = detectOverlaps(positioned.filter((p) => !p.section || p.section === 'body'));
 
     // RDL'deki sayfa ölçüsü: pdy00146 genişliği içerik + yan boşluklardan türetir
     const pageWidth =

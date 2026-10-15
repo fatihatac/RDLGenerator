@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import useReportStore from '../../store/useReportStore';
 import { useShallow } from 'zustand/react/shallow';
 import { ITEM_TYPES } from '../../constants/appConstants';
@@ -26,6 +26,9 @@ function ReportPreview() {
     })),
   );
   const updateLayoutSetting = useLayoutStore((s) => s.updateLayoutSetting);
+  // Normal önizleme (RDL görüntüleyici / tasarım ekranı gibi) bileşenleri 0,0'dan başlatır;
+  // Baskı önizleme sayfa marjinini uygular (PDF/yazıcı çıktısı gibi).
+  const [printMode, setPrintMode] = useState(false);
 
   const dataMap = useMemo(() => {
     const map = {};
@@ -73,7 +76,9 @@ function ReportPreview() {
   const positionedBlocks = reportItems
     .map((item) => ({ pos: byId[item.id], node: renderBlock(item) }))
     .filter(({ pos, node }) => pos && node);
-  const pagePadding = `${settings.marginTop}pt ${settings.marginRight}pt ${settings.marginBottom}pt ${settings.marginLeft}pt`;
+  const pagePadding = printMode
+    ? `${settings.marginTop}pt ${settings.marginRight}pt ${settings.marginBottom}pt ${settings.marginLeft}pt`
+    : '0pt';
 
   return (
     <div className="flex flex-col items-center w-full gap-6 pb-12">
@@ -89,6 +94,25 @@ function ReportPreview() {
               onClick={() => setIsPortrait(val)}
               className={`px-3 py-1 text-sm font-medium rounded transition-colors ${
                 isPortrait === val
+                  ? 'bg-white shadow text-[#e12f27]'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <span className="text-sm font-medium text-gray-600 mx-3 pl-3 border-l border-gray-200">Görünüm:</span>
+        <div className="flex bg-gray-100 p-0.5 rounded-md">
+          {[
+            { label: 'Önizleme (0,0)', val: false },
+            { label: 'Baskı önizleme (marjinli)', val: true },
+          ].map(({ label, val }) => (
+            <button
+              key={String(val)}
+              onClick={() => setPrintMode(val)}
+              className={`px-3 py-1 text-sm font-medium rounded transition-colors ${
+                printMode === val
                   ? 'bg-white shadow text-[#e12f27]'
                   : 'text-gray-500 hover:text-gray-700'
               }`}
@@ -120,8 +144,6 @@ function ReportPreview() {
             contentWidth={contentWidth}
             items={positionedBlocks.map(({ pos }) => pos)}
             overlaps={overlaps}
-            marginLeft={settings.marginLeft}
-            marginTop={settings.marginTop}
           >
             {positionedBlocks}
           </PositionedCanvas>

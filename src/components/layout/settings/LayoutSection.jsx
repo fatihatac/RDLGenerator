@@ -50,7 +50,7 @@ function PageDiagram({ settings }) {
         )}
       </div>
       <p className="text-[11px] text-gray-400 leading-relaxed">
-        Kesikli alan içerik alanıdır. Bileşenlerin Sol/Sağ/Üst/Alt uzaklıkları bu alana göre ölçülür. Değerler px'tir (RDL'e pt olarak yazılır).
+        Kesikli alan baskı alanıdır. Marjin yalnızca baskı/PDF çıktısında ve “Baskı önizleme”de görünür; tasarım ekranında ve normal önizlemede bileşenler 0,0'dan başlar. Bileşen uzaklıkları marjinden bağımsızdır. Değerler px'tir (RDL'e pt yazılır).
       </p>
     </div>
   );
@@ -59,14 +59,14 @@ function PageDiagram({ settings }) {
 export default function LayoutSection({ settings, onChange }) {
   return (
     <>
-      <SectionHeader icon={LayoutTemplate} label="Yerleşim" />
+      <SectionHeader icon={LayoutTemplate} label="Sayfa marjini ve aralık" />
 
       <PageDiagram settings={settings} />
 
-      <PxField label="Sol marjin" name="marginLeft" settings={settings} onChange={onChange} max={400} />
-      <PxField label="Sağ marjin" name="marginRight" settings={settings} onChange={onChange} max={400} />
-      <PxField label="Üst marjin" name="marginTop" settings={settings} onChange={onChange} max={400} />
-      <PxField label="Alt marjin" name="marginBottom" settings={settings} onChange={onChange} max={400} />
+      <PxField label="Sol marjin (baskı)" name="marginLeft" settings={settings} onChange={onChange} max={400} />
+      <PxField label="Sağ marjin (baskı)" name="marginRight" settings={settings} onChange={onChange} max={400} />
+      <PxField label="Üst marjin (baskı)" name="marginTop" settings={settings} onChange={onChange} max={400} />
+      <PxField label="Alt marjin (baskı)" name="marginBottom" settings={settings} onChange={onChange} max={400} />
       <PxField label="Bileşen aralığı" name="itemSpacing" settings={settings} onChange={onChange} max={100} />
       <PxField label="Varsayılan Sol" name="defaultLeft" settings={settings} onChange={onChange} max={700} />
     </>
