@@ -3,11 +3,8 @@ import { SIZABLE_TYPES } from '../../../utils/core/reportCalculations';
 // RDL'deki gibi mutlak konumlu içerik alanı (pt birimi).
 // Her çocuk { id, _left, _top, _width, _height } bilgisiyle yerleştirilir.
 // Çakışan itemlar kırmızı çerçeveyle işaretlenir.
-export default function PositionedCanvas({ contentWidth, items, overlaps, marginLeft = 0, marginTop = 0, children }) {
-  // Kağıt-kenarı öğelerinin koordinatı sayfaya göredir; tuval marjinin içinde başladığı için marjin düşülür.
-  const originL = (p) => (p._rel === 'page' ? marginLeft : 0);
-  const originT = (p) => (p._rel === 'page' ? marginTop : 0);
-  const bottom = items.reduce((max, p) => Math.max(max, p._top - originT(p) + p._height), 0);
+export default function PositionedCanvas({ contentWidth, items, overlaps, children }) {
+  const bottom = items.reduce((max, p) => Math.max(max, p._top + p._height), 0);
 
   return (
     <div
@@ -25,8 +22,8 @@ export default function PositionedCanvas({ contentWidth, items, overlaps, margin
             key={pos.id}
             style={{
               position: 'absolute',
-              left: `${pos._left - originL(pos)}pt`,
-              top: `${pos._top - originT(pos)}pt`,
+              left: `${pos._left}pt`,
+              top: `${pos._top}pt`,
               width: `${pos._width}pt`,
               ...(SIZABLE_TYPES.has(pos.type) && pos._height > 0 && { height: `${pos._height}pt`, overflow: 'hidden' }),
               outline: overlapping ? '1.5px solid #ef4444' : 'none',

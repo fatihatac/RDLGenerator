@@ -122,28 +122,22 @@ function resolveAxis({ near, far, legacyNearPt, size, contentSize, fallback }) {
 }
 
 function computePositions(items, settings = DEFAULT_LAYOUT_SETTINGS, contentWidth, contentHeight) {
+  // Ölçüler gövdeye (Body) göredir: gerçek RDL'de sayfa marjini <Page> içinde ayrı bir
+  // ayardır ve bileşen konumuna eklenmez. Sağ/Alt çıpalama için baskı alanı
+  // (kağıt − marjinler) kullanılır.
   const bodyWidth =
     contentWidth ?? settings.pageWidth - settings.marginLeft - settings.marginRight;
   const bodyHeight =
     contentHeight ?? settings.pageHeight - settings.marginTop - settings.marginBottom;
-  // relativeTo === 'page' olan bileşenler marjini yok sayar: uzaklıklar kağıt kenarından ölçülür.
-  const pageWidth = bodyWidth + settings.marginLeft + settings.marginRight;
-  const pageHeight = bodyHeight + settings.marginTop + settings.marginBottom;
   let cursor = 0;
 
   return items.map((item) => {
-    const page = item.relativeTo === 'page';
-    const boxW = page ? pageWidth : bodyWidth;
-    const boxH = page ? pageHeight : bodyHeight;
-    const offL = page ? settings.marginLeft : 0; // otomatik değerlerde marjini koru
-    const offT = page ? settings.marginTop : 0;
-
     const height = getItemHeight(item, settings);
-    const width = getItemWidth(item, boxW, settings);
+    const width = getItemWidth(item, bodyWidth, settings);
 
     const _top = resolveAxis({
       near: item.topPx, far: item.bottomPx, legacyNearPt: item.topOverride,
-      size: height, contentSize: boxH, fallback: cursor + offT,
+      size: height, contentSize: bodyHeight, fallback: cursor,
     });
 
     let _left;
@@ -153,20 +147,20 @@ function computePositions(items, settings = DEFAULT_LAYOUT_SETTINGS, contentWidt
     if (FLEXIBLE_WIDTH_TYPES.has(item.type) && item.widthPx == null) {
       _left = resolveAxis({
         near: item.leftPx, far: null, legacyNearPt: item.leftOverride,
-        size: 0, contentSize: 0, fallback: (settings.defaultLeft ?? 0) + offL,
+        size: 0, contentSize: 0, fallback: settings.defaultLeft ?? 0,
       });
       const r = item.rightPx != null ? pxToPt(item.rightPx) : 0;
-      _width = Math.max(0, boxW - _left - r);
+      _width = Math.max(0, bodyWidth - _left - r);
     } else {
       _left = resolveAxis({
         near: item.leftPx, far: item.rightPx, legacyNearPt: item.leftOverride,
-        size: width, contentSize: boxW, fallback: (settings.defaultLeft ?? 0) + offL,
+        size: width, contentSize: bodyWidth, fallback: settings.defaultLeft ?? 0,
       });
     }
 
     if (height > 0) cursor += height + settings.itemSpacing;
 
-    return { ...item, _top, _left, _width, _height: height, _rel: page ? 'page' : 'margin' };
+    return { ...item, _top, _left, _width, _height: height };
   });
 }
 
@@ -203,10 +197,7 @@ function getItemWidth(item, contentWidth, settings = DEFAULT_LAYOUT_SETTINGS) {
 // Sonuç 0'ın altına düşmez (item içerikten genişse 0).
 // ---------------------------------------------------------------------------
 function computeAlignedLeft(item, mode, contentWidth, settings = DEFAULT_LAYOUT_SETTINGS) {
-  const boxW = item.relativeTo === 'page'
-    ? contentWidth + settings.marginLeft + settings.marginRight
-    : contentWidth;
-  const free = Math.max(0, boxW - getItemWidth(item, boxW, settings));
+  const free = Math.max(0, contentWidth - getItemWidth(item, contentWidth, settings));
   if (mode === 'center') return Math.round((free / 2) * 100) / 100;
   if (mode === 'right') return Math.round(free * 100) / 100;
   return 0;
@@ -237,22 +228,6 @@ function detectOverlaps(positionedItems) {
     }
   }
   return result;
-}
-
-// ---------------------------------------------------------------------------
-// RDL'de kenar boşluğunu gövdenin içine taşır.
-// Tasarım ekranları (Bold Reports / Report Builder) sayfa margin'ini çizmez ve
-// gövdeyi 0,0'dan başlatır. Bu yüzden body bileşenlerinin Left/Top değerine
-// marginLeft/marginTop eklenir; RDL'deki sayfa margin'i ise 0 yazılır ki
-// çalıştırılan çıktıda boşluk iki kat olmasın.
-// Header/footer öğelerine dokunulmaz (kendi alanları vardır).
-// ---------------------------------------------------------------------------
-function applyPageMargins(positionedItems, settings = DEFAULT_LAYOUT_SETTINGS) {
-  return positionedItems.map((item) =>
-    (!item.section || item.section === 'body') && item._rel !== 'page'
-      ? { ...item, _left: item._left + settings.marginLeft, _top: item._top + settings.marginTop }
-      : item,
-  );
 }
 
 function calculateReportValues(originalItems, settings = DEFAULT_LAYOUT_SETTINGS) {
@@ -304,7 +279,6 @@ export {
   getItemHeight,
   getItemWidth,
   computeAlignedLeft,
-  applyPageMargins,
   detectOverlaps,
   calculateReportValues,
 };

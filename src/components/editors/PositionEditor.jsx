@@ -79,10 +79,9 @@ function PositionEditor({ itemId }) {
   const has = (k) => item[k] != null;
   const hasLegacy = item.leftOverride != null || item.topOverride != null;
   const sizable = SIZABLE_TYPES.has(item.type);
-  const pageRel = item.relativeTo === 'page';
   const hasAnyOverride =
     has('leftPx') || has('rightPx') || has('topPx') || has('bottomPx') ||
-    has('widthPx') || has('heightPx') || pageRel || hasLegacy;
+    has('widthPx') || has('heightPx') || hasLegacy;
 
   const toNumber = (val) => (val === '' || Number.isNaN(Number(val)) ? undefined : Math.max(0, Number(val)));
   // Aynı eksende bir taraf girilince karşı taraf temizlenir; eski pt alanları da silinir.
@@ -104,11 +103,10 @@ function PositionEditor({ itemId }) {
   const setBottom = setSide('bottomPx', 'topPx', 'topOverride');
   const setWidth = (val) => updateItem(itemId, { widthPx: toNumber(val) });
   const setHeight = (val) => updateItem(itemId, { heightPx: toNumber(val) });
-  const setRelativeTo = (mode) => updateItem(itemId, { relativeTo: mode === 'page' ? 'page' : undefined });
   const resetAll = () =>
     updateItem(itemId, {
       leftPx: undefined, rightPx: undefined, topPx: undefined, bottomPx: undefined,
-      widthPx: undefined, heightPx: undefined, relativeTo: undefined,
+      widthPx: undefined, heightPx: undefined,
       leftOverride: undefined, topOverride: undefined,
     });
 
@@ -119,9 +117,8 @@ function PositionEditor({ itemId }) {
     });
 
   const itemWidth = pos?._width ?? 0;
-  const boxWidth = pageRel ? contentWidth + settings.marginLeft + settings.marginRight : contentWidth;
-  const maxLeft = Math.max(0, boxWidth - itemWidth);
-  const overflowsRight = pos && pos._left + itemWidth > boxWidth + 0.01;
+  const maxLeft = Math.max(0, contentWidth - itemWidth);
+  const overflowsRight = pos && pos._left + itemWidth > contentWidth + 0.01;
   const overlapIds = overlaps[itemId] ?? [];
   const activeMode = pos
     ? ALIGN_BUTTONS.find((b) => Math.abs(computeAlignedLeft(item, b.mode, contentWidth, settings) - pos._left) < 0.01)?.mode
@@ -159,26 +156,6 @@ function PositionEditor({ itemId }) {
 
       {open && (
         <div className="mt-2.5 space-y-2.5">
-          {/* Ölçü referansı */}
-          <div className="flex items-center gap-2">
-            <span className="text-[11px] text-gray-500 shrink-0">Ölçü referansı</span>
-            <div className="flex rounded-md border border-gray-200 overflow-hidden">
-              {[{ v: 'margin', l: 'Marjin içi' }, { v: 'page', l: 'Kağıt kenarı' }].map(({ v, l }) => (
-                <button
-                  key={v}
-                  onClick={() => setRelativeTo(v)}
-                  className={`text-[11px] px-2 py-1 transition-colors ${
-                    (v === 'page') === pageRel
-                      ? 'bg-[#e12f27] text-white font-medium'
-                      : 'bg-white text-gray-500 hover:bg-gray-50'
-                  }`}
-                >
-                  {l}
-                </button>
-              ))}
-            </div>
-          </div>
-
           {/* Hızlı hizalama */}
           <div className="flex items-center gap-1.5">
             <div className="flex rounded-md border border-gray-200 overflow-hidden">
@@ -274,7 +251,7 @@ function PositionEditor({ itemId }) {
           )}
 
           <p className="text-[10px] text-gray-400 leading-relaxed">
-            Ölçüler seçtiğiniz referansa göredir (Marjin içi veya Kağıt kenarı), birim px. Sabit genişlikli bileşenlerde Sol/Sağ ve Üst/Alt'tan yalnızca biri
+            Ölçüler gövdenin sol-üst köşesine (0,0) göredir, birim px. Sayfa marjini ayrı bir ayardır ve yalnızca baskıda görünür. Sabit genişlikli bileşenlerde Sol/Sağ ve Üst/Alt'tan yalnızca biri
             kullanılır; başlık ve tarihte Sol+Sağ birlikte genişliği daraltır. Boş = otomatik: Sol varsayılan ({ptToPx(settings.defaultLeft)}px), Üst sıradaki
             birikimli konum. İçerik alanı: {ptToPx(contentWidth)}px.
           </p>

@@ -1,7 +1,6 @@
 import {
   calculateReportValues,
   computePositions,
-  applyPageMargins,
 } from "../../core/reportCalculations.js";
 import buildDataSection from "../buildDataSection.js";
 import { buildReportItems } from "../buildItems.js";
@@ -17,12 +16,7 @@ function generateStandardRDL(items) {
     settings,
   );
 
-  const itemsWithPositions = applyPageMargins(
-    computePositions(items, settings, TOTAL_REPORT_WIDTH),
-    settings,
-  );
-  const BODY_WIDTH = TOTAL_REPORT_WIDTH + settings.marginLeft + settings.marginRight;
-  const BODY_HEIGHT = TOTAL_REPORT_HEIGHT + settings.marginTop + settings.marginBottom;
+  const itemsWithPositions = computePositions(items, settings, TOTAL_REPORT_WIDTH);
 
   const bodyItems = itemsWithPositions.filter(
     (item) => !item.section || item.section === "body"
@@ -81,10 +75,10 @@ function generateStandardRDL(items) {
     ...(pageFooter && { PageFooter: pageFooter }),
     PageHeight: `${settings.pageHeight}pt`,
     PageWidth: `${settings.pageWidth}pt`,
-    LeftMargin: "0pt",
-    RightMargin: "0pt",
-    TopMargin: "0pt",
-    BottomMargin: "0pt",
+    LeftMargin: `${settings.marginLeft}pt`,
+    RightMargin: `${settings.marginRight}pt`,
+    TopMargin: `${settings.marginTop}pt`,
+    BottomMargin: `${settings.marginBottom}pt`,
     Style: { Border: { Style: "None" } },
   };
 
@@ -102,9 +96,9 @@ function generateStandardRDL(items) {
           Body: {
             Style: { Border: { Style: "None" } },
             ReportItems: reportItemsObj,
-            Height: `${BODY_HEIGHT}pt`,
+            Height: `${TOTAL_REPORT_HEIGHT}pt`,
           },
-          Width: `${BODY_WIDTH}pt`,
+          Width: `${TOTAL_REPORT_WIDTH}pt`,
           Page: pageConfig,
         },
       },
