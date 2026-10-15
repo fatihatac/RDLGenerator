@@ -1,3 +1,4 @@
+import { normalizeFontWeight } from '../core/fontWeights.js';
 import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
 import convertTitleCase from '../helpers/convertTitleCase.js';
 import { escapeXml } from '../helpers/escapeXml.js';
@@ -36,7 +37,7 @@ const buildMatrix = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
                       TextRuns: {
                         TextRun: {
                           Value: escapeXml(convertTitleCase(rg.name)),
-                          Style: { FontFamily: settings.fontFamily, FontSize: `${settings.columnHeaderFontSize}pt`, FontWeight: 'Bold' },
+                          Style: { FontFamily: settings.fontFamily, FontSize: `${settings.columnHeaderFontSize}pt`, FontWeight: normalizeFontWeight(settings.columnHeaderFontWeight, 'SemiBold') },
                         },
                       },
                       Style: { TextAlign: 'Left' },
@@ -69,7 +70,7 @@ const buildMatrix = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
                   TextRuns: {
                     TextRun: {
                       Value: escapeXml(sc.name),
-                      Style: { FontFamily: settings.fontFamily, FontSize: `${settings.columnHeaderFontSize}pt` },
+                      Style: { FontFamily: settings.fontFamily, FontSize: `${settings.columnHeaderFontSize}pt`, FontWeight: normalizeFontWeight(settings.columnHeaderFontWeight, 'SemiBold') },
                     },
                   },
                   Style: { TextAlign: 'Center' },
@@ -105,7 +106,7 @@ const buildMatrix = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
                         TextRuns: {
                           TextRun: {
                             Value: `=Fields!${cg.mappedField}.Value`,
-                            Style: { FontFamily: settings.fontFamily, FontSize: `${settings.columnHeaderFontSize}pt` },
+                            Style: { FontFamily: settings.fontFamily, FontSize: `${settings.columnHeaderFontSize}pt`, FontWeight: normalizeFontWeight(settings.columnHeaderFontWeight, 'SemiBold') },
                           },
                         },
                         Style: { TextAlign: 'Center' },
@@ -151,7 +152,7 @@ const buildMatrix = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
                     TextRuns: {
                       TextRun: {
                         Value: rg.mappedField ? `=Fields!${rg.mappedField}.Value` : escapeXml(convertTitleCase(rg.name)),
-                        Style: { FontFamily: settings.fontFamily, FontSize: `${settings.columnDataFontSize}pt` },
+                        Style: { FontFamily: settings.fontFamily, FontSize: `${settings.columnDataFontSize}pt`, FontWeight: normalizeFontWeight(settings.columnDataFontWeight, 'Normal') },
                       },
                     },
                     Style: { TextAlign: 'Left' },
@@ -228,7 +229,7 @@ const buildMatrix = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
                   TextRuns: {
                     TextRun: {
                       Value: (resolveValue(colCfg, 'valueExpr') || resolveValue(item, 'valueExpr')) || (colCfg.mappedField ? `=Fields!${colCfg.mappedField}.Value` : ''),
-                      Style: { FontFamily: settings.fontFamily, FontSize: `${settings.columnDataFontSize}pt` },
+                      Style: { FontFamily: settings.fontFamily, FontSize: `${settings.columnDataFontSize}pt`, FontWeight: normalizeFontWeight(settings.columnDataFontWeight, 'Normal') },
                     },
                   },
                   Style: { TextAlign: 'Center' },

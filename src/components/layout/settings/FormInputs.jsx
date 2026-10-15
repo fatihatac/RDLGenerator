@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { pxToPt, ptToPx } from '../../../utils/core/units';
 
 export function SectionHeader({ icon: SectionIcon, label }) {
   return (
@@ -37,6 +39,36 @@ export function NumberInput({ value, onChange, min, max, step = 0.5, unit = 'pt'
                    [&::-webkit-inner-spin-button]:appearance-none"
       />
       {unit && <span className="text-xs text-gray-400 w-4">{unit}</span>}
+    </div>
+  );
+}
+
+// Ayarlar pt olarak saklanır (RDL birimi); kullanıcı px görür ve girer.
+// min/max px cinsindendir. Yazarken değer yeniden yuvarlanıp kaymasın diye,
+// odaktayken yazılan metin gösterilir.
+export function PxInput({ value, onChange, min, max, step = 1, decimals = 2 }) {
+  const [draft, setDraft] = useState(null);
+  return (
+    <div className="flex items-center gap-1">
+      <input
+        type="number"
+        value={draft ?? Number(ptToPx(value).toFixed(decimals))}
+        min={min}
+        max={max}
+        step={step}
+        onChange={(e) => {
+          setDraft(e.target.value);
+          const px = parseFloat(e.target.value);
+          if (!Number.isNaN(px)) onChange(pxToPt(px));
+        }}
+        onBlur={() => setDraft(null)}
+        className="w-20 text-right text-xs px-2 py-1.5 rounded-md border border-gray-200 bg-white
+                   focus:outline-none focus:ring-1 focus:ring-red-300 focus:border-red-400
+                   text-gray-800 [appearance:textfield]
+                   [&::-webkit-outer-spin-button]:appearance-none
+                   [&::-webkit-inner-spin-button]:appearance-none"
+      />
+      <span className="text-xs text-gray-400 w-4">px</span>
     </div>
   );
 }

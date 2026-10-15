@@ -5,7 +5,10 @@ import {
   computePositions,
   computeAlignedLeft,
   detectOverlaps,
+  computeBodyHeight,
+  computeBodyWidth,
 } from '../reportCalculations.js';
+import { normalizeFontWeight, cssFontWeight } from '../fontWeights.js';
 import { pxToPt, ptToPx } from '../units.js';
 import { DEFAULT_LAYOUT_SETTINGS } from '../../../store/useLayoutStore.js';
 
@@ -103,6 +106,31 @@ console.log('per-item size');
   const w = computePositions([t], S, 468)[0];
   assert(w._width === 150 && w._left === 468 - 150 - 30, 'başlık: Genişlik verilince Sağ çıpalar');
 
+}
+
+console.log('body bottom space & font weights');
+{
+  // MA00001.rdl: Tablix Top 36.75pt + Height 36pt, Body 225pt → altında 152.25pt boşluk
+  const tb = { id: 'a', type: 'table', topPx: 49, columns: [{ id: 'c', width: 60 }], groups: [], sums: [] };
+  const C = { ...S, columnHeight: 18 };
+  const pos = computePositions([tb], C, 468);
+  assert(pos[0]._top === 36.75 && pos[0]._height === 36, 'referans tablix: Top 36.75pt, Height 36pt');
+  assert(computeBodyHeight(pos, { ...C, bodyBottomSpace: 152.25 }) === 225, 'Body.Height = alt kenar + boşluk = 225pt');
+  assert(computeBodyHeight(pos, { ...C, bodyBottomSpace: 0 }) === 72.75, 'boşluk 0 → Body alt kenarda biter');
+  const moved = computePositions([{ ...tb, topPx: 400 }], C, 468);
+  assert(computeBodyHeight(moved, C) === 300 + 36, 'elle taşınan bileşen gövde yüksekliğine girer');
+  assert(normalizeFontWeight('600') === 'SemiBold' && normalizeFontWeight('bold') === 'Bold', 'eski değerler RDL adlarına çevrilir');
+  assert(normalizeFontWeight(undefined, 'Bold') === 'Bold' && cssFontWeight('SemiBold') === 600, 'varsayılan ve CSS karşılığı');
+}
+
+console.log('reference MA00001.rdl');
+{
+  const widths = [33, 49.8, 45.6, 72, 72, 46.2, 49.8, 49.2, 72, 57.6, 55.2, 58.2, 34.2, 54.6, 51.6, 59.4, 72.60001, 72];
+  const t = { id: 'a', type: 'table', leftPx: 2, topPx: 49, columns: widths.map((w, i) => ({ id: `c${i}`, width: w })), groups: [], sums: [] };
+  const C = { ...S, columnHeight: 18 };
+  const pos = computePositions([t], C, 1005);
+  assert(pos[0]._width === 1005, 'tablix genişliği ondalık gürültüsüz 1005pt');
+  assert(computeBodyWidth(pos) === 1006.5, 'ReportSection.Width = Sol 1.5 + 1005 = 1006.5pt');
 }
 
 console.log(`\n${passed} passed, ${failed} failed`);

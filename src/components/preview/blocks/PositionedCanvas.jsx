@@ -3,15 +3,15 @@ import { SIZABLE_TYPES } from '../../../utils/core/reportCalculations';
 // RDL'deki gibi mutlak konumlu içerik alanı (pt birimi).
 // Her çocuk { id, _left, _top, _width, _height } bilgisiyle yerleştirilir.
 // Çakışan itemlar kırmızı çerçeveyle işaretlenir.
-export default function PositionedCanvas({ contentWidth, items, overlaps, children }) {
-  const bottom = items.reduce((max, p) => Math.max(max, p._top + p._height), 0);
+export default function PositionedCanvas({ contentWidth, bodyHeight, items, overlaps, children }) {
+  const bottom = bodyHeight ?? items.reduce((max, p) => Math.max(max, p._top + p._height), 0);
 
   return (
     <div
       style={{
         position: 'relative',
         width: `${contentWidth}pt`,
-        minHeight: `${bottom + 40}pt`,
+        minHeight: `${bottom}pt`,
         outline: '1px dashed #e5e7eb',
       }}
     >

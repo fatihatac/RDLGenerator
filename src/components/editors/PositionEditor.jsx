@@ -9,6 +9,9 @@ import { computeAlignedLeft, FLEXIBLE_WIDTH_TYPES, SIZABLE_TYPES } from '../../u
 import { ptToPx } from '../../utils/core/units';
 import { useShallow } from 'zustand/react/shallow';
 
+// Yalnızca gösterim için tek haneye yuvarlanır (kayıtlı değer değişmez).
+const px1 = (pt) => Math.round(ptToPx(pt) * 10) / 10;
+
 const INPUT_CLASS = `w-full text-xs px-2 py-1.5 pr-6 rounded-md border border-gray-200 bg-white
   placeholder:text-gray-300 text-gray-800
   focus:outline-none focus:ring-1 focus:ring-red-300 focus:border-red-400
@@ -138,7 +141,7 @@ function PositionEditor({ itemId }) {
         </span>
         {pos && (
           <span className="text-[10px] text-gray-400 tabular-nums">
-            {ptToPx(pos._left)} / {ptToPx(pos._top)} px
+            {px1(pos._left)} / {px1(pos._top)} px
           </span>
         )}
         {hasAnyOverride && (
@@ -188,8 +191,8 @@ function PositionEditor({ itemId }) {
           <div className="grid grid-cols-2 gap-x-3 gap-y-2.5">
             <CoordField
               label="Sol" value={item.leftPx ?? (item.leftOverride != null ? ptToPx(item.leftOverride) : undefined)}
-              placeholder={!flexible && has('rightPx') ? '—' : `Auto (${ptToPx(pos?._left ?? 0)})`}
-              onChange={setLeft} onReset={() => setLeft('')} max={ptToPx(maxLeft)}
+              placeholder={!flexible && has('rightPx') ? '—' : `Auto (${px1(pos?._left ?? 0)})`}
+              onChange={setLeft} onReset={() => setLeft('')} max={px1(maxLeft)}
             />
             <CoordField
               label="Sağ" value={item.rightPx}
@@ -198,7 +201,7 @@ function PositionEditor({ itemId }) {
             />
             <CoordField
               label="Üst" value={item.topPx ?? (item.topOverride != null ? ptToPx(item.topOverride) : undefined)}
-              placeholder={has('bottomPx') ? '—' : `Auto (${ptToPx(pos?._top ?? 0)})`}
+              placeholder={has('bottomPx') ? '—' : `Auto (${px1(pos?._top ?? 0)})`}
               onChange={setTop} onReset={() => setTop('')}
             />
             <CoordField
@@ -212,12 +215,12 @@ function PositionEditor({ itemId }) {
             <div className="grid grid-cols-2 gap-x-3 gap-y-2.5">
               <CoordField
                 label="Gen." value={item.widthPx}
-                placeholder={`Auto (${ptToPx(pos?._width ?? 0)})`}
+                placeholder={`Auto (${px1(pos?._width ?? 0)})`}
                 onChange={setWidth} onReset={() => setWidth('')}
               />
               <CoordField
                 label="Yük." value={item.heightPx}
-                placeholder={`Auto (${ptToPx(pos?._height ?? 0)})`}
+                placeholder={`Auto (${px1(pos?._height ?? 0)})`}
                 onChange={setHeight} onReset={() => setHeight('')}
               />
             </div>
@@ -240,7 +243,7 @@ function PositionEditor({ itemId }) {
           {overflowsRight && (
             <p className="flex items-start gap-1.5 text-[11px] text-amber-700 bg-amber-50 rounded-md px-2 py-1.5">
               <AlertTriangle size={12} className="shrink-0 mt-px" />
-              Bileşen içerik alanının dışına taşıyor (Sol en fazla {ptToPx(maxLeft)}px).
+              Bileşen içerik alanının dışına taşıyor (Sol en fazla {px1(maxLeft)}px).
             </p>
           )}
           {overlapIds.length > 0 && (
@@ -252,8 +255,8 @@ function PositionEditor({ itemId }) {
 
           <p className="text-[10px] text-gray-400 leading-relaxed">
             Ölçüler gövdenin sol-üst köşesine (0,0) göredir, birim px. Sayfa marjini ayrı bir ayardır ve yalnızca baskıda görünür. Sabit genişlikli bileşenlerde Sol/Sağ ve Üst/Alt'tan yalnızca biri
-            kullanılır; başlık ve tarihte Sol+Sağ birlikte genişliği daraltır. Boş = otomatik: Sol varsayılan ({ptToPx(settings.defaultLeft)}px), Üst sıradaki
-            birikimli konum. İçerik alanı: {ptToPx(contentWidth)}px.
+            kullanılır; başlık ve tarihte Sol+Sağ birlikte genişliği daraltır. Boş = otomatik: Sol varsayılan ({px1(settings.defaultLeft)}px), Üst sıradaki
+            birikimli konum. İçerik alanı: {px1(contentWidth)}px.
           </p>
         </div>
       )}

@@ -1,6 +1,8 @@
 import {
   calculateReportValues,
   computePositions,
+  computeBodyHeight,
+  computeBodyWidth,
 } from "../../core/reportCalculations.js";
 import buildDataSection from "../buildDataSection.js";
 import { buildReportItems } from "../buildItems.js";
@@ -22,6 +24,8 @@ function generatePDY00146(items) {
   const ACTUAL_CONTENT_WIDTH = Math.max(TOTAL_REPORT_WIDTH, LEGEND_WIDTH);
 
   const itemsWithPositions = computePositions(items, settings, ACTUAL_CONTENT_WIDTH);
+  const BODY_HEIGHT = computeBodyHeight(itemsWithPositions, settings);
+  const BODY_WIDTH = computeBodyWidth(itemsWithPositions);
 
   const bodyItems = itemsWithPositions.filter(
     (item) => !item.section || item.section === "body"
@@ -81,7 +85,7 @@ function generatePDY00146(items) {
     ...(pageHeader && { PageHeader: pageHeader }),
     ...(pageFooter && { PageFooter: pageFooter }),
     PageHeight: `${settings.pageHeight}pt`,
-    PageWidth: `${ACTUAL_CONTENT_WIDTH}pt`,
+    PageWidth: `${ACTUAL_CONTENT_WIDTH + settings.marginLeft + settings.marginRight}pt`,
     LeftMargin: `${settings.marginLeft}pt`,
     RightMargin: `${settings.marginRight}pt`,
     TopMargin: `${settings.marginTop}pt`,
@@ -103,9 +107,9 @@ function generatePDY00146(items) {
           Body: {
             Style: { Border: { Style: "None" } },
             ReportItems: reportItemsObj,
-            Height: `${TOTAL_REPORT_HEIGHT}pt`,
+            Height: `${BODY_HEIGHT}pt`,
           },
-          Width: `${ACTUAL_CONTENT_WIDTH}pt`,
+          Width: `${BODY_WIDTH}pt`,
           Page: pageConfig,
         },
       },

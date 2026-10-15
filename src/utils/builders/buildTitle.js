@@ -1,3 +1,4 @@
+import { normalizeFontWeight } from '../core/fontWeights.js';
 import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
 import { escapeXml } from '../helpers/escapeXml.js';
 
@@ -27,7 +28,7 @@ const buildTitle = (item, totalWidth, settings = DEFAULT_LAYOUT_SETTINGS) => {
               Style: {
                 FontFamily: settings.fontFamily,
                 FontSize:   `${settings.titleFontSize}pt`,
-                FontWeight: settings.titleFontWeight,
+                FontWeight: normalizeFontWeight(settings.titleFontWeight, 'Bold'),
                 Color:      'Black',
               },
             },

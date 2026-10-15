@@ -1,9 +1,11 @@
 import { buildGroupMap } from '../../../utils/preview/dataUtils';
 import { cellStyles } from '../styles';
+import usePreviewFonts from '../../../hooks/usePreviewFonts';
 import SumRow from './SumRow';
 import FlatRows from './FlatRows';
 
 export default function DataTableBlock({ tableItem, rows }) {
+  const fonts = usePreviewFonts();
   const visibleCols = (tableItem.columns || []).filter((c) => c.isVisible !== false);
   const groups = tableItem.groups || [];
   const sumColIds = new Set((tableItem.sums || []).map((s) => s.columnId));
@@ -66,7 +68,7 @@ export default function DataTableBlock({ tableItem, rows }) {
         <thead>
           <tr>
             {visibleCols.map((col) => (
-              <th key={col.id} style={cellStyles.headerCell}>
+              <th key={col.id} style={{ ...cellStyles.headerCell, ...fonts.header }}>
                 {col.name}
               </th>
             ))}

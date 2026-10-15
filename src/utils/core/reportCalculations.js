@@ -54,7 +54,7 @@ function getTotalTableWidth(tableItem, settings = DEFAULT_LAYOUT_SETTINGS) {
     (col) => Number(col.width) || settings.columnWidth,
   );
   const groupsWidth = (tableItem.groups?.length || 0) * settings.columnWidth;
-  return columnsWidth + groupsWidth;
+  return Math.round((columnsWidth + groupsWidth) * 100) / 100;
 }
 
 // ---------------------------------------------------------------------------
@@ -230,6 +230,26 @@ function detectOverlaps(positionedItems) {
   return result;
 }
 
+// ---------------------------------------------------------------------------
+// Gövde (Body) yüksekliği: en alttaki bileşenin alt kenarı + son bileşen altı boşluk.
+// Konumlanmış (computePositions çıktısı) body öğeleri üzerinden hesaplanır.
+// ---------------------------------------------------------------------------
+function computeBodyHeight(positionedItems, settings = DEFAULT_LAYOUT_SETTINGS) {
+  const bottom = positionedItems
+    .filter((i) => !i.section || i.section === 'body')
+    .reduce((max, i) => (i._height > 0 ? Math.max(max, i._top + i._height) : max), 0);
+  return Math.round((bottom + (settings.bodyBottomSpace ?? 0)) * 100) / 100;
+}
+
+// Bölüm (ReportSection) genişliği: en sağdaki bileşenin sağ kenarı (Sol + Genişlik).
+// Sol ofset verilen bileşen taşmasın diye içerik genişliğinden büyük olabilir.
+function computeBodyWidth(positionedItems, fallbackWidth = 0) {
+  const right = positionedItems
+    .filter((i) => !i.section || i.section === 'body')
+    .reduce((max, i) => (i._width > 0 ? Math.max(max, i._left + i._width) : max), 0);
+  return Math.round(Math.max(right, fallbackWidth) * 100) / 100;
+}
+
 function calculateReportValues(originalItems, settings = DEFAULT_LAYOUT_SETTINGS) {
   const items = [...originalItems];
   const { dataItem, tableItem, chartItem } = getDataAndTableItems(items);
@@ -279,6 +299,8 @@ export {
   getItemHeight,
   getItemWidth,
   computeAlignedLeft,
+  computeBodyHeight,
+  computeBodyWidth,
   detectOverlaps,
   calculateReportValues,
 };

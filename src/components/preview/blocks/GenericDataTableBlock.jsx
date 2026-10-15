@@ -1,6 +1,8 @@
 import { cellStyles } from '../styles';
+import usePreviewFonts from '../../../hooks/usePreviewFonts';
 
 export default function GenericDataTableBlock({ rows }) {
+  const fonts = usePreviewFonts();
   if (!rows.length) {
     return (
       <div style={{ color: '#999', fontSize: '9pt', padding: '8px 0', marginBottom: 12 }}>
@@ -15,7 +17,7 @@ export default function GenericDataTableBlock({ rows }) {
         <thead>
           <tr>
             {cols.map((col) => (
-              <th key={col} style={cellStyles.headerCell}>
+              <th key={col} style={{ ...cellStyles.headerCell, ...fonts.header }}>
                 {col}
               </th>
             ))}
@@ -25,7 +27,7 @@ export default function GenericDataTableBlock({ rows }) {
           {rows.map((row, i) => (
             <tr key={i} style={{ backgroundColor: i % 2 === 0 ? '#fff' : '#f7f7f7' }}>
               {cols.map((col) => (
-                <td key={col} style={cellStyles.cell}>
+                <td key={col} style={{ ...cellStyles.cell, ...fonts.cell }}>
                   {row[col] ?? ''}
                 </td>
               ))}

@@ -1,3 +1,4 @@
+import { normalizeFontWeight } from '../core/fontWeights.js';
 import { DEFAULT_LAYOUT_SETTINGS } from '../../store/useLayoutStore.js';
 import convertTitleCase from '../helpers/convertTitleCase.js';
 import { escapeXml } from '../helpers/escapeXml.js';
@@ -215,7 +216,7 @@ const buildTable = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
               Style: {
                 FontFamily: settings.fontFamily,
                 FontSize:   `${settings.columnHeaderFontSize}pt`,
-                FontWeight: settings.columnHeaderFontWeight ?? '600',
+                FontWeight: normalizeFontWeight(settings.columnHeaderFontWeight, 'SemiBold'),
                 Color: 'black',
               },
             },
@@ -271,6 +272,7 @@ const buildTable = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
                     Style: {
                       FontFamily: settings.fontFamily,
                       FontSize:   `${settings.columnDataFontSize}pt`,
+                      FontWeight: normalizeFontWeight(settings.columnDataFontWeight, 'Normal'),
                       Color: 'black',
                     },
                   },
@@ -344,8 +346,10 @@ const buildTable = (item, dataSetMap, settings = DEFAULT_LAYOUT_SETTINGS) => {
     });
   }
 
-  const tableWidth = processedColumns.reduce((s, c) => s + (Number(c.width) || settings.columnWidth), 0)
-    + (item.groups?.length || 0) * settings.columnWidth;
+  const tableWidth = Math.round(
+    (processedColumns.reduce((s, c) => s + (Number(c.width) || settings.columnWidth), 0)
+      + (item.groups?.length || 0) * settings.columnWidth) * 100,
+  ) / 100;
 
   return {
     Tablix: {

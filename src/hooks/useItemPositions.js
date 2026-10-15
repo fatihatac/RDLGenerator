@@ -7,6 +7,7 @@ import {
   calculateReportValues,
   computePositions,
   detectOverlaps,
+  computeBodyHeight,
 } from '../utils/core/reportCalculations';
 
 // pdy00146 generator'ındaki LEGEND_WIDTH ile aynı olmalı
@@ -40,8 +41,10 @@ export default function useItemPositions() {
         ? contentWidth + settings.marginLeft + settings.marginRight
         : settings.pageWidth;
 
+    const bodyHeight = computeBodyHeight(positioned, settings);
+
     return {
-      byId, positioned, contentWidth, overlaps, settings,
+      byId, positioned, bodyHeight, contentWidth, overlaps, settings,
       pageWidth, pageHeight: settings.pageHeight,
     };
   }, [reportItems, reportType, settings]);

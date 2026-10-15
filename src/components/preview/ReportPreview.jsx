@@ -43,7 +43,7 @@ function ReportPreview() {
   const firstDataItem = reportItems.find((i) => i.type === ITEM_TYPES.DATA);
   const firstDataRows = firstDataItem ? (dataMap[firstDataItem.id] ?? []) : [];
 
-  const { byId, contentWidth, overlaps, settings, pageWidth, pageHeight } = useItemPositions();
+  const { byId, contentWidth, bodyHeight, overlaps, settings, pageWidth, pageHeight } = useItemPositions();
 
   // Yön, RDL'deki gerçek sayfa ölçüsünden türetilir; değiştirmek ölçüleri yer değiştirir.
   const isPortrait = settings.pageHeight >= settings.pageWidth;
@@ -142,6 +142,7 @@ function ReportPreview() {
         ) : (
           <PositionedCanvas
             contentWidth={contentWidth}
+            bodyHeight={bodyHeight}
             items={positionedBlocks.map(({ pos }) => pos)}
             overlaps={overlaps}
           >

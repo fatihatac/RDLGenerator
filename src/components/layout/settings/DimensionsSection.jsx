@@ -1,5 +1,5 @@
 import { Ruler } from 'lucide-react';
-import { SectionHeader, NumberInput, FieldRow } from './FormInputs';
+import { SectionHeader, PxInput, FieldRow } from './FormInputs';
 
 export default function DimensionsSection({ settings, onChange }) {
   return (
@@ -7,19 +7,19 @@ export default function DimensionsSection({ settings, onChange }) {
       <SectionHeader icon={Ruler} label="Boyutlar" />
 
       <FieldRow label="Başlık yüksekliği">
-        <NumberInput value={settings.titleHeight} onChange={(v) => onChange('titleHeight', v)} min={10} max={200} />
+        <PxInput value={settings.titleHeight} onChange={(v) => onChange('titleHeight', v)} min={13} max={267} />
       </FieldRow>
       <FieldRow label="Sütun genişliği">
-        <NumberInput value={settings.columnWidth} onChange={(v) => onChange('columnWidth', v)} min={20} max={300} />
+        <PxInput value={settings.columnWidth} onChange={(v) => onChange('columnWidth', v)} min={27} max={400} />
       </FieldRow>
       <FieldRow label="Satır yüksekliği">
-        <NumberInput value={settings.columnHeight} onChange={(v) => onChange('columnHeight', v)} min={10} max={100} />
+        <PxInput value={settings.columnHeight} onChange={(v) => onChange('columnHeight', v)} min={13} max={133} />
       </FieldRow>
       <FieldRow label="Grafik genişliği">
-        <NumberInput value={settings.chartWidth} onChange={(v) => onChange('chartWidth', v)} min={50} max={800} />
+        <PxInput value={settings.chartWidth} onChange={(v) => onChange('chartWidth', v)} min={67} max={1067} />
       </FieldRow>
       <FieldRow label="Grafik yüksekliği">
-        <NumberInput value={settings.chartHeight} onChange={(v) => onChange('chartHeight', v)} min={50} max={600} />
+        <PxInput value={settings.chartHeight} onChange={(v) => onChange('chartHeight', v)} min={67} max={800} />
       </FieldRow>
     </>
   );

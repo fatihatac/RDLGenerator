@@ -1,6 +1,8 @@
 import {
   calculateReportValues,
   computePositions,
+  computeBodyHeight,
+  computeBodyWidth,
 } from "../../core/reportCalculations.js";
 import buildDataSection from "../buildDataSection.js";
 import { buildReportItems } from "../buildItems.js";
@@ -17,6 +19,8 @@ function generateStandardRDL(items) {
   );
 
   const itemsWithPositions = computePositions(items, settings, TOTAL_REPORT_WIDTH);
+  const BODY_HEIGHT = computeBodyHeight(itemsWithPositions, settings);
+  const BODY_WIDTH = computeBodyWidth(itemsWithPositions);
 
   const bodyItems = itemsWithPositions.filter(
     (item) => !item.section || item.section === "body"
@@ -96,9 +100,9 @@ function generateStandardRDL(items) {
           Body: {
             Style: { Border: { Style: "None" } },
             ReportItems: reportItemsObj,
-            Height: `${TOTAL_REPORT_HEIGHT}pt`,
+            Height: `${BODY_HEIGHT}pt`,
           },
-          Width: `${TOTAL_REPORT_WIDTH}pt`,
+          Width: `${BODY_WIDTH}pt`,
           Page: pageConfig,
         },
       },

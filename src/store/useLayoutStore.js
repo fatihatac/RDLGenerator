@@ -21,20 +21,25 @@ export const DEFAULT_LAYOUT_SETTINGS = {
   defaultLeft: 0,
 
   // Bileşenler arası dikey boşluk (pt) — Top birikimli hesabında eklenir
-  itemSpacing:  5,        // pt
+  itemSpacing:  4.5,      // pt (6px)
+
+  // Son (en alttaki) bileşenin altında, gövde (Body) içinde bırakılacak boşluk (pt).
+  // Body.Height = en alttaki bileşenin alt kenarı + bu değer.
+  bodyBottomSpace: 0,     // pt
 
   // ── Yazı tipi ─────────────────────────────────────────────────────────────
   fontFamily:            'Cambria',
   titleFontSize:         10.5,     // pt (14px)
   titleFontWeight:       'Bold',
   columnHeaderFontSize:  7.5,     // pt (10px)
-  columnHeaderFontWeight: '600', // yarı kalın (SemiBold)
+  columnHeaderFontWeight: 'SemiBold', // yarı kalın
   columnDataFontSize:    6.75,      // pt (9px)
+  columnDataFontWeight:  'Normal',
 
   // ── Boyutlar ──────────────────────────────────────────────────────────────
   titleHeight:   49.5,   // pt
   columnWidth:   72,     // pt  (varsayılan sütun genişliği)
-  columnHeight:  18.6,   // pt  (her tablo satırı yüksekliği)
+  columnHeight:  18,     // pt  (24px, her tablo satırı yüksekliği)
   chartHeight:   216,    // pt
   chartWidth:    288,    // pt
   legendHeight:  43.5,   // pt
@@ -64,7 +69,32 @@ const useLayoutStore = create(
             state.layoutSettings = { ...DEFAULT_LAYOUT_SETTINGS };
           }),
       })),
-      { name: 'rdl-layout-settings' },
+      {
+        name: 'rdl-layout-settings',
+        version: 2,
+        // Eksik anahtarlar (sonradan eklenen ayarlar) varsayılanla tamamlanır.
+        merge: (persisted, current) => ({
+          ...current,
+          ...persisted,
+          layoutSettings: { ...current.layoutSettings, ...(persisted?.layoutSettings ?? {}) },
+        }),
+        // Eski sürümde kaydedilmiş varsayılanlar (küsuratlı px gösteren) yeni px-temiz
+        // varsayılanlara çevrilir; kullanıcının kendi girdiği değerlere dokunulmaz.
+        migrate: (persisted) => {
+          const ls = { ...(persisted?.layoutSettings ?? {}) };
+          const swap = (key, legacy, next) => {
+            if (legacy.includes(ls[key])) ls[key] = next;
+          };
+          swap('fontFamily', ['Segoe UI'], 'Cambria');
+          swap('titleFontSize', [14], 10.5);          // 14pt → 14px
+          swap('columnHeaderFontSize', [10], 7.5);    // 10pt → 10px
+          swap('columnDataFontSize', [9, 7.5], 6.75); // 9pt / 7.5pt → 9px
+          swap('columnHeaderFontWeight', ['600'], 'SemiBold');
+          swap('columnHeight', [18.6], 18);
+          swap('itemSpacing', [5], 4.5);
+          return { ...persisted, layoutSettings: ls };
+        },
+      },
     ),
     { name: 'LayoutStore' },
   ),
